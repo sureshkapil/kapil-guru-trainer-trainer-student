@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomMergerText">
+        <attr name="title" format="string"/>
+        <attr name="image_src" format="integer"/>
+        <attr name="value" format="string"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="keyValueSquareView">
+        <attr name="keyValueSquareView_title" format="string"/>
+        <attr name="keyValueSquareView_value" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="earningsMergerView">
+        <attr name="earnings_title" format="string"/>
+        <attr name="earningsMergerView_earnings_amount" format="string"/>
+<!--        // 0 is for  Available Amount-->
+<!--        // 1 is for  Locked Amount-->
+        <attr name="earnings_type" format="integer"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="KeyValueText">
+        <attr name="key_title" format="string" />
+        <attr name="key_value" format="string" />
+    </declare-styleable>
+
+    <style name="key_text_style" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="value_text_style" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+</resources>

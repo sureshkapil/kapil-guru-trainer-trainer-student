@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.allSubscription.models.AllSubscriptionsData" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/subscription_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/AppCardViewStyle"
+        android:layout_marginVertical="2dp"
+        app:cardCornerRadius="5dp"
+        android:background="@drawable/upcoming_webinar_bg"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_subscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subscription"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_subscription_type_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.subscriptionSubType}"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actv_subscription" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aciv_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:layout_marginHorizontal="8dp"
+                android:src="@drawable/ic_forward"
+                app:layout_constraintBottom_toBottomOf="@id/actv_subscription_type_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/actv_subscription" />
+
+            <View
+                android:id="@+id/seperator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C7C7CD"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actv_subscription_type_value"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_subscription_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/period"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seperator" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_subscription_duration_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:appendDays="@{model.subscriptionDuration}"
+                app:layout_constraintStart_toEndOf="@id/tv_subscription_duration"
+                app:layout_constraintTop_toTopOf="@id/tv_subscription_duration" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_subscription_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/subscription_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subscription_duration" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_subscription_fee_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:doubleToCount="@{model.subscriptionFee}"
+                app:layout_constraintStart_toEndOf="@id/tv_subscription_fee"
+                app:layout_constraintTop_toTopOf="@+id/tv_subscription_fee" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

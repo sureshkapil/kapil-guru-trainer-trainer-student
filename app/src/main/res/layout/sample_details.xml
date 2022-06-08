@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="check"
+        android:layout_margin="50dp"
+        android:layout_gravity="center"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTextInputLayout"
+        android:layout_margin="40dp"
+        style="@style/MyAppDenseOutlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:helperText="*Required"
+        app:helperTextTextColor="@color/black"
+        app:helperTextEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordTextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:hint="Password" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTextInputLayout_1"
+        android:layout_margin="40dp"
+        style="@style/MyAppDenseOutlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:helperText="*Required">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordTextInputEditText_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text=""
+            android:drawableStart="@drawable/close_red"
+            android:drawablePadding="2dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:hint="Password" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

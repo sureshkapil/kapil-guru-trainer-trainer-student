@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="batchModel"
+            type="com.kapilguru.trainer.ui.courses.batchesList.models.BatchListResponse" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView1"
+        style="@style/AppCardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_marginVertical="2dp"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_bg"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp">
+            <!-- android:background="#7fbf7f"-->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/verticalHalfGuideLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.35" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/aCTVBatchStartDateLable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="@string/start_date_man"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actBatchStartDateValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:dateToString="@{batchModel.startDate}"
+                app:layout_constraintEnd_toStartOf="@id/verticalHalfGuideLine"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aCTVBatchStartDateLable" />
+            <!--                android:text="@{batchViewModel.getConvertedBatchStartDate()}"-->
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/aCTVBatchTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:gravity="center"
+                android:text="@string/batch_time"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintStart_toEndOf="@id/verticalHalfGuideLine"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/aCTVBatchTimeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintStart_toEndOf="@id/verticalHalfGuideLine"
+                app:layout_constraintTop_toBottomOf="@id/aCTVBatchTimeLabel" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aCTVImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:layout_marginVertical="8dp"
+                android:src="@drawable/ic_forward"
+                app:layout_constraintBottom_toTopOf="@id/vDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toEndOf="@id/verticalHalfGuideLine"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actBatchCodeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/batch_code"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/verticalHalfGuideLine"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actBatchStartDateValue" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actBatchDaysLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/batch_days"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintStart_toEndOf="@id/verticalHalfGuideLine"
+                app:layout_constraintTop_toBottomOf="@id/aCTVBatchTimeValue" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/aCTVBatchCodeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:padding="5dp"
+                android:paddingHorizontal="1dp"
+                android:paddingTop="5dp"
+                android:text="@{@string/batch_id (batchModel.batchId)}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/vDivider"
+                app:layout_constraintEnd_toStartOf="@id/verticalHalfGuideLine"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actBatchCodeLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/monday"
+                android:layout_width="@dimen/weekdays_text_view_height_width_dimen"
+                android:layout_height="@dimen/weekdays_text_view_height_width_dimen"
+                android:text="M"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp"
+                android:translationZ="2dp"
+                app:batch_day="@{batchModel.mon}"
+                app:layout_constraintBottom_toTopOf="@id/vDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toEndOf="@id/verticalHalfGuideLine"
+                app:layout_constraintTop_toBottomOf="@id/actBatchDaysLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tuesday"
+                android:layout_width="@dimen/weekdays_text_view_height_width_dimen"
+                android:layout_height="@dimen/weekdays_text_view_height_width_dimen"
+                android:text="T"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:translationZ="4dp"
+                app:batch_day="@{batchModel.tue}"
+                app:layout_constraintBottom_toTopOf="@id/vDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@id/monday"
+                app:layout_constraintTop_toBottomOf="@id/actBatchDaysLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/wednesday"
+                android:layout_width="@dimen/weekdays_text_view_height_width_dimen"
+                android:layout_height="@dimen/weekdays_text_view_height_width_dimen"
+                android:text="W"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:translationZ="4dp"
+                app:batch_day="@{batchModel.wed}"
+                app:layout_constraintBottom_toTopOf="@id/vDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@id/tuesday"
+                app:layout_constraintTop_toBottomOf="@id/actBatchDaysLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/thursday"
+                android:layout_width="@dimen/weekdays_text_view_height_width_dimen"
+                android:layout_height="@dimen/weekdays_text_view_height_width_dimen"
+                android:text="T"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:translationZ="4dp"
+                app:batch_day="@{batchModel.thu}"
+                app:layout_constraintBottom_toTopOf="@id/vDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@id/wednesday"
+                app:layout_constraintTop_toBottomOf="@id/actBatchDaysLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/friday"
+                android:layout_width="@dimen/weekdays_text_view_height_width_dimen"
+                android:layout_height="@dimen/weekdays_text_view_height_width_dimen"
+                android:text="F"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:translationZ="4dp"
+                app:batch_day="@{batchModel.fri}"
+                app:layout_constraintBottom_toTopOf="@id/vDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@id/thursday"
+                app:layout_constraintTop_toBottomOf="@id/actBatchDaysLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/saturday"
+                android:layout_width="@dimen/weekdays_text_view_height_width_dimen"
+                android:layout_height="@dimen/weekdays_text_view_height_width_dimen"
+                android:text="S"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:translationZ="4dp"
+                app:batch_day="@{batchModel.sat}"
+                app:layout_constraintBottom_toTopOf="@id/vDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@id/friday"
+                app:layout_constraintTop_toBottomOf="@id/actBatchDaysLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/sunday"
+                android:layout_width="@dimen/weekdays_text_view_height_width_dimen"
+                android:layout_height="@dimen/weekdays_text_view_height_width_dimen"
+                android:text="S"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:translationZ="4dp"
+                app:batch_day="@{batchModel.sun}"
+                app:layout_constraintBottom_toTopOf="@id/vDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@id/saturday"
+                app:layout_constraintTop_toBottomOf="@id/actBatchDaysLabel" />
+
+
+
+
+            <View
+                android:id="@+id/vDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C7C7CD"
+                android:paddingVertical="1dp"
+                app:layout_constraintTop_toBottomOf="@+id/aCTVBatchCodeValue" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/aCTVTrainerNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:paddingHorizontal="1dp"
+                android:paddingTop="5dp"
+                android:text="@string/trainer_name_man"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vDivider" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@{batchModel.trainerName}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aCTVTrainerNameLabel" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aCIVEditIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginVertical="4dp"
+                android:padding="4dp"
+                android:src="@drawable/ic_edit_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vDivider" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aCIVViewIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="4dp"
+                android:padding="4dp"
+                android:src="@drawable/ic_chat"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vDivider" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aCIVListIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="4dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_baseline_people"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vDivider" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/aCIVPeopleValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:padding="1dp"
+                app:intToString="@{batchModel.studentsCount}"
+                android:src="@drawable/ic_baseline_person"
+                app:layout_constraintEnd_toStartOf="@id/aCIVDeleteIcon"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/aCIVListIcon"
+                app:layout_constraintTop_toTopOf="@id/aCIVListIcon"
+                app:layout_constraintBottom_toTopOf="@id/aCIVListIcon"
+                tools:text="(123)"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aCIVDeleteIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="4dp"
+                android:padding="4dp"
+                android:src="@drawable/ic_delete"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toEndOf="@+id/aCIVListIcon"
+                app:layout_constraintTop_toBottomOf="@+id/vDivider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

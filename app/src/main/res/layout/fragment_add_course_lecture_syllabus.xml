@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="clickHandler"
+            type="com.kapilguru.trainer.ui.courses.addcourse.AddCourseLectureSyllabusFragment" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_0_09"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+
+        <RadioGroup
+            android:id="@+id/rGroupSyllabusType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf=" parent">
+
+            <RadioButton
+                android:id="@+id/rButtonUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/blue_2"
+                android:checked="true"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/upload_pdf"
+                android:textColor="@color/purple"
+                android:theme="@style/RadioButton" />
+
+            <RadioButton
+                android:id="@+id/rButtonCreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue_2"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/create_syllabus"
+                android:textColor="@color/purple"
+                android:theme="@style/RadioButton" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/uploadLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rGroupSyllabusType">
+
+            <Button
+                android:id="@+id/uploadButton"
+                style="@style/PositiveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/upload_syllabus"
+                android:textAllCaps="true"
+                android:textSize="13sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="180dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/uploadLayout" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/fileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.6"
+                    android:src="@drawable/ic_pdf"/>
+                <TextView
+                    android:id="@+id/downloadPDfText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/blue"
+                    android:text="DownloadPdf"
+                    android:visibility="gone"/>
+            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollveiw"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_0_09"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rGroupSyllabusType"
+            app:layout_constraintVertical_bias="0">
+
+            <LinearLayout
+                android:id="@+id/lLayoutParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:context=".ui.courses.addcourse.AddCourseLectureSyllabusFragment" />
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/addSyllabusButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_icon"
+            android:onClick="@{clickHandler::onAddClick}"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_0_09"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

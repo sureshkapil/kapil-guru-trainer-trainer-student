@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dimen_8dp"
+        tools:context=".courseDetails.aboutTrainer.AboutTrainer">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/gallery_image"
+            android:layout_width="@dimen/dimen_260_dp"
+            android:layout_height="@dimen/dimen_110_dp"
+            android:background="@drawable/pink__rounded_rectangle_bg"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingTop="@dimen/dimen_4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

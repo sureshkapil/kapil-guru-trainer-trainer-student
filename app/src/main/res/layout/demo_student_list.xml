@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.demo_webinar_students.DemoWebinarStudentsApi" />
+
+    </data>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/studentDetails"
+        style="@style/AppCardViewStyle_latest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aCTVImageView"
+            app:layout_constraintVertical_bias="0.1">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical_50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical_0_05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical_0_95"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="361dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical_0_78"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.78" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical_0_74"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.65" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical_0_35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.30" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toEndOf="@id/guidelineVertical_50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_person" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVStudentNameText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/attendee_name"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@id/apCTVStudentNameValue"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toEndOf="@id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVStudentNameValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_bold"
+                android:padding="1dp"
+                android:text="@{model.attendeeName}"
+                android:textColor="@color/orange_2"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/apCTVStudentNameText"
+                tools:text="@string/student_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVStudentStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/student_sataus_drawable"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="1dp"
+                android:text="Active"
+                android:textColor="@color/orange_2"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/apCTVStudentNameValue"
+                tools:text="@string/active" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVStudentIdText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/attendee_id"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/apCTVStudentNameText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_78"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/student_id" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVStudentIdValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_bold"
+                android:text="@{model.attendeeCode}"
+                android:textColor="@color/purple"
+                android:textSize="14sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/apCTVStudentNameValue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_78"
+                app:layout_constraintTop_toBottomOf="@+id/apCTVStudentIdText"
+                tools:text="@string/student_id" />
+
+            <View
+                android:id="@+id/viewLine"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/orange"
+                app:layout_constraintTop_toBottomOf="@+id/apCTVStudentStatus" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVCourseName_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/lecture_id"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewLine" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVCourseNameValue_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@{model.lectureId}"
+                android:textAllCaps="true"
+                android:textColor="@color/purple"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVertical_0_35"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/apCTVCourseName_1"
+                tools:text="sample anme" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVBatchTimeText_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/wall_clock_icon"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/start_time"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toEndOf="@id/apCTVCourseNameValue_1"
+                app:layout_constraintTop_toBottomOf="@id/viewLine" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVBatchTimeValue_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="3dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:UTCFormatToTime="@{model.lectureDate}"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVertical_0_78"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toEndOf="@+id/apCTVCourseNameValue_1"
+                app:layout_constraintTop_toBottomOf="@id/apCTVBatchTimeText_1"
+                tools:text="10:10 am" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVStartDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/calendar_icon"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/start_date"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_74"
+                app:layout_constraintTop_toBottomOf="@id/viewLine" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVStartDateValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="3dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:UTCFormatToDate="@{model.lectureDate}"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_74"
+                app:layout_constraintTop_toBottomOf="@id/apCTVStartDate"
+                tools:text="2021-Jul-01" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.exams.conductExams.createQuestionPaper.viewModel.CreateQuestionPaperViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/main_bg">
+
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/custom_action_bar_layout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rectangle_curve_pink_2"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        tools:context=".exams.conductExams.createQuestionPaper.CreateQuestionPaperActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_vertical_20"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.20"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="@font/rubik_regular"
+            android:text="@string/course"
+            android:textColor="@color/black_2"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/gl_vertical_20"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_course_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/rubik_medium"
+            android:text="@{viewModel.course.courseTitle}"
+            android:textColor="@color/purple"
+            app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+            app:layout_constraintTop_toTopOf="@id/actv_course"
+            tools:text="Android" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_trainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:fontFamily="@font/rubik_regular"
+            android:text="@string/trainer"
+            android:textColor="@color/black_2"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_vertical_20"
+            app:layout_constraintTop_toBottomOf="@id/actv_course" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_trainer_name_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.course.trainerName}"
+            android:textColor="@color/purple"
+            android:fontFamily="@font/rubik_medium"
+            app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+            app:layout_constraintTop_toTopOf="@id/actv_trainer"
+            tools:text="Peter Parker" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_question_paper_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="@string/title"
+            android:textColor="@color/black"
+            android:fontFamily="@font/rubik_regular"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_vertical_20"
+            app:layout_constraintTop_toBottomOf="@id/actv_trainer_name_value" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_question_paper_title_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="@{viewModel.questionPaper.title}"
+            android:textColor="@color/purple"
+            android:fontFamily="@font/rubik_medium"
+            app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+            app:layout_constraintTop_toBottomOf="@id/actv_trainer_name_value"
+            tools:text="Android" />
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/yellow_2"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actv_question_paper_title_value"
+            app:layout_constraintBottom_toTopOf="@id/cl_questions_marks"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_questions_marks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_1">
+
+            <LinearLayout
+                android:id="@+id/ll_total_questions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintEnd_toStartOf="@id/ll_total_marks"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_total_questions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:gravity="center"
+                    android:text="@string/total_ques_2_lines"
+                    android:textColor="@color/purple"
+                    android:textSize="10sp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_total_questions_value"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_stroke_grey"
+                    android:fontFamily="@font/rubik_medium"
+                    android:gravity="center"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/orange_2"
+                    android:textSize="14sp"
+                    app:intToCount="@{viewModel.questionPaper.totalQuestions}"
+                    tools:text="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_total_marks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/rl_add_new_ques"
+                app:layout_constraintStart_toEndOf="@id/ll_total_questions"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_total_marks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="@string/total_marks_2_lines"
+                    android:textColor="@color/purple"
+                    android:gravity="center"
+                    android:textSize="10sp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_total_marks_value"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    app:intToCount="@{viewModel.questionPaper.totalMarks}"
+                    android:textColor="@color/orange_2"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:gravity="center"
+                    android:background="@drawable/rectangle_stroke_grey"
+                    tools:text="100" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_add_new_ques"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                app:layout_constraintVertical_bias="1"
+                android:background="@drawable/rectangle_stroke_grey"
+                app:layout_constraintEnd_toStartOf="@id/rl_add_ques_fom_prev"
+                app:layout_constraintStart_toEndOf="@id/ll_total_marks"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/aciv_add_new_ques"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignTop="@+id/actv_add_new_ques"
+                    android:layout_alignBottom="@+id/actv_add_new_ques"
+                    android:src="@drawable/add_icon" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_add_new_ques"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:layout_marginStart="2dp"
+                    android:text="@string/add_new_question_2_lines"
+                    android:textColor="@color/black_2"
+                    android:textSize="8sp"
+                    android:layout_toEndOf="@id/aciv_add_new_ques"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_add_ques_fom_prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintVertical_bias="1"
+                android:padding="4dp"
+                android:background="@drawable/rectangle_stroke_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/rl_add_new_ques"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/aciv_add_ques_from_prev"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignTop="@+id/actv_add_ques_from_prev"
+                    android:layout_alignBottom="@+id/actv_add_ques_from_prev"
+                    android:src="@drawable/add_icon" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_add_ques_from_prev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:layout_marginStart="2dp"
+                    android:text="@string/add_ques_from_prev_2_lines"
+                    android:textColor="@color/black_2"
+                    android:textSize="8sp"
+                    android:layout_toEndOf="@id/aciv_add_ques_from_prev"/>
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_questions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/btn_save_and_assign"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_questions_marks"
+            tools:listitem="@layout/item_previous_question_edit" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            style="@style/NegativeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="15dp"
+            android:text="@string/previous"
+            android:drawableEnd="@drawable/ic_tick"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_questions"
+            app:layout_constraintEnd_toStartOf="@id/btn_save_and_assign" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_and_assign"
+            style="@style/PositiveButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_tick"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="15dp"
+            android:text="@string/save_and_assign"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_questions"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

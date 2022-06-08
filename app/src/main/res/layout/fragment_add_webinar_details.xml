@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="addWebViewModel"
+            type="com.kapilguru.trainer.ui.webiner.addWebinar.viewModel.AddWebinarViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1dp"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/webinar_details"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/MyAppEditTextViewStyle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:helperTextTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@null"
+                    android:hint="@string/webinar_title_man"
+                    android:inputType="text"
+                    android:text="@={addWebViewModel.addWebinarRequest.title}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="15sp"
+                    android:maxLength="100"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5"
+                    app:helperTextTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_start_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_calendar"
+                        android:focusable="false"
+                        android:hint="@string/start_date_man"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="15sp"
+                        app:unWrapUTCToDate="@{addWebViewModel.addWebinarRequest.startDate}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5"
+                    app:helperTextTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_end_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_calendar"
+                        android:focusable="false"
+                        android:hint="@string/end_date_man"
+                        android:inputType="text"
+                        app:unWrapUTCToDate="@{addWebViewModel.addWebinarRequest.endDate}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:id="@+id/til_start_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5"
+                    app:helperTextTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_start_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_alarm"
+                        android:focusable="false"
+                        android:hint="@string/select_start_time"
+                        android:inputType="text"
+                        app:UTCFormatToTime="@{addWebViewModel.addWebinarRequest.startDate}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/aCWebinarSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginVertical="8dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/spinner_bg"
+                    android:entries="@array/webinar_duration"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/black"
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5"
+                    app:helperTextTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_end_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:background="@color/progress_secondary"
+                        android:hint="@string/select_end_time"
+                        android:inputType="text"
+                        app:UTCFormatToTime="@{addWebViewModel.addWebinarRequest.endDate}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5"
+                    app:helperTextTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aCETDays"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/progress_secondary"
+                        android:drawableEnd="@null"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:hint="@string/duration_in_days"
+                        android:inputType="text"
+                        android:text="@={addWebViewModel.addWebinarRequest.durationDays}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/spinner_bg"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aCSpinnerLanguage"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="@string/select_languages"
+                    android:text="@{addWebViewModel.selectedLanguagesString}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="15sp"
+                    android:paddingStart="16dp"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5"
+                    app:helperTextTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:hint="@string/number_of_attendees"
+                        android:inputType="number"
+                        android:text="@={addWebViewModel.addWebinarRequest.noOfAttendees}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="15sp"
+                        android:maxLength="2"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5"
+                    app:helperTextTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:hint="@string/price_mand"
+                        android:inputType="number"
+                        android:text="@={addWebViewModel.addWebinarRequest.price}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="15sp"
+                        android:maxLength="6"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/MyAppEditTextViewStyle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:helperTextTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tIETSpeakerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@null"
+                    android:hint="@string/speaker_name_man"
+                    android:maxLength="50"
+                    android:text="@={addWebViewModel.addWebinarRequest.speakerName}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/card_bg"
+                        android:orientation="vertical">
+
+                        <HorizontalScrollView
+                            android:id="@+id/horizontalScrollView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#dee2e6">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageButton
+                                    android:id="@+id/action_bold"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:background="@null"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_baseline_format_bold_24" />
+                                <!--                        android:onClick="@{clickHandlers::onBoldIconTouch}"-->
+
+                                <ImageButton
+                                    android:id="@+id/action_italic"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:background="@null"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_baseline_format_italic_24" />
+
+                                <ImageButton
+                                    android:id="@+id/action_underline"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:background="@null"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_baseline_format_underlined_24" />
+
+                                <ImageButton
+                                    android:id="@+id/action_insert_bullets"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:background="@null"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_baseline_format_list_bulleted_24" />
+
+                                <ImageButton
+                                    android:id="@+id/action_insert_numbers"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:background="@null"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_baseline_format_list_numbered_24" />
+
+                            </LinearLayout>
+
+                        </HorizontalScrollView>
+
+                        <com.kapilguru.trainer.RichText
+                            android:id="@+id/richEditorWebinar"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:scrollbars="vertical" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>
+

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="guestLectureDataModel"
+            type="com.kapilguru.trainer.ui.guestLectures.model.GuestLectureData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            style="@style/AppCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="8dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_demo_lecture_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="@string/demo_lecture_title"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVCourseName"
+                    style="@style/CardViewTextHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:paddingBottom="2dp"
+                    android:text="@{guestLectureDataModel.title}"
+                    app:layout_constraintEnd_toStartOf="@id/actv_go_live"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_demo_lecture_title"
+                    tools:text="Python" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_go_live"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:background="@drawable/rectangle_curve_pink_2"
+                    android:backgroundTint="@color/green_2"
+                    android:fontFamily="@font/rubik_medium"
+                    android:gravity="center"
+                    android:paddingHorizontal="8dp"
+                    android:text="@string/go_live"
+                    android:textColor="@color/white"
+                    android:textSize="9sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/apCTVCourseName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/apCTVCourseName" />
+
+                <LinearLayout
+                    android:id="@+id/ll_lecture_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/rectangle_curve_pink_2"
+                    android:orientation="horizontal"
+                    android:padding="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/apCTVCourseName">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="@string/lecture_id_hypen"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/apCTVCourseName" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_medium"
+                        android:textColor="@color/orange_2"
+                        app:intToString="@{guestLectureDataModel.id}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/apCTVCourseName"
+                        tools:text="DL15521" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_curve_pink_2"
+                    android:backgroundTint="@color/pink_3"
+                    android:drawablePadding="4dp"
+                    android:paddingHorizontal="4dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
+                    android:textColor="@color/black_2"
+                    app:isRejected="@{guestLectureDataModel.isRejected}"
+                    app:isVerified="@{guestLectureDataModel.isVerified}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.647"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:drawableStart="@drawable/status_approved_circle"
+                    tools:text="Approved" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_lecture_id">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/actv_stat_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="@string/start_time" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/actv_start_time_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/actv_stat_time"
+                        android:fontFamily="@font/rubik_medium"
+                        android:textColor="@color/black_2"
+                        android:textSize="14sp"
+                        app:timeToString="@{guestLectureDataModel.lectureDate}"
+                        tools:text="10:10 am" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@id/rl_start_time"
+                    app:layout_constraintTop_toTopOf="@+id/rl_start_time">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/actv_start_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="@string/start_date" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/actv_start_date_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/actv_start_date"
+                        android:fontFamily="@font/rubik_medium"
+                        android:textColor="@color/black_2"
+                        android:textSize="14sp"
+                        app:dateToString="@{guestLectureDataModel.lectureDate}"
+                        tools:text="2021-jul-01" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_icons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rl_start_time">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/aCIVEditIcon"
+                        style="@style/CardViewIcons"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/edit_icon" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_members"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:gravity="center">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/aciv_members"
+                            style="@style/CardViewIcons"
+                            android:layout_width="40dp"
+                            android:layout_height="55dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/members_icon" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/actv_members_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/aciv_members"
+                            android:layout_marginStart="-12dp"
+                            android:layout_toEndOf="@id/aciv_members"
+                            android:background="@drawable/circle_black"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:intToCount="@{guestLectureDataModel.registeredNoOfAttendees}"
+                            tools:text="19" />
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/aCIVViewIcon"
+                        style="@style/CardViewIcons"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/inspect_icon" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/aciv_share_icon"
+                        style="@style/CardViewIcons"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/share_icon" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/aCIVDeleteIcon"
+                        style="@style/CardViewIcons"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/delete_icon" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

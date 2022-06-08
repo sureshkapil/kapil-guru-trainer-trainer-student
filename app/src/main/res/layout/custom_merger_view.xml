@@ -1,0 +1,46 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_course_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_2">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_src"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/course_duration"
+        android:fontFamily="@font/rubik_regular"
+        android:layout_marginStart="2dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/image_src"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/rubik_bold"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/text_key"
+        app:layout_constraintTop_toBottomOf="@id/text_key"
+        tools:text="5:30 pm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</merge>

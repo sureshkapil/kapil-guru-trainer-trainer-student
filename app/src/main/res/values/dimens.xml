@@ -1,0 +1,45 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="mtrl_slider_track_side_padding">0dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <!--    Profile dimensions-->
+    <dimen name="profile_fragment_margin">30dp</dimen>
+
+    <dimen name="app_card_elevation">8dp</dimen>
+    <dimen name="weekdays_bg_padding">0.75dp</dimen>
+    <dimen name="weekdays_text_view_height_width_dimen">18dp</dimen>
+
+    <dimen name="bottom_navigation_radius">20dp</dimen>
+    <dimen name="onboard_indicator_size">6dp</dimen>
+    <dimen name="on_boading_sub_txt_size">16sp</dimen>
+    <dimen name="edittext_height">30dp</dimen>
+    <dimen name="webinar_status_ht_wd">12dp</dimen>
+    <dimen name="home_screen_schedule_now_radius">20dp</dimen>
+    <dimen name="home_screen_main_bg_radius">20dp</dimen>
+    <dimen name="student_status_ht_wd">7dp</dimen>
+    <dimen name="sub_pos">40dp</dimen>
+    <!--
+    Because the window insets on round devices are larger than 15dp, this padding only applies
+    to square screens.
+    -->
+    <dimen name="box_inset_layout_padding">0dp</dimen>
+
+    <!--
+    This padding applies to both square and round screens. The total padding between the buttons
+    and the window insets is box_inset_layout_padding (above variable) on square screens and
+    inner_frame_layout_padding (below variable) on round screens.
+    -->
+    <dimen name="inner_frame_layout_padding">5dp</dimen>
+    <dimen name="sub_title_size">12sp</dimen>
+    <dimen name="five_dp">5dp</dimen>
+    <dimen name="four">4dp</dimen>
+    <dimen name="dimen_140_dp">140dp</dimen>
+    <dimen name="dimen_100_dp">100dp</dimen>
+    <dimen name="dimen_260_dp">260dp</dimen>
+    <dimen name="dimen_110_dp">110dp</dimen>
+</resources>

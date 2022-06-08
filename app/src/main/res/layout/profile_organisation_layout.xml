@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.ui.profile.profileInfo.viewModel.ProfileInfoViewmodel" />
+
+        <variable
+            name="orgviewModel"
+            type="com.kapilguru.trainer.ui.profile.profileOrganisation.viewModel.ProfileOrgViewModel" />
+
+        <variable
+            name="clickHandlers"
+            type="com.kapilguru.trainer.ui.profile.profileOrganisation.ProfileOrganisationActivity" />
+
+    </data>
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/organization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="@{viewModel.profileMutLiveData.isOrganization() == 1 ? View.VISIBLE : View.GONE}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_organisation_details"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_organisation_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/enter_organization_detials"
+                    android:textColor="@color/purple"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_company_name"
+                    style="@style/MyAppDenseOutlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:helperTextTextColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_Details">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_company_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:hint="@string/company_name"
+                        android:inputType="text"
+                        android:maxLength="100"
+                        android:text="@={viewModel.profileMutLiveData.companyName}"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_org_contact_no"
+                    style="@style/MyAppDenseOutlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:helperTextTextColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_Details">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_contact_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:hint="@string/contact_Number"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:text="@={viewModel.profileMutLiveData.orgContactNumber}"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_org_email"
+                    style="@style/MyAppDenseOutlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:helperTextTextColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_Details">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:hint="@string/official_email"
+                        android:inputType="textEmailAddress"
+                        android:text="@={viewModel.profileMutLiveData.officialEmail}"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_company_website"
+                    style="@style/MyAppDenseOutlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:helperTextTextColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_Details">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_company_website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:hint="@string/company_web_site"
+                        android:inputType="text"
+                        android:text="@={viewModel.profileMutLiveData.companyWebsiteUrl}"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_org_address"
+                    style="@style/MyAppDenseOutlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:helperTextTextColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_Details">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_org_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:gravity="top"
+                        android:hint="@string/address"
+                        android:inputType="textPostalAddress"
+                        android:maxLength="500"
+                        android:text="@={viewModel.profileMutLiveData.orgAddressLine1}"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_org_address_2"
+                    style="@style/MyAppDenseOutlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:helperTextTextColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_Details">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_org_address_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:gravity="top"
+                        android:hint="@string/area"
+                        android:inputType="textPostalAddress"
+                        android:maxLength="500"
+                        android:text="@={viewModel.profileMutLiveData.orgAddressLine2}"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_org_country_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/org_llcountry"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_org_country"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:text="@string/country"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+
+                        <Spinner
+                            android:id="@+id/spinner_org_country"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/spinner_bg"
+                            android:minHeight="25dp"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:spinnerMode="dropdown" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_org_state"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_org_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:text="@string/state"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@+id/et_address" />
+
+                        <Spinner
+                            android:id="@+id/spinner_org_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/spinner_bg"
+                            android:minHeight="25dp"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_org_city_pin_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    android:baselineAligned="false"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_org_city"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_org_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:text="@string/city"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+
+                        <Spinner
+                            android:id="@+id/spinner_org_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/spinner_bg"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:spinnerMode="dropdown" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_org_pin_code"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tv_org_pin_code"
+                            style="@style/MyAppDenseOutlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+
+                            app:helperTextTextColor="@color/black">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_org_pincode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableEnd="@null"
+                                android:gravity="top"
+                                android:hint="@string/hint_pincode"
+                                android:inputType="number"
+                                android:maxLength="6"
+                                android:text="@={viewModel.profileMutLiveData.orgPostalCode}"
+                                android:textSize="15sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_establishment_no"
+                    style="@style/MyAppDenseOutlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:helperTextTextColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_org_city_pin_code">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_establishment_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:gravity="top"
+                        android:hint="@string/establishment_no"
+                        android:inputType="text"
+                        android:maxLength="500"
+                        android:text="@={viewModel.profileMutLiveData.estabilshmentNo}"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_upload_establishment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:backgroundTint="@color/text_heading"
+                        android:text="@string/upload_file"
+                        android:textAllCaps="false" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/actv_file_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="@string/no_file_choosen"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_establishment_date"
+                    style="@style/MyAppDenseOutlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:helperTextTextColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_org_city_pin_code">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_establishment_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:gravity="top"
+                        android:hint="@string/establishment_no"
+                        android:inputType="text"
+                        android:maxLength="500"
+                        android:text="@={viewModel.profileMutLiveData.estabilshmentNo}"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

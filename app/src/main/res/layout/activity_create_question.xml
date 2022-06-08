@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.exams.createQuestion.viewModel.CreateQuestionViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/main_bg">
+
+            <include
+                android:id="@+id/actionbar"
+                layout="@layout/custom_action_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toTopOf="@id/actv_course"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:padding="8dp"
+            android:background="@drawable/rectangle_curve_pink_2"
+            android:backgroundTint="@color/white"
+            tools:context=".exams.createQuestion.CreateQuestionActivity">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_vertical_20"
+                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.20"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/course"
+                android:textColor="@color/black_2"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/gl_vertical_20"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_course_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@{viewModel.course.courseTitle}"
+                android:textColor="@color/purple"
+                app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+                app:layout_constraintTop_toTopOf="@id/actv_course"
+                tools:text="Android" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_trainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/trainer"
+                android:textColor="@color/black_2"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_vertical_20"
+                app:layout_constraintTop_toBottomOf="@id/actv_course" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_trainer_name_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.course.trainerName}"
+                android:textColor="@color/purple"
+                android:fontFamily="@font/rubik_medium"
+                app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+                app:layout_constraintTop_toTopOf="@id/actv_trainer"
+                tools:text="Peter Parker" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_question_paper_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:text="@string/title"
+                android:textColor="@color/black"
+                android:fontFamily="@font/rubik_regular"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_vertical_20"
+                app:layout_constraintTop_toBottomOf="@id/actv_trainer_name_value" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_question_paper_title_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:text="@{viewModel.questionPaperTitle}"
+                android:textColor="@color/purple"
+                android:fontFamily="@font/rubik_medium"
+                app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+                app:layout_constraintTop_toBottomOf="@id/actv_trainer_name_value"
+                tools:text="Android Sample" />
+
+            <View
+                android:id="@+id/view_1"
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/yellow_2"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actv_question_paper_title_value"
+                app:layout_constraintBottom_toTopOf="@id/actv_enter_question"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_enter_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:text="@string/enter_question"
+                android:textColor="@color/purple"
+                android:textStyle="bold"
+                android:fontFamily="@font/rubik_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_1" />
+
+            <LinearLayout
+                android:id="@+id/ll_text_formatter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actv_enter_question" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_select_correct_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/select_correct_answer"
+                android:textColor="@color/purple"
+                android:textStyle="bold"
+                android:fontFamily="@font/rubik_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_text_formatter" />
+
+            <RadioGroup
+                android:id="@+id/rg_correct_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actv_select_correct_answer">
+
+                <RadioButton
+                    android:id="@+id/rb_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/option_a"
+                    android:textColor="@color/purple"/>
+
+                <RadioButton
+                    android:id="@+id/rb_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/option_b"
+                    android:textColor="@color/purple"/>
+
+                <RadioButton
+                    android:id="@+id/rb_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/option_c"
+                    android:textColor="@color/purple"/>
+
+                <RadioButton
+                    android:id="@+id/rb_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/option_d"
+                    android:textColor="@color/purple"/>
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_marks"
+                style="@style/MyAppDenseOutlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                app:helperTextTextColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/rg_correct_answer">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_marks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@null"
+                    android:hint="@string/marks_for_this_question_man"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="35dp"
+                android:background="@drawable/button_bg"
+                android:elevation="10dp"
+                android:paddingHorizontal="20dp"
+                android:text="@string/Cancel"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/actv_add"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_marks"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_add"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/button_bg"
+                android:elevation="10dp"
+                android:paddingHorizontal="20dp"
+                android:text="@string/add"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toEndOf="@id/actv_cancel"
+                app:layout_constraintTop_toTopOf="@+id/actv_cancel" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

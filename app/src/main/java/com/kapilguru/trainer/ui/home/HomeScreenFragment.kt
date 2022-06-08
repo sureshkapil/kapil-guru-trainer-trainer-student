@@ -1,0 +1,230 @@
+package com.kapilguru.trainer.ui.home
+
+import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.viewpager2.widget.ViewPager2
+import com.kapilguru.trainer.*
+import com.kapilguru.trainer.allSubscription.AllSubscriptionActivity
+import com.kapilguru.trainer.announcement.AnnouncementActivity
+import com.kapilguru.trainer.databinding.FragmentHomeScreenBinding
+import com.kapilguru.trainer.exams.ExamsActivity
+import com.kapilguru.trainer.myClassRoomDetails.MyClassDetails
+import com.kapilguru.trainer.network.RetrofitNetwork
+import com.kapilguru.trainer.network.Status
+import com.kapilguru.trainer.studentsList.view.StudentList
+import com.kapilguru.trainer.ui.courses.courses_list.CourseActivity
+import com.kapilguru.trainer.ui.earnings.EarningsActivity
+import com.kapilguru.trainer.ui.guestLectures.GuestLecturesNewActivity
+import com.kapilguru.trainer.ui.refund.RefundActivity
+import com.kapilguru.trainer.ui.webiner.WebinarNewActivity
+import com.kapilguru.trainer.ui.webiner.webinarDetailsActivity.WebinarDetailsActivity
+import kotlinx.android.synthetic.main.activity_on_boarding.*
+import kotlinx.android.synthetic.main.fragment_home_screen.*
+import kotlinx.android.synthetic.main.fragment_home_screen.view.*
+
+
+class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodayScheduleAdapter.OnItemClick, HomeViewPagerAdapter.CardClickListener {
+
+    lateinit var homeViewBinding: FragmentHomeScreenBinding
+    lateinit var homeAdapter: HomeAdapter
+    lateinit var homeViewPagerAdapter: HomeViewPagerAdapter
+    lateinit var todayScheduleAdapter: TodayScheduleAdapter
+    lateinit var homeScreenViewModel: HomeScreenViewModel
+    lateinit var progressDialog: CustomProgressDialog
+
+    companion object {
+        fun newInstance() = HomeScreenFragment()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        homeViewBinding = FragmentHomeScreenBinding.inflate(inflater, container, false)
+        homeScreenViewModel =
+            ViewModelProvider(this, HomeScreenViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), requireActivity().application)).get(HomeScreenViewModel::class.java)
+        homeViewBinding.lifecycleOwner = this
+        progressDialog = CustomProgressDialog(requireContext())
+        return homeViewBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setTodaySchedule()
+        // gridlayout is set
+        setGridlayout(view)
+        // fetching grid layout data
+        viewModelObserver()
+        // set Schedule Page adapter
+        setScheduleViewPager(view)
+        // fetching Schedule Page adapter data
+        viewPagerObserver()
+        // call register for Page adapter
+        registerOnPageChangeCallBack()
+
+    }
+
+    private fun setTodaySchedule() {
+        homeScreenViewModel.fetchUpcomingSchedule()
+        todayScheduleAdapter = TodayScheduleAdapter(this)
+    }
+
+    private fun setScheduleViewPager(view: View) {
+        homeViewPagerAdapter = HomeViewPagerAdapter(this)
+        view.homeViewPager2.adapter = homeViewPagerAdapter
+    }
+
+    private fun setGridlayout(view: View) {
+        val spanCount = 3 // 3 columns
+        val spacing = 10 // 50px
+        val includeEdge = false
+        homeViewBinding.recyclerViewHome.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+        homeViewBinding.recyclerViewHome.layoutManager = GridLayoutManager(context, 3)
+        homeViewBinding.recyclerViewHome.isNestedScrollingEnabled = false
+        homeAdapter = HomeAdapter(this as HomeAdapter.OnItemClickedForHome)
+
+
+        view.recyclerViewHome.adapter = homeAdapter
+    }
+
+
+    private fun setOnboadingIndicator() {
+        val layoutParams = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.setMargins(8, 0, 8, 0)
+        for (i in 0 until homeViewPagerAdapter.itemCount) {
+            val indicators = ImageView(this.requireContext())
+
+            indicators.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this.requireContext(), R.drawable.onboarding_indicator_active_two
+                )
+            )
+            indicators.layoutParams = layoutParams
+            homeViewBinding.layoutOnboardingIndicators.addView(indicators)
+            homeViewBinding.layoutOnboardingIndicators.refreshDrawableState()
+        }
+    }
+
+    private fun setCurrentOnboardingIndicators(index: Int) {
+        val childCount = homeViewBinding.layoutOnboardingIndicators.childCount
+        for (i in 0..childCount) {
+            val imageView = homeViewBinding.layoutOnboardingIndicators.getChildAt(i)?.let {
+                it as ImageView
+            }
+            if (i == index) {
+                imageView?.setImageDrawable(ContextCompat.getDrawable(this.requireContext(), R.drawable.onboarding_indicator_active))
+            } else {
+                imageView?.setImageDrawable(ContextCompat.getDrawable(this.requireContext(), R.drawable.onboarding_indicator_active_two))
+            }
+        }
+    }
+
+    private fun registerOnPageChangeCallBack() {
+        homeViewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                setCurrentOnboardingIndicators(position)
+            }
+        })
+    }
+
+    private fun viewModelObserver() {
+        homeScreenViewModel.setHomeItems()
+        homeScreenViewModel.listOfHomeItems.observe(HomeScreenFragment@ this, Observer {
+            homeAdapter.setData(homeItems = it)
+        })
+
+
+        homeScreenViewModel.upcomingResponse.observe(HomeScreenFragment@ this, Observer { response ->
+            when (response.status) {
+                Status.LOADING -> {
+                    progressDialog.showLoadingDialog()
+                }
+
+                Status.SUCCESS -> {
+                    response.data?.data?.let { upComingSchedule ->
+                        homeViewBinding.horizontalRecycler.adapter = todayScheduleAdapter
+                        todayScheduleAdapter.upComingScheduleApiList = upComingSchedule
+                        (this.requireActivity().application as MyApplication).initMaintenanceWorker()
+                        (this.requireActivity().application as MyApplication).getPendingIntent(upComingSchedule)
+                    }
+                    progressDialog.dismissLoadingDialog()
+                }
+
+                Status.ERROR -> {
+                    progressDialog.dismissLoadingDialog()
+                }
+            }
+        })
+
+    }
+
+    private fun viewPagerObserver() {
+        homeScreenViewModel.setHomeTopItems()
+        homeScreenViewModel.listOfHomeTopItems.observe(HomeScreenFragment@ this, Observer {
+            homeViewPagerAdapter.setViewPagerData(homeViewPagerItems = it)
+            // set Indicator
+            setOnboadingIndicator()
+            // set default Indicator
+            setCurrentOnboardingIndicators(0)
+        })
+    }
+
+    override fun onItemClick(position: Int) {
+        when (position) {
+            0 -> startActivity(Intent(activity, CourseActivity::class.java))
+//            0 ->   VideoCallInterfaceImplementation.launchVideoCall(requireContext(),  "1640164942153bt16941",
+//                "PartiTrainerName", "hostTrainerName")
+            1 -> startActivity(Intent(activity, StudentList::class.java).putExtra(PARAM_IS_FROM, PARAM_IS_FROM_DASHBOARD))
+            2 -> startActivity(Intent(activity, AnnouncementActivity::class.java))
+            3 -> WebinarNewActivity.launchWebinarActivity(requireActivity() as Activity)
+            4 -> startActivity(Intent(activity, GuestLecturesNewActivity::class.java))
+            5 -> startActivity(Intent(activity, ExamsActivity::class.java))
+            6 -> startActivity(Intent(activity, EarningsActivity::class.java))
+            7 -> startActivity(Intent(activity, RefundActivity::class.java))
+            8 -> startActivity(Intent(activity, AllSubscriptionActivity::class.java))
+        }
+    }
+
+    override fun onCardClick(upComingScheduleApi: UpComingScheduleApi) {
+        when (upComingScheduleApi.activityType!!.toLowerCase()) {
+            WEBINAR -> {
+                val intent = Intent(activity, WebinarDetailsActivity::class.java)
+                intent.putExtra("webinarData", upComingScheduleApi.activityId.toString())
+                startActivity(intent)
+            }
+            LECTURE -> {
+                startActivity(Intent(activity, WebinarNewActivity::class.java))
+            }
+            COURSE -> {
+                MyClassDetails.launchActivity(upComingScheduleApi.activityId.toString(), requireActivity(), 0)
+            }
+        }
+    }
+
+    override fun onCourseClicked() {
+        val intent = Intent(requireActivity(), CourseActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onWebinarClicked() {
+        val intent = Intent(requireActivity(), WebinarNewActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onGuestLectureClicked() {
+        val intent = Intent(requireActivity(), GuestLecturesNewActivity::class.java)
+        startActivity(intent)
+    }
+}

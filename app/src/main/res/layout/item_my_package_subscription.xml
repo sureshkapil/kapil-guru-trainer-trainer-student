@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+
+<data>
+
+    <import type="android.view.View" />
+
+    <variable
+        name="myPackageData"
+        type="com.kapilguru.trainer.allSubscription.mySubscriptions.model.MyPackageData" />
+</data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_header"
+        style="@style/AppCardViewStyle_latest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_vertical_50"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_subscription_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@{myPackageData.subscriptionName}"
+                android:textColor="@color/orange_2"
+                android:paddingVertical="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Android" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_medium"
+                app:appendDays="@{myPackageData.subsDuration}"
+                android:textColor="@color/black_2"
+                android:drawableStart="@drawable/hourglass"
+                android:drawablePadding="8dp"
+                android:paddingVertical="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actv_subscription_name"
+                tools:text="365 days" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_subscribed_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actv_duration">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/aciv_subscribed_date"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/calendar_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_subscribed_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_light"
+                    android:padding="4dp"
+                    android:text="@string/subscribed_date"
+                    android:textColor="@color/black_2"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toEndOf="@id/aciv_subscribed_date"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_subscribed_date_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="4dp"
+                    android:textColor="@color/purple"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@id/actv_subscribed_date"
+                    app:layout_constraintTop_toBottomOf="@id/actv_subscribed_date"
+                    app:dateTimeSecToDate="@{myPackageData.startDate}"
+                    tools:text="5 : 30 pm" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_expiry_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/gl_vertical_50"
+                app:layout_constraintTop_toTopOf="@id/cl_subscribed_date">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/aciv_expiry_date"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/calendar_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_expiry_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_light"
+                    android:padding="4dp"
+                    android:text="@string/expiry_date"
+                    android:textColor="@color/black_2"
+                    app:layout_constraintStart_toEndOf="@id/aciv_expiry_date"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_expiry_date_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="4dp"
+                    android:textColor="@color/purple"
+                    android:textSize="13sp"
+                    app:dateTimeSecToDate="@{myPackageData.expiryDate}"
+                    app:layout_constraintStart_toStartOf="@id/actv_expiry_date"
+                    app:layout_constraintTop_toBottomOf="@id/actv_expiry_date"
+                    tools:text="Oct 30 2021" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_renewal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/renewal"
+                android:textColor="@color/white"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawableTint="@color/white"
+                android:drawablePadding="8dp"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:background="@drawable/rectangle_curve_pink_2"
+                android:backgroundTint="@color/blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_expiry_date"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="30dp"
+                android:layout_marginVertical="16dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

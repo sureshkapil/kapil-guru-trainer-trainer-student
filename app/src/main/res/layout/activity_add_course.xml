@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="addCourseViewModel"
+            type="com.kapilguru.trainer.ui.courses.addcourse.viewModel.AddCourseViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@drawable/main_bg"
+        tools:context=".ui.courses.addcourse.AddCourseActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical_50_gl_add_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical_0_05_gl_add_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical_95_gl_add_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/custom_action_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/stepperStateProgressBar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.kofigyan.stateprogressbar.StateProgressBar
+            android:id="@+id/stepperStateProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            app:layout_constraintBottom_toTopOf="@id/viewPager_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actionbar"
+            app:layout_constraintVertical_bias="0.1"
+            app:spb_animateToCurrentProgressState="true"
+            app:spb_checkStateCompleted="true"
+            app:spb_stateBackgroundColor="@color/white"
+            app:spb_stateNumberBackgroundColor="@color/blue_3"
+            app:spb_stateNumberForegroundColor="@color/white"
+            app:spb_currentStateDescriptionColor="@color/blue_3"
+            app:spb_currentStateNumber="one"
+            app:spb_maxStateNumber="five"
+            app:spb_stateForegroundColor="@color/blue_3"
+            app:spb_justifyMultilineDescription="true"
+            app:spb_descriptionLinesSpacing="5dp"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/viewPager_1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="1dp"
+            app:layout_constraintBottom_toTopOf="@id/nextPager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stepperStateProgressBar"
+            app:layout_constraintVertical_bias="0.1">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/previousPager"
+            style="@style/NegativeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="@string/previous"
+            android:drawableStart="@drawable/ic_fast_back_ward"
+            android:visibility="@{addCourseViewModel.currentIndex == 0? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPager_1"
+            app:layout_constraintEnd_toStartOf="@id/nextPager"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_gl_add_course" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextPager"
+            style="@style/PositiveButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_fast_forward"
+            android:layout_margin="15dp"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewPager_1"
+            app:layout_constraintEnd_toStartOf="@id/guidelineVertical_95_gl_add_course"
+            app:layout_constraintStart_toEndOf="@id/previousPager" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

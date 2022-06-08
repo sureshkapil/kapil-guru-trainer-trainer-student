@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kapilguru.trainer">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KapilGuruTrainer"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.profile.profileInfo.view.ProfileDetailsActivityNew" />
+        <activity
+            android:name=".ui.courses.view_course.ViewCourse"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.courses.view_course.PdfViewerActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.courses.view_course.CourseDescriptionActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.webiner.webinarStudentView.WebinarStudentViewActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.guestLectures.guestLectureStudent.GuestLectureStudentViewActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.webiner.WebinarNewActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.guestLectures.GuestLecturesNewActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".referandearn.myReferrals.MyReferralsListActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".payment.PaymentPreviewActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".payment.PaymentStatusActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.earnings.webinarAmount.WebinarAmount"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.earnings.referralDetails.ReferralAmountDetails"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.earnings.amountDetails.AmountViewDetails"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".demo_webinar_students.DemoWebinarStudentActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".allSubscription.positionSubscription.confirmation.PositionSubscriptionConfirmActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".allSubscription.mySubscriptions.myBestTrainer.renewConfirmation.MyBadgeRenewConfirmActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".allSubscription.mySubscriptions.myPositions.renewConfirmation.MyPosRenewConfirmActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".allSubscription.bestTrainerSubscription.confirmation.BadgeSubscriptionConfirmationActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".studentExamBatchResult.ViewStudentReport"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".studentExamBatchResult.ViewAnswerSheetActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".exams.assignExamToBatch.AssignExamToBatchActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".myClassRoomDetails.MyClassDetails"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".payment.PaymentActivity"
+            android:theme="@style/Transparent" />
+        <activity
+            android:name=".AuthenticationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".exams.previousQuestionsList.PreviousQuestionsListActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".exams.previousQuestionPapersList.PreviousQuestionPaperListActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".exams.createQuestion.CreateQuestionActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".batchExamReports.SelectedBatchExamReportsActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".exams.conductExams.createQuestionPaper.CreateQuestionPaperActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".exams.ExamsActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".exams.scheduledExams.ScheduledExamsActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".myClassroom.totalActiveBatches.ActiveBatchesActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity android:name=".ui.reports.batch.BatchReportActivity" />
+        <activity android:name=".ui.changePassword.ChangePasswordActivity" />
+        <activity android:name=".ui.reports.ReportsActivity" />
+        <activity
+            android:name=".ui.otpLogin.OTPLoginActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".studentsList.view.RaiseComplaint"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".referandearn.ReferAndEarnActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".BaseActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity android:name=".allSubscription.bestTrainerSubscription.BestTrainerInfoActivity" />
+        <activity android:name=".allSubscription.mySubscriptions.MySubscriptionsActivity" />
+        <activity android:name=".allSubscription.packageSubscription.PackageSubscriptionListActivity" />
+        <activity android:name=".allSubscription.positionSubscription.PositionSubscriptionInfoActivity" />
+        <activity
+            android:name=".allSubscription.bestTrainerSubscription.BestTrainerSubscriptionListActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".allSubscription.positionSubscription.PositionSubscriptionListActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity android:name=".allSubscription.packageSubscription.PackageSubscriptionInfoActivity" />
+        <activity
+            android:name=".ui.earnings.history.view.EarningsHistoryActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity android:name=".ui.earnings.EarningsDetailsActivity" />
+        <activity
+            android:name=".ui.earnings.EarningsActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.guestLectures.addGuestLecture.AddGuestLectureActivity"
+            android:theme="@style/customParentNoActionBarStyle"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".signup.SignUpActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.webiner.addWebinar.AddWebinarActivity"
+            android:theme="@style/customParentNoActionBarStyle"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.webiner.webinarDetailsActivity.WebinarDetailsActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity android:name=".ui.home.HomeActivity" />
+        <activity
+            android:name=".ui.courses.batchesList.batchStudents.BatchStudentsListActivity"
+            android:parentActivityName=".ui.courses.courses_list.CourseActivity" />
+        <activity android:name=".ui.courses.batchesList.batchDetails.BatchDetailsActivity" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:theme="@style/onboard" />
+        <activity
+            android:name=".allSubscription.AllSubscriptionActivity"
+            android:theme="@style/customParentNoActionBarStyle">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".ui.courses.onGoingBatches.OnGoingBatchActivity" />
+        <activity
+            android:name=".ui.courses.add_batch.AddBatchActivity"
+            android:label="@string/add_batch"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity android:name=".studentsList.view.StudentsDetailsInfo" />
+        <activity
+            android:name=".studentsList.view.StudentList"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity android:name=".ui.courses.addcourse.CourseTipsActivity" />
+        <activity
+            android:name=".ui.courses.addcourse.AddCourseActivity"
+            android:theme="@style/customParentNoActionBarStyle"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.courses.batchesList.batchInfo.BatchInfoActivity" />
+        <activity
+            android:name=".ui.courses.courses_list.CourseActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.courses.batchesList.BatchListDetailsActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.refund.RefundActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".splashScreen.SplashScreenActivity"
+            android:label="@string/app_name"
+            android:theme="@style/customParentNoActionBarStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".onBoarding.OnBoardingActivity"
+            android:theme="@style/onboard">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".SampleActivity">
+
+            <!--
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".announcement.AnnouncementActivity"
+            android:label="@string/announcements"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.profile.profileInfo.view.ProfileDetailsActivity"
+            android:label="@string/title_profile"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.profile.bank.BankDetailsActivity"
+            android:label="@string/bank_details"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.profile.profileOrganisation.ProfileOrganisationActivity"
+            android:label="@string/title_profile"
+            android:parentActivityName=".ui.profile.businessType.BusinessTypeActivity" />
+        <activity
+            android:name=".ui.guestLectures.guestLectureDetails.GuestLectureDetailsActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".forgotPassword.ForgotPasswordActivity"
+            android:label="@string/forgot_password"
+            android:parentActivityName=".login.LoginActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".ui.profile.businessType.BusinessTypeActivity"
+            android:label="@string/profile"
+            android:parentActivityName=".ui.profile.profileInfo.view.ProfileDetailsActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.kapilguru.trainer.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+
+        <receiver android:name=".triggerEvents.MyAlarmReceiver" />
+
+
+
+    <activity android:name=".student.homeActivity.StudentHomeActivity"
+        android:exported="false"
+        android:theme="@style/Theme.KapilStudent"/>
+
+    </application>
+
+
+
+</manifest>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="8dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/aciv_tick"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@drawable/check"
+            android:tint="@color/yellow_2"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black_2"
+            android:fontFamily="@font/rubik_regular"
+            android:layout_marginHorizontal="12dp"
+            tools:text="@string/webinar_info_1" />
+
+    </LinearLayout>
+</layout>

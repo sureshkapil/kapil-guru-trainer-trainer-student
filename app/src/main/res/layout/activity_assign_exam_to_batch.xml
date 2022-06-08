@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.exams.assignExamToBatch.viewModel.AssignExamToBatchViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/custom_action_bar_layout" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@drawable/rectangle_curve_pink_2"
+                android:padding="8dp"
+                tools:context=".exams.conductExams.createQuestionPaper.CreateQuestionPaperActivity">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_vertical_20"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.20" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineVertical_05_clTrainerDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineVertical_95_clTrainerDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.95" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_course"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/course"
+                    android:textColor="@color/black_2"
+                    app:layout_constraintEnd_toEndOf="@+id/gl_vertical_20"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_course_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="@{viewModel.course.courseTitle}"
+                    android:textColor="@color/purple"
+                    app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+                    app:layout_constraintTop_toTopOf="@id/actv_course"
+                    tools:text="Android" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_trainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/trainer"
+                    android:textColor="@color/black_2"
+                    app:layout_constraintEnd_toEndOf="@id/gl_vertical_20"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_course" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_trainer_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="@{viewModel.course.trainerName}"
+                    android:textColor="@color/purple"
+                    app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+                    app:layout_constraintTop_toTopOf="@id/actv_trainer"
+                    tools:text="Peter Parker" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_question_paper_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/title"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/gl_vertical_20"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_trainer_name_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_question_paper_title_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="@{viewModel.questionPaper.title}"
+                    android:textColor="@color/purple"
+                    app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+                    app:layout_constraintTop_toBottomOf="@id/actv_trainer_name_value"
+                    tools:text="Android" />
+
+                <View
+                    android:id="@+id/view_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/yellow_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/actv_question_paper_title_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_select_batch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="@string/select_batch_to_assign_test"
+                    android:textColor="@color/purple"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_1" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_batches"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toTopOf="@id/til_exam_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_select_batch"
+                    tools:listitem="@layout/item_batch_by_course" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_exam_date"
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:translationZ="10dp"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
+                    app:layout_constraintStart_toStartOf="@id/guidelineVertical_05_clTrainerDetails"
+                    app:layout_constraintTop_toBottomOf="@id/rv_batches"
+                    app:layout_constraintBottom_toTopOf="@+id/til_start_time">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_exam_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:focusable="false"
+                        android:hint="@string/exam_date"
+                        android:inputType="text"
+                        android:text=""
+                        android:textColorHint="@android:color/black"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:id="@+id/til_start_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
+                    app:layout_constraintStart_toStartOf="@id/guidelineVertical_05_clTrainerDetails"
+                    app:layout_constraintTop_toBottomOf="@+id/til_exam_date"
+                    app:layout_constraintBottom_toTopOf="@+id/til_test_duration"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_start_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:focusable="false"
+                        android:hint="@string/start_time"
+                        android:inputType="text"
+                        android:text=""
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:id="@+id/til_test_duration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
+                    app:layout_constraintStart_toStartOf="@id/guidelineVertical_05_clTrainerDetails"
+                    app:layout_constraintTop_toBottomOf="@+id/til_start_time">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tiet_class_duartion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_drop_down_24"
+                        android:focusable="false"
+                        android:hint="@string/select_class_duration"
+                        android:inputType="text"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_cancel"
+                    style="@style/NegativeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="8dp"
+                    android:drawableEnd="@drawable/ic_tick"
+                    android:text="@string/Cancel"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_submit"
+                    app:layout_constraintTop_toBottomOf="@id/til_test_duration" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_submit"
+                    style="@style/PositiveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="8dp"
+                    android:drawableEnd="@drawable/ic_tick"
+                    android:text="@string/submit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/til_test_duration" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.studentsList.model.StudentDetails" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="handler"
+            type="com.kapilguru.trainer.studentsList.CourseListRecyclerAdapter" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/studentDetails"
+        style="@style/AppCardViewStyle_latest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="@{() -> handler.dataVisibility(model,position)}">
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content">-->
+
+        <!--                <androidx.appcompat.widget.AppCompatImageView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    app:srcCompat="@drawable/ic_arrow_drop_down_24"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"/>-->
+        <!--                -->
+        <!--            </LinearLayout>-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aCTVImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:layout_marginHorizontal="8dp"
+                android:src="@{model.shouldShow? @drawable/ic_baseline_keyboard_arrow_up_18: @drawable/ic_baseline_keyboard_arrow_down_24  }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aCTVImageView"
+                app:layout_constraintVertical_bias="0.1">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineVertical_50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineVertical_0_05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineVertical_0_95"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.95" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineVertical_0_78"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.78" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineVertical_0_74"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.65" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineVertical_0_35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.30" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toEndOf="@id/guidelineVertical_50"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_person" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVStudentNameText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/student_name"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@id/apCTVStudentNameValue"
+                    app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toEndOf="@id/imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.2" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVStudentNameValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_bold"
+                    android:padding="1dp"
+                    android:text="@{model.studentName}"
+                    android:textColor="@color/orange_2"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/apCTVStudentNameText"
+                    tools:text="@string/student_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVStudentStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/student_sataus_drawable"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="1dp"
+                    android:text="Active"
+                    android:textColor="@color/orange_2"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/apCTVStudentNameValue"
+                    tools:text="@string/active" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVStudentIdText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="Student Id"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/apCTVStudentNameText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_78"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/student_id" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVStudentIdValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_bold"
+                    android:text="@{model.studentCode}"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/apCTVStudentNameValue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_78"
+                    app:layout_constraintTop_toBottomOf="@+id/apCTVStudentIdText"
+                    tools:text="@string/student_id" />
+
+                <View
+                    android:id="@+id/viewLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/orange"
+                    app:layout_constraintTop_toBottomOf="@+id/apCTVStudentStatus" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVCourseName_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/course_name"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/apCTVRaiseComplaint"
+                    app:layout_constraintTop_toBottomOf="@+id/viewLine" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVCourseNameValue_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="@{model.courseTitle}"
+                    android:textAllCaps="true"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/guidelineVertical_0_78"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/apCTVCourseName_1"
+                    tools:text="sample anme " />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVRaiseComplaint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/orange"
+                    android:paddingStart="2dp"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    android:paddingEnd="2dp"
+                    android:textAlignment="center"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/raise_ncomplaint"
+                    android:textSize="14sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/apCTVCourseName_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/apCTVCourseName_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVBatchIdText_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/batch_id_text"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/apCTVCourseNameValue_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVBatchIdValue_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{``+model.batchCode}"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/apCTVBatchIdText_1"
+                    tools:text="01234" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVBatchTimeText_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/start_date"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_35"
+                    app:layout_constraintTop_toBottomOf="@id/apCTVCourseNameValue_1" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVBatchTimeValue_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:dateToString="@{model.startDate}"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    app:layout_constraintEnd_toStartOf="@id/guidelineVertical_0_78"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_35"
+                    app:layout_constraintTop_toBottomOf="@id/apCTVBatchTimeText_1"
+                    tools:text="10:10 am" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVStartDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/batch_time"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_74"
+                    app:layout_constraintTop_toBottomOf="@id/apCTVCourseNameValue_1" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVStartDateValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:timeToString="@{model.startDate}"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_74"
+                    app:layout_constraintTop_toBottomOf="@id/apCTVStartDate"
+                    tools:text="2021-Jul-01" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:visibility="@{model.shouldShow? View.VISIBLE: View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineVertical_50_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVAttendance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/attendance"
+                    android:textColor="#FFFFF5"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineVertical_50_2"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVCoursePercentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/percentage"
+                    android:textColor="#FFFFF5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toEndOf="@id/guidelineVertical_50_2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/white"
+                    android:text="@{model.conductedCount +`/`+ model.sessionsCount}"
+                    tools:text="20/50"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/apCTVAttendance"
+                    app:layout_constraintStart_toStartOf="@+id/apCTVAttendance"
+                    app:layout_constraintTop_toBottomOf="@+id/apCTVAttendance" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/white"
+                    android:text="@{model.conductedCount +`/`+ model.sessionsCount}"
+                    tools:text="33/50"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/apCTVCoursePercentage"
+                    app:layout_constraintStart_toStartOf="@+id/apCTVCoursePercentage"
+                    app:layout_constraintTop_toBottomOf="@+id/apCTVCoursePercentage" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

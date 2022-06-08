@@ -1,0 +1,811 @@
+<resources>
+    <string name="app_name">Kapil Guru Trainer</string>
+    <string name="title_activity_login">Kapil Guru Trainer</string>
+    <string name="prompt_email">Email ID</string>
+    <string name="hint_email">Email *</string>
+    <string name="hint_official_email">Official Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="only_welcome">"Welcome"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password_characters">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_bottom">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_myclassroom">My Class Room</string>
+    <string name="title_referandearn">Refer &amp; Earn</string>
+    <string name="title_howtouse">How to Use</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="courses">Courses</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+    <string name="hint_company_website_url">Company Website URL</string>
+    <string name="course_syllabus_title">COURSE SYLLABUS</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_name">First Name</string>
+    <string name="second_name">Second Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="mobile_number_mand">Mobile Number*</string>
+    <string name="gender">Gender</string>
+    <string name="email">email</string>
+    <string name="email_man">Email*</string>
+    <string name="official_email">Official Email</string>
+    <string name="subscription">Subscription</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="upload_documents">Upload Documents</string>
+    <string name="upload_document">Upload Document</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_mand">Address*</string>
+    <string name="area_mand">Area*</string>
+    <string name="total_experience_mand">Total Experience*</string>
+    <string name="aadhar_mand">Aadhar*</string>
+    <string name="choose_file">Choose File</string>
+    <string name="no_file_choosen">No File Choosen</string>
+    <string name="upload_file">Upload File</string>
+    <string name="facebook_url">Facebook URL</string>
+    <string name="twitter_url">Twitter URL</string>
+    <string name="instagram_url">Instagram URL</string>
+    <string name="linkedin_url">LinkedIn URL</string>
+    <string name="country">Country</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="ok">OK</string>
+    <string name="invalid_email">please enter valid email</string>
+    <string name="invalid_mobile">please enter valid mobile No</string>
+    <string name="mail_or_mobile_empty">please enter valid email or mobile number</string>
+    <string name="empty_password">Please enter Password</string>
+    <string name="invalid_password">Please enter valid Password</string>
+    <string name="try_again">Please try again after some time</string>
+    <string name="start">Start</string>
+    <string name="course_duration">Course Duration</string>
+    <string name="course_fee">Course Fee</string>
+    <string name="add_course">Add Course</string>
+    <string name="add_batch">Add Batch</string>
+    <string name="guest_lecture_title_man">Guest Lecture Title *</string>
+    <string name="lecture_duration">"Duration of Lecture "</string>
+    <string name="languages">Languages</string>
+    <string name="select_languages">Select Languages *</string>
+    <string name="trainer_name_man">Trainer Name *</string>
+    <string name="about_guest_lecture">About Guest Lecture</string>
+    <string name="lecture_date">"Lecture Date *"</string>
+    <string name="lecture_time">Lecture TIme</string>
+    <string name="register">Register</string>
+    <string name="batch_id_text">Batch Id</string>
+    <string name="batch_time_text">Batch Time</string>
+    <string name="student_name">Student Name</string>
+    <string name="course_start_date">Course Start Date</string>
+    <string name="course_name">Course Name</string>
+    <string name="attendance">Attendance</string>
+    <string name="status">Status</string>
+    <string name="batch_start_date">Batch Start Date</string>
+    <string name="percentage">Percentage</string>
+    <string name="student_id">Student Id</string>
+    <string name="batch_code_text">Batch Code</string>
+    <string name="start_time_man">Start Time *</string>
+    <string name="start_date_man">Start Date *</string>
+    <string name="start_date">Start Date</string>
+    <string name="batch_time">Batch Time</string>
+    <string name="tutor_name">Tutor Name</string>
+    <string name="batch_details">Batch Details</string>
+    <string name="total_courses">Total Courses - %s</string>
+    <string name="total_batches">Total Batches - %s</string>
+    <string name="total_students">Total Students (%s)</string>
+    <string name="total_webinars">Total Webinars %s</string>
+    <string name="total_guest_lectures">Total Demo Lectures %s</string>
+    <string name="batch_id"> B0000%s</string>
+    <string name="batches_count">Batches (%s)</string>
+    <string name="batch_days">Batch Days</string>
+    <string name="batch_code">Batch Code</string>
+    <string name="batch_code_hyphen">Batch Code- %s</string>
+    <string name="offline">offline</string>
+    <string name="online">online</string>
+    <string name="schema_code_hyphen">Schema Code- %s</string>
+    <string name="batch_type">Batch Type</string>
+    <string name="course_percentage">Course Percentage</string>
+    <string name="time_zone">Time Zone</string>
+    <string name="number_of_classes">Total Number Of Classes</string>
+    <string name="number_of_student">Total Number Of Student</string>
+    <string name="select_end_time">End Time *</string>
+    <string name="end_time">End Time </string>
+    <string name="select_class_duration">Class Duration(In Hrs)</string>
+    <string name="select_start_time">Start Time *</string>
+    <string name="choose_date">Start Date</string>
+    <string name="total_course_duration">Total Course Duration(in days)</string>
+    <string name="course_title_man">Course Title *</string>
+    <string name="sub_title">Sub Title *</string>
+    <string name="course_category">Course Category</string>
+    <string name="trainer_years_of_experience">Trainer Years of Experience *</string>
+    <string name="total_number_of_students_trained">Total Number of Students Trained *</string>
+    <string name="upload_image_text_one"> \u2022 Course Image Should not Contain Any Text or Personal Information.</string>
+    <string name="upload_image_text_two"> \u2022 Upload an Image Relevant  to Your Lecture.</string>
+    <string name="upload_video_text_one"> \u2022 Video Should not Contain Any Text or Personal Information.</string>
+    <string name="upload_video_text_two"> \u2022 Upload demo lecture of a trainer who conduct the classes.</string>
+    <string name="upload_image_text"><u>Upload Image</u></string>
+    <string name="upload_video_text"><u>Upload Video</u></string>
+    <string name="upload_video_tip_one"> \u2022 You don\'t need to buy Equipment, Most SmartPhone Cameras can record HD Videos.</string>
+    <string name="upload_video_tip_two"> \u2022 Students need to hear you, Reduce background Noise and Echo.</string>
+    <string name="upload_video_tip_three"> \u2022 Turn off Overheard Lights, Light the Scene and your face.</string>
+    <string name="tips">Tips :</string>
+    <string name="announcements">Announcements</string>
+    <string name="my_courses">My Courses</string>
+    <string name="guest_lectures">Guest Lectures</string>
+    <string name="add_demo_lecture">Add Demo Lecture</string>
+    <string name="course">Course</string>
+    <string name="no_of_attendees">No Of Attendees *</string>
+    <string name="hint_no_of_attendees">100</string>
+    <string name="duration">Duration</string>
+    <string name="hint_duration">1:30</string>
+    <string name="hint_start_time">6:30 pm</string>
+    <string name="hint_lecture_desc">lecture description</string>
+    <string name="select_option">Select Option</string>
+    <string name="select_image">Choose from Gallery</string>
+    <string name="click_image">Take a Picture</string>
+    <string name="batch_text">Batch ID</string>
+    <string name="view_text"><u>View</u></string>
+    <string name="student_id_text">KCS000%s</string>
+    <string name="student_id_hyphen">Student ID- %s</string>
+    <string name="this_is_your_space">This is your space</string>
+    <string name="get_started_by_adding_courses">Get started by adding your courses and let the knowledge flow!</string>
+    <string name="add_course_all_caps">ADD COURSE</string>
+    <string name="batch">BATCH</string>
+    <string name="batches">BATCHES</string>
+    <string name="add_batch_all_caps">ADD BATCH</string>
+    <string name="select_batch_to_assign_test">Assign Batch to Assign Test</string>
+    <string name="badge_subscription">Badge Subscription</string>
+    <string name="badge_subscription_confirmation">Badge Subscription Confirmation</string>
+    <string name="badge_subscription_renew_confirmation">Badge Subscription Renew Confirmation</string>
+    <string name="position_subscription_confirmation">Position Subscription Confirmation</string>
+    <string name="make_payment">Make Payment</string>
+
+    <!--Guest lecture-->
+    <string name="demo_lecture_title">Demo Lecture Title</string>
+    <string name="lecture_id_hypen">Lecture Id - </string>
+    <string name="about_us">About US</string>
+    <string name="schedule_demo_lecture">Schedule Free Demo Lectures</string>
+    <string name="demo_lecture_info_1">Conduct Free and Engaging Demo Lectures For Learners and Visitors on Kapil Guru</string>
+    <string name="demo_lecture_info_2">Choose Your Convenient Timings to Schedule Free Upcoming Demo Lectures on Your Courses</string>
+    <string name="demo_lecture_info_3">Your Upcoming Demo Lectures Will Be Displayed to Thousands of Learners and Visitors on Kapil Guru</string>
+    <string name="demo_lecture_info_4">Learners or Visitors Who Enrolled for Your Demo Lectures Will Attend</string>
+    <string name="demo_lecture_info_5">Give the Best in Your Demo Lectures and Ask Participants to Enroll for Your Course</string>
+    <string name="get_started_by_adding_guest_lecture">Get started by adding Demo Lectures and let the knowledge flow!</string>
+    <string name="add_guest_lecture_all_caps">ADD DEMO LECTURE</string>
+
+
+    <!--Webinar -->
+    <string name="webinar_id_hypen">Webinar ID - </string>
+    <string name="conduct_webinars">Conduct Webinars</string>
+    <string name="webinar_info_1">Schedule Your Webinars at Your Convenient Timings</string>
+    <string name="webinar_info_2">Set Your Own Pricing and Duration</string>
+    <string name="webinar_info_3">Your Scheduled Webinars Will Be Displayed to Thousands of Students and Visitors of Kapil Guru</string>
+    <string name="webinar_info_4">Your Webinar Will Be Attended Only by Learners or Visitors Who Enroll for It</string>
+    <string name="webinar_info_5">Get a Revenue Share as High as 90% Attendees Will Be Awarded with a Participation Certificate from Kapil Guru</string>
+    <string name="status_rejected">Rejected</string>
+    <string name="approved">Approved</string>
+    <string name="get_started_by_adding_webinar">Get started by adding webinars and let the knowledge flow!</string>
+    <string name="add_webinar_all_caps">ADD WEBINAR</string>
+    <string name="webinars">webinars</string>
+    <string name="duration_min">%d Minutes</string>
+
+
+    <!--fragment_profile-->
+    <string name="name">Name</string>
+    <string name="hint_name">Name *</string>
+    <string name="trainer_id">Trainer ID - </string>
+    <string name="bank_details">Bank Details</string>
+    <string name="download_certificate">Download Certificate</string>
+    <string name="change_password">Change password</string>
+    <string name="profile_details">Profile Details</string>
+    <string name="contact_Number">Contact Number</string>
+    <string name="hint_contact_Number">Contact Number *</string>
+    <string name="country_code_hint">+91</string>
+    <string name="country_code_hint_example">Country code ex +91</string>
+    <string name="alternate_contact_number">Alternate Number</string>
+    <string name="currency">Currency</string>
+    <string name="update">Update</string>
+    <string name="address">Address</string>
+    <string name="hint_address">Address *</string>
+    <string name="pin_code">Pin Code</string>
+    <string name="type_of_business">Select type of business</string>
+    <string name="selected_type_of_business">Selected type of business</string>
+    <string name="business_individual">Individual</string>
+    <string name="business_organisation">Organisation</string>
+    <string name="organisation_name_man">Organisation Name*</string>
+    <string name="company_name">Company Name</string>
+    <string name="company_web_site">Company Website URL</string>
+    <string name="gst_register">Did you Register for GST</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="mail_id">Mail ID</string>
+    <string name="phone_no">Phone No.</string>
+    <string name="phone">Phone</string>
+    <string name="alternate_phone_no">Alternate no.</string>
+    <string name="profile_completion">Profile Completion</string>
+    <string name="enter_gst_number">Enter 15 digit GST Number</string>
+    <string name="hint_gst_number">123456789789454</string>
+    <string name="describe_about_you">Describe about you</string>
+    <string name="hint_describe_about_you">Good in angular</string>
+    <string name="account_name_man">Account Name *</string>
+    <string name="hint_account_name">Ritwik</string>
+    <string name="account_number_asterik">Account Number *</string>
+    <string name="account_number">Account Number </string>
+    <string name="bank_name_man">Bank Name *</string>
+    <string name="branch_name_man">Branch Name *</string>
+    <string name="ifsc_code_man">IFSC Code *</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Save">Save</string>
+    <string name="hint_trainer_id">Kapilguru0005</string>
+    <string name="hint_pincode_mand">Zip/Postal Code *</string>
+    <string name="hint_pincode">Zip/Postal Code</string>
+    <string name="Edit">Edit</string>
+    <string name="Enter_OTP">Enter OTP</string>
+    <string name="otp_desc">Please enter the 6 digit OTP sent to </string>
+    <string name="update_profile_mandatory">To proceed further, Please click on edit and update Profile.</string>
+    <string name="enter_social_media_detials">Enter Social Media Details</string>
+    <string name="enter_organization_detials">Enter Organization Details</string>
+    <string name="upload_aadhar">Upload Aadhar</string>
+    <string name="upload_pan">Upload PAN</string>
+    <string name="area">Area</string>
+    <string name="establishment_no">Establishment Number*</string>
+    <string name="establishment_date">Establishment Date*</string>
+    <string name="organization_name_man">Organization Name*</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="registration_details">Registration Details</string>
+    <string name="years">Years</string>
+    <string name="upload_certificate">Upload Certificate</string>
+
+    <!--Announcement page-->
+    <string name="select_batch">Select Batch</string>
+    <string name="subject">Subject</string>
+    <string name="add_subject">Add a subject</string>
+    <string name="subject_mandatory">Subject *</string>
+    <string name="enter_message_mandatory">Enter Message *</string>
+    <string name="hint_enter_message">Enter a message</string>
+    <string name="send">Send</string>
+    <string name="Message">Message</string>
+    <string name="messages">Messages</string>
+    <string name="forgotpassword">ForgotPassword?</string>
+    <string name="terms_and_conditions">By continuing and signing in, you agree to Kapil Guru <b>Terms &amp; Conditions </b>and <b>Privacy Policy.</b></string>
+    <string name="terms_and_conditions_links">By continuing and signing in, you agree to Kapil Guru <a href="https://kapilguru.com/terms-and-conditions"><b>Terms &amp; Conditions </b></a>and <a href="https://kapilguru.com/privacy-policy"><b>Privacy Policy.</b></a></string>
+    <string name="signup">Don’t have an account? </string>
+    <string name="signup_label">Sign Up</string>
+    <string name="login">LogIn</string>
+    <string name="webinar_title_man">Webinar Title *</string>
+    <string name="webinar_details">Webinar Details</string>
+    <string name="webinar_image">Webinar Image</string>
+    <string name="webinar_video">Webinar Video</string>
+    <string name="end_date_man">End Date *</string>
+    <string name="duration_in_days">Duration(In Days) *</string>
+    <string name="number_of_attendees">Number Of Attendees *</string>
+    <string name="price_mand">Price *</string>
+    <string name="speaker_name_man">Speaker Name *</string>
+    <string name="select_webinar_duration">Duration(In Hrs)</string>
+    <string name="add_webinar">Add Webinar</string>
+    <string name="webinar">Webinar</string>
+    <string name="refund">Refund</string>
+    <string name="batch_list_for_course">Batchs </string>
+    <string name="get_otp">Get OTP</string>
+    <string name="end_date">End Date</string>
+
+
+    <!--Forgot Password-->
+    <string name="forgot_password">Forgot Password</string>
+    <string name="validate_otp">Validate OTP</string>
+    <string name="please_enter_otp">Please enter otp sent to %1$s</string>
+    <string name="validate">Validate</string>
+    <string name="create_password">Create Password</string>
+    <string name="password">Password</string>
+    <string name="enter_new_password">ENTER NEW PASSWORD</string>
+    <string name="confirm_password">CONFIRM PASSWORD</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="actual_fee">Actual Fee *</string>
+    <string name="offer_price">offer price *</string>
+    <string name="enrolled_students_edit_batch_txt">Can\'t edit Batch once students are Enrolled</string>
+    <string name="edit_webinar">You can\'t edit approved Webinar.</string>
+    <string name="editor">Editor</string>
+    <string name="webinar_delete">Yes Delete</string>
+    <string name="delete_webinar">You can\'t delete approved Webinar.</string>
+    <string name="ongoing">OnGoing</string>
+    <string name="sendingforapproval">Not Approved</string>
+    <string name="upcoming">Upcoming</string>
+
+    <!--subscription-->
+    <string name="period">Period : </string>
+    <string name="cd_time">Clock Image</string>
+    <string name="one_year_duration">12 Months</string>
+    <string name="subscription_types">Subscription Types</string>
+    <string name="subscription_price">Price  : </string>
+    <string name="package_subscription">Package Subscription</string>
+    <string name="position_subscription">Position Subscription</string>
+    <string name="best_trainer_subscription">Best Trainer Subscription</string>
+    <string name="package_info">Package Info </string>
+    <string name="position_info">Position Info</string>
+    <string name="Best_trainer_info">Best Trainer Info</string>
+    <string name="position_list">Position List</string>
+    <string name="best_trainer_list">Best Trainer List</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="position">Position</string>
+    <string name="trainer_name">Trainer Name</string>
+    <string name="trainer_colon_string">Trainer : %s</string>
+    <string name="fee">Fee</string>
+    <string name="course_amount">Course Amount</string>
+    <string name="referral_amount">Referral Amount</string>
+    <string name="webinar_amount">Webinar Amount</string>
+    <string name="available_amount">Available Amount</string>
+    <string name="request_money">Request Money</string>
+    <string name="locked_amount">Locked Amount</string>
+    <string name="view_details"><u>View</u></string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="choose_picture_from">Choose Picture from</string>
+    <string name="my_subscriptions">My Subscriptions</string>
+    <string name="price">Price</string>
+    <string name="subscribed_date">Subscribed Date</string>
+    <string name="earnings">Earnings</string>
+    <string name="refer_now">Refer Now</string>
+    <string name="invitee_contact_number">Invitee Contact Number</string>
+    <string name="invitee_email">Invitee Email</string>
+    <string name="referral_code">Referral Code</string>
+    <string name="refer_and_earn">Refer &amp; Earn</string>
+    <string name="submit">Submit</string>
+    <string name="request_id">Request ID</string>
+    <string name="request_amount">Request Amount</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="history">History</string>
+    <string name="earnings_history">Earnings History</string>
+    <string name="features">Features</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="list_your_course">List your course in first</string>
+    <string name="five_positions">5 Positions</string>
+    <string name="best_trainer_badge">Best Trainer Badge</string>
+    <string name="renewal">Renewal</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="your_subscription_until">Your Subscription Until</string>
+    <string name="renewal_confirmation">Renewal Confirmation</string>
+    <string name="subscription_until">Subscription Until</string>
+    <string name="select_position">Select Position</string>
+    <string name="renewal_position">Renewal Position</string>
+    <string name="pos_0">0</string>
+    <string name="pos_1">1</string>
+    <string name="pos_2">2</string>
+    <string name="pos_3">3</string>
+    <string name="pos_4">4</string>
+    <string name="pos_5">5</string>
+    <string name="no_subscriptions">No Subscriptions</string>
+    <string name="kyc_details">KYC Details</string>
+    <string name="kyc_details_desc">Please provide below information to generate invoice</string>
+    <string name="pan_mand">PAN *</string>
+    <string name="gst">GST</string>
+
+    <!--sign up-->
+    <string name="full_name_man">Full Name *</string>
+    <string name="org_name_man">Organization Name *</string>
+    <string name="signup_trems">By continuing you agree to our  <a href="https://kapilguru.com/terms-and-conditions"><b>Terms &amp; Conditions </b></a>and <a href="https://kapilguru.com/privacy-policy"><b>Privacy Policy.</b></a></string>
+    <string name="authenticate_with">Authenticate with</string>
+    <string name="otp_mail">3 Digit OTP Sent to mail %1$s</string>
+    <string name="otp_phone">6 Digit OTP Sent to phone number</string>
+    <string name="masked_phone_number">XXXXXXXX%S</string>
+    <string name="authenticate">Authenticate</string>
+    <string name="authenticate_to_update">Please authenticate to update information</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="payment_details">PaymentDetails</string>
+    <string name="hint_otp_mail">OTP sent to Mail</string>
+    <string name="hint_otp_mobile">OTP sent to Mobile</string>
+    <string name="have_account">Already have an account ?</string>
+    <string name="set_password">Set Password</string>
+
+    <!--Login with otp-->
+    <string name="login_with_otp">LOGIN WITH OTP</string>
+    <string name="login_with_otp_heading">Login with OTP</string>
+    <string name="enter_mail_or_phone">Enter your register Email ID / Phone no.</string>
+    <string name="enter_registered_phone_no">Enter your registered Phone no.</string>
+    <string name="enter_registered_email">Enter your registered email Id</string>
+    <string name="request_otp">Request OTP</string>
+    <string name="verify_and_proceed">Verify and Proceed</string>
+    <string name="otp_sent_successfully">OTP sent successfully to your registered E-mail ID or Phone No</string>
+    <string name="otp_resent">OTP sent successfully</string>
+    <string name="or">OR</string>
+    <string name="otp_sent_to">OTP sent successfully to %1s</string>
+
+    <!--changePassword-->
+    <string name="change_password_message">OTP will be sent to registered number\nClick below to request OTP\nNote: You will be loggedout!!</string>
+
+    <!--earnings-->
+    <string name="account_name">Accunt Name</string>
+    <string name="account_no">Account No</string>
+    <string name="paid_date">Paid Date</string>
+    <string name="paid_amount">Paid Amount</string>
+    <string name="remarks">Remarks</string>
+    <string name="bank_name">Bank Name</string>
+    <string name="branch_name">Branch Name</string>
+    <string name="ifsc_code">IFSC Code</string>
+
+
+    <!--Reports-->
+    <string name="reports">Reports</string>
+    <string name="guest_lecture_title">Guest Lecture Title</string>
+    <string name="start_time">Start Time</string>
+    <string name="lecture_id">Lecture Id</string>
+    <string name="enrolled_students">Enrolled Students</string>
+    <string name="webinar_title">Webinar Title</string>
+    <string name="speaker_name">Speaker Name</string>
+    <string name="webinar_id">Webinar Id</string>
+
+    <!--myClassroom-->
+    <string name="next_class_date">Next Class Date</string>
+
+    <!--MyClassroomDetails-->
+    <string name="overview">OverView</string>
+    <string name="study_material">Study Material</string>
+    <string name="exam">Exam</string>
+    <string name="completion_request">Completion Request</string>
+    <string name="course_title">Course Title</string>
+    <string name="trainer">Trainer</string>
+    <string name="batch_status">Batch Status</string>
+    <string name="students">Students</string>
+    <string name="course_progress">Course Progress</string>
+
+    <!--course completion-->
+    <string name="send_request_now">Send Request Now</string>
+    <string name="response_to_request">Response to Request</string>
+    <string name="total_students_in_batch">Total Students in Batch : </string>
+    <string name="students_responded_to_request">Students responded to Request : </string>
+    <string name="total_percentage_of_acceptance">Total Percentage of Acceptance</string>
+    <string name="students_list_pending_request">List of Students Pending Requests</string>
+    <string name="students_list_accepted_request">List of Students Accepted your Requests</string>
+    <string name="students_list_rejected_request">List of Students Rejected your Requests</string>
+
+    <!--exams-->
+    <string name="conduct_exam">Conduct Exam</string>
+    <string name="select_title">Select Title to Conduct Exams</string>
+    <string name="choose_type">Choose Type</string>
+    <string name="create_new_question_paper">Create New \n Question Paper</string>
+    <string name="use_previous_question_paper">Use previous \n Question Paper</string>
+    <string name="course_colon">Course : </string>
+    <string name="trainer_colon">Trainer : </string>
+    <string name="enter_question_paper_title">Please Enter Question paper Title</string>
+    <string name="question_paper_title">Question Paper Title</string>
+    <string name="clear">Clear</string>
+    <string name="please_add_questions">Please Add Questions or Select from Previous Questions</string>
+    <string name="select_from_previous_question">Select from Previous Questions</string>
+    <string name="add_new_question">Add new Question</string>
+    <string name="add_new_question_2_lines">ADD NEW \n QUESTION</string>
+    <string name="enter_question">Enter Question</string>
+    <string name="question">Question</string>
+    <string name="select_correct_answer">Select Correct Answer</string>
+    <string name="option_a">Option <b>A</b></string>
+    <string name="option_b">Option <b>B</b></string>
+    <string name="option_c">Option <b>C</b></string>
+    <string name="option_d">Option <b>D</b></string>
+    <string name="marks_for_this_question_man">Marks for this Question *</string>
+    <string name="add">Add</string>
+    <string name="total_marks">Total Marks</string>
+    <string name="total_questions">Total Questions</string>
+    <string name="action">Action</string>
+    <string name="title_colon">Title :</string>
+    <string name="no_marks">%d Marks</string>
+    <string name="option1">opt_1</string>
+    <string name="option2">opt_2</string>
+    <string name="option3">opt_3</string>
+    <string name="option4">opt_4</string>
+    <string name="title">Title</string>
+    <string name="back">Back</string>
+    <string name="conduct_exams_online">Conduct Exams online and Evaluate your Students Preparation</string>
+    <string name="schedule_exam">Schedule \n Exam</string>
+    <string name="exam_reports">Exam \n Reports</string>
+    <string name="select_course">Select Course</string>
+    <string name="hint_question_paper_title">Question Paper Title</string>
+    <string name="save_and_proceed">Save &amp; Proceed</string>
+    <string name="add_ques_from_prev_2_lines">ADD QUESTION \n FROM PREVIOUS</string>
+    <string name="total_ques_2_lines">Total \n Questions</string>
+    <string name="total_marks_2_lines">Total \n Marks</string>
+    <string name="exams_view_questions"><b>Exams</b> - View Questions</string>
+    <string name="exams_add_questions"><b>Exams</b> - Add Questions</string>
+    <string name="exams_select_from_prev_ques_paper"><b>Exams</b> (Select from Previous Question paper)</string>
+    <string name="exams_add_from_prev_ques"><b>Exam</b> (Add from Previous Questions)</string>
+    <string name="save_and_assign">Save &amp; Assign</string>
+    <string name="exam_date">Exam Date</string>
+    <string name="test_duration">Test Duration</string>
+    <string name="no_courses">No Courses</string>
+    <string name="schedule_exams">Schedule Exams</string>
+
+
+    <!--OnBoarding-->
+    <string name="onboard1_top_text">SHARE YOUR KNOWLEDGE</string>
+    <string name="onboard1_title">Are you skilled in Teaching?</string>
+    <string name="onboard1_subtitle">Then share what you know with millions of students from the comfort of your home teach your skills online &amp; earns</string>
+    <string name="onboard2_top_text">INCREASE YOUR REACH</string>
+    <string name="onboard2_title">Get global recognition</string>
+    <string name="onboard2_subtitle">Expand your reach beyond your network complete flexibility to create your profile your course, student management more...</string>
+    <string name="onboard3_top_text">EARNING AT YOUR FLEXIBILITY</string>
+    <string name="onboard3_title">Schedule your class timings as per your convenience</string>
+    <string name="onboard3_subtitle">Set your own course pricing and duration earn money every time when student / batch complete your course revenue share as high as 90%</string>
+
+    <!--Guest Lecture-->
+    <string name="go_live">GO LIVE</string>
+    <string name="demo_lectures">Demo Lectures</string>
+    <string name="can_not_edit_guest_lecture">You can\'t edit approved Guest Lecture.</string>
+    <string name="duration_mins">%d Mins</string>
+
+
+    <!--payment-->
+    <string name="payment_order_details">Payment Order Details</string>
+    <string name="payment_status">STATUS</string>
+    <string name="payment_status_activity">Payment Status</string>
+    <string name="payment_txn_success">TXN_SUCCESS</string>
+    <string name="payment_orderid">ORDERID</string>
+    <string name="orderid">Order Id </string>
+    <string name="payment_charge_amount">CHARGEAMOUNT</string>
+    <string name="payment_txn_amount">TXNAMOUNT</string>
+    <string name="payment_txn_date">TXNDATE</string>
+    <string name="payment_merchant_id">MID</string>
+    <string name="payment_txn_id">TXNID</string>
+    <string name="payment_res_code">RESPCODE</string>
+    <string name="payment_mode">PAYMENTMODE</string>
+    <string name="payment_bank_txn_id">BANKTXNID</string>
+    <string name="payment_currency">CURRENCY</string>
+    <string name="payment_gateway_name">GATEWAYNAME</string>
+    <string name="payment_resp_msg">RESPMSG</string>
+    <string name="payment_finish">Finish</string>
+
+    <!--Payment preview-->
+    <string name="review_your_oder">Review Your Order</string>
+    <string name="checkout_for_order">Checkout for Order NO : %s</string>
+    <string name="total">Total</string>
+    <string name="cgst">CGST</string>
+    <string name="sgst">SGST</string>
+    <string name="grand_total">Grand Total</string>
+    <string name="admin_coupon">Admin Coupon</string>
+    <string name="pay">Pay</string>
+    <string name="user_code">User Code</string>
+    <string name="product_type">Product Type</string>
+    <string name="amount">Amount</string>
+    <string name="payment_preview_activity_name">Payment Preview</string>
+
+    <!--Refer and earn-->
+    <string name="join_kapil_guru">JOIN KAPIL GURU</string>
+    <string name="refer_teacher">Refer a Teacher and Earn Rs. 1000 Cash Prize</string>
+    <string name="refer_student">Refer a student for a course and earn 5% on his course fee</string>
+    <string name="referral_type_colon">Referral Type : </string>
+    <string name="invitee_email_colon">Invitee Email : </string>
+    <string name="invitee_contact_no_colon">Invitee Contact Number : </string>
+    <string name="amount_colon">Amount : </string>
+    <string name="date_colon">Date : </string>
+    <string name="expiry_date_colon">Expiry Date : </string>
+    <string name="status_colon">Status : </string>
+    <string name="no_referrals">No Referrals</string>
+    <string name="my_referrals">My Referrals</string>
+    <string name="referral_amount_info">Info : Amount will be displayed after referral is accepted.</string>
+    <string name="expired">Expired</string>
+    <string name="referral_program">Referral Program</string>
+    <string name="buy_a_subscription">Buy a subscription with us and become eligible to refer.</string>
+
+
+    <array name="class_duration">
+        <item name="duration">Select Class Duration</item>
+        <item name="30_min">30 Minutes</item>
+        <item name="1_hour">1 Hour</item>
+        <item name="1_hour_30_min">1 Hour 30 Minutes</item>
+        <item name="2_hours">2 Hours</item>
+        <item name="2_hour_30_min">2 Hours 30 Minutes</item>
+        <item name="3_hours">3 Hours</item>
+    </array>
+    <array name="webinar_duration">
+        <item name="duration">Select Duration *</item>
+        <item name="30_min">30 Minutes</item>
+        <item name="1_hour">1 Hour</item>
+        <item name="1_hour_30_min">1 Hour 30 Minutes</item>
+        <item name="2_hours">2 Hours</item>
+        <item name="2_hour_30_min">2 Hours 30 Minutes</item>
+        <item name="3_hours">3 Hours</item>
+    </array>
+    <array name="time_zone_ist">
+        <item name="ist">IST</item>
+    </array>
+
+    <string-array name="gender_type">
+        <item>Gender*</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="title_type_individual">
+        <item>Title*</item>
+        <item>M/S</item>
+    </string-array>
+
+    <string-array name="title_type_organization">
+        <item>Title*</item>
+        <item>Mr</item>
+        <item>Ms</item>
+        <item>Mrs</item>
+    </string-array>
+
+    <string-array name="curreny">
+        <item>INR</item>
+    </string-array>
+
+    <string-array name="referral_type">
+        <item>Select Referral Type *</item>
+        <item>Student</item>
+        <item>Trainer</item>
+    </string-array>
+
+    <!-- scheduled   Exams  -->
+    <string name="duration_days">%d days</string>
+    <string name="appeared_students">Appeared Students</string>
+    <string name="average_time_taken">Averange Time Taken</string>
+    <string name="high_score">High Score</string>
+    <string name="low_score">Low Score</string>
+    <string name="time_taken">Time Taken</string>
+    <string name="total_score">Total Score</string>
+    <string name="correct_answers">Correct Answers</string>
+    <string name="score">Score</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="questionIndex">%d Question</string>
+    <string name="schedule">Schedule</string>
+    <string name="todays_schedule">Today\'s schedule</string>
+    <string name="upcoming_schedule">Upcoming Schedule</string>
+    <string name="no_batches_schedule">No Batches Scheduled Yet</string>
+    <string name="view_all">View All</string>
+    <string name="demo_lecture">Demo Lecture</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="weekdays">Weekdays</string>
+    <string name="weekend">Weekend</string>
+    <string name="active">Active</string>
+    <string name="raise_ncomplaint">"<b>Raise</b> Complaint"</string>
+    <string name="upload_pdf">Upload PDF</string>
+    <string name="create_syllabus">Create Syllabus</string>
+    <string name="upload_syllabus">Upload Syllabus</string>
+    <string name="next_class">Next Class</string>
+    <string name="upload_course_related_label">Upload only Course Related Documents or Materials</string>
+    <string name="upload_batch_documents_label">Upload Batch Documents only, PDF format supported</string>
+    <string name="upload">Upload</string>
+    <string name="delete_batch_negative_msg">There are already batches for %s</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="you_want_to_delete">You want to delete %s</string>
+    <string name="yes_delete_it">Yes, Delete It</string>
+    <string name="exam_time">Exam Time</string>
+    <string name="exam_duration">Exam Duration</string>
+    <string name="exam_results">Exam Results</string>
+    <string name="exam_title">Exam Title</string>
+    <string name="attendee">Attendee</string>
+    <string name="view_report">View Report</string>
+    <string name="unattempted">Unattempted</string>
+    <string name="inc_correct_answers">In Correct Answers</string>
+    <string name="view_answer_sheet">View Answer Sheet</string>
+    <string name="question_no_string">Question No. %d</string>
+    <string name="wrong_answer">Wrong Answer</string>
+    <string name="correct_answer">Correct Answer</string>
+    <string name="exams_schedule">Exams - Schedule</string>
+    <string name="refund_request_list">Refund Request List</string>
+    <string name="describe_about_yourself">Describe About Yourself</string>
+    <string name="my_students">My Students</string>
+    <string name="sender_code">Sender Code</string>
+    <string name="from">From</string>
+    <string name="attendee_name">Attendee Name</string>
+    <string name="attendee_id">Attendee Id</string>
+    <string name="percentage_symbol">%d %%</string>
+    <string name="demo_lecture_details">Demo Lecture Details</string>
+    <string name="view_more">View More</string>
+    <string name="zero">0</string>
+    <string name="rupee_symbol">\u20B9 %.2f</string>
+    <string name="isVisible">true</string>
+    <string name="enrollment_date">Enrollment Date</string>
+    <string name="total_fee">Total Fee</string>
+
+    // Students Completion Request
+    <string name="student_note_1">
+        \u25CF Have you Completed teaching your course syllabus.\n
+        \u25CF Then send Course Completion request to Students.\n
+        \u25CF Inform you Students Through live class to accept your Course Completion Request.
+    </string>
+
+    <string name="student_note_2">
+        \u25CF You cannot send the completion request to students without completing your course duration.\n
+        \u25CF Completed your course syllabus with in course duration.\n
+        \u25CF To get your share on course fee,minimum 70% of batch students need to approve your course competition request.\n
+        \u25CF No Live classes will be conducted after getting approval from the students to your completion request.
+    </string>
+    <string name="send_request">Send Request</string>
+    <string name="name_of_the_student">Name of the student</string>
+    <string name="remark">Remark</string>
+    <string name="id">ID</string>
+    <string name="title_activity_referral_details">ReferralDetails</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="subscription_amount">Subscription Amount</string>
+    <string name="referral_type">Referral Type</string>
+    <string name="referred_to">Referred To</string>
+    <string name="referred_contact_number">Referred Contact Number</string>
+    <string name="referred_date">Referred Date</string>
+    <string name="subscription_date">Subscription Date</string>
+    <string name="webinar_date">Webinar Date</string>
+    <string name="webinar_time">Webinar Time</string>
+    <string name="no_data_found">No data found</string>
+    <string name="request_id_hyphen">Request ID- %d</string>
+    <string name="account_details">Account Details</string>
+    <string name="account">Account</string>
+    <string name="bank">Bank</string>
+    <string name="branch">Branch</string>
+    <string name="invalid_credentials">Please Enter correct password</string>
+    <string name="user_not_registered">User is not Registered</string>
+    <string name="login_exceeded">No of logins exceeded</string>
+    <string name="uploaded_documents">Uploaded Documents</string>
+    <string name="download">Download</string>
+    <string name="login_with_mobile">Login with Mobile</string>
+    <string name="login_with_email">Login with Email</string>
+    <string name="otp_mobile_warning">*Option is only available for Registered Indian Numbers</string>
+    <string name="enroll_now">Enroll Now</string>
+    <string name="course_description_title">COURSE DESCRIPTION</string>
+    <string name="view_syllabus">View Syllabus</string>
+    <string name="view_pdf">View Pdf</string>
+    <string name="contact_trainer">Contact Trainer</string>
+    <string name="batch_available_days">Batch available days</string>
+    <string name="experience">Experience</string>
+    <string name="trained_students_no_br">Trained Students</string>
+
+    <string name="course_syllabus">COURSE SYLLABUS</string>
+    <string name="course_description">COURSE DESCRIPTION</string>
+    <string name="training_features">TRAINING FEATURES</string>
+    <string name="training_features_title">TRAINING FEATURES</string>
+    <string name="certificate_caps">CERTIFICATE</string>
+    <string name="certificate">Certificate</string>
+    <string name="certificates">Certificates</string>
+    <string name="about_trainer">ABOUT TRAINER</string>
+    <string name="about_trainer_title">ABOUT TRAINER</string>
+    <string name="reviews">REVIEWS</string>
+    <string name="course_details">Course Details</string>
+    <string name="upcoming_batches">UPCOMING BATCHES</string>
+    <string name="append_years">%d Years</string>
+    <string name="append_year">%d year</string>
+    <string name="weekday_weekend">Weekday/WeekEnd</string>
+    <string name="rupee_symbol_strike"><strike>\u20B9 %s</strike></string>
+    <string name="enrolled">Enrolled</string>
+    <string name="view_course">View Course</string>
+    <string name="title_classroom">Class Room</string>
+    <string name="follow_us_on">Follow us on</string>
+
+
+    <!--Student-->
+    <!--Home Screen-->
+    <string name="linkedin">linkedin</string>
+    <string name="youtube">youtube</string>
+    <string name="instagram">instagram</string>
+    <string name="twitter">twitter</string>
+    <string name="facebook">facebook</string>
+    <string name="what_do_you_want_to_learn">What do you want to learn?</string>
+    <string name="live_courses">Live Courses</string>
+    <string name="recorded_courses">Recorded Courses</string>
+    <string name="categories">Categories</string>
+    <string name="live_new_line_courses">Live\nCourses</string>
+    <string name="recorded_new_line_courses">Recorded Courses</string>
+    <string name="study_new_line_material">Study\nMaterial</string>
+    <string name="study_new_line_free_lectures">Free\nLectures</string>
+    <string name="why_kapil_guru">Why Kapil Guru</string>
+    <string name="get_in_touch">Let\'s Get in Touch</string>
+    <string name="open_for_sugestion">We’re open to any suggestions or just have a chat.</string>
+    <string name="cost">Cost</string>
+    <string name="trained_students">Trained\nStudents</string>
+    <string name="contactNumber">+91 82870 01234</string>
+    <string name="info_mail">info@kapilguru.com</string>
+    <string name="location">Location</string>
+    <string name="testimonial">Testimonial</string>
+    <string name="write_a_review">Write A Review</string>
+    <string name="mark_attendance">Mark Attendance</string>
+
+</resources>

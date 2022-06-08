@@ -1,0 +1,40 @@
+package com.kapilguru.trainer.ui.courses.batchesList.batchInfo.batchInfoFragments.syllabus.models
+
+import com.google.gson.annotations.SerializedName
+
+data class BatchSyllabusResponse(
+    @SerializedName("about_trainer") val aboutTrainer: String,
+    @SerializedName("actual_fee") val actualFee: Any,
+    @SerializedName("batchtype") val batchType: String,
+    @SerializedName("category_id") val categoryId: Int,
+    @SerializedName("course_image") val courseImage: String,
+    @SerializedName("course_rating") val courseRating: Any,
+    @SerializedName("course_reviews") val courseReviews: Any,
+    @SerializedName("course_sub_title") val courseSubTitle: String,
+    @SerializedName("course_title") val courseTitle: String,
+    @SerializedName("created_by") val createdBy: Any,
+    @SerializedName("created_date") val createdDate: String,
+    @SerializedName("demo_video") val demoVideo: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("discount_amount") val discountAmount: Any,
+    @SerializedName("discount_percent") val discountPercent: Any,
+    @SerializedName("duration_days") val durationDays: String,
+    @SerializedName("fee") val fee: String,
+    @SerializedName("id") val id: Int,
+    @SerializedName("is_active") val isActive: Int,
+    @SerializedName("is_verified") val isVerified: Int,
+    @SerializedName("language") val language: String,
+    @SerializedName("modified_by") val modifiedBy: Any,
+    @SerializedName("modified_date") val modifiedDate: String,
+    @SerializedName("syllabus_attachment") val syllabusAttachment: String,
+    @SerializedName("syllabus_heading") val syllabusHeading: String,
+    @SerializedName("syllabus_sub_heading") val syllabusSubHeading: String,
+    @SerializedName("syllabus_text_content") val syllabusTextContent: String,
+    @SerializedName("tags") val tags: Any,
+    @SerializedName("total_no_of_students_trained") val total_NoOfStudentsTrained: Int,
+    @SerializedName("trainer_id") val trainerId: Int,
+    @SerializedName("trainer_name") val trainerName: String,
+    @SerializedName("trainers_year_of_exp") val trainersYearOfExp: Int,
+    @SerializedName("verified_by") val verifiedBy: Any,
+    @SerializedName("verified_date") val verifiedDate: String
+)

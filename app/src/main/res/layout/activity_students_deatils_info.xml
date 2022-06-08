@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vieModel"
+            type="com.kapilguru.trainer.studentsList.viewModel.StudentListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".studentsList.view.StudentsDetailsInfo">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical_50_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical_0_05_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical_0_95_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/apCTVBatchDetails"
+            style="@style/StudentListText"
+            android:layout_marginTop="10dp"
+            android:text="@string/batch_details"
+            app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50_main"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_main"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvCourseBatchDetails"
+            style="@style/AppCardViewStyle_latest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/cvCourseBatchAttendance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/apCTVBatchDetails"
+            app:layout_constraintVertical_bias="0.1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clCourseDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_bg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_50_clCourseDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.40" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_70_clCourseDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.70" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_0_05_clCourseDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.05" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_0_95_clCourseDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.95" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVStartDate"
+                        style="@style/StudentListText"
+                        android:text="@string/start_date_man"
+                        app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50_clCourseDetails"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clCourseDetails"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVStartDateValue"
+                        style="@style/StudentListTextValue"
+                        android:text="@{vieModel.studentDetails.getConvertedStartDate()}"
+                        app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50_clCourseDetails"
+                        app:layout_constraintHorizontal_bias="0.2"
+                        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clCourseDetails"
+                        app:layout_constraintTop_toBottomOf="@id/apCTVStartDate"
+                        tools:text="18/20/2021" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVBatchTimeText"
+                        style="@style/StudentListText"
+                        android:text="@string/start_time_man"
+                        app:layout_constraintEnd_toStartOf="@id/guidelineVertical_70_clCourseDetails"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintStart_toEndOf="@id/guidelineVertical_50_clCourseDetails"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVBatchTimeValue"
+                        style="@style/StudentListTextValue"
+                        android:text="@{vieModel.studentDetails.startTime}"
+                        app:layout_constraintEnd_toStartOf="@id/guidelineVertical_0_95_clCourseDetails"
+                        app:layout_constraintHorizontal_bias="0.3"
+                        app:layout_constraintStart_toEndOf="@id/guidelineVertical_50_clCourseDetails"
+                        app:layout_constraintTop_toBottomOf="@id/apCTVBatchTimeText"
+                        tools:text="22:26" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVBatchIdText"
+                        style="@style/StudentListText"
+                        android:text="@string/batch_id_text"
+                        app:layout_constraintEnd_toStartOf="@id/guidelineVertical_0_95_clCourseDetails"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintStart_toEndOf="@id/guidelineVertical_70_clCourseDetails"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVBatchIdValue"
+                        style="@style/StudentListTextValue"
+                        android:text="@{vieModel.studentDetails.getBatchId}"
+                        app:layout_constraintEnd_toStartOf="@id/guidelineVertical_0_95_clCourseDetails"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintStart_toEndOf="@id/guidelineVertical_70_clCourseDetails"
+                        app:layout_constraintTop_toBottomOf="@id/apCTVBatchIdText"
+                        tools:text="KCS1234" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVCourseNameText"
+                        style="@style/StudentListText"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/course_name"
+                        app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50_clCourseDetails"
+                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clCourseDetails"
+                        app:layout_constraintTop_toBottomOf="@id/apCTVStartDateValue" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVCourseNameValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{vieModel.studentDetails.courseTitle}"
+                        app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50_clCourseDetails"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clCourseDetails"
+                        app:layout_constraintTop_toBottomOf="@id/apCTVCourseNameText" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/apCTVAttendance"
+            style="@style/StudentListText"
+            android:layout_marginTop="15dp"
+            android:text="@string/attendance"
+            app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50_main"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_main"
+            app:layout_constraintTop_toBottomOf="@id/cvCourseBatchDetails" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvCourseBatchAttendance"
+            style="@style/AppCardViewStyle_latest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/apCTVAttendance">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_bg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_50_clBatchAttendance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_70_clBatchAttendance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.7" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_0_05_clBatchAttendance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.01" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_0_95_clBatchAttendance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.95" />
+
+                    <ProgressBar
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:progress="40"
+                        android:progressDrawable="@drawable/progress_bg"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/guidelineVertical_70_clBatchAttendance"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clBatchAttendance"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:trackCornerRadius="4dp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVAttendanceValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="35%"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/guidelineVertical_0_95_clBatchAttendance"
+                        app:layout_constraintHorizontal_bias="0.35"
+                        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clBatchAttendance" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/apCTVPercentage"
+            style="@style/StudentListText"
+            android:layout_marginTop="15dp"
+            android:text="@string/percentage"
+            app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50_main"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_main"
+            app:layout_constraintTop_toBottomOf="@+id/cvCourseBatchAttendance" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvCourseBatchCompletionPercentage"
+            style="@style/AppCardViewStyle_latest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/apCTVPercentage">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_bg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_50_clBatchCompletionPercentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_70_clBatchCompletionPercentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.7" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_0_05_clBatchCompletionPercentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.01" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guidelineVertical_0_95_clBatchCompletionPercentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.95" />
+
+                    <ProgressBar
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:progress="75"
+                        android:progressDrawable="@drawable/progress_bg"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/guidelineVertical_70_clBatchCompletionPercentage"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clBatchCompletionPercentage"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:trackCornerRadius="4dp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/apCTVPercentageValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="70%"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/guidelineVertical_0_95_clBatchCompletionPercentage"
+                        app:layout_constraintHorizontal_bias="0.35"
+                        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clBatchCompletionPercentage" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/apCTVStatueText"
+            style="@style/StudentListText"
+            android:layout_marginTop="15dp"
+            android:text="@string/status"
+            app:layout_constraintEnd_toStartOf="@id/guidelineVertical_50_main"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_main"
+            app:layout_constraintTop_toBottomOf="@id/cvCourseBatchCompletionPercentage" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/apCTVBatchStatusValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:paddingHorizontal="10dp"
+            android:text="Active"
+            android:textStyle="bold"
+            android:textColor="@color/progress_primary"
+            app:layout_constraintEnd_toStartOf="@id/guidelineVertical_0_95_main"
+            app:layout_constraintStart_toEndOf="@id/guidelineVertical_50_main"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintTop_toBottomOf="@id/cvCourseBatchCompletionPercentage" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appButtonComplaint"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="40dp"
+            android:background="@drawable/button_bg"
+            app:elevation="10dp"
+            android:text="Raise Complaint"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/apCTVStatueText"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.ui.profile.profileInfo.viewModel.ProfileInfoViewmodel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_registration_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="8dp"
+            android:text="@string/registration_details"
+            android:textColor="@color/purple"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_establishment_date"
+            style="@style/MyAppDenseOutlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            app:helperTextTextColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/til_establishment_years"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actv_registration_details">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_establishment_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_calendar"
+                android:focusable="false"
+                android:hint="@string/establishment_date"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_establishment_years"
+            style="@style/MyAppDenseOutlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            app:helperTextTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="4"
+            app:layout_constraintStart_toEndOf="@+id/til_establishment_date"
+            app:layout_constraintTop_toBottomOf="@+id/actv_registration_details">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@null"
+                android:focusable="false"
+                android:hint="@string/years"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_establishment_no"
+            style="@style/MyAppDenseOutlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:helperTextTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_establishment_date">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_establishment_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@null"
+                android:enabled="false"
+                android:hint="@string/establishment_no"
+                android:inputType="text"
+                android:text="@={viewModel.profileMutLiveData.email_id}"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_upload_establishment_cert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/text_heading"
+            android:text="@string/upload_aadhar"
+            android:textAllCaps="false"
+            android:layout_marginStart="20dp"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_establishment_no" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

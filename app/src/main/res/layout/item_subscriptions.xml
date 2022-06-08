@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.allSubscription.models.AllSubscriptionsData"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_subscription"
+        style="@style/AppCardViewStyle_no_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/subscription_card_bg"
+                android:layout_margin="5dp"
+                android:elevation="10dp"
+                android:translationZ="10dp">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_vertical_30"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.3" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_vertical_60"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.6" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_subscription_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@{model.subscriptionName}"
+                    android:textColor="@color/orange_2"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Package Subscriptions" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/aciv_down_up_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:layout_marginHorizontal="8dp"
+                    android:src="@{model.shouldShow? @drawable/ic_baseline_keyboard_arrow_up_18: @drawable/ic_baseline_keyboard_arrow_down_24}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/down_arrow_hide" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:drawableStart="@drawable/hourglass"
+                    android:drawablePadding="4dp"
+                    android:fontFamily="@font/rubik_medium"
+                    app:daysToMonthsOrYears="@{model.subscriptionDuration}"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="@id/gl_vertical_30"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_subscription_name"
+                    tools:text="12 months" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_original_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:drawableStart="@drawable/hourglass"
+                    android:drawablePadding="4dp"
+                    android:fontFamily="@font/rubik_medium"
+                    app:doubleToCount="@{model.subscriptionOriginalFee}"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:paddingHorizontal="2dp"
+                    app:layout_constraintEnd_toEndOf="@id/gl_vertical_60"
+                    app:layout_constraintStart_toStartOf="@id/gl_vertical_30"
+                    app:layout_constraintTop_toBottomOf="@id/actv_subscription_name"
+                    tools:text="12,000"
+                    android:visibility="@{model.subscriptionOriginalFee == 0 ?View.GONE : View.VISIBLE}"/>
+
+                <View
+                    android:id="@+id/strike"
+                    android:layout_height="1dp"
+                    android:layout_width="0dp"
+                    android:background="@color/orange_2"
+                    app:layout_constraintStart_toStartOf="@id/actv_original_price"
+                    app:layout_constraintEnd_toEndOf="@id/actv_original_price"
+                    app:layout_constraintTop_toTopOf="@id/actv_original_price"
+                    app:layout_constraintBottom_toBottomOf="@id/actv_original_price"
+                    android:visibility="@{model.subscriptionOriginalFee == 0 ?View.GONE : View.VISIBLE}"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_discount_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/hourglass"
+                    android:drawablePadding="4dp"
+                    android:fontFamily="@font/rubik_medium"
+                    app:doubleToCount="@{model.subscriptionFee}"
+                    android:textColor="@color/orange_2"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="@id/gl_vertical_60"
+                    app:layout_constraintStart_toStartOf="@id/gl_vertical_30"
+                    app:layout_constraintTop_toBottomOf="@id/actv_original_price"
+                    app:layout_goneMarginTop="16dp"
+                    tools:text="10000" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:drawableEnd="@drawable/ic_forward"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="@string/register"
+                    android:background="@drawable/rectangle_curve_pink_2"
+                    android:backgroundTint="@color/yellow_2"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/gl_vertical_60"
+                    app:layout_constraintTop_toBottomOf="@id/actv_subscription_name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_lower_curve_black"
+                android:backgroundTint="@color/black"
+                android:visibility="@{model.shouldShow ? View.VISIBLE : View.GONE}">
+
+                <LinearLayout
+                    android:id="@+id/ll_features"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_medium"
+                        android:text="@string/features"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="8dp"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/actv_features"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_medium"
+                        android:textColor="@color/white"
+                        app:base64ToHtml="@{model.subscriptionDesc}" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

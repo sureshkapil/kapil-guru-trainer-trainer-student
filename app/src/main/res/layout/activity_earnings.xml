@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="earningsModel"
+            type="com.kapilguru.trainer.ui.earnings.viewModel.EarningsViewModel" />
+
+        <variable
+            name="clickListener"
+            type="com.kapilguru.trainer.ui.earnings.EarningsActivity" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/actionbar"
+                layout="@layout/custom_action_bar_layout" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/history"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:layout_height="35dp"
+                android:background="@drawable/button_bg"
+                android:text="@string/history"/>
+
+            <com.kapilguru.trainer.EarningsMergerView
+                android:id="@+id/availableAmountView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                app:isRequestMoneyAvailable="@{true}"
+                app:earnings_type="0"
+                app:earnings_title="@string/available_amount"
+                app:courseAmount="@{earningsModel.earningsApiResponse.coursesAmountAvailable}"
+                app:referralAmount="@{earningsModel.earningsApiResponse.referralAmountAvailable}"
+                app:webinarAmount="@{earningsModel.earningsApiResponse.webinarAmountAvailable}" />
+
+            <com.kapilguru.trainer.EarningsMergerView
+                android:id="@+id/lockedAmountView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:earnings_type="1"
+                app:earnings_title="@string/locked_amount"
+                app:courseAmount="@{earningsModel.earningsApiResponse.coursesAmountExpected}"
+                app:referralAmount="@{earningsModel.earningsApiResponse.referralAmountExpected}"
+                app:webinarAmount="@{earningsModel.earningsApiResponse.webinarAmountExpected}"
+                app:isRequestMoneyAvailable="@{false}"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="top">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.myClassRoomDetails.completionRequest.viewModel.BatchCompletionReqViewModel" />
+        <variable
+            name="title"
+            type="java.lang.String" />
+
+        <variable
+            name="subTitle"
+            type="java.lang.String" />
+
+        <variable
+            name="totalCount"
+            type="java.lang.String" />
+
+        <variable
+            name="hideView"
+            type="java.lang.Boolean" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/orange"
+        app:cardCornerRadius="4dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:visibility="@{hideView ? View.INVISIBLE : View.VISIBLE}"
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/down_arrow_hide" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{hideView ? View.VISIBLE : View.GONE}"
+                android:fontFamily="@font/rubik_light"
+                android:textAlignment="center"
+                android:text="@{title}"
+                tools:text="Students of req"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{hideView ? View.GONE : View.VISIBLE}"
+                android:text="@{subTitle}"
+                android:fontFamily="@font/rubik_medium"
+                android:textColor="@color/purple_2"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                tools:text="Good"
+                />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@{totalCount}"
+                tools:text="8"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/orange"
+                android:textSize="18sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

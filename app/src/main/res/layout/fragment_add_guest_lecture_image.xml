@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.ui.guestLectures.addGuestLecture.viewModel.AddGuestLectureViewModel" />
+
+        <variable
+            name="clickHandlers"
+            type="com.kapilguru.trainer.ui.guestLectures.addGuestLecture.AddGuestLectureImageFragment" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="@string/upload_image_text_one" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginVertical="10dp"
+            android:text="@string/upload_image_text_two" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/AppCardViewStyle"
+            android:layout_width="358dp"
+            android:layout_height="199dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20dp"
+            app:cardCornerRadius="5dp"
+            android:onClick="@{clickHandlers::onImageCardClick}">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/aCImgVOriginalImage"
+                    android:layout_width="358dp"
+                    android:layout_height="199dp"
+                    android:visibility="gone"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_baseline_cloud_upload_24" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/aCImgVNoImageIcon"
+                    android:layout_width="80dp"
+                    android:layout_height="100dp"
+                    android:visibility="visible"
+                    android:src="@drawable/ic_baseline_cloud_upload_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/gold"
+                    android:textStyle="bold"
+                    android:layout_marginVertical="10dp"
+                    android:text="@string/upload_image_text" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</layout>

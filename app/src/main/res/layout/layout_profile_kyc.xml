@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.ui.profile.profileInfo.viewModel.ProfileInfoViewmodel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_kyc_Details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/kyc_details"
+            android:textColor="@color/purple"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_aadhar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actv_kyc_Details"
+            android:visibility="@{viewModel.profileMutLiveData.isOrganization() ==1 ? View.GONE : View.VISIBLE}">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_aadhar"
+            style="@style/MyAppDenseOutlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:helperTextTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_aadhar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@null"
+                android:hint="@string/aadhar_mand"
+                android:inputType="text"
+                android:maxLength="12"
+                android:text="@={viewModel.profileMutLiveData.aadhar}"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_upload_aadhar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_aadhar"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/gold"
+            app:layout_constraintStart_toStartOf="@id/til_aadhar"
+            app:layout_constraintTop_toBottomOf="@+id/til_aadhar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/actv_file_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/no_file_choosen"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_upload_aadhar"
+            app:layout_constraintStart_toEndOf="@+id/btn_upload_aadhar"
+            app:layout_constraintTop_toTopOf="@+id/btn_upload_aadhar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_pan"
+        style="@style/MyAppDenseOutlined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:helperTextTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_aadhar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_pan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@null"
+            android:hint="@string/pan_mand"
+            android:inputType="text"
+            android:maxLength="12"
+            android:text="@={viewModel.profileMutLiveData.pan}"
+            android:textSize="15sp"
+            android:enabled="false"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_upload_pan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/gold"
+        android:text="@string/upload_pan"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@id/til_pan"
+        app:layout_constraintTop_toBottomOf="@+id/til_pan" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/actv_file_name_pan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/no_file_choosen"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_upload_pan"
+        app:layout_constraintStart_toEndOf="@+id/btn_upload_pan"
+        app:layout_constraintTop_toTopOf="@+id/btn_upload_pan" />
+
+</androidx.constraintlayout.widget.ConstraintLayout></layout>

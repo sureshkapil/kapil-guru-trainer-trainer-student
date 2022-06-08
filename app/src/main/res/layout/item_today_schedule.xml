@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.ui.home.UpComingScheduleApi" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        app:cardCornerRadius="8dp"
+        app:strokeColor="@color/orange_2"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingTop="3dp"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_today_schedule_clock" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingTop="5dp"
+                android:textSize="14sp"
+                android:drawablePadding="3dp"
+                app:fontFamily="@font/rubik_regular"
+                android:drawableStart="@drawable/ic_today_schedule_clock"
+                android:textColor="@color/black"
+                app:timeToString="@{model.startTime}"
+                tools:text="10:00 am" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingTop="1dp"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                app:fontFamily="@font/rubik_regular"
+                app:dateToString="@{model.startTime}"
+                tools:text="10:00 am" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/rubik_regular"
+                android:background="@color/orange_2"
+                android:paddingHorizontal="10dp"
+                app:capitalizeFirstLetter="@{model.activityType}"
+                android:textColor="@color/white"
+                tools:text="Lecture" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+            <import type="android.text.Html"/>
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.ui.courses.batchesList.batchInfo.batchInfoFragments.syllabus.models.SyllabusContentItem" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/verticalSubtitleStartGuideLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.02" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aCTVChapter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:text="@{viewModel.syllabusHeading}"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@id/verticalSubtitleStartGuideLine"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="sample" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVContent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:text="@{viewModel.getHtmlText}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/verticalSubtitleStartGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/aCTVChapter"
+                    tools:text="content" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

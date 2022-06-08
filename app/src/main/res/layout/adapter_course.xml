@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.ui.courses.courses_list.models.CourseResponse" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            style="@style/AppCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="12dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/apCTVCourseName"
+                    style="@style/CardViewTextHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="start|center_vertical"
+                    android:text="@{viewModel.courseTitle}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:fontFamily="@font/montserrat_bold"
+                    app:layout_constraintEnd_toStartOf="@id/ll_batches_count"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Python" />
+
+                <LinearLayout
+                    android:id="@+id/ll_batches_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/aciv_forward_arrow"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/actv_batch_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/orange_2"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        app:intToCount="@{viewModel.batchesCount}"
+                        tools:text="10" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/actv_batches"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.batchesCount == 1 ? @string/batch : @string/batches}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
+                        android:textColor="@color/orange_2"
+                        android:textSize="8sp"
+                        tools:text="@string/batches" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/aciv_forward_arrow"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_forward"
+                    android:tint="@color/grey_2"
+                    app:layout_constraintBottom_toBottomOf="@id/ll_batches_count"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ll_batches_count" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_trainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="4dp"
+                    android:text="@string/trainer_colon"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/grey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/apCTVCourseName" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_trainer_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="4dp"
+                    android:text="@{viewModel.trainerName}"
+                    android:textColor="@color/blue_3"
+                    app:layout_constraintStart_toEndOf="@id/actv_trainer"
+                    app:layout_constraintTop_toTopOf="@id/actv_trainer"
+                    tools:text="Einstein" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:drawablePadding="4dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
+                    android:textColor="@color/black"
+                    app:isVerified="@{viewModel.isVerified}"
+                    app:isRejected="@{viewModel.isRejected}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_trainer_name_value"
+                    tools:drawableStart="@drawable/status_approved_circle"
+                    tools:text="Approved" />
+
+                <LinearLayout
+                    android:id="@+id/ll_icons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_status">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/aCIVEditIcon"
+                        style="@style/CardViewIcons"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/edit_icon" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_students"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:gravity="center">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/aciv_members"
+                            style="@style/CardViewIcons"
+                            android:layout_width="40dp"
+                            android:layout_height="55dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/members_icon" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/actv_members_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/aciv_members"
+                            android:layout_marginStart="-12dp"
+                            android:layout_toEndOf="@id/aciv_members"
+                            android:background="@drawable/circle_black"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:intToCount="@{viewModel.studentsCount}"
+                            tools:text="9999" />
+
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_viewIcon"
+                        style="@style/CardViewIcons"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/inspect_icon" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_shareIcon"
+                        style="@style/CardViewIcons"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/share_icon" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_deleteIcon"
+                        style="@style/CardViewIcons"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/delete_icon" />
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

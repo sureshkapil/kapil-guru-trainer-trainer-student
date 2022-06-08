@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "868580037007",
+    "project_id": "kapil-guru-341a4",
+    "storage_bucket": "kapil-guru-341a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868580037007:android:6e719464dbd62362e7fbfa",
+        "android_client_info": {
+          "package_name": "com.kapilguru.trainer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868580037007-2jmgh3ojtiibt6440c7i612g3egarelu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRYu-gnIlUGx1NURNLNr5RgflmwxSQKO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868580037007-2jmgh3ojtiibt6440c7i612g3egarelu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

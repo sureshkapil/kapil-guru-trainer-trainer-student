@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.ui.profile.profileInfo.viewModel.ProfileInfoViewmodel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ly_business_tye"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_type_of_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="@string/selected_type_of_business"
+            android:textColor="@color/purple"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_business"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:backgroundTint="#FF9800"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/business_individual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@{viewModel.profileMutLiveData.isOrganization() ==0}"
+                android:enabled="false"
+                android:text="@string/business_individual"
+                android:theme="@style/RadioButtonStyle" />
+
+            <RadioButton
+                android:id="@+id/business_organisation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="@{viewModel.profileMutLiveData.isOrganization() ==1}"
+                android:enabled="false"
+                android:text="@string/business_organisation"
+                android:theme="@style/RadioButtonStyle" />
+        </RadioGroup>
+
+    </LinearLayout>
+</layout>

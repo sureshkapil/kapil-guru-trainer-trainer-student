@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.R.string" />
+
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.exams.scheduledExams.ScheduleExamsResponse" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/examBatchCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".exams.scheduledExams.ScheduledExamsActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/webinarCardView"
+                style="@style/AppCardViewStyle_latest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/rubik_regular"
+                            android:text="Title"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginHorizontal="8dp"
+                            android:background="@color/cream"
+                            android:fontFamily="@font/rubik_regular"
+                            android:padding="4dp"
+                            android:text="@{@string/batch_code_hyphen(model.batchCode)}"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            tools:text="Batch Code - asdfcv" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:fontFamily="@font/rubik_medium"
+                        android:text="@{model.title}"
+                        android:textColor="@color/orange_2"
+                        android:textSize="15sp"
+                        android:textStyle="normal"
+                        tools:text="I - Quarter" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/cream" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="@string/course_title"
+                        android:gravity="start"
+                        android:layout_weight="0.8"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/ic_forward"
+                         android:gravity="end"/>
+
+
+                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:fontFamily="@font/rubik_medium"
+                        android:text="@{model.courseTitle}"
+                        android:textColor="@color/purple"
+                        android:textSize="14sp"
+                        android:textStyle="normal"
+                        tools:text="I - Quarter" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="@{@string/trainer_colon_string(model.trainerName)}"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:text="My Name is sample" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/cream" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <com.kapilguru.trainer.CustomMergerText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.33"
+                            app:image_src="@drawable/wall_clock_icon"
+                            app:timeToString="@{model.batchTime}"
+                            app:title="@string/batch_time" />
+
+                        <com.kapilguru.trainer.CustomMergerText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.33"
+                            app:image_src="@drawable/wall_clock_icon"
+                            app:timeToString="@{model.examdate}"
+                            app:title="@string/exam_time" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.33"
+                            android:background="@drawable/rectangle_stroke_orange"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="2dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/rubik_regular"
+                                android:text="@string/total_questions"
+                                android:textAlignment="center"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/rubik_bold"
+                                android:textAlignment="center"
+                                android:textSize="12sp"
+                                app:intToString="@{model.totalQuestions}"
+                                tools:text="123" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/cream" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <com.kapilguru.trainer.CustomMergerText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.33"
+                                app:image_src="@drawable/ic_calendar"
+                                app:timeToString="@{model.examdate}"
+                                app:title="@string/exam_date" />
+
+                            <com.kapilguru.trainer.CustomMergerText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.37"
+                                app:image_src="@drawable/ic_calendar"
+                                app:indaysText="@{model.duration}"
+                                app:title="@string/exam_duration" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.30"
+                                android:background="@drawable/rectangle_stroke_orange"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="2dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/rubik_regular"
+                                    android:text="@string/total_marks"
+                                    android:textAlignment="center"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/rubik_bold"
+                                    android:textAlignment="center"
+                                    android:textSize="12sp"
+                                    app:intToString="@{model.totalMarks}"
+                                    tools:text="123" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

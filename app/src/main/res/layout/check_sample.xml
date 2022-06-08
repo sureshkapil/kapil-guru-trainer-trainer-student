@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/main_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ll_pos_sub_item"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--&lt;!&ndash;    <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginVertical="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginStart="20dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginEnd="20dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@drawable/new_edit_text_bg">&ndash;&gt;-->
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/tv_company_name"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="40dp"-->
+<!--        style="@style/MyAppEditTextViewStyle_new">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/et_company_name"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="@string/company_name"-->
+<!--            android:inputType="text"-->
+<!--            android:maxLength="100"-->
+<!--            android:textSize="15sp" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/tv_email"-->
+<!--        style="@style/MyAppDenseOutlined"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginVertical="8dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        app:helperTextTextColor="@color/black"-->
+<!--        app:boxStrokeWidth="0dp"-->
+<!--        app:boxStrokeWidthFocused="0dp"-->
+<!--        app:boxStrokeColor="#FFF"-->
+<!--        app:boxBackgroundColor="@color/white"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/profile_Details">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/et_email"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawableEnd="@null"-->
+<!--            android:hint="@string/official_email"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:text=""-->
+<!--            android:textSize="15sp" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+
+        <Button
+                android:id="@+id/buttonok"
+            android:text="click"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <WebView
+            android:id="@+id/sample"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+</LinearLayout>

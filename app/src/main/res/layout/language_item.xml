@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="languageData"
+            type="com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.LanguageData"/>
+    </data>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="4dp">
+    <CheckBox
+        android:id="@+id/cb_language"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:checked="@={languageData.selected}"/>
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{languageData.name}"
+        android:textColor="@color/black"/>
+</LinearLayout>
+</layout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.exams.previousQuestionsList.viewModel.PreviousQuestionsListViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg"
+        android:orientation="vertical"
+        tools:context=".exams.previousQuestionsList.PreviousQuestionsListActivity">
+
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/custom_action_bar_layout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:background="@drawable/rectangle_curve_pink_2"
+            android:padding="8dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_vertical_20"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.20" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/course"
+                android:textColor="@color/black_2"
+                app:layout_constraintEnd_toEndOf="@+id/gl_vertical_20"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_course_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@{viewModel.course.courseTitle}"
+                android:textColor="@color/purple"
+                app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+                app:layout_constraintTop_toTopOf="@id/actv_course"
+                tools:text="Android" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_trainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/trainer"
+                android:textColor="@color/black_2"
+                app:layout_constraintEnd_toEndOf="@id/gl_vertical_20"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actv_course" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_trainer_name_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@{viewModel.course.trainerName}"
+                android:textColor="@color/purple"
+                app:layout_constraintStart_toEndOf="@id/gl_vertical_20"
+                app:layout_constraintTop_toTopOf="@id/actv_trainer"
+                tools:text="Peter Parker" />
+
+            <View
+                android:id="@+id/view_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/yellow_2"
+                app:layout_constraintBottom_toTopOf="@id/rv_previous_questions_list"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actv_trainer_name_value" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_previous_questions_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/ll_cancel_submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.562"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_1"
+                tools:listitem="@layout/item_previous_question_copy" />
+
+            <LinearLayout
+                android:id="@+id/ll_cancel_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_previous_questions_list"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/button_bg"
+                    android:layout_marginHorizontal="10dp"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="5dp"
+                    android:text="@string/back"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_bg"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="5dp"
+                    android:text="@string/submit"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

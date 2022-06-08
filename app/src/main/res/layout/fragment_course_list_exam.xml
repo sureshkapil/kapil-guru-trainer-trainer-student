@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_main"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="12dp"
+            android:background="@drawable/rectangle_curve_pink_2"
+            android:backgroundTint="@color/white"
+            android:padding="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_conduct_exams"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@string/conduct_exams_online"
+                android:textColor="@color/orange_2"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_schedule_exams"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="8dp"
+                android:background="@drawable/rect_yellow_stroke_orange"
+                android:text="@string/schedule_exam"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actv_conduct_exams" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_exam_reports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="8dp"
+                android:text="@string/exam_reports"
+                android:textColor="@color/purple"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:background="@drawable/rectangle_stroke_orange"
+                app:layout_constraintStart_toEndOf="@id/actv_schedule_exams"
+                app:layout_constraintTop_toBottomOf="@id/actv_conduct_exams" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_no_courses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@string/no_courses"
+                android:textColor="@color/purple"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actv_schedule_exams"
+                android:visibility="gone"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_select_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@string/select_course"
+                android:textColor="@color/purple"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actv_schedule_exams" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_exams"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginVertical="8dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actv_select_course"
+                app:layout_constraintBottom_toTopOf="@+id/actv_new_question_paper"
+                tools:listitem="@layout/item_conduct_exams" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_new_question_paper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="8dp"
+                android:gravity="center"
+                android:text="@string/create_new_question_paper"
+                android:textColor="@color/purple"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/actv_previous_question_paper"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_previous_question_paper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_medium"
+                android:padding="8dp"
+                android:gravity="center"
+                android:text="@string/use_previous_question_paper"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

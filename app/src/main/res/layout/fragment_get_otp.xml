@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.forgotPassword.viewModel.ForgotPasswordViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:background="@drawable/signup_bg"
+        tools:context=".forgotPassword.GetOtpFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/aciv_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/grey"
+            android:backgroundTint="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/forgot_password"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <RadioGroup
+            android:id="@+id/rGroupType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <RadioButton
+                android:id="@+id/rButtonMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/blue_2"
+                android:checked="true"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/login_with_mobile"
+                android:textColor="@color/purple"
+                android:theme="@style/RadioButton" />
+
+            <RadioButton
+                android:id="@+id/rButtonEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue_2"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/login_with_email"
+                android:textColor="@color/purple"
+                android:theme="@style/RadioButton" />
+
+        </RadioGroup>
+
+
+        <EditText
+            android:id="@+id/et_phone_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="24dp"
+            android:hint="@string/mobile_number"
+            android:inputType="phone"
+            android:text="@={viewModel.contactNo}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password" />
+
+        <TextView
+            android:id="@+id/mobile_warning_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/otp_mobile_warning"
+            android:layout_marginVertical="10dp"
+            android:textColor="@color/red"
+            android:textAlignment="center"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintTop_toBottomOf="@id/et_phone_no"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <Button
+            android:id="@+id/get_otp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="64dp"
+            android:text="@string/get_otp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_phone_no" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

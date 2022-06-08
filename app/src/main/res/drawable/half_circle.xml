@@ -1,0 +1,40 @@
+<!--<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    &lt;!&ndash; Larger blue circle in back &ndash;&gt;
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FCDE58"/>
+            <size
+                android:width="15dp"
+                android:height="15dp"/>
+        </shape>
+    </item>
+    &lt;!&ndash; Smaller red circle in front &ndash;&gt;
+    <item>
+        <shape android:shape="oval">
+            &lt;!&ndash; transparent stroke = larger_circle_size - smaller_circle_size &ndash;&gt;
+            <stroke android:color="@android:color/transparent"
+                android:width="5dp"/>
+            <solid android:color="#FCDE58"/>
+            <size
+                android:width="10dp"
+                android:height="10dp"/>
+        </shape>
+    </item>
+</layer-list>-->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/white" />
+    <size
+        android:width="180dp"
+        android:height="120dp">
+    </size>
+    <corners
+        android:topLeftRadius="200dp"
+        android:topRightRadius="200dp">
+    </corners>
+    <stroke android:width="30px"
+            android:color="@color/white" />
+</shape>
+

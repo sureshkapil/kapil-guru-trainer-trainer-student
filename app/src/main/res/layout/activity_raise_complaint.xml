@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.studentsList.viewModel.StudentListViewModel" />
+
+        <variable
+            name="clickListeners"
+            type="com.kapilguru.trainer.studentsList.view.RaiseComplaint" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/main_bg"
+        tools:context=".studentsList.view.RaiseComplaint">
+
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/custom_action_bar_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rectangle_curve_pink_2"
+            android:layout_margin="16dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/raiseComplaint"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/complaint_box_edit_bg"
+            android:gravity="top|left"
+            android:hint="Please Enter your Complaint"
+            android:maxLength="1000"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:text="@={viewModel.raiseComplaintText}" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/previousPager"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginVertical="40dp"
+            android:background="@drawable/button_bg"
+            android:onClick="@{clickListeners::onSubmit}"
+            android:text="@string/submit" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

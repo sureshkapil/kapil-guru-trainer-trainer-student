@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.batchExamReports.SelectedBatchExamReportsViewModel" />
+
+        <variable
+            name="courseTitle"
+            type="java.lang.String" />
+
+        <variable
+            name="batchCode"
+            type="java.lang.String" />
+    </data>
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/custom_action_bar_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/cream_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="7dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="8dp"
+                    android:background="@color/cream"
+                    android:fontFamily="@font/rubik_regular"
+                    android:padding="4dp"
+                    android:text="@{@string/batch_code_hyphen(batchCode)}"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    tools:text="Batch Code - asdfcv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_regular"
+                    android:textColor="@color/purple_2"
+                    android:text="@{@string/trainer_colon_string(courseTitle)}"
+                    android:textSize="14sp"
+                    tools:text="Android COurse Name" />
+
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/exam_title"
+                android:textSize="12sp"
+                app:fontFamily="@font/rubik_regular"
+                tools:text="Course Title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_medium"
+                android:text="@string/exam_title"
+                android:textColor="@color/orange_2"
+                android:textSize="12sp"
+                app:fontFamily="@font/rubik_medium"
+                tools:text="Android Course Name" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarSize="2dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.kapilguru.trainer.keyValueSquareView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:keyValueSquareViewTextToInt="@{viewModel.batchExamReportModel.totalStudents}"
+                    app:keyValueSquareView_title="@string/students" />
+
+                <com.kapilguru.trainer.keyValueSquareView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:keyValueSquareViewTextToInt="@{viewModel.batchExamReportModel.appearedStudents}"
+                    app:keyValueSquareView_title="@string/attendee" />
+
+                <com.kapilguru.trainer.keyValueSquareView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:keyValueSquareViewTextToInt="@{viewModel.batchExamReportModel.avgTime}"
+                    app:keyValueSquareView_title="@string/time_taken" />
+
+                <com.kapilguru.trainer.keyValueSquareView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:keyValueSquareViewTextToInt="@{viewModel.batchExamReportModel.highScore}"
+                    app:keyValueSquareView_title="@string/high_score" />
+
+                <com.kapilguru.trainer.keyValueSquareView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:keyValueSquareViewTextToInt="@{viewModel.batchExamReportModel.lowScore}"
+                    app:keyValueSquareView_title="@string/low_score" />
+
+            </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.7">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/exam_batch_students_list"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

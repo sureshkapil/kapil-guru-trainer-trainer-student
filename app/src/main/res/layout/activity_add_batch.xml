@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="batchViewModel"
+            type="com.kapilguru.trainer.ui.courses.add_batch.viewModel.AddBatchViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/actionbar"
+                layout="@layout/custom_action_bar_layout" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:orientation="vertical"
+                tools:context=".ui.courses.add_batch.AddBatchActivity">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1.5"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/batch_type"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <RadioGroup
+                    android:id="@+id/rGroupBatchType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rButtonWeekday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="@color/blue_2"
+                        android:checked="true"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="@string/weekdays"
+                        android:textColor="@color/purple"
+                        android:theme="@style/RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/rButtonWeekend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/blue_2"
+                        android:fontFamily="@font/rubik_regular"
+                        android:text="@string/weekend"
+                        android:textColor="@color/purple"
+                        android:theme="@style/RadioButton" />
+
+                </RadioGroup>
+
+
+                <LinearLayout
+                    android:id="@+id/lLayoutDays"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/aCTVMonday"
+                        style="@style/add_batch_week_days_custom_text_style"
+                        android:background="@drawable/selected_days_bg"
+                        android:text="M"
+                        android:textColor="@color/white"
+                        app:custombackground="@{batchViewModel.dayMon}"
+                        app:weekDay="@{batchViewModel.isWeekDay}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/aCTVTuesday"
+                        style="@style/add_batch_week_days_custom_text_style"
+                        android:background="@drawable/selected_days_bg"
+                        android:text="T"
+                        android:textColor="@color/white"
+                        app:custombackground="@{batchViewModel.dayTue}"
+                        app:weekDay="@{batchViewModel.isWeekDay}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/aCTVWednesday"
+                        style="@style/add_batch_week_days_custom_text_style"
+                        android:background="@drawable/selected_days_bg"
+                        android:text="W"
+                        android:textColor="@color/white"
+                        app:custombackground="@{batchViewModel.dayWed}"
+                        app:weekDay="@{batchViewModel.isWeekDay}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/aCTVThursday"
+                        style="@style/add_batch_week_days_custom_text_style"
+                        android:background="@drawable/selected_days_bg"
+                        android:text="T"
+                        android:textColor="@color/white"
+                        app:custombackground="@{batchViewModel.dayThu}"
+                        app:weekDay="@{batchViewModel.isWeekDay}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/aCTVFriday"
+                        style="@style/add_batch_week_days_custom_text_style"
+                        android:background="@drawable/selected_days_bg"
+                        android:text="F"
+                        android:textColor="@color/white"
+                        app:custombackground="@{batchViewModel.dayFri}"
+                        app:weekDay="@{batchViewModel.isWeekDay}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/aCTVSaturday"
+                        style="@style/add_batch_week_days_custom_text_style"
+                        android:background="@drawable/unselected_days_bg"
+                        android:text="S"
+                        android:textColor="@color/black"
+                        app:custombackground="@{batchViewModel.daySat}"
+                        app:weekDay="@{!batchViewModel.isWeekDay}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/aCTVSunday"
+                        style="@style/add_batch_week_days_custom_text_style"
+                        android:background="@drawable/unselected_days_bg"
+                        android:text="S"
+                        android:textColor="@color/black"
+                        app:custombackground="@{batchViewModel.daySun}"
+                        app:weekDay="@{!batchViewModel.isWeekDay}" />
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/aCTVBatchDate"
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aCTVBatchDateValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_calendar"
+                        android:focusable="false"
+                        android:hint="@string/choose_date"
+                        android:inputType="text"
+                        android:text="@={batchViewModel.startDate}"
+                        android:textColorHint="@android:color/black"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aCTVBatchStartTimeValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_alarm"
+                        android:focusable="false"
+                        android:hint="@string/select_start_time"
+                        android:inputType="text"
+                        android:text="@={batchViewModel.startTime}"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aCSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_drop_down_24"
+                        android:focusable="false"
+                        android:hint="@string/select_class_duration"
+                        android:inputType="text"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aCTVBatchEndTimeValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/disabled_grey_color"
+                        android:drawableEnd="@drawable/ic_alarm"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:hint="@string/select_end_time"
+                        android:inputType="text"
+                        android:longClickable="false"
+                        android:text="@={batchViewModel.endTime}"
+                        android:textIsSelectable="false"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="3dp"
+                    android:text="@string/time_zone"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/editbg"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:entries="@array/time_zone_ist"
+                        android:padding="5dp"
+                        android:spinnerMode="dropdown"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aCTVBatchCourseDurationValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:hint="@string/number_of_classes"
+                        android:inputType="number"
+                        android:text="@={batchViewModel.noOfDays}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aCTVBatchCourseNUmberOfStudentsValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:hint="@string/number_of_student"
+                        android:inputType="number"
+                        android:text="@={batchViewModel.maxNoOfStudents}"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/disabled_grey_color"
+                        android:enabled="false"
+                        android:hint="@string/total_course_duration"
+                        android:inputType="number"
+                        android:text="@{batchViewModel.courseDuration}"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/disabled_grey_color"
+                        android:drawableEnd="@drawable/ic_calendar"
+                        android:enabled="false"
+                        android:hint="@string/end_date"
+                        android:inputType="number"
+                        android:text="@{batchViewModel.endDate}"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/MyAppEditTextViewStyle_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="4dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="0.5"
+                        android:translationZ="10dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/aCTVBatchActualFeeValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@null"
+                            android:hint="@string/actual_fee"
+                            android:inputType="number"
+                            android:text="@={batchViewModel.batchPrice}"
+                            android:textSize="15sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/MyAppEditTextViewStyle_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="4dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="0.5"
+                        android:translationZ="10dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/aCTVBatchOfferPriceValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@null"
+                            android:hint="@string/offer_price"
+                            android:inputType="number"
+                            android:text="@={batchViewModel.discountedPrice}"
+                            android:textSize="15sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lLayoutButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/NegativeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
+                        android:backgroundTint="#F6FAFF"
+                        android:drawableEnd="@drawable/ic_cross"
+                        android:shadowColor="@color/design_default_color_on_primary"
+                        android:text="@string/cancel"
+                        android:translationZ="10dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/PositiveButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
+                        android:drawableEnd="@drawable/ic_tick"
+                        android:onClick="@{batchViewModel::onSaveBatchClick}"
+                        android:text="@string/save"
+                        android:translationZ="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

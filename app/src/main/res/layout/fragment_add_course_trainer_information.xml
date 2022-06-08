@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.ui.courses.addcourse.viewModel.AddCourseViewModel" />
+
+        <variable
+            name="clickHandlers"
+            type="com.kapilguru.trainer.ui.courses.addcourse.AddCourseTrainerInformationFragment" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.courses.addcourse.AddCourseTrainerInformationFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical_0_05_clTrainerDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical_50_clTrainerDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical_95_clTrainerDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aCTVTrainerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                style="@style/MyAppEditTextViewStyle_new"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clTrainerDetails"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aCETTrainerNameValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/trainer_name_man"
+                    android:text="@={viewModel.addCourseRequest.trainerName}"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aCTVTrainerYerasOfExperiance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                style="@style/MyAppEditTextViewStyle_new"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clTrainerDetails"
+                app:layout_constraintTop_toBottomOf="@id/aCTVTrainerName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aCETTrainerYerasOfExperianceValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/trainer_years_of_experience"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:text="@={viewModel.addCourseRequest.trainersYearOfExp}"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aCTVTotalNumberOfStudentsTrained"
+                style="@style/MyAppEditTextViewStyle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:helperTextTextColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clTrainerDetails"
+                app:layout_constraintTop_toBottomOf="@id/aCTVTrainerYerasOfExperiance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aCETtotalNumberOfStudentsTrainedValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/total_number_of_students_trained"
+                    android:inputType="number"
+                    android:text="@={viewModel.addCourseRequest.totalNoOfStudentsTrained}"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_selectedLanguages"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="@{viewModel.selectedLanguagesString}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:background="@drawable/spinner_bg"
+                app:layout_constraintTop_toBottomOf="@id/aCTVTotalNumberOfStudentsTrained" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clTrainerDetails"
+                app:layout_constraintTop_toBottomOf="@+id/tv_selectedLanguages"
+                app:layout_constraintVertical_bias="0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/card_bg"
+                    android:orientation="vertical">
+
+                    <HorizontalScrollView
+                        android:id="@+id/horizontalScrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/rich_txt_header_bg"
+                        app:layout_constraintTop_toBottomOf="@+id/aCSpinnerCategory">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:id="@+id/action_bold"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_margin="2dp"
+                                android:background="@null"
+                                android:contentDescription="@null"
+                                android:onClick="@{clickHandlers::onBoldIconTouch}"
+                                android:src="@drawable/ic_baseline_format_bold_24" />
+
+                            <ImageButton
+                                android:id="@+id/action_italic"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_margin="2dp"
+                                android:background="@null"
+                                android:contentDescription="@null"
+                                android:onClick="@{clickHandlers::onItalicTouch}"
+                                android:src="@drawable/ic_baseline_format_italic_24" />
+
+                            <ImageButton
+                                android:id="@+id/action_underline"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_margin="2dp"
+                                android:background="@null"
+                                android:contentDescription="@null"
+                                android:onClick="@{clickHandlers::onUnderlineTouch}"
+                                android:src="@drawable/ic_baseline_format_underlined_24" />
+
+                            <ImageButton
+                                android:id="@+id/action_insert_bullets"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_margin="2dp"
+                                android:background="@null"
+                                android:contentDescription="@null"
+                                android:onClick="@{clickHandlers::onBulletsTouch}"
+                                android:src="@drawable/ic_baseline_format_list_bulleted_24" />
+
+                            <ImageButton
+                                android:id="@+id/action_insert_numbers"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_margin="2dp"
+                                android:background="@null"
+                                android:contentDescription="@null"
+                                android:onClick="@{clickHandlers::onNumbersTouch}"
+                                android:src="@drawable/ic_baseline_format_list_numbered_24" />
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+
+                    <com.kapilguru.trainer.RichText
+                        android:id="@+id/richEditor"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:scrollbars="vertical" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
