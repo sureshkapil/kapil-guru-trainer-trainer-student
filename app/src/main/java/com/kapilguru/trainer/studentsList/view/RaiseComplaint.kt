@@ -58,7 +58,7 @@ class RaiseComplaint : BaseActivity() {
         if (viewModel.raiseComplaintText.value.toString().trim().isNullOrEmpty()) {
             showAppToast(this, " You Fool this Scenario is tested. please increase your testing knowledge")
         } else {
-            val trainerId = StorePreferences(this).trainerId
+            val trainerId = StorePreferences(this).userId
             val request = RequestRaiseComplaint().also {
                 it.onWhom = studentId
                 it.text = viewModel.raiseComplaintText.value.toString()

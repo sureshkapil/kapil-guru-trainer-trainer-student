@@ -1,7 +1,6 @@
 package com.kapilguru.trainer.myClassroom.viewModel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -23,7 +22,7 @@ class MyClassroomViewModel(
 ) :
     AndroidViewModel(application) {
     private val TAG = "MyClassroomViewModel"
-    val trainerId = StorePreferences(application).trainerId.toString()
+    val trainerId = StorePreferences(application).userId.toString()
     val liveUpComingClassResponse: MutableLiveData<ApiResource<LiveUpComingClassResponse>> = MutableLiveData()
     val activeBatchListResponse: MutableLiveData<ApiResource<NewMessageResponse>> = MutableLiveData()
     val liveUpComingClassDataList: MutableLiveData<List<LiveUpComingClassData>> = MutableLiveData()

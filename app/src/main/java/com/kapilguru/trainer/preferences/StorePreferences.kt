@@ -3,6 +3,7 @@ package com.kapilguru.trainer.preferences
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.icu.util.Currency
 import com.kapilguru.trainer.*
 
 class StorePreferences(context: Context) {
@@ -10,15 +11,15 @@ class StorePreferences(context: Context) {
 
     private val prefs: SharedPreferences = context.getSharedPreferences(SHARED_PREFERENCE_FILE, MODE_PRIVATE);
 
-    var trainerToken: String
+    var token: String
         get() = prefs.getString(JWT_TOKEN, "").toString()
         set(value) = prefs.edit().putString(JWT_TOKEN, value).apply()
 
-    var trainerId: Int
-        get() = prefs.getInt(USER_ID,0)
-        set(value) = prefs.edit().putInt(USER_ID,value).apply()
+    var refreshToken: String
+        get() = prefs.getString(JWT_REFRESH_TOKEN, "").toString()
+        set(value) = prefs.edit().putString(JWT_REFRESH_TOKEN, value).apply()
 
-    var studentId: Int
+    var userId: Int
         get() = prefs.getInt(USER_ID,0)
         set(value) = prefs.edit().putInt(USER_ID,value).apply()
 
@@ -78,6 +79,30 @@ class StorePreferences(context: Context) {
     var email: String
         get() = prefs.getString(USER_EMAIL,"").toString()
         set(value) = prefs.edit().putString(USER_EMAIL,value).apply()
+
+    var userRoleId: Int
+        get() = prefs.getInt(USER_ROLE_ID,0)
+        set(value) = prefs.edit().putInt(USER_ROLE_ID,value).apply()
+
+    var userImage: String
+        get() = prefs.getString(USER_EMAIL,"").toString()
+        set(value) = prefs.edit().putString(USER_EMAIL,value).apply()
+
+    var title: String
+        get() = prefs.getString(TITLE,"").toString()
+        set(value) = prefs.edit().putString(TITLE,value).apply()
+
+    var countryCode: Int
+        get() = prefs.getInt(COUNTRY_CODE,0)
+        set(value) = prefs.edit().putInt(COUNTRY_CODE,value).apply()
+
+    var isEnrolled: Int
+        get() = prefs.getInt(IS_ENROLLED,0)
+        set(value) = prefs.edit().putInt(IS_ENROLLED,value).apply()
+
+    var currency: String
+        get() = prefs.getString(CURRENCY,"").toString()
+        set(value) = prefs.edit().putString(CURRENCY,value).apply()
 
     fun clearStorePreferences(){
         prefs.edit().clear().apply()

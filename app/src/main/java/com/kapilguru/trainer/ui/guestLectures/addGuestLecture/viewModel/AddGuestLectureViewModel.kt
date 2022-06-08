@@ -15,7 +15,6 @@ import com.kapilguru.trainer.toBase64
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourse
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourseResponse
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadVideoResponse
-import com.kapilguru.trainer.ui.courses.addcourse.viewModel.AddCourseViewModel
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.AddGuestLectureRepository
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.AddGuestLectureRequest
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.AddGuestLectureResData
@@ -42,7 +41,7 @@ class AddGuestLectureViewModel(private val repository: AddGuestLectureRepository
     AndroidViewModel(context) {
     private val TAG = "AddGuestLectureViewModel"
     var currentIndex: MutableLiveData<Int> = MutableLiveData(0)
-    var trainerId: Int = StorePreferences(context).trainerId
+    var trainerId: Int = StorePreferences(context).userId
     private var isLaunchedForEdit: Boolean = false
     var addGuestLectureRequest: AddGuestLectureRequest = AddGuestLectureRequest()
     var addGuestLectureDetailsApiResponse: MutableLiveData<ApiResource<AddGuestLectureResponse>> = MutableLiveData()

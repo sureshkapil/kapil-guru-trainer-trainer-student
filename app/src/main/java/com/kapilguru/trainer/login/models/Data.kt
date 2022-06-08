@@ -13,6 +13,7 @@ open class Data(
     val userImage: String,
     val title: String,
     val email: String,
+    val countryCode : Int,
     val contactNumber: String,
     val userRoleId: Int,
     val isSubscribed: Int,

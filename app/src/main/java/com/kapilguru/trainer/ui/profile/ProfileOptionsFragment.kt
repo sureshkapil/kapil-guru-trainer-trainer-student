@@ -62,7 +62,7 @@ class ProfileOptionsFragment : Fragment() {
 
     fun getProfileData() {
         val pref = StorePreferences(requireContext())
-        profileOptionsViewModel.getProfileData(pref.trainerId.toString())
+        profileOptionsViewModel.getProfileData(pref.userId.toString())
     }
 
     fun observeViewModelData() {

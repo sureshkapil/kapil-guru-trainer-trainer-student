@@ -35,7 +35,7 @@ abstract class PaymentActivity : BaseActivity() {
     /*This method adds the common data which is required for transaction*/
     fun addTransactionRequestData(initiateTransactionRequest: InitiateTransactionRequest): InitiateTransactionRequest {
         initiateTransactionRequest.userCode = StorePreferences(this).userCode
-        initiateTransactionRequest.userId = StorePreferences(this).trainerId
+        initiateTransactionRequest.userId = StorePreferences(this).userId
         val userId = initiateTransactionRequest.userId
         val orderId = "O_000" + userId + "_" + System.currentTimeMillis().toString()
         initiateTransactionRequest.orderId = orderId

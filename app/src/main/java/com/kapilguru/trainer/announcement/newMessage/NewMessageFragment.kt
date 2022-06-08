@@ -141,7 +141,7 @@ class NewMessageFragment : Fragment() {
     }
 
     private fun getBatchList() {
-        val userId = StorePreferences(requireContext()).trainerId.toString()
+        val userId = StorePreferences(requireContext()).userId.toString()
         viewModel.getBatchList(userId)
     }
 
@@ -172,7 +172,7 @@ class NewMessageFragment : Fragment() {
     }
 
     fun getSentItemsResponse() {
-        val userId: String = StorePreferences(requireContext()).trainerId.toString()
+        val userId: String = StorePreferences(requireContext()).userId.toString()
         viewModel.getSentItemsResponse(userId)
     }
 
@@ -184,7 +184,7 @@ class NewMessageFragment : Fragment() {
     private fun sendMessageRequest() {
         var receiverType = ""
         var userId = ""
-        val senderId: String = StorePreferences(requireContext()).trainerId.toString()
+        val senderId: String = StorePreferences(requireContext()).userId.toString()
         val receiverId = viewModel.selectedBatchId.value!!
         val subject = viewModel.subjectMutLiveData.value!!
         val message = viewModel.messageMutLiveData.value!!

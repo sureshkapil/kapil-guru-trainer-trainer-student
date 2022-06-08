@@ -168,12 +168,13 @@
                 android:id="@+id/checkbox_terms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="@={viewModel.isTermsChecked()}"
+                android:checked="true"
                 android:gravity="center"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/actv_terms_and_cond"
                 app:layout_constraintStart_toStartOf="@id/gl_vertical_7"
                 app:layout_constraintTop_toTopOf="@+id/actv_terms_and_cond" />
+<!--            android:checked="@={viewModel.isTermsChecked()}"-->
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/actv_terms_and_cond"

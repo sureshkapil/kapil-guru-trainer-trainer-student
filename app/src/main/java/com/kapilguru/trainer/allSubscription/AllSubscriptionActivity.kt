@@ -1,12 +1,9 @@
 package com.kapilguru.trainer.allSubscription
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -132,7 +129,7 @@ class AllSubscriptionActivity : BaseActivity(){
                             it.subscriptionSubType.equals("badge")
                         })
                     }
-                    val trainerId = StorePreferences(this).trainerId.toString()
+                    val trainerId = StorePreferences(this).userId.toString()
                     viewModel.getMySubscriptionList(trainerId)
                 }
                 Status.ERROR -> {

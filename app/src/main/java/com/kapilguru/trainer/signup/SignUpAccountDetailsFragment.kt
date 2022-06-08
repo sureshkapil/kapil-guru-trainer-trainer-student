@@ -183,7 +183,7 @@ class SignUpAccountDetailsFragment : Fragment() {
         binding.viewModel = viewModel
         setMovementMethods()
         setClickListeners()
-        setRadioButtonClickListeners()
+//        setRadioButtonClickListeners()
 //        setFocusChangeListeners()
 //        setCheckChangeListener()
 //        setAfterTextChangeListeners()

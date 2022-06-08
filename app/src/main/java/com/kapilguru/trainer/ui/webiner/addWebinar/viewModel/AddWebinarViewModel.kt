@@ -17,7 +17,6 @@ import com.kapilguru.trainer.toBase64
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourse
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourseResponse
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadVideoResponse
-import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.AddGuestLectureResponse
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.LanguageData
 import com.kapilguru.trainer.ui.webiner.addWebinar.AddWebinarRepository
 import com.kapilguru.trainer.ui.webiner.addWebinar.model.AddWebinarDetailsResData
@@ -82,7 +81,7 @@ class AddWebinarViewModel(private val repository: AddWebinarRepository,val conte
     fun getIsNewImageSelected(): Boolean = isNewImageSelected
 
     fun addValuesToWebinarReqData() {
-        addWebinarRequest.value?.trainerID = StorePreferences(context).trainerId.toString()
+        addWebinarRequest.value?.trainerID = StorePreferences(context).userId.toString()
         addWebinarRequest.value?.languages = selectedLanguagesIds.value?.toBase64()
     }
 

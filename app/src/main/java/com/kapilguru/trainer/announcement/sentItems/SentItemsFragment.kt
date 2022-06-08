@@ -31,7 +31,7 @@ class SentItemsFragment : Fragment(), SentItemsToAdapter {
     }
 
     fun getSentItemsResponce() {
-        val userId: String = StorePreferences(requireContext()).trainerId.toString()
+        val userId: String = StorePreferences(requireContext()).userId.toString()
         viewModel.getSentItemsResponse(userId)
     }
 

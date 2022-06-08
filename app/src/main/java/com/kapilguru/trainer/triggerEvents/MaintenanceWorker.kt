@@ -21,7 +21,7 @@ class MaintenanceWorker(val appContext: Context, params: WorkerParameters) : Cor
 
     private suspend fun fetchUpComingClasses()  {
         val apiUpcomingScheduleResponse: Deferred<UpComingScheduleResponse> = GlobalScope.async {
-            val trainerId = StorePreferences(appContext).trainerId
+            val trainerId = StorePreferences(appContext).userId
             val apiHelper = ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE)
             apiHelper.fetchUpcomingSchedule(trainerId.toString())
         }

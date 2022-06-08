@@ -1,7 +1,6 @@
 package com.kapilguru.trainer.ui.courses.add_batch.viewModel
 
 import android.app.Application
-import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
@@ -77,7 +76,7 @@ class AddBatchViewModel(
 
     init {
         val pref = StorePreferences(application)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
     }
 
     private val TAG = "AddBatchViewModel"

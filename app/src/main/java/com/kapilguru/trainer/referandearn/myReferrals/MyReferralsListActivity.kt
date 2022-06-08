@@ -74,7 +74,7 @@ class MyReferralsListActivity : BaseActivity() {
     }
 
     private fun getMyReferrals() {
-        val trainerId = StorePreferences(this).trainerId.toString()
+        val trainerId = StorePreferences(this).userId.toString()
         viewModel.getMyReferrals(trainerId)
     }
 }

@@ -33,7 +33,7 @@ class BatchListViewModel(
 
     init {
         val pref = StorePreferences(application)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
     }
 
     val batchListRequest = BatchListApiRequest(trainerId, courseid)

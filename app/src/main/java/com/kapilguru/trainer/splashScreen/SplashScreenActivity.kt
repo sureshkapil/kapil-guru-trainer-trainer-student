@@ -70,7 +70,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun navigateToInitialScreen() {
         val pref = StorePreferences(this)
-        if (pref.trainerToken.isEmpty()) {
+        if (pref.token.isEmpty()) {
             startActivity(Intent(this, OnBoardingActivity::class.java))
             finish()
         } else {
@@ -90,8 +90,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun verifyAccessToken() {
         val pref = StorePreferences(this)
-        if (pref.trainerId != 0) {
-            splashScreenViewModel.getProfileData(pref.trainerId.toString())
+        if (pref.userId != 0) {
+            splashScreenViewModel.getProfileData(pref.userId.toString())
         } else {
             navigateToInitialScreen()
         }

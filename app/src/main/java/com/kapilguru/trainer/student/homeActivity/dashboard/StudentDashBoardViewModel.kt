@@ -119,7 +119,7 @@ class StudentDashBoardViewModel(val homeScreenRepository:StudentHomeScreenReposi
 
 
     fun fetchAllWebinars() {
-        val userId = StorePreferences(context).studentId
+        val userId = StorePreferences(context).userId
         allWebinarsData.postValue(ApiResource.loading(data = null))
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -145,7 +145,7 @@ class StudentDashBoardViewModel(val homeScreenRepository:StudentHomeScreenReposi
     }
 
     fun fetchAllDemos() {
-        val userId = StorePreferences(context).studentId
+        val userId = StorePreferences(context).userId
         alDemosData.postValue(ApiResource.loading(data = null))
         viewModelScope.launch(Dispatchers.IO) {
             try {

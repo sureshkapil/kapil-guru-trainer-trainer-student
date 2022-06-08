@@ -23,7 +23,7 @@ class ExamsViewModel(private val repository: ExamsRepository, application: Appli
     val questionPaperTitleApiReq: MutableLiveData<QuestionPaperTitleRequest> = MutableLiveData(QuestionPaperTitleRequest())
     val questionPaperTitleApiResponse: MutableLiveData<ApiResource<AddBatchApiResponse>> = MutableLiveData()
     val scheduleExamsAPi: MutableLiveData<ApiResource<ScheduledExamsAPI>> = MutableLiveData()
-    val trainerId = StorePreferences(application).trainerId.toString()
+    val trainerId = StorePreferences(application).userId.toString()
     var verifiedCoursesList = ArrayList<CourseResponse>()
     val emptyCourseId = -1
     var courseIdFromClassRoom : Int = emptyCourseId

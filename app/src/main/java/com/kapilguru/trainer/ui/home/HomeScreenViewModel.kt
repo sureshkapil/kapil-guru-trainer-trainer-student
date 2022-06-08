@@ -3,7 +3,6 @@ package com.kapilguru.trainer.ui.home
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kapilguru.trainer.R
 import com.kapilguru.trainer.network.ApiResource
@@ -91,7 +90,7 @@ class HomeScreenViewModel(private val homeRepository: HomeScreenRepository, val 
     }
 
     fun fetchUpcomingSchedule() {
-        val trainerId = StorePreferences(context).trainerId
+        val trainerId = StorePreferences(context).userId
         upcomingResponse.postValue(ApiResource.loading(data = null))
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -127,7 +126,7 @@ class HomeScreenViewModel(private val homeRepository: HomeScreenRepository, val 
         notificationCountResponse.value = ApiResource.loading(data = null)
         try{
             viewModelScope.launch(Dispatchers.IO) {
-                notificationCountResponse.postValue(ApiResource.success(data = homeRepository.getNotificationCount(StorePreferences(context).trainerId.toString())))
+                notificationCountResponse.postValue(ApiResource.success(data = homeRepository.getNotificationCount(StorePreferences(context).userId.toString())))
             }
         }catch(exception : HttpException){
             notificationCountResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))

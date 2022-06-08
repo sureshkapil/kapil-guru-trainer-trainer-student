@@ -108,7 +108,7 @@ class OTPDialogFragment : DialogFragment() {
             getOTPRequest = if(profileData.countryCode == "91") {
                 GetOTPRequest(contactNumber = contactDetails)
             } else {
-                GetOTPRequest(userId = StorePreferences(requireContext()).trainerId.toString(), emailId = profileData.email_id)
+                GetOTPRequest(userId = StorePreferences(requireContext()).userId.toString(), emailId = profileData.email_id)
             }
             profileOptionViewModel.getOTP(getOTPRequest)
         }

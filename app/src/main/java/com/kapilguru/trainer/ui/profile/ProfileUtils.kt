@@ -10,9 +10,9 @@ class ProfileUtils {
     companion object {
         fun saveProfileData(context: Context, loginResponseData: Data) {
             val pref = StorePreferences(context)
-            pref.trainerToken = loginResponseData.token
-            pref.trainerId = loginResponseData.user_id
-            pref.trainerId = loginResponseData.userRoleId
+            pref.token = loginResponseData.token
+            pref.userId = loginResponseData.user_id
+            pref.userRoleId = loginResponseData.userRoleId
             pref.isProfileUpdated = loginResponseData.isProfileUpdated
             pref.contactNumber = loginResponseData.contactNumber
             pref.isBankUpdated = loginResponseData.isBankUpdated
@@ -24,6 +24,12 @@ class ProfileUtils {
             pref.isOrganization = loginResponseData.isOrganization
             pref.lastAnnouncementId = loginResponseData.lastAnnouncementId
             pref.isOtherCountryCode = loginResponseData.isOtherCountryCode
+            pref.userImage = loginResponseData.userImage
+            pref.title  = loginResponseData.title
+            pref.email = loginResponseData.email
+            pref.countryCode = loginResponseData.countryCode
+            pref.isEnrolled = loginResponseData.isEnrolled
+            pref.currency = loginResponseData.currency
         }
 
         fun isSubscribed(context: Context): Boolean {

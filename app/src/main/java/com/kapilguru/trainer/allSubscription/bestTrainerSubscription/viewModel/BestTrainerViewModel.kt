@@ -14,13 +14,12 @@ import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.preferences.StorePreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 import retrofit2.HttpException
 import java.io.IOException
 
 class BestTrainerViewModel(val repository: BestTrainerCourseRepository, application: Application) :
     AndroidViewModel(application) {
-    var trainerId : Int = StorePreferences(application).trainerId
+    var trainerId : Int = StorePreferences(application).userId
     var myBestTrainerSubscList  = ArrayList<MyBestTrainerData>()
     var courseBestTrainerMapResponse : MutableLiveData<ApiResource<CourseBestTrainerMapResponce>> = MutableLiveData()
     lateinit var badgeData : AllSubscriptionsData

@@ -27,7 +27,7 @@ class EarningsDetailsViewModel(private val earningsDetailsRepository: EarningsDe
     init
     {
         val pref = StorePreferences(application)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
         earningsDetailsData.value = arrayListOf()
         earningsDetailsReferrals.value = arrayListOf()
     }

@@ -1,7 +1,6 @@
 package com.kapilguru.trainer.allSubscription.subscriptions
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,7 +59,7 @@ class UpdateKycFragment : DialogFragment() {
             showAppToast(requireContext(), "Please enter correct GST")
         } else {
             val request = UpdateKycRequest(pan, gst)
-            val trainerId = StorePreferences(requireContext()).trainerId.toString()
+            val trainerId = StorePreferences(requireContext()).userId.toString()
             viewModel.updateKyc(trainerId, request)
             dialog?.dismiss()
         }

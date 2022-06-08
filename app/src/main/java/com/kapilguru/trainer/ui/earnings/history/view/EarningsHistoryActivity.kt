@@ -2,7 +2,6 @@ package com.kapilguru.trainer.ui.earnings.history.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -50,7 +49,7 @@ class EarningsHistoryActivity : BaseActivity(),
 
         adapter = EarningsDetailsHistoryAdapter(this,this )
         binding.recyclerview.adapter = adapter
-        viewModel.fetchResponse(StorePreferences(this).trainerId.toString())
+        viewModel.fetchResponse(StorePreferences(this).userId.toString())
         viewModelsObservers()
 
     }
@@ -163,7 +162,7 @@ class EarningsHistoryActivity : BaseActivity(),
 
     override fun getSelectedId(id: String) {
         val pref = StorePreferences(application)
-        viewModel.fetchHistoryDetailsAmount(trainerId =  pref.trainerId.toString(),selectedId = id)
+        viewModel.fetchHistoryDetailsAmount(trainerId =  pref.userId.toString(),selectedId = id)
     }
 
     override fun onCourseAmountClick() {

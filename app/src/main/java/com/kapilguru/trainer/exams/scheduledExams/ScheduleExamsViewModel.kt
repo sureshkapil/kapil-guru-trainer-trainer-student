@@ -13,7 +13,7 @@ import java.io.IOException
 
 class ScheduleExamsViewModel(private val repository: ScheduleExamsRepository, application: Application) : AndroidViewModel(application) {
     val scheduleExamsAPi: MutableLiveData<ApiResource<ScheduledExamsAPI>> = MutableLiveData()
-    val trainerId = StorePreferences(application).trainerId.toString()
+    val trainerId = StorePreferences(application).userId.toString()
 
 
     fun getScheduleExamsList() {

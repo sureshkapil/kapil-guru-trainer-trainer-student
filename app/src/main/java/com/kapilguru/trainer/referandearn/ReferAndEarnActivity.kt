@@ -94,7 +94,7 @@ class ReferAndEarnActivity : BaseActivity() {
             }
             else -> {
                 val pref = StorePreferences(application)
-                viewModel.requestApiCall(pref.trainerId, binding.referTypeSpinner.selectedItem.toString().toLowerCase())
+                viewModel.requestApiCall(pref.userId, binding.referTypeSpinner.selectedItem.toString().toLowerCase())
             }
         }
     }
