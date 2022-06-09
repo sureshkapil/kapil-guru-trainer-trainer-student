@@ -13,6 +13,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/trainer_golden_yellow_bg"
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.25" />
+                app:layout_constraintGuide_percent="0.15" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_horizontal_038"
@@ -67,8 +68,7 @@
                 android:id="@+id/linear_view_bg"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/home_screen_main_bg"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +84,7 @@
                 android:layout_marginBottom="5dp"
                 android:text="@string/upcoming_schedule"
                 android:textColor="@color/purple"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/linear_view_bg"
                 app:layout_constraintVertical_bias="0"
@@ -97,10 +98,10 @@
                 android:layout_marginBottom="5dp"
                 android:text="@string/view_all"
                 android:textColor="@color/purple"
+                android:visibility="gone"
                 app:layout_constraintStart_toEndOf="@id/guideline_vertical_085"
                 app:layout_constraintTop_toTopOf="@id/linear_view_bg"
-                tools:text="@string/view_all"
-                android:visibility="gone"/>
+                tools:text="@string/view_all" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/horizontal_recycler"
@@ -119,13 +120,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="3"
                 android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/horizontal_recycler"
                 app:layout_constraintVertical_bias="0"
-                tools:listitem="@layout/home_item_view"/>
+                app:spanCount="3"
+                tools:listitem="@layout/home_item_view" />
+
+
+            <FrameLayout
+                android:id="@+id/feature_frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/galleryText"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewHome" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/galleryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gallery"
+                android:textAllCaps="true"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/gallery_frame_layout"
+                app:layout_constraintTop_toBottomOf="@id/feature_frame_layout" />
+
+            <LinearLayout
+                android:id="@+id/gallery_frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/feature_frame_layout">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_images_to_your_gallery"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <!--            <FrameLayout-->
+            <!--                android:id="@+id/feature2_frame_layout"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_marginTop="20dp"-->
+            <!--                android:background="@color/white"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/feature_frame_layout" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

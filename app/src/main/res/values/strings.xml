@@ -811,5 +811,9 @@
     <string name="videos">Videos</string>
     <string name="duration_day">%d day</string>
     <string name="by">by %s</string>
+    <string name="add_images_to_your_gallery">Add Images to your Gallery</string>
+    <string name="fee_management">Fee Management</string>
+    <string name="add_coupons">Add Coupons</string>
+    <string name="add_faculty">Add Faculty</string>
 
 </resources>
