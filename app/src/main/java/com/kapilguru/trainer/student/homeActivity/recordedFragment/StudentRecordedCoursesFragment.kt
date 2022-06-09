@@ -20,9 +20,9 @@ import com.kapilguru.trainer.student.homeActivity.models.PopularAndTrendingApi
 import kotlinx.android.synthetic.main.student_fragment_recorded_courses.view.*
 
 
-class StudentRecordedCoursesFragment : Fragment(), PopularAndTrendingAdapter.CardItem {
+class StudentRecordedCoursesFragment : Fragment(), PopularAndTrendingAdapter.CardItem, StudentRecordedCoursesAdapter.CardItem {
     lateinit var  viewModel: StudentDashBoardViewModel
-    lateinit var adapter: PopularAndTrendingAdapter
+    lateinit var adapter: StudentRecordedCoursesAdapter
     lateinit var dialog: CustomProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,7 +80,7 @@ class StudentRecordedCoursesFragment : Fragment(), PopularAndTrendingAdapter.Car
     }
 
     private fun setUpRecycler(view: View) {
-        adapter = PopularAndTrendingAdapter(this,false)
+        adapter = StudentRecordedCoursesAdapter(this,false)
         view.recordedRecy.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         view.recordedRecy.adapter  = adapter
     }

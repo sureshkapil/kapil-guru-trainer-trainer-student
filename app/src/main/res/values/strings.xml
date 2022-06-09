@@ -701,6 +701,7 @@
     <string name="view_more">View More</string>
     <string name="zero">0</string>
     <string name="rupee_symbol">\u20B9 %.2f</string>
+    <string name="rupee_symbol_without_float">\u20B9 %s</string>
     <string name="isVisible">true</string>
     <string name="enrollment_date">Enrollment Date</string>
     <string name="total_fee">Total Fee</string>
@@ -807,5 +808,8 @@
     <string name="testimonial">Testimonial</string>
     <string name="write_a_review">Write A Review</string>
     <string name="mark_attendance">Mark Attendance</string>
+    <string name="videos">Videos</string>
+    <string name="duration_day">%d day</string>
+    <string name="by">by %s</string>
 
 </resources>

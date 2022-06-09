@@ -6,12 +6,14 @@ import android.graphics.Paint
 import android.os.Build
 import android.text.Html
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -383,8 +385,13 @@ object Companion {
     @BindingAdapter("loadGlideImage")
     fun ImageView.loadGlideImage(imageUrl: String?) {
         imageUrl?.let { it ->
-            if (TextUtils.equals(it, null)) this.setImageResource(R.drawable.profile)
-            else Glide.with(context).load(IMAGE_BASE_URL.plus(it)).into(this)
+            when {
+                TextUtils.equals(it, "null") -> this.setImageResource(R.drawable.default_image)
+                imageUrl.contains(".") -> Glide.with(context).load(IMAGE_BASE_URL.plus(it)).placeholder(ResourcesCompat.getDrawable(resources, R.drawable.default_image, null)).into(this)
+                else -> Glide.with(context).load(IMAGE_BASE_URL.plus(it).plus(".png")).into(this)
+            }
+        }?:run {
+            this.setImageResource(R.drawable.default_image)
         }
     }
 
@@ -538,13 +545,13 @@ object Companion {
         days?.let {
             this.text_value.text = getPluralDays(this.context,it)
         } ?: run {
-            this.text_value.text = getSingularDay(this.context)
+            this.text_value.text = getSingularDay(this.context,0)
         }
     }
 
     private fun getPluralDays(context: Context, days: Int?) = context.resources.getString(R.string.duration_days, days)
 
-    private fun getSingularDay(context: Context) = context.resources.getString(R.string.duration_days, 0)
+    private fun getSingularDay(context: Context,days: Int) = context.resources.getString(R.string.duration_day, days)
 
     @JvmStatic
     @BindingAdapter(value = ["experienceYears"], requireAll = false)
@@ -606,6 +613,36 @@ object Companion {
         } ?: run {
             this.text = resources.getString(R.string.rupee_symbol_strike, "0")
             this.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+        }
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("amountInRupees")
+    fun KeyValueText.amountInRupees(amount: Double?) {
+        amount?.let {
+            this.text_value.text = rupeeSymbolWithInt(this.context,it.toInt())
+        } ?: run {
+            this.text_value.text = rupeeToZero(this.context)
+        }
+    }
+
+    private fun rupeeToZero(context: Context) = context.resources.getString(R.string.rupee_symbol_without_float, "0")
+
+    private fun rupeeSymbolWithInt(context: Context, it: Int) = context.resources.getString(R.string.rupee_symbol_without_float, it.toString())
+
+    @JvmStatic
+    @BindingAdapter("sessionsInDays")
+    fun TextView.sessions(days: Int?) {
+        days?.let {
+            Log.d("TAG", "sessions: $days")
+            if (it > 1) {
+                this.text = getPluralDays(this.context, it)
+            } else {
+                this.text = getSingularDay(this.context, it)
+            }
+        } ?: run {
+            this.text = getSingularDay(this.context,0)
         }
     }
 

@@ -48,7 +48,7 @@ class StudentHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.student_activity_home)
-//        setActionBar()
+        setActionBar()
         initVariables()
         viewModelObservers()
         setBottomNavigationView()

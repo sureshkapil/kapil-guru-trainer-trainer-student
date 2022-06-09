@@ -51,8 +51,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.55"
-                                app:keyValueCourseDuaration="@{model.durationDays}"
-                                app:key_title="@string/duration" />
+                                app:keyValueToInt="@{model.durationDays}"
+                                app:key_title="@string/videos" />
 
                             <com.kapilguru.trainer.KeyValueText
                                 android:layout_width="0dp"
