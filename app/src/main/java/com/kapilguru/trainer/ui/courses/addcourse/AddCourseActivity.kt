@@ -24,7 +24,6 @@ import com.kapilguru.trainer.ui.courses.courses_list.CourseActivity
 import com.kapilguru.trainer.ui.courses.courses_list.models.CourseResponse
 import com.kofigyan.stateprogressbar.StateProgressBar
 import kotlinx.android.synthetic.main.activity_add_course.*
-import kotlinx.android.synthetic.main.fragment_add_course_titile_and_description.*
 import java.io.File
 import java.util.*
 class AddCourseActivity : BaseActivity() {
@@ -179,13 +178,13 @@ class AddCourseActivity : BaseActivity() {
         addCourseViewModel.addCourseRequest.description =
             courseDescription.toBase64()
         addCourseViewModel.addCourseRequest.trainerID =
-            StorePreferences(AddCourseActivity@ this).trainerId.toString()
+            StorePreferences(AddCourseActivity@ this).userId.toString()
     }
 
     private fun uploadPdfToApi(it: File, pdfName: String) {
 //        Log.d(TAG, "uploadPdfToApi: ${pdfName}")
         val pref = StorePreferences(application)
-        addCourseViewModel.uploadPDF(file = it, trainerId = pref.trainerId.toString(), courseId = addCourseViewModel.courseId.value.toString(), pdfName = pdfName)
+        addCourseViewModel.uploadPDF(file = it, trainerId = pref.userId.toString(), courseId = addCourseViewModel.courseId.value.toString(), pdfName = pdfName)
     }
 
 
@@ -218,7 +217,7 @@ class AddCourseActivity : BaseActivity() {
             if(addCourseViewModel.isVideoUpdated) {
                 val pref = StorePreferences(application)
                 addCourseViewModel.uploadVideo(file = path,
-                    trainerId = pref.trainerId.toString(),
+                    trainerId = pref.userId.toString(),
                     sourceId = addCourseViewModel.courseId.value.toString(),
                     code = addCourseViewModel.addCourseRequest.code!!,
                     videoType = "Course")

@@ -61,7 +61,7 @@ class MyApplication : Application() {
     }
 
     fun initMaintenanceWorker() {
-        if (StorePreferences(this).trainerId == 0) {
+        if (StorePreferences(this).userId == 0) {
             return
         }
         val workRequest = PeriodicWorkRequestBuilder<MaintenanceWorker>(15, TimeUnit.MINUTES).setInitialDelay(15, TimeUnit.MINUTES)

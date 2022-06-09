@@ -1,8 +1,10 @@
 package com.kapilguru.trainer.signup.viewModel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kapilguru.trainer.IS_OTHER_COUNTRY_CODE
 import com.kapilguru.trainer.forgotPassword.model.ValidateMobileRequest
 import com.kapilguru.trainer.forgotPassword.model.ValidateMobileResponse
 import com.kapilguru.trainer.generateUuid
@@ -121,6 +123,7 @@ class SignUpViewModel(private val repository: SignUpRepository) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 registerRequest.value?.let { accountRegisterReq ->
+                    Log.d(TAG, "register: "+accountRegisterReq.toString())
                     registerResponse.postValue(ApiResource.success(data = repository.registerAccount(accountRegisterReq)))
                 }
             } catch (exception: HttpException) {
@@ -145,6 +148,8 @@ class SignUpViewModel(private val repository: SignUpRepository) : ViewModel() {
             name = registerRequest.value?.name
             password = enterPassword.value!!
             uuid = registerRequest.value?.uuid
+            isOtherCountryCode = registerRequest.value?.isOtherCountryCode
+            countryCode = registerRequest.value?.countryCode
         }
         sendOptSmsResponse.value = ApiResource.loading(null)
         viewModelScope.launch(Dispatchers.IO) {

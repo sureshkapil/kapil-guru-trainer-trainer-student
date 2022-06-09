@@ -3,8 +3,6 @@ package com.kapilguru.trainer.ui.refund.model
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.preferences.StorePreferences
@@ -16,7 +14,7 @@ class RefundViewModel(private val refundRepository: RefundRepository, applicatio
 
     init {
         val pref = StorePreferences(application)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
     }
 
     var refundListApi =  liveData(Dispatchers.IO) {

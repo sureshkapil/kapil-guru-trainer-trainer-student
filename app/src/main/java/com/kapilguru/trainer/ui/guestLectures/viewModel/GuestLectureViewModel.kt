@@ -2,11 +2,9 @@ package com.kapilguru.trainer.ui.guestLectures.viewModel
 
 import android.app.Application
 import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.kapilguru.trainer.R
 import com.kapilguru.trainer.SENT_FOR_APPROVAL
@@ -31,7 +29,7 @@ class GuestLectureViewModel(private val guestLectureRepository: GuestLectureRepo
 
     init {
         val pref = StorePreferences(context)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
     }
 
     fun fetchGuestLectureList(){

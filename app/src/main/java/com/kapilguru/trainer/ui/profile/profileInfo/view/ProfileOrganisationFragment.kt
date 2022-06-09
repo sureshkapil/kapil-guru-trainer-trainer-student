@@ -19,8 +19,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.kapilguru.trainer.*
-import com.kapilguru.trainer.databinding.FragmentProfileIndividualBinding
-import com.kapilguru.trainer.databinding.FragmentProfileOptionsBinding
 import com.kapilguru.trainer.databinding.FragmentProfileOrganisationBinding
 import com.kapilguru.trainer.exams.createQuestion.TextFormat
 import com.kapilguru.trainer.network.ApiResource
@@ -121,7 +119,7 @@ class ProfileOrganisationFragment : Fragment(), ChoosePictureDialogInteractor {
 
     fun getProfileData() {
         val pref = StorePreferences(requireContext())
-        viewModel.getProfileData(pref.trainerId.toString())
+        viewModel.getProfileData(pref.userId.toString())
     }
 
     private fun observeViewModelData() {

@@ -3,7 +3,6 @@ package com.kapilguru.trainer.announcement.viewModel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kapilguru.trainer.announcement.AnnouncementRepository
 import com.kapilguru.trainer.announcement.inbox.data.InboxResponse
@@ -139,7 +138,7 @@ class AnnouncementViewModel(private val announcementRepository: AnnouncementRepo
                 commonResponse.postValue(
                     ApiResource.success(
                         announcementRepository.updateLastMessageId(
-                           StorePreferences(contxt).trainerId.toString(), LastMessageRequest().apply { lastAnnouncementId = messageId }
+                           StorePreferences(contxt).userId.toString(), LastMessageRequest().apply { lastAnnouncementId = messageId }
                         )
                     )
                 )

@@ -1,6 +1,5 @@
 package com.kapilguru.trainer.myClassRoomDetails.studymaterial
 
-import android.R.attr
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -16,27 +15,14 @@ import androidx.lifecycle.Observer
 import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.FragmentStudyMaterial2Binding
 import com.kapilguru.trainer.myClassRoomDetails.completionRequest.viewModel.BatchCompletionReqViewModel
-import com.kapilguru.trainer.myClassRoomDetails.studymaterial.model.BatchDocumentData
 import com.kapilguru.trainer.myClassRoomDetails.studymaterial.model.BatchDocumentsRequest
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
-import kotlinx.android.synthetic.main.countryname_spinner_item.view.*
 import java.io.*
-import java.util.*
-import kotlin.collections.ArrayList
-import android.content.Intent
-import android.provider.Browser
 
-import android.R.attr.password
 import android.app.DownloadManager
-import com.kapilguru.trainer.network.RetrofitNetwork
 import android.content.Context.DOWNLOAD_SERVICE
 import android.os.Environment
-import androidx.core.content.ContextCompat
-
-import androidx.core.content.ContextCompat.getSystemService
-
-
 
 
 private var downloadManager: DownloadManager? = null
@@ -88,7 +74,7 @@ class StudyMaterialFragment : Fragment(), PdfDocumentAdapter.DocumentClickLister
     }
 
     private fun getBatchDocumentPdfList() {
-        val trainerId = StorePreferences(requireContext()).trainerId.toString()
+        val trainerId = StorePreferences(requireContext()).userId.toString()
         viewModel.getBatchPdfList(BatchDocumentsRequest(viewModel.batchId.value?.toInt(),trainerId))
     }
 
@@ -170,7 +156,7 @@ class StudyMaterialFragment : Fragment(), PdfDocumentAdapter.DocumentClickLister
         val pref = StorePreferences(requireContext())
         viewModel.uploadBatchPDF(
             file = it,
-            trainerId = pref.trainerId.toString(),
+            trainerId = pref.userId.toString(),
             pdfName = pdfName,
             courseId = viewModel.courseId.value.toString(),
             batchId = viewModel.batchId.value.toString())
@@ -234,7 +220,7 @@ class StudyMaterialFragment : Fragment(), PdfDocumentAdapter.DocumentClickLister
 
     private fun downloadFile(url: String, fileName: String) {
         val request: DownloadManager.Request = DownloadManager.Request(Uri.parse(url))
-        val token = StorePreferences(requireContext()).trainerToken
+        val token = StorePreferences(requireContext()).token
         request.addRequestHeader("Authorization", token)
         request.setTitle(fileName).setDescription("File is downloading...").setDestinationInExternalFilesDir(
             requireContext(), Environment.DIRECTORY_DOWNLOADS, "Kapil Guru Study Material"

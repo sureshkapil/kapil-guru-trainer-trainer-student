@@ -768,7 +768,7 @@ class ProfileDetailsActivity : BaseActivity(), ChoosePictureDialogInteractor {
 
     fun getProfileData() {
         val pref = StorePreferences(this)
-        viewModel.getProfileData(pref.trainerId.toString())
+        viewModel.getProfileData(pref.userId.toString())
     }
 
     private fun checkAndSetDescription() {

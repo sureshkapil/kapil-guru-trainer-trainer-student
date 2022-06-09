@@ -67,7 +67,7 @@ class HomeActivity : AppCompatActivity() {
                         home_drawer_layout.closeDrawer(GravityCompat.END)
                     }
                     val pref = StorePreferences(this)
-                    homeScreenViewModel.logoutUser(LogoutRequest(pref.trainerId, pref.trainerToken))
+                    homeScreenViewModel.logoutUser(LogoutRequest(pref.userId, pref.token))
 
                     true
                 }

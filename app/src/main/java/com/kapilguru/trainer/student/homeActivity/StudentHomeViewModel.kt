@@ -37,7 +37,7 @@ class StudentHomeViewModel(private val homeRepository: StudentHomeRepository, va
             notificationCountResponse.value = ApiResource.loading(data = null)
             viewModelScope.launch(Dispatchers.IO) {
                 try {
-                    notificationCountResponse.postValue(ApiResource.success(data = homeRepository.getNotificationCount(StorePreferences(context).studentId.toString())))
+                    notificationCountResponse.postValue(ApiResource.success(data = homeRepository.getNotificationCount(StorePreferences(context).userId.toString())))
                 } catch (exception: RetrofitNetwork.NetworkConnectionError) {
                     notificationCountResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!", code = exception.code))
                 } catch (exception: IOException) {

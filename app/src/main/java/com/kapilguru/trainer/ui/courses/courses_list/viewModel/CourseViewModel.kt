@@ -1,7 +1,6 @@
 package com.kapilguru.trainer.ui.courses.courses_list.viewModel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.network.CommonResponseApi
@@ -24,7 +23,7 @@ class CourseViewModel(private val courseRepository: CourseRepository, applicatio
 
     init {
         val pref = StorePreferences(application)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
     }
 
     fun getCourseList() {

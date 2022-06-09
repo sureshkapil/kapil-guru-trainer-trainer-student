@@ -14,7 +14,6 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.kapilguru.student.*
 import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.ActivityCourseSyllabusBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
@@ -111,7 +110,7 @@ class CourseSyllabusActivity : BaseActivity() {
 
     private fun downloadFile(url: String, fileName: String) {
         val request: DownloadManager.Request = DownloadManager.Request(Uri.parse(url))
-        val token = StorePreferences(this).trainerToken
+        val token = StorePreferences(this).token
         request.addRequestHeader("Authorization", token)
         request.setTitle(fileName).setDescription("File is downloading...").setDestinationInExternalFilesDir(
             this, Environment.DIRECTORY_DOWNLOADS, "Kapil Guru Study Material"

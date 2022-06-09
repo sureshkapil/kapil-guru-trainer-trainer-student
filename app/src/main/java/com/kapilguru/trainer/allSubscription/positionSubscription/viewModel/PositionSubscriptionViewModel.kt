@@ -1,14 +1,9 @@
 package com.kapilguru.trainer.allSubscription.positionSubscription.viewModel
 
 import android.app.Application
-import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.*
-import com.kapilguru.trainer.ApiHelper
-import com.kapilguru.trainer.MyApplication
-import com.kapilguru.trainer.R
 import com.kapilguru.trainer.allSubscription.models.AllSubscriptionsData
 import com.kapilguru.trainer.allSubscription.mySubscriptions.model.MyPositionData
 import com.kapilguru.trainer.allSubscription.positionSubscription.PositionSubscriptionRepository
@@ -17,16 +12,14 @@ import com.kapilguru.trainer.allSubscription.positionSubscription.model.CoursePo
 import com.kapilguru.trainer.allSubscription.positionSubscription.model.TrainerCourseData
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.preferences.StorePreferences
-import com.kapilguru.trainer.ui.courses.add_batch.viewModel.AddBatchViewModel.bindingAdapterDays.setCustomBackGround
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 import retrofit2.HttpException
 import java.io.IOException
 
 class PositionSubscriptionViewModel(val repository : PositionSubscriptionRepository,application: Application) : AndroidViewModel(application) {
     private val TAG = "PosSubscripViewModel"
-    var trainerId : String = StorePreferences(application).trainerId.toString()
+    var trainerId : String = StorePreferences(application).userId.toString()
     lateinit var allSubscriptionsData : AllSubscriptionsData
     val positionSubscriptionList = ArrayList<TrainerCourseData>()
     var myPositionSubscriptionList = ArrayList<MyPositionData>()

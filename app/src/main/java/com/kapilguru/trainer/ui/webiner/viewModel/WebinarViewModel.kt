@@ -1,17 +1,12 @@
 package com.kapilguru.trainer.ui.webiner.viewModel
 
 import android.app.Application
-import android.widget.TextView
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.kapilguru.trainer.R
-import com.kapilguru.trainer.convertDateAndTimeToApiData
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.preferences.StorePreferences
-import com.kapilguru.trainer.ui.guestLectures.viewModel.GuestLectureViewModel
 import com.kapilguru.trainer.ui.webiner.WebinarRepository
 import com.kapilguru.trainer.ui.webiner.model.LiveUpComingWebinarResponse
 import com.kapilguru.trainer.ui.webiner.model.WebinarResponse
@@ -19,7 +14,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
-import java.util.*
 
 class WebinarViewModel(private val webinarRepository: WebinarRepository, application: Application):AndroidViewModel(application){
 
@@ -31,7 +25,7 @@ class WebinarViewModel(private val webinarRepository: WebinarRepository, applica
 
     init {
         val pref = StorePreferences(application)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
     }
 
     fun fetchWebinarList(){

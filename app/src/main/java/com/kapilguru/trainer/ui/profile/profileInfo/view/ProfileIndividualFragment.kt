@@ -126,7 +126,7 @@ class ProfileIndividualFragment : Fragment(), ChoosePictureDialogInteractor {
 
     fun getProfileData() {
         val pref = StorePreferences(requireContext())
-        viewModel.getProfileData(pref.trainerId.toString())
+        viewModel.getProfileData(pref.userId.toString())
     }
 
     private fun observeViewModelData() {

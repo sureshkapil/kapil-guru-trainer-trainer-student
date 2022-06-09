@@ -3,7 +3,6 @@ package com.kapilguru.trainer.ui.changePassword.viewModel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordRequest
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordResponse
@@ -11,10 +10,6 @@ import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.preferences.StorePreferences
 import com.kapilguru.trainer.ui.changePassword.ChangePasswordRepository
 import com.kapilguru.trainer.ui.changePassword.model.*
-import com.kapilguru.trainer.ui.profile.data.CheckOTPRequest
-import com.kapilguru.trainer.ui.profile.data.CheckOTPResponce
-import com.kapilguru.trainer.ui.profile.data.GetOTPRequest
-import com.kapilguru.trainer.ui.profile.data.GetOTPResponce
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -30,7 +25,7 @@ class ChangePasswordViewModel(private val repository : ChangePasswordRepository,
     val logoutResponse :MutableLiveData<ApiResource<LogoutResponse>> = MutableLiveData()
 
     init {
-        logoutRequest.value = LogoutRequest(StorePreferences(application).trainerId,StorePreferences(application).trainerToken)
+        logoutRequest.value = LogoutRequest(StorePreferences(application).userId,StorePreferences(application).token)
     }
 
     fun changePassword(){

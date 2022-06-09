@@ -1,10 +1,7 @@
 package com.kapilguru.trainer.ui.profile.bank
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -49,7 +46,7 @@ class BankDetailsActivity : BaseActivity() {
     private fun getBankDetails(){
         isBankUpdated = StorePreferences(this).isBankUpdated == 1
         if(isBankUpdated){
-            val userId :String =  StorePreferences(this).trainerId.toString()
+            val userId :String =  StorePreferences(this).userId.toString()
             viewModel.getBankDetails(userId)
         }
     }
@@ -128,7 +125,7 @@ class BankDetailsActivity : BaseActivity() {
         if(!viewModel.dataValid()){
             return
         }
-        val userId = StorePreferences(this).trainerId
+        val userId = StorePreferences(this).userId
         val accountName = viewModel.bankDetails.value?.accountName!!
         val accountNumber = viewModel.bankDetails.value?.accountNumber!!
         val bankName = viewModel.bankDetails.value?.bankName!!

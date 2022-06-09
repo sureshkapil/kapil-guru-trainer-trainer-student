@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.preferences.StorePreferences
-import com.kapilguru.trainer.ui.earnings.model.EarningsDetailsApiAllData
 import com.kapilguru.trainer.ui.earnings.model.EarningsDetailsCourse
 import com.kapilguru.trainer.ui.earnings.model.EarningsDetailsReferral
 import com.kapilguru.trainer.ui.earnings.model.EarningsDetailsWebinar
@@ -25,7 +24,7 @@ class AmountViewModel(private val earningsDetailsRepository: AmountDetailsReposi
     init
     {
         val pref = StorePreferences(application)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
         earningsDetailsData.value = arrayListOf()
         earningsDetailsReferrals.value = arrayListOf()
     }

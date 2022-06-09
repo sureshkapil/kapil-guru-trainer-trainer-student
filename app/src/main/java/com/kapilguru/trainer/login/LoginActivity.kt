@@ -142,7 +142,7 @@ class LoginActivity : AppCompatActivity() {
         ProfileUtils.saveProfileData(this, data)
         when(roleId) {
             UserRole.TRAINER.roleId() -> {
-                navigateToNextScreens(data.isSubscribed)
+                navigateToTrainerNextScreens(data.isSubscribed)
             }
             UserRole.STUDENT.roleId() -> {
                 navigateToStudentHomeScreen()
@@ -168,7 +168,7 @@ class LoginActivity : AppCompatActivity() {
         alertDialog?.show()
     }
 
-    private fun navigateToNextScreens(isSubscribed : Int){
+    private fun navigateToTrainerNextScreens(isSubscribed : Int){
         if(isSubscribed ==1){
             navigateToHomeActivity()
         }else{

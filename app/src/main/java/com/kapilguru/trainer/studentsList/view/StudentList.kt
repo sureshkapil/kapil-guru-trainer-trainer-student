@@ -2,7 +2,6 @@ package com.kapilguru.trainer.studentsList.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -42,7 +41,7 @@ class StudentList : BaseActivity(), StudentListActivityTOAdapters {
 
     private fun apiCallToFetchStudents() {
         when(intent.extras?.getString(PARAM_IS_FROM,PARAM_IS_FROM_DASHBOARD)) {
-            PARAM_IS_FROM_DASHBOARD -> viewModel.fetchStudentListApi(StorePreferences(this).trainerId.toString())
+            PARAM_IS_FROM_DASHBOARD -> viewModel.fetchStudentListApi(StorePreferences(this).userId.toString())
             PARAM_IS_FROM_COURSE -> {
                 val courseId = intent.extras?.getString(PARAM_COURSE_ID, null)
                 courseId?.let { it ->

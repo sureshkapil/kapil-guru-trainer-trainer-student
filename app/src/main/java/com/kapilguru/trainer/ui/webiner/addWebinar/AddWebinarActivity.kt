@@ -16,9 +16,7 @@ import com.kapilguru.trainer.ui.webiner.WebinarNewActivity
 import com.kapilguru.trainer.ui.webiner.addWebinar.viewModel.AddWebinarViewModel
 import com.kapilguru.trainer.ui.webiner.addWebinar.viewModel.AddWebinarViewModelFactory
 import com.kofigyan.stateprogressbar.StateProgressBar
-import kotlinx.android.synthetic.main.activity_add_course.*
 import kotlinx.android.synthetic.main.activity_add_webinar.*
-import java.util.*
 
 class AddWebinarActivity : BaseActivity() {
     private val TAG = "AddWebinarActivity"
@@ -157,7 +155,7 @@ class AddWebinarActivity : BaseActivity() {
             val videoFile = (myFragment as AddWebinarVideoFragment).getUploadVideoPath()
             videoFile?.let{
                 val pref = StorePreferences(application)
-                viewModel.uploadVideo(it,  trainerId = pref.trainerId.toString(),
+                viewModel.uploadVideo(it,  trainerId = pref.userId.toString(),
                     sourceId = viewModel.addWebinarDetailsResData.id.toString(),
                     code = viewModel.addWebinarDetailsResData.code.toString(),
                     videoType = "Webinar")

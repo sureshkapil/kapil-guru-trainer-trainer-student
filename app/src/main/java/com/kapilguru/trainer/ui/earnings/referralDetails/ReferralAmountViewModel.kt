@@ -24,7 +24,7 @@ class ReferralAmountViewModel(private val earningsAmountRepository: ReferralAmou
     init
     {
         val pref = StorePreferences(application)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
         earningsDetailsData.value = arrayListOf()
         earningsDetailsReferrals.value = arrayListOf()
     }

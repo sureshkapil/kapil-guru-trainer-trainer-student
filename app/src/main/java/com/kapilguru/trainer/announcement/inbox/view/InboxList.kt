@@ -44,7 +44,7 @@ class InboxList : Fragment(), InboxListTOAdapters {
     }
 
     fun getInboxResponce() {
-        val userId: String = StorePreferences(requireContext()).trainerId.toString()
+        val userId: String = StorePreferences(requireContext()).userId.toString()
         viewModel.getInboxResponce(userId)
     }
 

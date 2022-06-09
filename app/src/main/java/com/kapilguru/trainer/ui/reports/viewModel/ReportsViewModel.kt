@@ -12,7 +12,7 @@ import java.io.IOException
 
 class ReportsViewModel(private val repository : ReportsRepository,application : Application) : AndroidViewModel(application) {
     private val TAG = "ReportsViewModel"
-    var trainerId : Int = StorePreferences(application).trainerId
+    var trainerId : Int = StorePreferences(application).userId
 
     val courseList = liveData(Dispatchers.IO) {
         emit(ApiResource.loading(data = null))

@@ -20,7 +20,7 @@ class EarningsViewModel(private val earningsRepository: EarningsRepository,
 
     init {
         val pref = StorePreferences(application)
-        trainerId = pref.trainerId
+        trainerId = pref.userId
     }
 
     var earningsListApi =  liveData(Dispatchers.IO) {

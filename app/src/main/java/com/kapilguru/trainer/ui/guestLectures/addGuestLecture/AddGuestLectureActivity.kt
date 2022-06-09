@@ -342,7 +342,7 @@ class AddGuestLectureActivity : BaseActivity() {
         videoFile?.let {
             val pref = StorePreferences(application)
             viewModel.uploadVideo(
-                it, trainerId = pref.trainerId.toString(), sourceId = if (viewModel.getIsLaunchedForEdit()) {
+                it, trainerId = pref.userId.toString(), sourceId = if (viewModel.getIsLaunchedForEdit()) {
                     viewModel.addGuestLectureRequest.id.toString()
                 } else {
                     viewModel.addGuestLectureDetailsResData.id.toString()
