@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-<!--    <solid android:color="#C0B9A5"/>-->
-<!--    <solid android:color="#E6DBDB"/>-->
-    <solid android:color="#80CFEBEF"/>
-<!--    <solid android:color="#D8E4E6"/>-->
-<!--    <solid android:color="#EEE8D745"/>-->
+    <!--    <solid android:color="#C0B9A5"/>-->
+    <!--    <solid android:color="#E6DBDB"/>-->
+    <!--    <solid android:color="#80CFEBEF"/>-->
+    <!--    <solid android:color="#E6ECE3FF"/>-->
+    <!--    <solid android:color="#99BFABF4"/>-->
+        <solid android:color="#99BFABF4"/>
+    <!--    <solid android:color="#f2f2f2"/>-->
+<!--    <solid android:color="#C9CBDA" />-->
+    <!--    <solid android:color="#D2E8F1"/>-->
+<!--        <solid android:color="#D2E8F1"/>-->
+
+    <!--    <solid android:color="#D8E4E6"/>-->
+    <!--    <solid android:color="#EEE8D745"/>-->
+
+<!--    <gradient-->
+<!--        android:angle="45"-->
+<!--        android:startColor="#ba69ff"-->
+<!--        android:endColor="#F5960A"-->
+<!--        />-->
+
 
 </shape>
 
 
-
-
-<!--<solid android:color="#CFEBEF"/>-->
+    <!--<solid android:color="#CFEBEF"/>-->

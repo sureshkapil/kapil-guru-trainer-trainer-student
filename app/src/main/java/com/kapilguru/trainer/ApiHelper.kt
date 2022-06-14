@@ -311,4 +311,7 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun getAllPopularAndTrendingCourses() = apiKapilTutorService.getAllPopularAndTrendingCourses()
 
     suspend  fun createLeadApi(createLeadRequest: CreateLeadRequest) = apiKapilTutorService.createLeadApi(createLeadRequest)
+
+    suspend fun uploadTrainerGalleryImages(file: MultipartBody.Part, userId: RequestBody, title: RequestBody) =
+        apiKapilTutorService.uploadAadharPdfFile(file, userId, title)
 }

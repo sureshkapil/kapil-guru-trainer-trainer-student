@@ -67,7 +67,7 @@ class StudentDashBoardViewModel(val homeScreenRepository:StudentHomeScreenReposi
         })
 
         homeItems.add(StudentDashBoardItem().apply {
-            image = R.drawable.student_ic_demo_lectures
+            image = R.drawable.ic_subscriptions
             title = "My Free\nLectures"
         })
 

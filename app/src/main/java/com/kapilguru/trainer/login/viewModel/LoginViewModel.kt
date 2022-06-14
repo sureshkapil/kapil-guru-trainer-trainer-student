@@ -28,7 +28,11 @@ open class LoginViewModel(private val loginRepository: AllRepo) : ViewModel() {
     init {
 
         if (BuildConfig.DEVELOPER_BUILD) {
-            userName.value = "ritwikpradhan@kcs-tech.com" //--Trainer
+           /* userName.value = "ritwikpradhan@kcs-tech.com" //--Trainer
+            password.value = "Kapil@123"*/
+          /*  userName.value = "newapp@gmail.com" //--Trainer production
+            password.value = "Kapil@123"*/
+          userName.value = "student@g.com" //--Student staging
             password.value = "Kapil@123"
          /*   userName.value = "ritwikpradhan@kapilit.com" //--Student production
             password.value = "Kapil@123"*/

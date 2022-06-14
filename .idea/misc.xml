@@ -74,17 +74,26 @@
         <entry key="..\:/kapil-guru-git/kapil-guru-trainer-trainer-student/app/src/main/res/menu/student_nav_drawer_menu.xml" value="0.190625" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/drawable/blue_circle.xml" value="0.1025" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/drawable/blue_white_solid_bg.xml" value="0.1025" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/drawable/ic_earnings.xml" value="0.1025" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/drawable/ic_my_students.xml" value="0.1025" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/drawable/trainer_golden_yellow_bg.xml" value="0.1025" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/drawable/trainer_main_bg.xml" value="0.1025" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/drawable/white_bg.xml" value="0.1025" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/activity_bank_details.xml" value="0.13697916666666668" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/activity_course.xml" value="0.16770833333333332" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/activity_on_boarding.xml" value="0.1921875" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/activity_student_home.xml" value="0.1765625" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/activity_trainer_all_gallery_picks.xml" value="0.16770833333333332" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/activity_view_course.xml" value="0.16770833333333332" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/dash_board_student_viewpager_item.xml" value="0.15" />
-        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_home_screen.xml" value="0.1" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_add_course_image.xml" value="0.16875" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_add_image.xml" value="0.16875" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_home_screen.xml" value="0.18" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_popular_and_trending.xml" value="0.1921875" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_student_dash_board.xml" value="0.1921875" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_trainer_features.xml" value="0.1359375" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/home_item_view.xml" value="0.15364583333333334" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/home_viewpager_item.xml" value="0.15" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/popular_trending_item.xml" value="0.1921875" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/student_activity_home.xml" value="0.1" />

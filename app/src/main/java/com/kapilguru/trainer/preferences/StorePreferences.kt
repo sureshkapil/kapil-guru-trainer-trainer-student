@@ -11,11 +11,11 @@ class StorePreferences(context: Context) {
 
     private val prefs: SharedPreferences = context.getSharedPreferences(SHARED_PREFERENCE_FILE, MODE_PRIVATE);
 
-    var token: String
+    var token: String?
         get() = prefs.getString(JWT_TOKEN, "").toString()
         set(value) = prefs.edit().putString(JWT_TOKEN, value).apply()
 
-    var refreshToken: String
+    var refreshToken: String?
         get() = prefs.getString(JWT_REFRESH_TOKEN, "").toString()
         set(value) = prefs.edit().putString(JWT_REFRESH_TOKEN, value).apply()
 
@@ -27,7 +27,7 @@ class StorePreferences(context: Context) {
         get() = prefs.getInt(IS_PROFILE_UPDATED,0)
         set(value) = prefs.edit().putInt(IS_PROFILE_UPDATED,value).apply()
 
-    var contactNumber: String
+    var contactNumber: String?
         get() = prefs.getString(CONTACT_NO, "").toString()
         set(value) = prefs.edit().putString(CONTACT_NO, value).apply()
 
@@ -43,11 +43,11 @@ class StorePreferences(context: Context) {
         get() = prefs.getInt(IS_IMAGE_UPDATED,0)
         set(value) = prefs.edit().putInt(IS_IMAGE_UPDATED,value).apply()
 
-    var userName: String
+    var userName: String?
        get() = prefs.getString(USER_NAME,"").toString()
        set(value) = prefs.edit().putString(USER_NAME,value).apply()
 
-    var userCode: String
+    var userCode: String?
         get() = prefs.getString(USER_CODE,"").toString()
         set(value) = prefs.edit().putString(USER_CODE,value).apply()
 
@@ -76,7 +76,7 @@ class StorePreferences(context: Context) {
         set(value) = prefs.edit().putInt(IS_OTHER_COUNTRY_CODE,value).apply()
 
 
-    var email: String
+    var email: String?
         get() = prefs.getString(USER_EMAIL,"").toString()
         set(value) = prefs.edit().putString(USER_EMAIL,value).apply()
 
@@ -84,11 +84,11 @@ class StorePreferences(context: Context) {
         get() = prefs.getInt(USER_ROLE_ID,0)
         set(value) = prefs.edit().putInt(USER_ROLE_ID,value).apply()
 
-    var userImage: String
+    var userImage: String?
         get() = prefs.getString(USER_EMAIL,"").toString()
         set(value) = prefs.edit().putString(USER_EMAIL,value).apply()
 
-    var title: String
+    var title: String?
         get() = prefs.getString(TITLE,"").toString()
         set(value) = prefs.edit().putString(TITLE,value).apply()
 
@@ -100,7 +100,7 @@ class StorePreferences(context: Context) {
         get() = prefs.getInt(IS_ENROLLED,0)
         set(value) = prefs.edit().putInt(IS_ENROLLED,value).apply()
 
-    var currency: String
+    var currency: String?
         get() = prefs.getString(CURRENCY,"").toString()
         set(value) = prefs.edit().putString(CURRENCY,value).apply()
 

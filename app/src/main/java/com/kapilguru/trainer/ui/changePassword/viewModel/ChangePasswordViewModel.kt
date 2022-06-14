@@ -25,7 +25,7 @@ class ChangePasswordViewModel(private val repository : ChangePasswordRepository,
     val logoutResponse :MutableLiveData<ApiResource<LogoutResponse>> = MutableLiveData()
 
     init {
-        logoutRequest.value = LogoutRequest(StorePreferences(application).userId,StorePreferences(application).token)
+        logoutRequest.value = LogoutRequest(StorePreferences(application).userId,StorePreferences(application).token!!)
     }
 
     fun changePassword(){

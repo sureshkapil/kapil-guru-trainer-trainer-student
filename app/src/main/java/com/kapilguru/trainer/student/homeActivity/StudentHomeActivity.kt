@@ -223,7 +223,7 @@ class StudentHomeActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowCustomEnabled(true)
         val inflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val mCustomView: View = inflater.inflate(R.layout.student_dash_board_custom_action_bar, null)
-        mCustomView.only_title.text = "Hi ${StorePreferences(this).userName.toUpperCase()}"
+        mCustomView.only_title.text = "Hi ${StorePreferences(this).userName!!.toUpperCase()}"
         if(shouldShowText == false) {
             mCustomView.only_title.visibility = View.VISIBLE
             mCustomView.search_course.visibility = View.GONE

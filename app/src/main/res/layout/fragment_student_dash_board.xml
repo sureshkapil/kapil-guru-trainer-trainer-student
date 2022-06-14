@@ -486,7 +486,6 @@
                     android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/horizontal_recycler"
                     app:layout_constraintVertical_bias="0"
                     app:spanCount="3"
                     tools:listitem="@layout/why_kapil_guru_item_view" />

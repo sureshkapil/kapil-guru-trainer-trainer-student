@@ -27,22 +27,26 @@ class HomeScreenViewModel(private val homeRepository: HomeScreenRepository, val 
         val homeViewPagerItem = mutableListOf<HomeViewPagerItem>()
         homeViewPagerItem.add(HomeViewPagerItem().apply {
             image = R.drawable.ic_live
+            upperText = "ADD"
             title = "Live Courses"
             backgroundcolor = R.color.home_top_bg1
         })
         homeViewPagerItem.add(HomeViewPagerItem().apply {
             image = R.drawable.ic_recorded_classes
+            upperText = "ADD"
             title = "Recorded Courses"
             backgroundcolor = R.color.home_top_bg2
         })
         homeViewPagerItem.add(HomeViewPagerItem().apply {
             image = R.drawable.ic_study_metrial
+            upperText = "ADD"
             title = "Study Materials"
             backgroundcolor = R.color.home_top_bg3
         })
 
         homeViewPagerItem.add(HomeViewPagerItem().apply {
             image = R.drawable.ic_free_lecture
+            upperText = "Schedule"
             title = "Free Classes"
             backgroundcolor = R.color.home_top_bg3
         })
@@ -53,21 +57,21 @@ class HomeScreenViewModel(private val homeRepository: HomeScreenRepository, val 
         val homeItems = mutableListOf<HomeItem>()
 
         homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_my_course
+            image = R.drawable.student_ic_course
             title = "Live Courses"
         })
 
         homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_my_students
+            image = R.drawable.student_ic_demo_lectures
             title = "Recorded Courses"
         })
 
         homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_announcements
+            image = R.drawable.ic_my_course
             title = "Study materials"
         })
         homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_webinars
+            image = R.drawable.ic_subscriptions
             title = "Free Lectures"
         })
 
@@ -84,11 +88,11 @@ class HomeScreenViewModel(private val homeRepository: HomeScreenRepository, val 
             title = "Enquiries"
         })
         homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_refund_list
+            image = R.drawable.ic_my_students
             title = "My Students"
         })
         homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_subscriptions
+            image = R.drawable.student_ic_messages
             title = "Messsages"
         })
 

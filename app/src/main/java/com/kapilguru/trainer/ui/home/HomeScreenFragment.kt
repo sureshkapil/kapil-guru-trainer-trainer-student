@@ -23,10 +23,9 @@ import com.kapilguru.trainer.databinding.FragmentHomeScreenBinding
 import com.kapilguru.trainer.exams.ExamsActivity
 import com.kapilguru.trainer.myClassRoomDetails.MyClassDetails
 import com.kapilguru.trainer.network.RetrofitNetwork
-import com.kapilguru.trainer.network.Status
-import com.kapilguru.trainer.student.homeActivity.studentStudyMaterialFragment.StudentStudyMaterialFragment
 import com.kapilguru.trainer.studentsList.view.StudentList
 import com.kapilguru.trainer.trainerFeatures.TrainerFeaturesFragment
+import com.kapilguru.trainer.trainerGallery.TrainerAllGalleryPicksActivity
 import com.kapilguru.trainer.ui.courses.courses_list.CourseActivity
 import com.kapilguru.trainer.ui.earnings.EarningsActivity
 import com.kapilguru.trainer.ui.guestLectures.GuestLecturesNewActivity
@@ -76,6 +75,14 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
         // set features fragment
         setFeaturesFragment()
 
+        setAndClickListenersExploreGallery()
+
+    }
+
+    private fun setAndClickListenersExploreGallery() {
+        homeViewBinding.exploreGallery.setOnClickListener {
+            startActivity(Intent(this.context,TrainerAllGalleryPicksActivity::class.java))
+        }
     }
 
     private fun setTodaySchedule() {
@@ -159,7 +166,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
         })
 
 
-        homeScreenViewModel.upcomingResponse.observe(HomeScreenFragment@ this, Observer { response ->
+       /* homeScreenViewModel.upcomingResponse.observe(HomeScreenFragment@ this, Observer { response ->
             when (response.status) {
                 Status.LOADING -> {
                     progressDialog.showLoadingDialog()
@@ -179,7 +186,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
                     progressDialog.dismissLoadingDialog()
                 }
             }
-        })
+        })*/
 
     }
 

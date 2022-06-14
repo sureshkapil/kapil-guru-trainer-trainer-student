@@ -815,5 +815,16 @@
     <string name="fee_management">Fee Management</string>
     <string name="add_coupons">Add Coupons</string>
     <string name="add_faculty">Add Faculty</string>
+    <string name="upload_images_relevant_to_your_trainings">Upload images relevant to your trainings</string>
+    <string name="Images_will_display_to_students">Images will display to students</string>
+    <string name="explore_now">Explore Now</string>
+    <string name="add_your_testimonials">Add Your testimonials</string>
+    <string name="testimonials">Testimonials</string>
+    <string name="add_image">Add Image</string>
+    <string name="attendance_management">Attendance\nManagement</string>
+    <string name="show_or_hide_the_testimonials_provided_by_students">Show or hide the testimonials from students</string>
+    <string name="create_your_own_testimonials_that_display_to_students">Create testimonials to display students</string>
+    <string name="today_followups">Today Followups</string>
+    <string name="enquiry_reminders">Enquiries</string>
 
 </resources>

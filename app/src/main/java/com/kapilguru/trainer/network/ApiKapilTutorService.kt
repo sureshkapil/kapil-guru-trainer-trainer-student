@@ -516,4 +516,7 @@ interface ApiKapilTutorService {
     @POST("leads/createLead")
     suspend  fun createLeadApi(@Body createLeadRequest: CreateLeadRequest): CommonResponse
 
+    @POST("image/uploadGalleryImage")
+    suspend  fun uploadTrainerGalleryImages(@Part files: MultipartBody.Part, @Part("source_id") trainerUserId: RequestBody, @Part("code") Trainercode: RequestBody, @Part("tenant_id") tenantId: RequestBody): CommonResponseApi
+
 }
