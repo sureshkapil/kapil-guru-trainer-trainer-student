@@ -123,7 +123,6 @@ class SignUpViewModel(private val repository: SignUpRepository) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 registerRequest.value?.let { accountRegisterReq ->
-                    Log.d(TAG, "register: "+accountRegisterReq.toString())
                     registerResponse.postValue(ApiResource.success(data = repository.registerAccount(accountRegisterReq)))
                 }
             } catch (exception: HttpException) {

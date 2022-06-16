@@ -23,11 +23,11 @@
 <!--        android:label="@string/upcoming_schedule"-->
 <!--        tools:layout="@layout/fragment_up_coming_scheduele"/>-->
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_profile"-->
-<!--        android:name="com.kapilguru.student.ui.profile.ProfileOptionsFragment"-->
-<!--        android:label="@string/title_profile"-->
-<!--        tools:layout="@layout/fragment_profile_options" />-->
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.kapilguru.student.ui.profile.ProfileOptionsFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile_options" />
 
 <!--    <fragment-->
 <!--        android:id="@+id/navigation_howtouse"-->
