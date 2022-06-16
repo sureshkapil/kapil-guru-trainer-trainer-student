@@ -826,5 +826,6 @@
     <string name="create_your_own_testimonials_that_display_to_students">Create testimonials to display students</string>
     <string name="today_followups">Today Followups</string>
     <string name="enquiry_reminders">Enquiries</string>
+    <string name="add_testimonial">Add Testimonial</string>
 
 </resources>

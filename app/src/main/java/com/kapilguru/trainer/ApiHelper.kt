@@ -31,6 +31,7 @@ import com.kapilguru.trainer.student.homeActivity.models.CreateLeadRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
+import com.kapilguru.trainer.trainerGallery.UploadImageGallery
 import com.kapilguru.trainer.ui.changePassword.model.LogoutRequest
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchRequest
 import com.kapilguru.trainer.ui.courses.addcourse.models.AddCourseRequest
@@ -312,6 +313,9 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend  fun createLeadApi(createLeadRequest: CreateLeadRequest) = apiKapilTutorService.createLeadApi(createLeadRequest)
 
-    suspend fun uploadTrainerGalleryImages(file: MultipartBody.Part, userId: RequestBody, title: RequestBody) =
-        apiKapilTutorService.uploadAadharPdfFile(file, userId, title)
+    suspend fun uploadTrainerGalleryImages(uploadImageCourse: UploadImageGallery) =
+        apiKapilTutorService.uploadTrainerGalleryImages(uploadImageCourse)
+
+    suspend fun getTrainerGalleryImages(packageId: String) =
+        apiKapilTutorService.getTrainerGalleryImages(packageId)
 }

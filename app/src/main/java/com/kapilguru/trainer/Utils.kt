@@ -71,6 +71,7 @@ const val WEBINAR_EDIT_KEY_PARAM = "webinarEditKey"
 const val COURSE_NAME_PARAM = "courseName"
 const val IS_VERIFIED = 1
 const val IS_SUBSCRIBED = "isSubscribed"
+const val TENANT_ID = "tenantId"
 const val IS_MARKETING = "isMarketing"
 const val IS_KYC_UPDATED = "isKYCUpdated"
 const val IS_ORGANIZATION = "isOrganization"

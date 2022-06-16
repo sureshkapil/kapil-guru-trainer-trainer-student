@@ -55,6 +55,10 @@ class StorePreferences(context: Context) {
         get() = prefs.getInt(IS_SUBSCRIBED,0)
         set(value) = prefs.edit().putInt(IS_SUBSCRIBED,value).apply()
 
+    var tenantId: Int
+        get() = prefs.getInt(TENANT_ID,0)
+        set(value) = prefs.edit().putInt(TENANT_ID,value).apply()
+
     var isMarketing: Int
         get() = prefs.getInt(IS_MARKETING,0)
         set(value) = prefs.edit().putInt(IS_MARKETING,value).apply()

@@ -24,12 +24,13 @@ class ProfileUtils {
             pref.isOrganization = loginResponseData.isOrganization
             pref.lastAnnouncementId = loginResponseData.lastAnnouncementId
             pref.isOtherCountryCode = loginResponseData.isOtherCountryCode
-            pref.userImage = loginResponseData?.userImage
+            pref.userImage = loginResponseData.userImage
             pref.title  = loginResponseData.title
             pref.email = loginResponseData.email
             pref.countryCode = loginResponseData.countryCode
             pref.isEnrolled = loginResponseData.isEnrolled
             pref.currency = loginResponseData.currency
+            pref.tenantId = loginResponseData.tenantId
         }
 
         fun isSubscribed(context: Context): Boolean {

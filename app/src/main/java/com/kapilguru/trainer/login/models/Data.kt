@@ -26,4 +26,5 @@ open class Data(
     val currency: String?,
     val isOrganization: Int,
     val isKycUpdated: Int,
+    val tenantId: Int,
 )

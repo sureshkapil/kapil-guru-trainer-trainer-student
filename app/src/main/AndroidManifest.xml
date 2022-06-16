@@ -24,9 +24,17 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".trainerGallery.TrainerAllGalleryPicksActivity"
+            android:name=".testimonials.AddTrainerTestimonial"
             android:exported="false"
             android:theme="@style/customParentNoActionBarStyle"/>
+        <activity
+            android:name=".testimonials.TestimonialsActivity"
+            android:exported="false"
+            android:theme="@style/customParentNoActionBarStyle"/>
+        <activity
+            android:name=".trainerGallery.TrainerAllGalleryPicksActivity"
+            android:exported="false"
+            android:theme="@style/customParentNoActionBarStyle" />
         <activity android:name=".ui.profile.profileInfo.view.ProfileDetailsActivityNew" />
         <activity
             android:name=".ui.courses.view_course.ViewCourse"

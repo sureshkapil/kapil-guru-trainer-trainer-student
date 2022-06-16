@@ -24,6 +24,7 @@ import com.kapilguru.trainer.exams.ExamsActivity
 import com.kapilguru.trainer.myClassRoomDetails.MyClassDetails
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.studentsList.view.StudentList
+import com.kapilguru.trainer.testimonials.TestimonialsActivity
 import com.kapilguru.trainer.trainerFeatures.TrainerFeaturesFragment
 import com.kapilguru.trainer.trainerGallery.TrainerAllGalleryPicksActivity
 import com.kapilguru.trainer.ui.courses.courses_list.CourseActivity
@@ -77,11 +78,19 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
 
         setAndClickListenersExploreGallery()
 
+        setAndClickListenersExploreTestimonials()
+
     }
 
     private fun setAndClickListenersExploreGallery() {
         homeViewBinding.exploreGallery.setOnClickListener {
             startActivity(Intent(this.context,TrainerAllGalleryPicksActivity::class.java))
+        }
+    }
+
+    private fun setAndClickListenersExploreTestimonials() {
+        homeViewBinding.exploreTestimonials.setOnClickListener {
+            startActivity(Intent(this.context,TestimonialsActivity::class.java))
         }
     }
 
