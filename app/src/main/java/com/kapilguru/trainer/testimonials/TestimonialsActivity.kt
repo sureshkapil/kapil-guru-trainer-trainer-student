@@ -22,7 +22,7 @@ class TestimonialsActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, TrainerTestimonialViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE))).get(TrainerTestimonialViewModel::class.java)
+        viewModel = ViewModelProvider(this, TrainerTestimonialViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), application)).get(TrainerTestimonialViewModel::class.java)
 
         setclickListeners()
     }

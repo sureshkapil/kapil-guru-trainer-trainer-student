@@ -62,6 +62,9 @@ import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.AllStudentsListPerTrainerApi
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
+import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
+import com.kapilguru.trainer.testimonials.PostTestimonialsModel
+import com.kapilguru.trainer.testimonials.PostTestimonialsResponse
 import com.kapilguru.trainer.trainerGallery.TrainerGalleryImagesResponse
 import com.kapilguru.trainer.trainerGallery.UploadImageGallery
 import com.kapilguru.trainer.ui.changePassword.model.LogoutRequest
@@ -524,4 +527,6 @@ interface ApiKapilTutorService {
     @GET("image/getImagesList/{packageId}")
     suspend  fun getTrainerGalleryImages(@Path("packageId") packageId: String): TrainerGalleryImagesResponse
 
+    @POST("trainer/app_testimonials")
+    suspend fun addtestimonials(@Body addTrainerTestimonial: PostTestimonialsModel): PostTestimonialsResponse
 }

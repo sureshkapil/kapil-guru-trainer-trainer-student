@@ -7,10 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.kapilguru.trainer.ApiHelper
 import com.kapilguru.trainer.R
 import com.kapilguru.trainer.databinding.ActivityAddTrainerTestimonialBinding
-import com.kapilguru.trainer.databinding.ActivityTrainerAllGalleryPicksBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
-import com.kapilguru.trainer.trainerGallery.TrainerAllGalleryPicksViewModelFactory
-import com.kapilguru.trainer.trainerGallery.TrainerAllGalleyPicksViewModel
 
 class AddTrainerTestimonial : AppCompatActivity() {
 
@@ -22,14 +19,14 @@ class AddTrainerTestimonial : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_trainer_testimonial)
         binding.lifecycleOwner = this
-        viewModel = ViewModelProvider(this, TrainerTestimonialViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE)))
+        viewModel = ViewModelProvider(this, TrainerTestimonialViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE),application))
             .get(TrainerTestimonialViewModel::class.java)
         setclickListeners()
     }
 
     private fun setclickListeners() {
         binding.sumbit.setOnClickListener {
-         // make view model checks and api call
+            viewModel.addTestimonials()
         }
     }
 }
