@@ -80,6 +80,7 @@ import com.kapilguru.trainer.ui.courses.batchesList.models.BatchListApi
 import com.kapilguru.trainer.ui.courses.batchesList.models.BatchListApiRequest
 import com.kapilguru.trainer.ui.courses.courses_list.models.CourseApi
 import com.kapilguru.trainer.ui.courses.onGoingBatches.models.OnGoingBatchApi
+import com.kapilguru.trainer.ui.courses.tax.TaxCalculationResponse
 import com.kapilguru.trainer.ui.courses.view_course.ContactTrainerRequest
 import com.kapilguru.trainer.ui.courses.view_course.CourseDetailsResponse
 import com.kapilguru.trainer.ui.courses.view_course.CourseSyllabusResponse
@@ -533,4 +534,7 @@ interface ApiKapilTutorService {
 
     @GET("trainer/app_testimonials/tenant_id/{tenantId}")
     suspend fun getTestimonials(@Path("tenantId") tenantId: Int): FetchTestimonialsResponse
+
+    @GET("trainer/tax_charges")
+    suspend fun getTaxes(): TaxCalculationResponse
 }

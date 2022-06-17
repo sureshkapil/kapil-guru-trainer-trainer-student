@@ -324,4 +324,12 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun addtestimonials(addTrainerTestimonial: PostTestimonialsModel) = apiKapilTutorService.addtestimonials(addTrainerTestimonial)
 
     suspend fun getTestimonials(tenantId: Int) = apiKapilTutorService.getTestimonials(tenantId)
+
+
+
+    suspend fun getTaxes() = apiKapilTutorService.getTaxes()
+
+
+
+
 }

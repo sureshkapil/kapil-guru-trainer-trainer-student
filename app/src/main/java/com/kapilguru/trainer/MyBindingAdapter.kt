@@ -17,6 +17,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.android.material.textfield.TextInputEditText
 import com.kapilguru.trainer.studentExamBatchResult.QuestionPaperResponse
 import kotlinx.android.synthetic.main.custom_merger_view.view.*
 import kotlinx.android.synthetic.main.earnings_merger_view.view.*
@@ -54,6 +55,17 @@ object Companion {
             this.text = text.toString()
         } ?: run {
             this.text = "0"
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("textInputDoubleToCount")
+    fun TextInputEditText.textInputDoubleToCount(id: Double?) {
+        id?.let { it ->
+            val txt = (it*100.0.roundToInt())/100.0
+            this.setText( txt.toString())
+        } ?: run {
+            this.setText("0")
         }
     }
 

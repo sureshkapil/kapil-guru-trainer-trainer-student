@@ -828,5 +828,7 @@
     <string name="enquiry_reminders">Enquiries</string>
     <string name="add_testimonial">Add Testimonial</string>
     <string name="course_price">Price</string>
+    <string name="internet_handling_charges">Internet Handling Charges</string>
+    <string name="is_tax_applicable">Is tax Applicable</string>
 
 </resources>
