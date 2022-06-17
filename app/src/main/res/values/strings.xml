@@ -827,5 +827,6 @@
     <string name="today_followups">Today Followups</string>
     <string name="enquiry_reminders">Enquiries</string>
     <string name="add_testimonial">Add Testimonial</string>
+    <string name="course_price">Price</string>
 
 </resources>

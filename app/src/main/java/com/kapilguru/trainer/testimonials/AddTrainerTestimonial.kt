@@ -21,6 +21,8 @@ class AddTrainerTestimonial : AppCompatActivity() {
         binding.lifecycleOwner = this
         viewModel = ViewModelProvider(this, TrainerTestimonialViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE),application))
             .get(TrainerTestimonialViewModel::class.java)
+        binding.model = viewModel
+        binding.lifecycleOwner = this
         setclickListeners()
     }
 

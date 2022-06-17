@@ -1,13 +1,11 @@
 package com.kapilguru.trainer.testimonials
 
 import android.app.Application
-import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.preferences.StorePreferences
-import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourseResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -18,6 +16,7 @@ class TrainerTestimonialViewModel(var trainerTestimonialRepository: TrainerTesti
    
    var postTestimonial: MutableLiveData<PostTestimonialsModel> = MutableLiveData(PostTestimonialsModel())
    var postTestimonialsResponse: MutableLiveData<ApiResource<PostTestimonialsResponse>> = MutableLiveData()
+   var fetchTestimonialsResponse: MutableLiveData<ApiResource<FetchTestimonialsResponse>> = MutableLiveData()
 
    init {
       postTestimonial.value?.tenantId = StorePreferences(application).tenantId
@@ -40,7 +39,20 @@ class TrainerTestimonialViewModel(var trainerTestimonialRepository: TrainerTesti
       }
    }
 
-
+   fun getTestimonials(tenantId: Int) {
+      fetchTestimonialsResponse.value = ApiResource.loading(null)
+      viewModelScope.launch(Dispatchers.IO) {
+         try {
+            fetchTestimonialsResponse.postValue(ApiResource.success(trainerTestimonialRepository.getAllTestimonials(tenantId)))
+         } catch (e: HttpException) {
+            fetchTestimonialsResponse.postValue(ApiResource.error(data = null, message = e.code().toString() ?: "Error Occurred!"))
+         } catch (e: IOException) {
+            fetchTestimonialsResponse.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
+         } catch (e: Exception) {
+            fetchTestimonialsResponse.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
+         }
+      }
+   }
 
 
 }

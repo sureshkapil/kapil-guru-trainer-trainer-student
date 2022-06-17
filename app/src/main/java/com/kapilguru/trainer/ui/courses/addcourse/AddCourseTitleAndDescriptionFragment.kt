@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -22,6 +21,7 @@ import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.ui.courses.adapter.CategoryBaseAdapter
 import com.kapilguru.trainer.ui.courses.addcourse.viewModel.AddCourseViewModel
 import com.kapilguru.trainer.ui.courses.courses_list.models.CourseResponse
+import com.kapilguru.trainer.ui.courses.tax.TaxCalculationFragment
 import kotlinx.android.synthetic.main.countryname_spinner_item.view.*
 import kotlinx.android.synthetic.main.fragment_add_course_titile_and_description.*
 
@@ -67,7 +67,14 @@ class AddCourseTitleAndDescriptionFragment : Fragment() {
         }
         fetchCategoryApi()
         courseResponse = arguments?.getParcelableArrayList("abc")
+        setUpPricesFragment()
         return viewBinding.root
+    }
+
+    private fun setUpPricesFragment() {
+        val fm = childFragmentManager.beginTransaction()
+        fm.add(R.id.prices_frame,TaxCalculationFragment.newInstance())
+        fm.commit()
     }
 
     @SuppressLint("ClickableViewAccessibility")

@@ -91,10 +91,12 @@
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/activity_view_course.xml" value="0.16770833333333332" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/dash_board_student_viewpager_item.xml" value="0.15" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_add_course_image.xml" value="0.16875" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_add_course_titile_and_description.xml" value="0.1" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_add_image.xml" value="0.16875" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_home_screen.xml" value="0.18" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_popular_and_trending.xml" value="0.1921875" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_student_dash_board.xml" value="0.1921875" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_tax_calculation.xml" value="0.1296875" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/fragment_trainer_features.xml" value="0.1359375" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/home_item_view.xml" value="0.15364583333333334" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/home_viewpager_item.xml" value="0.15" />
@@ -107,6 +109,7 @@
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/student_recorded_courses_item.xml" value="0.1515625" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/student_trending_webinars_item_view.xml" value="0.1" />
         <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/trainer_all_gallery_picks_recy_item.xml" value="0.1" />
+        <entry key="..\:/kapil-guru-v2/kapil-guru-trainer-trainer-student/app/src/main/res/layout/trainer_testimonial_recycler_item_item.xml" value="0.15572916666666667" />
       </map>
     </option>
   </component>

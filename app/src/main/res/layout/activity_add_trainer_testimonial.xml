@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.kapilguru.trainer.testimonials.PostTestimonialsModel" />
+            type="com.kapilguru.trainer.testimonials.TrainerTestimonialViewModel" />
     </data>
 
     <LinearLayout
@@ -42,9 +42,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="top"
-                    android:text="@={model.comments}"
                     android:hint="Your review"
-                    android:lines="5" />
+                    android:lines="5"
+                    android:text="@={model.postTestimonial.comments}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

@@ -272,5 +272,4 @@ class AddCourseViewModel(private val addCourseRepository: AddCourseRepository, a
 
     }
 
-
 }

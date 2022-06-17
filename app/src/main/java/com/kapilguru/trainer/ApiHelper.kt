@@ -322,4 +322,6 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
         apiKapilTutorService.getTrainerGalleryImages(packageId)
 
     suspend fun addtestimonials(addTrainerTestimonial: PostTestimonialsModel) = apiKapilTutorService.addtestimonials(addTrainerTestimonial)
+
+    suspend fun getTestimonials(tenantId: Int) = apiKapilTutorService.getTestimonials(tenantId)
 }

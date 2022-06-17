@@ -63,6 +63,7 @@ import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.AllStudentsListPerTrainerApi
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
 import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
+import com.kapilguru.trainer.testimonials.FetchTestimonialsResponse
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.testimonials.PostTestimonialsResponse
 import com.kapilguru.trainer.trainerGallery.TrainerGalleryImagesResponse
@@ -529,4 +530,7 @@ interface ApiKapilTutorService {
 
     @POST("trainer/app_testimonials")
     suspend fun addtestimonials(@Body addTrainerTestimonial: PostTestimonialsModel): PostTestimonialsResponse
+
+    @GET("trainer/app_testimonials/tenant_id/{tenantId}")
+    suspend fun getTestimonials(@Path("tenantId") tenantId: Int): FetchTestimonialsResponse
 }
