@@ -47,6 +47,7 @@ android {
             buildConfigField "String", "BASE_URL", '"https://beta.kapilguru.com/kg-v1/"'
             buildConfigField "String", "SHARE_URL", '"https://beta.kapilguru.com/"'
             buildConfigField "Boolean", "DEVELOPER_BUILD", 'true'
+            buildConfigField "String", "PACKAGE_ID", '"UIEVTF"'
         }
         release {
             minifyEnabled false

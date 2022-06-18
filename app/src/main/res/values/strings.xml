@@ -621,7 +621,9 @@
 
     <string-array name="title_type_individual">
         <item>Title*</item>
-        <item>M/S</item>
+        <item>Mr</item>
+        <item>Ms</item>
+        <item>Mrs</item>
     </string-array>
 
     <string-array name="title_type_organization">
@@ -701,6 +703,7 @@
     <string name="view_more">View More</string>
     <string name="zero">0</string>
     <string name="rupee_symbol">\u20B9 %.2f</string>
+    <string name="rupee_symbol_without_float">\u20B9 %s</string>
     <string name="isVisible">true</string>
     <string name="enrollment_date">Enrollment Date</string>
     <string name="total_fee">Total Fee</string>
@@ -807,5 +810,24 @@
     <string name="testimonial">Testimonial</string>
     <string name="write_a_review">Write A Review</string>
     <string name="mark_attendance">Mark Attendance</string>
+    <string name="videos">Videos</string>
+    <string name="duration_day">%d day</string>
+    <string name="by">by %s</string>
+    <string name="add_images_to_your_gallery">Add Images to your Gallery</string>
+    <string name="fee_management">Fee Management</string>
+    <string name="add_coupons">Add Coupons</string>
+    <string name="add_faculty">Add Faculty</string>
+    <string name="upload_images_relevant_to_your_trainings">Upload images relevant to your trainings</string>
+    <string name="Images_will_display_to_students">Images will display to students</string>
+    <string name="explore_now">Explore Now</string>
+    <string name="add_your_testimonials">Add Your testimonials</string>
+    <string name="testimonials">Testimonials</string>
+    <string name="add_image">Add Image</string>
+    <string name="attendance_management">Attendance\nManagement</string>
+    <string name="show_or_hide_the_testimonials_provided_by_students">Show or hide the testimonials from students</string>
+    <string name="create_your_own_testimonials_that_display_to_students">Create testimonials to display students</string>
+    <string name="today_followups">Today Followups</string>
+    <string name="enquiry_reminders">Enquiries</string>
+    <string name="add_testimonial">Add Testimonial</string>
 
 </resources>

@@ -32,6 +32,7 @@ import com.kapilguru.trainer.student.homeActivity.models.StudentDashBoardItem
 import com.kapilguru.trainer.student.homeActivity.popularAndTrending.PopularAndTrendingFragment
 import com.kapilguru.trainer.student.homeActivity.recordedFragment.StudentRecordedCoursesFragment
 import com.kapilguru.trainer.student.homeActivity.studentStudyMaterialFragment.StudentStudyMaterialFragment
+import com.kapilguru.trainer.student.homeActivity.trendingWebinars.StudentTrendingWebinars
 import kotlinx.android.synthetic.main.fragment_student_dash_board.*
 import kotlinx.android.synthetic.main.fragment_student_dash_board.view.*
 import kotlinx.coroutines.GlobalScope
@@ -276,12 +277,12 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         for (i in 0 until dashBoardTabModel.size) {
             val tab = viewBinding.tabLayout.newTab().setCustomView(setCustomTabView(dashBoardTabModel[i]))
             viewBinding.tabLayout.addTab(tab)
-            if (i == 0) {
-//                viewBinding.tabLayout.selectTab(tab)
-            }
+          /*  if (i == 0) {
+                viewBinding.tabLayout.selectTab(tab)
+            }*/
         }
         // Default Tab
-//        changeSelectedFragment(StudentTrendingWebinars.newInstance())
+        changeSelectedFragment(StudentTrendingWebinars.newInstance())
     }
 
     private fun showToast(message: String) {
@@ -325,7 +326,7 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
                 tabBackGroundColors(tab)
                 currentTabIndex = tab!!.position
                 when (currentTabIndex) {
-//                    0 -> changeSelectedFragment(StudentTrendingDemos.newInstance())
+                    0 -> changeSelectedFragment(StudentTrendingWebinars.newInstance())
 
 //                    0 -> changeSelectedFragment(TrendingWebinars.newInstance())
 //                    1 -> changeSelectedFragment(TrendingDemos.newInstance())

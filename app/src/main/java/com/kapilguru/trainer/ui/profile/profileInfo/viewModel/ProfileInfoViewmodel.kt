@@ -5,6 +5,9 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kapilguru.trainer.isStringEmpty
+import com.kapilguru.trainer.isValidAadharNo
+import com.kapilguru.trainer.isValidGST
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.network.CommonResponseApi
 import com.kapilguru.trainer.preferences.StorePreferences
@@ -141,7 +144,7 @@ class ProfileInfoViewmodel(private val profileInfoRepository: ProfileInfoReposit
         }
     }
 
-    fun dataValid(): Boolean {
+    fun dataValid(shouldCheckGST: Boolean): Boolean {
         val profileData = profileMutLiveData.value
         if (TextUtils.isEmpty(profileData?.title)) {
             errorDescription.postValue("Please select Title")
@@ -171,33 +174,41 @@ class ProfileInfoViewmodel(private val profileInfoRepository: ProfileInfoReposit
             errorDescription.postValue("Please enter Total Experience")
             return false
         }
-        if (TextUtils.isEmpty(profileData?.addressLine1)) {
+        if (profileData.addressLine1.isStringEmpty()) {
             errorDescription.postValue("Please enter Address")
             return false
         }
-        if (TextUtils.isEmpty(profileData?.addressLine2)) {
+        if (profileData.addressLine2.isStringEmpty()) {
             errorDescription.postValue("Please enter Area")
             return false
         }
-        if (TextUtils.isEmpty(profileData?.countryId)) {
+        if (TextUtils.isEmpty(profileData.countryId)) {
             errorDescription.postValue("Please select Country")
             return false
         }
 
-        if (TextUtils.isEmpty(profileData?.stateId)) {
+        if (TextUtils.isEmpty(profileData.stateId)) {
             errorDescription.postValue("Please select State")
             return false
         }
 
-        if (TextUtils.isEmpty(profileData?.cityId)) {
+        if (TextUtils.isEmpty(profileData.cityId)) {
             errorDescription.postValue("Please select State")
             return false
         }
-        if (TextUtils.isEmpty(profileData?.postalCode)) {
+        if (profileData.postalCode.isStringEmpty()) {
             errorDescription.postValue("Please enter Postal Code")
             return false
         }
-        if (TextUtils.isEmpty(profileData?.description)) {
+        if(!profileData.aadhar.isValidAadharNo()){
+            errorDescription.postValue("Please enter valid Aadhar Number")
+            return false
+        }
+        if(shouldCheckGST && !profileData.GSTNumber.isValidGST()){
+            errorDescription.postValue("Please enter valid GST")
+            return false
+        }
+        if (profileData.description.isStringEmpty()) {
             errorDescription.postValue("Please Describe about yourself")
             return false
         }

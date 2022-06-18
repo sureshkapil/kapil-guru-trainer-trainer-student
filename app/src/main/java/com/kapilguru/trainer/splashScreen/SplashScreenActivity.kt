@@ -70,7 +70,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun navigateToInitialScreen() {
         val pref = StorePreferences(this)
-        if (pref.token.isEmpty()) {
+        if (pref.token!!.isNullOrEmpty()) {
             startActivity(Intent(this, OnBoardingActivity::class.java))
             finish()
         } else {

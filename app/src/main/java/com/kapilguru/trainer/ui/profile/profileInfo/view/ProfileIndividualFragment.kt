@@ -72,15 +72,15 @@ class ProfileIndividualFragment : Fragment(), ChoosePictureDialogInteractor {
         }
     }
 
-    lateinit var aadharUri: Uri
-    var aadharFile: File? = null
-    var aadharFileName: String? = null
-    private lateinit var pickAadharPdfResultLauncher : ActivityResultLauncher<String>
+    private lateinit var aadharUri: Uri
+    private var aadharFile: File? = null
+    private var aadharFileName: String? = null
+    private lateinit var pickAadharPdfResultLauncher: ActivityResultLauncher<String>
 
     lateinit var panUri: Uri
     var panFile: File? = null
     var panFileName: String? = null
-    private lateinit var pickPanPdfResultLauncher : ActivityResultLauncher<String>
+    private lateinit var pickPanPdfResultLauncher: ActivityResultLauncher<String>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_individual, container, false)
@@ -389,18 +389,18 @@ class ProfileIndividualFragment : Fragment(), ChoosePictureDialogInteractor {
     private fun setTitle() {
         val titleType = resources.getStringArray(R.array.title_type_individual)
         for (title in titleType) {
-            titleType[titleType.indexOf(title)] = title.toString().toLowerCase()
+            titleType[titleType.indexOf(title)] = title.toString().lowercase(Locale.getDefault())
         }
-        val index = titleType.indexOf(profileData?.title?.toLowerCase())
+        val index = titleType.indexOf(profileData?.title?.lowercase(Locale.getDefault()))
         binding.spinnerTitle.setSelection(index)
     }
 
     private fun setGender() {
         val genderType = resources.getStringArray(R.array.gender_type)
         for (gender in genderType) {
-            genderType[genderType.indexOf(gender)] = gender.toString().toLowerCase()
+            genderType[genderType.indexOf(gender)] = gender.toString().lowercase(Locale.getDefault())
         }
-        val index = genderType.indexOf(profileData?.gender?.toLowerCase())
+        val index = genderType.indexOf(profileData?.gender?.lowercase(Locale.getDefault()))
         binding.layoutProfileIndividualSpecific.spinnerGender.setSelection(index)
     }
 
@@ -594,12 +594,13 @@ class ProfileIndividualFragment : Fragment(), ChoosePictureDialogInteractor {
             addExperience()
             encryptDescription()
             setCreatedAndModifiedDateNull()
+            val shouldCheckGST = binding.layoutProfileGst.gstRegisterYes.isChecked
             when (viewModel.profileMutLiveData.value!!.isOrganization) {
                 0 -> {
-                    if (viewModel.dataValid()) viewModel.updateProfileData()
+                    if (viewModel.dataValid(shouldCheckGST)) viewModel.updateProfileData()
                 }
                 1 -> {
-                    if (viewModel.dataValid() && viewModel.dataOrganizationValid()) viewModel.updateProfileData()
+                    if (viewModel.dataValid(shouldCheckGST) && viewModel.dataOrganizationValid()) viewModel.updateProfileData()
                 }
             }
         }

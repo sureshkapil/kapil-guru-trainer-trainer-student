@@ -5,8 +5,8 @@ import androidx.annotation.Keep
 @Keep
 open class Data(
     val auth: Boolean,
-    val token: String,
-    val refreshToken: String,
+    val token: String?,
+    val refreshToken: String?,
     val user_id: Int,
     val user_code: String,
     val username: String,
@@ -14,7 +14,7 @@ open class Data(
     val title: String? = "",
     val email: String,
     val countryCode : Int,
-    val contactNumber: String,
+    val contactNumber: String?,
     val userRoleId: Int,
     val isSubscribed: Int,
     val isProfileUpdated: Int,
@@ -26,4 +26,5 @@ open class Data(
     val currency: String? = null,
     val isOrganization: Int,
     val isKycUpdated: Int,
+    val tenantId: Int,
 )

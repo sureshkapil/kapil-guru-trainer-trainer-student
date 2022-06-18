@@ -26,18 +26,28 @@ class HomeScreenViewModel(private val homeRepository: HomeScreenRepository, val 
     fun setHomeTopItems() {
         val homeViewPagerItem = mutableListOf<HomeViewPagerItem>()
         homeViewPagerItem.add(HomeViewPagerItem().apply {
-            image = R.drawable.upcoming_batch_icon
-            title = "Upcoming Batches"
+            image = R.drawable.ic_live
+            upperText = "ADD"
+            title = "Live Courses"
             backgroundcolor = R.color.home_top_bg1
         })
         homeViewPagerItem.add(HomeViewPagerItem().apply {
-            image = R.drawable.schedule_webinar
-            title = "Webinars"
+            image = R.drawable.ic_recorded_classes
+            upperText = "ADD"
+            title = "Recorded Courses"
             backgroundcolor = R.color.home_top_bg2
         })
         homeViewPagerItem.add(HomeViewPagerItem().apply {
-            image = R.drawable.schedule_guest_lecture
-            title = "Free Guest Lectures"
+            image = R.drawable.ic_study_metrial
+            upperText = "ADD"
+            title = "Study Materials"
+            backgroundcolor = R.color.home_top_bg3
+        })
+
+        homeViewPagerItem.add(HomeViewPagerItem().apply {
+            image = R.drawable.ic_free_lecture
+            upperText = "Schedule"
+            title = "Free Classes"
             backgroundcolor = R.color.home_top_bg3
         })
         listOfHomeTopItems.postValue(homeViewPagerItem)
@@ -47,27 +57,27 @@ class HomeScreenViewModel(private val homeRepository: HomeScreenRepository, val 
         val homeItems = mutableListOf<HomeItem>()
 
         homeItems.add(HomeItem().apply {
+            image = R.drawable.student_ic_course
+            title = "Live Courses"
+        })
+
+        homeItems.add(HomeItem().apply {
+            image = R.drawable.student_ic_demo_lectures
+            title = "Recorded Courses"
+        })
+
+        homeItems.add(HomeItem().apply {
             image = R.drawable.ic_my_course
-            title = "My Courses"
-        })
-
-        homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_my_students
-            title = "My Students"
-        })
-
-        homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_announcements
-            title = "Messages"
+            title = "Study materials"
         })
         homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_webinars
-            title = "Webniars"
+            image = R.drawable.ic_subscriptions
+            title = "Free Lectures"
         })
 
         homeItems.add(HomeItem().apply {
             image = R.drawable.ic_demo_lectures
-            title = "Demo Lectures"
+            title = "Todays Schedules"
         })
         homeItems.add(HomeItem().apply {
             image = R.drawable.ic_exams
@@ -75,15 +85,15 @@ class HomeScreenViewModel(private val homeRepository: HomeScreenRepository, val 
         })
         homeItems.add(HomeItem().apply {
             image = R.drawable.ic_earnings
-            title = "Earnings"
+            title = "Enquiries"
         })
         homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_refund_list
-            title = "Refund List"
+            image = R.drawable.ic_my_students
+            title = "My Students"
         })
         homeItems.add(HomeItem().apply {
-            image = R.drawable.ic_subscriptions
-            title = "Subscriptions"
+            image = R.drawable.student_ic_messages
+            title = "Messsages"
         })
 
         listOfHomeItems.postValue(homeItems)

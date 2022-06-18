@@ -173,7 +173,7 @@ class ProfileOrganisationFragment : Fragment(), ChoosePictureDialogInteractor {
     }
 
     private fun observeCityList() {
-        viewModel.cityList.observe(viewLifecycleOwner, {
+        viewModel.cityList.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.LOADING -> {
                     dialog.showLoadingDialog()
@@ -188,7 +188,7 @@ class ProfileOrganisationFragment : Fragment(), ChoosePictureDialogInteractor {
                     dialog.dismissLoadingDialog()
                 }
             }
-        })
+        }
     }
 
     private fun observeProfileData() {
@@ -557,10 +557,10 @@ class ProfileOrganisationFragment : Fragment(), ChoosePictureDialogInteractor {
             setCreatedAndModifiedDateNull()
             when (viewModel.profileMutLiveData.value!!.isOrganization) {
                 0 -> {
-                    if (viewModel.dataValid()) viewModel.updateProfileData()
+                    if (viewModel.dataValid(false)) viewModel.updateProfileData()
                 }
                 1 -> {
-                    if (viewModel.dataValid() && viewModel.dataOrganizationValid()) viewModel.updateProfileData()
+                    if (viewModel.dataValid(false) && viewModel.dataOrganizationValid()) viewModel.updateProfileData()
                 }
             }
         }

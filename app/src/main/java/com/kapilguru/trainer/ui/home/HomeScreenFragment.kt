@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -21,15 +23,16 @@ import com.kapilguru.trainer.databinding.FragmentHomeScreenBinding
 import com.kapilguru.trainer.exams.ExamsActivity
 import com.kapilguru.trainer.myClassRoomDetails.MyClassDetails
 import com.kapilguru.trainer.network.RetrofitNetwork
-import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.studentsList.view.StudentList
+import com.kapilguru.trainer.testimonials.TestimonialsActivity
+import com.kapilguru.trainer.trainerFeatures.TrainerFeaturesFragment
+import com.kapilguru.trainer.trainerGallery.TrainerAllGalleryPicksActivity
 import com.kapilguru.trainer.ui.courses.courses_list.CourseActivity
 import com.kapilguru.trainer.ui.earnings.EarningsActivity
 import com.kapilguru.trainer.ui.guestLectures.GuestLecturesNewActivity
 import com.kapilguru.trainer.ui.refund.RefundActivity
 import com.kapilguru.trainer.ui.webiner.WebinarNewActivity
 import com.kapilguru.trainer.ui.webiner.webinarDetailsActivity.WebinarDetailsActivity
-import kotlinx.android.synthetic.main.activity_on_boarding.*
 import kotlinx.android.synthetic.main.fragment_home_screen.*
 import kotlinx.android.synthetic.main.fragment_home_screen.view.*
 
@@ -70,7 +73,25 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
         viewPagerObserver()
         // call register for Page adapter
         registerOnPageChangeCallBack()
+        // set features fragment
+        setFeaturesFragment()
 
+        setAndClickListenersExploreGallery()
+
+        setAndClickListenersExploreTestimonials()
+
+    }
+
+    private fun setAndClickListenersExploreGallery() {
+        homeViewBinding.exploreGallery.setOnClickListener {
+            startActivity(Intent(this.context,TrainerAllGalleryPicksActivity::class.java))
+        }
+    }
+
+    private fun setAndClickListenersExploreTestimonials() {
+        homeViewBinding.exploreTestimonials.setOnClickListener {
+            startActivity(Intent(this.context,TestimonialsActivity::class.java))
+        }
     }
 
     private fun setTodaySchedule() {
@@ -139,6 +160,14 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
         })
     }
 
+    private fun setFeaturesFragment() {
+        val fm: FragmentManager = childFragmentManager
+        val ft: FragmentTransaction = fm.beginTransaction()
+        ft.replace(R.id.feature_frame_layout, TrainerFeaturesFragment.newInstance())
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        ft.commit()
+    }
+
     private fun viewModelObserver() {
         homeScreenViewModel.setHomeItems()
         homeScreenViewModel.listOfHomeItems.observe(HomeScreenFragment@ this, Observer {
@@ -146,7 +175,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
         })
 
 
-        homeScreenViewModel.upcomingResponse.observe(HomeScreenFragment@ this, Observer { response ->
+       /* homeScreenViewModel.upcomingResponse.observe(HomeScreenFragment@ this, Observer { response ->
             when (response.status) {
                 Status.LOADING -> {
                     progressDialog.showLoadingDialog()
@@ -166,7 +195,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
                     progressDialog.dismissLoadingDialog()
                 }
             }
-        })
+        })*/
 
     }
 

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".trainerFeatures.TrainerFeaturesFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/categories_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dimen_16dp"
+        android:layout_marginTop="@dimen/four"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recordedCourses"
+        app:layout_constraintBottom_toTopOf="@id/tabLayout"
+        app:layout_constraintHorizontal_bias="0.0">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/black"
+            style="@style/black_heading_text_style_poppins_bold"
+            android:text="@string/features"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/live_courses"
+            android:layout_width="@dimen/dimen_140_dp"
+            android:layout_height="@dimen/dimen_100_dp"
+            android:background="@drawable/pink__rounded_rectangle_bg"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingTop="@dimen/dimen_4dp"
+            app:layout_constraintEnd_toStartOf="@id/recorded_courses"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/categories">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/live_courses_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:text="@string/attendance_management"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:visibility="gone"
+                android:paddingBottom="@dimen/dimen_4dp"
+                android:src="@drawable/right_arow" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                android:src="@drawable/ic_live" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/recorded_courses"
+            android:layout_width="@dimen/dimen_140_dp"
+            android:layout_height="@dimen/dimen_100_dp"
+            android:background="@drawable/light_blue_rectangle_bg"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingTop="@dimen/dimen_4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@id/live_courses"
+            app:layout_constraintTop_toBottomOf="@id/categories">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/recorded_courses_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:text="@string/fee_management"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:visibility="gone"
+                android:paddingBottom="@dimen/dimen_4dp"
+                android:src="@drawable/right_arow" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                android:src="@drawable/ic_recorded_classes" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/study_material"
+            android:layout_width="@dimen/dimen_140_dp"
+            android:layout_height="@dimen/dimen_100_dp"
+            android:background="@drawable/light_green_rectangle_bg"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingTop="@dimen/dimen_4dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toStartOf="@id/free_lectures"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/live_courses">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/study_material_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_coupons"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:visibility="gone"
+                android:paddingBottom="@dimen/dimen_4dp"
+                android:src="@drawable/right_arow" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                android:src="@drawable/ic_study_metrial" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/free_lectures"
+            android:layout_width="@dimen/dimen_140_dp"
+            android:layout_height="@dimen/dimen_100_dp"
+            android:background="@drawable/brown_rectangle_bg"
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingTop="@dimen/dimen_4dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/study_material"
+            app:layout_constraintTop_toBottomOf="@+id/recorded_courses">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/free_lectures_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_faculty"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:visibility="gone"
+                android:paddingBottom="@dimen/dimen_4dp"
+                android:src="@drawable/right_arow" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:src="@drawable/ic_free_lecture" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/empty_space"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/free_lectures" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

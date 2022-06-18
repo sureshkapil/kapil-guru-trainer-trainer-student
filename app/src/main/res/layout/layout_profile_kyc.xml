@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@null"
                 android:hint="@string/aadhar_mand"
-                android:inputType="text"
+                android:inputType="number"
                 android:maxLength="12"
                 android:text="@={viewModel.profileMutLiveData.aadhar}"
                 android:textSize="15sp" />
@@ -70,7 +70,8 @@
             android:textColor="@color/black"
             android:backgroundTint="@color/gold"
             app:layout_constraintStart_toStartOf="@id/til_aadhar"
-            app:layout_constraintTop_toBottomOf="@+id/til_aadhar" />
+            app:layout_constraintTop_toBottomOf="@+id/til_aadhar"
+            android:visibility="gone"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/actv_file_name"
@@ -81,7 +82,8 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_upload_aadhar"
             app:layout_constraintStart_toEndOf="@+id/btn_upload_aadhar"
-            app:layout_constraintTop_toTopOf="@+id/btn_upload_aadhar" />
+            app:layout_constraintTop_toTopOf="@+id/btn_upload_aadhar"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -119,7 +121,8 @@
         android:textColor="@color/black"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="@id/til_pan"
-        app:layout_constraintTop_toBottomOf="@+id/til_pan" />
+        app:layout_constraintTop_toBottomOf="@+id/til_pan"
+        android:visibility="gone"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/actv_file_name_pan"
@@ -130,6 +133,7 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_upload_pan"
         app:layout_constraintStart_toEndOf="@+id/btn_upload_pan"
-        app:layout_constraintTop_toTopOf="@+id/btn_upload_pan" />
+        app:layout_constraintTop_toTopOf="@+id/btn_upload_pan"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout></layout>

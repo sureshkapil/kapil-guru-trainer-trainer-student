@@ -1,6 +1,7 @@
 package com.kapilguru.trainer.ui.profile.profileInfo.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +22,7 @@ class ProfileDetailsActivityNew : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate: ")
         initLateInnitVariables()
         setCustomActionBarListener()
         showProfileFragment()

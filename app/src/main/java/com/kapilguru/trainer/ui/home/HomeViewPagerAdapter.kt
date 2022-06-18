@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kapilguru.trainer.databinding.HomeViewpagerItemBinding
-import kotlinx.android.synthetic.main.home_viewpager_item.view.*
 
 class HomeViewPagerAdapter(val listener : CardClickListener) : RecyclerView.Adapter<HomeViewPagerAdapter.HomeViewPagerViewHolder>() {
 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<data>
+    <variable
+        name="model"
+        type="com.kapilguru.trainer.trainerGallery.TrainerGalleryImagesResponseApi" />
+</data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/gallery_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:loadGlideImage="@{model.url}"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/delete_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/ic_baseline_delete_24" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

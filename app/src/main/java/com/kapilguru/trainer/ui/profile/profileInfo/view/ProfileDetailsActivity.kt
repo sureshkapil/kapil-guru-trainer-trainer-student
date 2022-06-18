@@ -755,10 +755,10 @@ class ProfileDetailsActivity : BaseActivity(), ChoosePictureDialogInteractor {
             encryptDescription()
             when (viewModel.profileMutLiveData.value!!.isOrganization) {
                 0 -> {
-                    if (viewModel.dataValid()) viewModel.updateProfileData()
+                    if (viewModel.dataValid(false)) viewModel.updateProfileData()
                 }
                 1 -> {
-                    if (viewModel.dataValid() && viewModel.dataOrganizationValid()) viewModel.updateProfileData()
+                    if (viewModel.dataValid(false) && viewModel.dataOrganizationValid()) viewModel.updateProfileData()
                 }
             }
         } else {

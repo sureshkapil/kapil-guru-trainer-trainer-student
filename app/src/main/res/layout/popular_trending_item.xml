@@ -16,75 +16,65 @@
         android:layout_width="180dp"
         android:layout_height="280dp">
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical">-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-<!--            <ImageView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="140dp"-->
-<!--                app:loadGlideImage="@{model.code}"-->
-<!--                android:scaleType="fitXY"-->
-<!--                android:src="@drawable/default_image" />-->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/default_image"
+                app:loadGlideImage="@{model.code}" />
 
-<!--            <androidx.appcompat.widget.AppCompatTextView-->
-<!--                style="@style/orange_heading_text_style"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:paddingHorizontal="@dimen/five_dp"-->
-<!--                android:maxLines="2"-->
-<!--                android:minLines="2"-->
-<!--                android:ellipsize="end"-->
-<!--                android:text="@{model.courseTitle}"-->
-<!--                tools:text="YOGA" />-->
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/orange_heading_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:minLines="2"
+                android:paddingHorizontal="@dimen/five_dp"
+                android:text="@{model.courseTitle}"
+                tools:text="YOGA" />
 
-<!--            <androidx.appcompat.widget.AppCompatTextView-->
-<!--                style="@style/regular_text_style"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/five_dp"-->
-<!--                android:maxLines="1"-->
-<!--                android:ellipsize="end"-->
-<!--                android:visibility="gone"-->
-<!--                android:text="@{@string/by(model.trainerName)}"-->
-<!--                tools:text="YOGA" />-->
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:paddingHorizontal="@dimen/five_dp"-->
-<!--                android:weightSum="1">-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="@dimen/five_dp"
+                            android:weightSum="1">
 
-<!--                <com.kapilguru.trainer.KeyValueText-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="0.55"-->
-<!--                    app:keyValueCourseDuaration="@{model.durationDays}"-->
-<!--                    app:key_title="@string/duration" />-->
+                            <com.kapilguru.trainer.KeyValueText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.55"
+                                app:keyValueCourseDuaration="@{model.durationDays}"
+                                app:key_title="@string/duration" />
 
-<!--                <com.kapilguru.trainer.KeyValueText-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="0.45"-->
-<!--                    android:paddingHorizontal="@dimen/five_dp"-->
-<!--                    app:amountInRupees="@{model.actualFee}"-->
-<!--                    app:key_title="@string/cost" />-->
+                            <com.kapilguru.trainer.KeyValueText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.45"
+                                android:paddingHorizontal="@dimen/five_dp"
+                                app:amountInRupees="@{model.actualFee}"
+                                app:key_title="@string/cost" />
 
-<!--            </LinearLayout>-->
+                        </LinearLayout>
 
-<!--            <Button-->
-<!--                android:id="@+id/btn_know_more"-->
-<!--                style="@style/ButtonLogin"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginTop="12dp"-->
-<!--                android:text="@string/view_more"-->
-<!--                android:textColor="@color/white" />-->
+                        <Button
+                            android:id="@+id/btn_know_more"
+                            style="@style/ButtonLogin"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="12dp"
+                            android:text="@string/view_more"
+                            android:textColor="@color/white" />
 
-<!--        </LinearLayout>-->
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

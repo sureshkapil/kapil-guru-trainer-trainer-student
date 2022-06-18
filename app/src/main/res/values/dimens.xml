@@ -42,4 +42,8 @@
     <dimen name="dimen_100_dp">100dp</dimen>
     <dimen name="dimen_260_dp">260dp</dimen>
     <dimen name="dimen_110_dp">110dp</dimen>
+    <dimen name="dimen_30dp">30dp</dimen>
+    <dimen name="dimen_25dp">25dp</dimen>
+    <dimen name="dimen_5dp">5dp</dimen>
+    <dimen name="dimen_2dp">2dp</dimen>
 </resources>

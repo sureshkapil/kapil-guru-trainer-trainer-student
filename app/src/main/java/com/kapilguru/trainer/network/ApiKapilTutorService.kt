@@ -62,6 +62,8 @@ import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.AllStudentsListPerTrainerApi
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
+import com.kapilguru.trainer.trainerGallery.TrainerGalleryImagesResponse
+import com.kapilguru.trainer.trainerGallery.UploadImageGallery
 import com.kapilguru.trainer.ui.changePassword.model.LogoutRequest
 import com.kapilguru.trainer.ui.changePassword.model.LogoutResponse
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchApiResponse
@@ -515,5 +517,11 @@ interface ApiKapilTutorService {
 
     @POST("leads/createLead")
     suspend  fun createLeadApi(@Body createLeadRequest: CreateLeadRequest): CommonResponse
+
+    @POST("image/uploadGalleryImage")
+    suspend  fun uploadTrainerGalleryImages(@Body uploadImageCourse: UploadImageGallery): UploadImageCourseResponse
+
+    @GET("image/getImagesList/{packageId}")
+    suspend  fun getTrainerGalleryImages(@Path("packageId") packageId: String): TrainerGalleryImagesResponse
 
 }

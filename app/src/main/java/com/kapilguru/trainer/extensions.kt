@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.text.TextUtils
 import android.util.Base64
-import android.util.Log
 import com.kapilguru.trainer.ui.courses.addcourse.models.LectureSyllabus
 import com.kapilguru.trainer.ui.courses.addcourse.models.LectureSyllabusContent
 import okhttp3.internal.UTC
@@ -232,10 +231,39 @@ fun String.isValidMobileNo(): Boolean {
     return pattern.matcher(this).find()
 }
 
-fun String.isStringEmpty(): Boolean {
-    return TextUtils.isEmpty(this.trim())
+fun String?.isValidAadharNo(): Boolean {
+    this?.let {
+        return if (isStringEmpty()) {
+            false
+        } else {
+            this.length == 12
+        }
+    } ?: kotlin.run {
+        return false
+    }
 }
 
+fun String?.isValidGST(): Boolean {
+    this?.let {
+        return if (isStringEmpty()) {
+            false
+        } else {
+            val reg = "^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}\$"
+            val pattern: Pattern = Pattern.compile(reg)
+            return pattern.matcher(this).find()
+        }
+    } ?: kotlin.run {
+        return false
+    }
+}
+
+fun String?.isStringEmpty(): Boolean {
+    this?.let {
+        return TextUtils.isEmpty(this.trim())
+    } ?: kotlin.run {
+        return true
+    }
+}
 
 fun String.toDecodeUTCToDate(): String? {
     val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)

@@ -115,6 +115,7 @@
                     style="@style/MyAppDenseOutlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:suffixText="@string/years"
                     app:helperTextTextColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
