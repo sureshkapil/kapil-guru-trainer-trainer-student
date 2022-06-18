@@ -5,7 +5,7 @@
     <data>
         <variable
             name="model"
-            type="com.kapilguru.trainer.ui.courses.tax.PriceModel" />
+            type="com.kapilguru.trainer.ui.courses.tax.TaxCalculationFragmentViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +36,7 @@
             android:hint="@string/price"
             android:inputType="number"
             android:maxLength="6"
-            app:textInputDoubleToCount="@{model.offerPrice}"
+            app:textInputDoubleToCount="@={model.priceModel.offerPrice}"
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,7 +56,7 @@
             android:hint="@string/offer_price"
             android:inputType="number"
             android:maxLength="6"
-            app:textInputDoubleToCount="@{model.offerPrice}"
+            app:textInputDoubleToCount="@={model.priceModel.offerPrice}"
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,13 +89,16 @@
         app:layout_constraintTop_toBottomOf="@id/taxToggle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/aCTVCourseFinalpriceValue"
+            android:id="@+id/aCTVCourseFinalPriceValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/offer_price"
             android:inputType="number"
             android:maxLength="6"
-            app:addTaxq="@{model.offerPrice}"
+            app:offerPrice="@{model.priceModel.offerPrice}"
+            app:originalAmount="@{model.priceModel.price}"
+            app:isInternetAdded="@{model.priceModel.internetChargesAdded}"
+            app:taxPercentage="@{model.taxCalculationResponseApi.addPercent}"
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 

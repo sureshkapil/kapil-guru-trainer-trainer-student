@@ -44,6 +44,7 @@ class TaxCalculationFragment : Fragment() {
         viewModel = ViewModelProvider(this, TaxCalculationFragmentViewModelFactory(
                 ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE),))
             .get(TaxCalculationFragmentViewModel::class.java)
+        viewBinding.model = viewModel
         viewBinding.lifecycleOwner = this.requireActivity()
         dialog = CustomProgressDialog(requireContext())
         return viewBinding.root
@@ -65,7 +66,10 @@ class TaxCalculationFragment : Fragment() {
 
                 Status.SUCCESS -> {
                     dialog.dismissLoadingDialog()
-                    it.data?.let {
+                    it.data?.let {response->
+                        if(response.data.isNullOrEmpty()){
+                            viewModel.taxCalculationResponseApi.value= response.data?.find { id ==1 }
+                        }
 
                     }
                 }

@@ -13,7 +13,9 @@ class TaxCalculationFragmentViewModel(private val addCourseRepository: AddCourse
 
     var taxCalculationResponse: MutableLiveData<ApiResource<TaxCalculationResponse>> = MutableLiveData()
 
-    var priceModel: MutableLiveData<PriceModel> = MutableLiveData()
+    var taxCalculationResponseApi: MutableLiveData<TaxCalculationResponseApi> = MutableLiveData()
+
+    var priceModel: MutableLiveData<PriceModel> = MutableLiveData(PriceModel())
 
     fun getTax() {
         taxCalculationResponse.value = ApiResource.loading(data = null)

@@ -658,4 +658,27 @@ object Companion {
         }
     }
 
+
+    @JvmStatic
+    @BindingAdapter(value = ["afterDiscountAmount","taxPercentage","isInternetApplicable"], requireAll = true)
+    fun TextInputEditText.addTaxOnDiscountAmount(afterDiscountAmount: Double?,internetPercentage: Double?,isInternetApplicable: Boolean) {
+        if(isInternetApplicable) {
+            afterDiscountAmount?.let {amount ->
+                if(amount>0 && internetPercentage!!>0) {
+                    val finalAmount = amount + (amount/internetPercentage)
+                    this.setText(finalAmount.toString())
+                }
+            }
+        } else {
+            afterDiscountAmount?.let {amount ->
+                this.setText(afterDiscountAmount.toString())
+            }
+        }
+        /*afterDiscountAmount?.let { it ->
+            val text = afterDiscountAmount +(it*100.0.roundToInt())/100.0
+            this.text = text.toString()
+        } ?: run {
+            this.setText("0.0")
+        }*/
+    }
 }
