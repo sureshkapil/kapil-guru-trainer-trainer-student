@@ -244,7 +244,7 @@ class AddCourseActivity : BaseActivity() {
     }
 
     private fun validations(addCourseRequest: AddCourseRequest) {
-        when {
+        /*when {
             addCourseRequest.courseTitle.isNullOrBlank() -> {
                 showErrorMessage("please fill the Course Title")
             }
@@ -282,7 +282,8 @@ class AddCourseActivity : BaseActivity() {
                     navigateToNextFragment()
                 }
             }
-        }
+        }*/
+            navigateToNextFragment()
     }
 
     private fun actualPriceIsInLimits(addCourseRequest: AddCourseRequest) = addCourseRequest.actualFee!!.toInt() > addCourseRequest.fee!!.toInt()

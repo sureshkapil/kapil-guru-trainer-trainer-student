@@ -30,4 +30,6 @@ class AddCourseRepository(private val apiHelper: ApiHelper) {
 
     suspend fun getCourseLanguage() = apiHelper.getCourseLanguages()
 
+    suspend fun getTaxes() = apiHelper.getTaxes()
+
 }

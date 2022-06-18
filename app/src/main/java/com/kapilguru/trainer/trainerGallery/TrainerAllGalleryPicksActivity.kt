@@ -60,7 +60,7 @@ class TrainerAllGalleryPicksActivity : AppCompatActivity(), ChoosePictureDialogI
                     dialog.showLoadingDialog()
                 }
                 Status.SUCCESS -> {
-                    dialog.showLoadingDialog()
+                    dialog.dismissLoadingDialog()
                    allImagesResponse.data?.trainerGalleryImagesResponseApi?.let {
                        if(it.isNotEmpty()) {
                            setDataToAdapter(it)
