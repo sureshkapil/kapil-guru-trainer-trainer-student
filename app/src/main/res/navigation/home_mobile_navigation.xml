@@ -22,7 +22,8 @@
         android:id="@+id/navigation_myclassroom"
         android:name="com.kapilguru.trainer.myClassroom.MyClassroomFragment"
         android:label="@string/title_myclassroom"
-        tools:layout="@layout/fragment_home" />
+         />
+<!--    tools:layout="@layout/fragment_home"-->
 
     <fragment
         android:id="@+id/navigation_referandearn"

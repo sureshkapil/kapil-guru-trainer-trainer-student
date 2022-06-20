@@ -832,5 +832,6 @@
     <string name="course_price">Price</string>
     <string name="internet_handling_charges">Internet Handling Charges</string>
     <string name="is_tax_applicable">Is tax Applicable</string>
+    <string name="network_connection_error">Network Connection Error</string>
 
 </resources>

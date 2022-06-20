@@ -147,6 +147,7 @@ const val TWITTER_URL = "https://twitter.com/kapil_guru"
 const val INSTAGRAM_URL = "https://www.instagram.com/accounts/login/?next=/kapilguru.liveonlinetraining/"
 const val LINKED_IN_URL = "https://in.linkedin.com/company/kapil-guru"
 const val YOUTUBE_URL = "https://www.youtube.com/channel/UCk2-2a8XTUMrya5YQrE4SAw"
+const val DIALOG_FRAGMENT_TAG_PROFILE: String = "dialog_fragment_tag_profile"
 
 fun showAppToast(context: Context, text: String) {
     Toast.makeText(context, text, Toast.LENGTH_LONG).show()
@@ -445,4 +446,8 @@ fun contactEmailIntent(context: Context, receiverMaildId: String) {
 fun openUrl(activity: Activity, url: String) {
     val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
     activity.startActivity(browserIntent)
+}
+
+fun networkConnectionErrorDialog(context: Context) {
+    showSingleButtonErrorDialog(context, context.getString(R.string.network_connection_error))
 }

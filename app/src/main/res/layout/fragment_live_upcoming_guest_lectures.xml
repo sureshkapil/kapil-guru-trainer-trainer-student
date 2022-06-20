@@ -11,8 +11,8 @@
             android:id="@+id/rv_guest_lecture"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_live_upoming_guest_lecture" />
+            android:layout_height="wrap_content" />
+<!--        tools:listitem="@layout/item_live_upoming_guest_lecture"-->
 
     </FrameLayout>
 </layout>

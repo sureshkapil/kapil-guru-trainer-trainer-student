@@ -164,7 +164,8 @@
                 android:text="@string/or"
                 android:textSize="16sp"
                 android:textColor="@color/purple_2"
-                android:fontFamily="@font/montserrat_medium" />
+                android:fontFamily="@font/montserrat_medium"
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/button_otp_login"

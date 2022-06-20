@@ -28,6 +28,7 @@ import com.kapilguru.trainer.signup.model.sendOtpSms.SendOtpSmsRequest
 import com.kapilguru.trainer.signup.model.validateMail.ValidateMailRequest
 import com.kapilguru.trainer.signup.model.validateOtp.ValidateOtpRequest
 import com.kapilguru.trainer.student.homeActivity.models.CreateLeadRequest
+import com.kapilguru.trainer.student.profile.data.StudentProfileData
 import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
@@ -96,9 +97,15 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun getCountryList() = apiKapilTutorService.countriesList()
 
+    suspend fun getStudentCountryList() = apiKapilTutorService.studentCountriesList()
+
     suspend fun getStateList(countryId: Int) = apiKapilTutorService.stateList(countryId)
 
+    suspend fun getStudentStateList(countryId: Int) = apiKapilTutorService.studentStateList(countryId)
+
     suspend fun getCityList(stateId: Int) = apiKapilTutorService.cityList(stateId)
+
+    suspend fun getStudentCityList(stateId: Int) = apiKapilTutorService.studentCityList(stateId)
 
     suspend fun getProfileData(userId: String) = apiKapilTutorService.getProfileData(userId)
 
@@ -329,7 +336,9 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun getTaxes() = apiKapilTutorService.getTaxes()
 
+    suspend fun getStudentProfileData(userId: String) = apiKapilTutorService.getStudentProfileData(userId)
 
+    suspend fun updateStudentProfileData(userId: String, studentProfileData: StudentProfileData) = apiKapilTutorService.updateStudentProfile(userId, studentProfileData)
 
 
 }

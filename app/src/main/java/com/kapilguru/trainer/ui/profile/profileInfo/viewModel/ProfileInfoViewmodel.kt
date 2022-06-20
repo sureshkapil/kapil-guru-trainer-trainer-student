@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kapilguru.trainer.isPinCodeValid
 import com.kapilguru.trainer.isStringEmpty
 import com.kapilguru.trainer.isValidAadharNo
 import com.kapilguru.trainer.isValidGST
@@ -196,8 +197,8 @@ class ProfileInfoViewmodel(private val profileInfoRepository: ProfileInfoReposit
             errorDescription.postValue("Please select State")
             return false
         }
-        if (profileData.postalCode.isStringEmpty()) {
-            errorDescription.postValue("Please enter Postal Code")
+        if (!profileData.postalCode.isPinCodeValid()) {
+            errorDescription.postValue("Please enter valid Postal Code")
             return false
         }
         if(!profileData.aadhar.isValidAadharNo()){

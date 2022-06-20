@@ -305,6 +305,9 @@
             android:name=".student.homeActivity.StudentHomeActivity"
             android:exported="false"
             android:theme="@style/Theme.KapilStudent" />
+        <activity
+            android:name=".student.profileInfo.StudentProfileDetailsActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
     </application>
 
 </manifest>

@@ -408,6 +408,22 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("loadGlideNewImage")
+    fun ImageView.loadGlideNewImage(imageUrl: String?) {
+        imageUrl?.let { it ->
+            when {
+                TextUtils.equals(it, "null") -> this.setImageResource(R.drawable.default_image)
+                imageUrl.contains(".") -> Glide.with(context).load(IMAGE_BASE_URL.plus(it)).placeholder(
+                    ResourcesCompat.getDrawable(resources, R.drawable.default_image, null)).diskCacheStrategy(
+                    DiskCacheStrategy.NONE).skipMemoryCache(true).into(this)
+                else -> Glide.with(context).load(IMAGE_BASE_URL.plus(it).plus(".png")).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(this)
+            }
+        } ?: run {
+            this.setImageResource(R.drawable.default_image)
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("fetchImage")
     fun ImageView.fetchImage(imageUrl: String?) {
         imageUrl?.let { it ->
