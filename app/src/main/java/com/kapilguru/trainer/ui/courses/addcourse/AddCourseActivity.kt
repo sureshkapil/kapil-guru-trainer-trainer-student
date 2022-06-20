@@ -179,6 +179,24 @@ class AddCourseActivity : BaseActivity() {
             courseDescription.toBase64()
         addCourseViewModel.addCourseRequest.trainerID =
             StorePreferences(AddCourseActivity@ this).userId.toString()
+
+        addCourseViewModel.addCourseRequest.trainerName =
+            StorePreferences(AddCourseActivity@ this).userName.toString()
+
+        (myFragment as AddCourseTitleAndDescriptionFragment).getTaxInfo()?.let {
+            it.fee?.let { fee ->
+                addCourseViewModel.addCourseRequest.fee = fee.toDouble()
+            }
+            it.discountAmount?.let { discountAmount ->
+                addCourseViewModel.addCourseRequest.discountAmount =discountAmount.toDouble()
+            }
+            it.actualFee?.let {actualFee ->
+                addCourseViewModel.addCourseRequest.actualFee =actualFee.toDouble()
+            }
+            addCourseViewModel.addCourseRequest.internetCharges = it.internetCharges
+            addCourseViewModel.addCourseRequest.istax = if(it.isTaxChargesAdded!!) 1 else 0
+        }
+
     }
 
     private fun uploadPdfToApi(it: File, pdfName: String) {
@@ -244,7 +262,7 @@ class AddCourseActivity : BaseActivity() {
     }
 
     private fun validations(addCourseRequest: AddCourseRequest) {
-        /*when {
+        when {
             addCourseRequest.courseTitle.isNullOrBlank() -> {
                 showErrorMessage("please fill the Course Title")
             }
@@ -254,18 +272,18 @@ class AddCourseActivity : BaseActivity() {
             addCourseRequest.categoryID.isNullOrBlank() -> {
                 showErrorMessage("please fill category")
             }
-            addCourseRequest.fee.isNullOrBlank() -> {
+            addCourseRequest.fee.toString() == "null"-> {
                 showErrorMessage("please fill the Price")
             }
-            isPriceInRange(addCourseRequest.fee!!.toString()) -> {
+            /*isPriceInRange(addCourseRequest.fee!!.toString()) -> {
                     showErrorMessage("Please ensure Price should be in between 400 Rupees to 1,00,000 Rupees")
-            }
-            addCourseRequest.actualFee.isNullOrBlank() -> {
+            }*/
+            /*addCourseRequest.actualFee.toString().isNullOrBlank() -> {
                 showErrorMessage("please fill the offer Price")
-            }
-            isPriceInRange(addCourseRequest.actualFee!!.toString()) -> {
+            }*/
+            /*isPriceInRange(addCourseRequest.actualFee!!.toString()) -> {
                     showErrorMessage("Please ensure Price should be in between 400 Rupees to 1,00,000 Rupees")
-            }
+            }*/
             actualPriceIsInLimits(addCourseRequest) -> {
                 showErrorMessage("Discount Price can't be more than Price")
             }
@@ -282,8 +300,7 @@ class AddCourseActivity : BaseActivity() {
                     navigateToNextFragment()
                 }
             }
-        }*/
-            navigateToNextFragment()
+        }
     }
 
     private fun actualPriceIsInLimits(addCourseRequest: AddCourseRequest) = addCourseRequest.actualFee!!.toInt() > addCourseRequest.fee!!.toInt()

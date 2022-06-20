@@ -4,26 +4,29 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class PriceModel() : Parcelable {
-    var price: Double? = 0.0
-    var offerPrice: Double? = 0.0
-    var isInternetChargesAdded: Boolean = false
-    var isTaxChargesAdded: Boolean = false
-    var finalPrice: Double? = 0.0
+    var fee: String? = "0"
+    var discountAmount: String? = "0"
+    var actualFee: String? = "0"
+    var isInternetChargesAdded: Boolean? = false
+    var isTaxChargesAdded: Boolean? = false
+    var internetCharges: Double? = 0.0
 
     constructor(parcel: Parcel) : this() {
-        price = parcel.readValue(Double::class.java.classLoader) as? Double
-        offerPrice = parcel.readValue(Double::class.java.classLoader) as? Double
-        isInternetChargesAdded = parcel.readByte() != 0.toByte()
-        isTaxChargesAdded = parcel.readByte() != 0.toByte()
-        finalPrice = parcel.readValue(Double::class.java.classLoader) as? Double
+        fee = parcel.readString()
+        discountAmount = parcel.readString()
+        actualFee = parcel.readString()
+        isInternetChargesAdded = parcel.readValue(Boolean::class.java.classLoader) as? Boolean
+        isTaxChargesAdded = parcel.readValue(Boolean::class.java.classLoader) as? Boolean
+        internetCharges = parcel.readValue(Double::class.java.classLoader) as? Double
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeValue(price)
-        parcel.writeValue(offerPrice)
-        parcel.writeByte(if (isInternetChargesAdded) 1 else 0)
-        parcel.writeByte(if (isTaxChargesAdded) 1 else 0)
-        parcel.writeValue(finalPrice)
+        parcel.writeString(fee)
+        parcel.writeString(discountAmount)
+        parcel.writeString(actualFee)
+        parcel.writeValue(isInternetChargesAdded)
+        parcel.writeValue(isTaxChargesAdded)
+        parcel.writeValue(internetCharges)
     }
 
     override fun describeContents(): Int {
@@ -39,4 +42,5 @@ class PriceModel() : Parcelable {
             return arrayOfNulls(size)
         }
     }
+
 }

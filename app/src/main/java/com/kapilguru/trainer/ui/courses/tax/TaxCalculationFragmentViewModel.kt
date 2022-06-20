@@ -17,6 +17,26 @@ class TaxCalculationFragmentViewModel(private val addCourseRepository: AddCourse
 
     var priceModel: MutableLiveData<PriceModel> = MutableLiveData(PriceModel())
 
+    var fee: MutableLiveData<String> = MutableLiveData()
+    var discountAmount: MutableLiveData<String> = MutableLiveData()
+    var actualFee: MutableLiveData<String> = MutableLiveData()
+    var isInternetChargesAdded: MutableLiveData<Boolean> = MutableLiveData(false)
+    var isTaxChargesAdded: MutableLiveData<Boolean> = MutableLiveData(false)
+
+
+    init {
+        observePriceModel()
+    }
+
+    private fun observePriceModel() {
+
+//        priceModel.value?.finalPrice = (firstName.value?.toDouble()!! - lastName.value?.toDouble()!!).toString()
+
+
+    }
+
+
+
     fun getTax() {
         taxCalculationResponse.value = ApiResource.loading(data = null)
         viewModelScope.launch {
@@ -28,6 +48,24 @@ class TaxCalculationFragmentViewModel(private val addCourseRepository: AddCourse
                 taxCalculationResponse.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
             }
         }
+    }
+
+    fun calculateFinalPrice() {
+        val price: String = this.fee.value ?: return
+        val offerPrice: String = this.discountAmount.value ?:  "0"
+        val isInternetChargesAdded: Boolean = this.isInternetChargesAdded.value ?: return
+        var afterDeductionsPrice: Double=0.0
+        when(isInternetChargesAdded) {
+            true -> {
+                afterDeductionsPrice = price.toDouble() - offerPrice.toDouble()
+                afterDeductionsPrice += (afterDeductionsPrice * (taxCalculationResponseApi.value!!.addPercent/100.0))
+            }
+
+            false -> {
+                afterDeductionsPrice = price.toDouble() - offerPrice.toDouble()
+            }
+        }
+        actualFee.value = afterDeductionsPrice.toString()
     }
 
 }

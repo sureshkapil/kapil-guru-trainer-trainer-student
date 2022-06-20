@@ -59,17 +59,6 @@ object Companion {
     }
 
     @JvmStatic
-    @BindingAdapter("textInputDoubleToCount")
-    fun TextInputEditText.textInputDoubleToCount(id: Double?) {
-        id?.let { it ->
-            val txt = (it*100.0.roundToInt())/100.0
-            this.setText( txt.toString())
-        } ?: run {
-            this.setText("0")
-        }
-    }
-
-    @JvmStatic
     @BindingAdapter("daysToMonthsOrYears")
     fun TextView.daysToMonthsOrYears(days: Int?) {
         days.let { it ->
@@ -676,9 +665,12 @@ object Companion {
 
 
     @JvmStatic
-    @BindingAdapter(value = ["afterDiscountAmount","taxPercentage","isInternetApplicable"], requireAll = true)
-    fun TextInputEditText.addTaxOnDiscountAmount(afterDiscountAmount: Double?,internetPercentage: Double?,isInternetApplicable: Boolean) {
-        if(isInternetApplicable) {
+    @BindingAdapter(value = ["offerPrice","originalAmount","isInternetAdded","taxPercentage"], requireAll = true)
+    fun TextInputEditText.addTaxOnDiscountAmount(offerPrice: Double?,originalAmount: Double?,isInternetAdded: Boolean, taxPercentage:Double?) {
+        if(isInternetAdded) {
+         /*   offerPrice?.let {
+
+            }
             afterDiscountAmount?.let {amount ->
                 if(amount>0 && internetPercentage!!>0) {
                     val finalAmount = amount + (amount/internetPercentage)
@@ -688,7 +680,7 @@ object Companion {
         } else {
             afterDiscountAmount?.let {amount ->
                 this.setText(afterDiscountAmount.toString())
-            }
+            }*/
         }
         /*afterDiscountAmount?.let { it ->
             val text = afterDiscountAmount +(it*100.0.roundToInt())/100.0
@@ -696,5 +688,16 @@ object Companion {
         } ?: run {
             this.setText("0.0")
         }*/
+    }
+
+    @JvmStatic
+    @BindingAdapter("texteditDoubleToCount")
+    fun TextInputEditText.textInputDoubleToCount(id: Double?) {
+        id?.let { it ->
+            val txt = (it*100.0.roundToInt())/100.0
+            this.setText( txt.toString())
+        } ?: run {
+            this.setText("0")
+        }
     }
 }

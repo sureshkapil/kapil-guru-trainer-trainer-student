@@ -21,8 +21,8 @@ import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.ui.courses.adapter.CategoryBaseAdapter
 import com.kapilguru.trainer.ui.courses.addcourse.viewModel.AddCourseViewModel
 import com.kapilguru.trainer.ui.courses.courses_list.models.CourseResponse
+import com.kapilguru.trainer.ui.courses.tax.PriceModel
 import com.kapilguru.trainer.ui.courses.tax.TaxCalculationFragment
-import kotlinx.android.synthetic.main.countryname_spinner_item.view.*
 import kotlinx.android.synthetic.main.fragment_add_course_titile_and_description.*
 
 
@@ -38,6 +38,7 @@ class AddCourseTitleAndDescriptionFragment : Fragment() {
     var isNumberSelected : Boolean = false
     val viewModel: AddCourseViewModel by activityViewModels()
     lateinit var dialog : CustomProgressDialog
+    var priceModel : PriceModel?=null
 
     private  val TAG = "AddCourseTitleAndDescri"
 
@@ -63,18 +64,29 @@ class AddCourseTitleAndDescriptionFragment : Fragment() {
         if (viewModel.isEdit) {
             val aboutTrainer = viewModel.addCourseRequest.description.toString()
             val convertedInfo = aboutTrainer.fromBase64ToString()
+            priceModel = PriceModel()
+            priceModel?.actualFee = viewModel.addCourseRequest.actualFee?.toString()
+            priceModel?.fee = viewModel.addCourseRequest.fee?.toString()
+            priceModel?.discountAmount = viewModel.addCourseRequest.discountAmount?.toString()
+            priceModel?.isTaxChargesAdded = viewModel.addCourseRequest.istax==1
+            priceModel?.internetCharges = viewModel.addCourseRequest.internetCharges
             viewBinding.richEditor.html = convertedInfo
         }
         fetchCategoryApi()
         courseResponse = arguments?.getParcelableArrayList("abc")
-        setUpPricesFragment()
         return viewBinding.root
     }
 
     private fun setUpPricesFragment() {
         val fm = childFragmentManager.beginTransaction()
-        fm.add(R.id.prices_frame,TaxCalculationFragment.newInstance())
+        fm.add(R.id.prices_frame,TaxCalculationFragment.newInstance(priceModel))
         fm.commit()
+    }
+
+    fun getTaxInfo() : PriceModel?{
+        val listOfAllFragments = childFragmentManager.fragments
+        val fm = listOfAllFragments.first() as TaxCalculationFragment
+       return  fm.getPriceData()
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -112,12 +124,9 @@ class AddCourseTitleAndDescriptionFragment : Fragment() {
         categoryBaseAdapter = CategoryBaseAdapter(activity)
         viewBinding.aCSpinnerCategory.adapter = categoryBaseAdapter
 
-        viewBinding.aCSpinnerCategory.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        viewBinding.aCSpinnerCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
+                parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
                 setSelectedCourseId(id)
             }
@@ -126,22 +135,21 @@ class AddCourseTitleAndDescriptionFragment : Fragment() {
                 TODO("Not yet implemented")
             }
 
-
         };
 
 
-        viewBinding.aCETCourseTitleValue.onFocusChangeListener =
-            View.OnFocusChangeListener { v, hasFocus ->
-                if (!hasFocus) {
-                   val data = courseResponse?.indexOfFirst { it-> it.courseTitle.equals(viewBinding.aCETCourseTitleValue.text.toString()) }
-                    if (data != -1) {
-                        viewBinding.aCETCourseTitleValue.setText("")
-                        showToastMessage("Mentioned Course Title already Exists, please choose another one")
-                    }
-
+        viewBinding.aCETCourseTitleValue.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                val data = courseResponse?.indexOfFirst { it -> it.courseTitle.equals(viewBinding.aCETCourseTitleValue.text.toString()) }
+                if (data != -1) {
+                    viewBinding.aCETCourseTitleValue.setText("")
+                    showToastMessage("Mentioned Course Title already Exists, please choose another one")
                 }
 
             }
+        }
+
+        setUpPricesFragment()
     }
 
     private fun showToastMessage(message: String) {

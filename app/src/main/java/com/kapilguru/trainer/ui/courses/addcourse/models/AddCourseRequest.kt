@@ -18,10 +18,10 @@ data class AddCourseRequest(
         @SerializedName("demo_video") var demoVideo: String?=null,
         @SerializedName("course_video") var courseVideo: String?=null,
         @SerializedName("description") var description: String?=null,
-        @SerializedName("fee") var fee: String?=null,
-        @SerializedName("actual_fee") var actualFee: String?=null,
+        @SerializedName("fee") var fee: Double?=null,
+        @SerializedName("actual_fee") var actualFee: Double?=null,
         @SerializedName("duration_days") var durationDays: String?=null,
-//        @SerializedName("fee") var fee: String?="ashsg",
+        @SerializedName("discount_amount") var discountAmount: Double?=null,
         @SerializedName("language") var language: String?=null,
         @SerializedName("syllabus_attachment") var syllabusAttachment: Int?=null,
         @SerializedName("syllabus_type") var syllabusType: String?=null,
@@ -34,6 +34,8 @@ data class AddCourseRequest(
         @SerializedName("is_verified") var isVerified: Int=0,
         @SerializedName("is_rejected") var isRejected: Int=0,
         @SerializedName("is_submitted") var is_verified: Int=1,
+        @SerializedName("internet_charges") var internetCharges: Double?=null,
+        @SerializedName("is_tax") var istax: Int =0,
         @Transient var isApiRequestMade: Boolean = false,
 ) {
 
