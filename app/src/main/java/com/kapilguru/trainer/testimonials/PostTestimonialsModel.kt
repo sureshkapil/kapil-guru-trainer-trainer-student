@@ -7,6 +7,7 @@ data class PostTestimonialsModel(
     @SerializedName("comments") var comments: String? = "",
     @SerializedName("name") var name: String? = "",
     @SerializedName("trainer_id") var trainerId: Int? = 0,
+    @SerializedName("student_id") val student_id: Int? = 0,
 //    @SerializedName("created_by") var createdBy: Int? = 0,
 
 )

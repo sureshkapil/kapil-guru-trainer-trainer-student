@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+
+</data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg"
+        tools:context=".coupons.AddCoupons">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/actionbar"
+                layout="@layout/custom_action_bar_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aCTVCouponCode"
+                style="@style/MyAppEditTextViewStyle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aCTVCouponCodeValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/coupon_code"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:text=""
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aCTVCouponPercentage"
+                style="@style/MyAppEditTextViewStyle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aCTVCouponPercentageValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/discount_percentage"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/aCTVBatchDate"
+                style="@style/MyAppEditTextViewStyle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:layout_marginBottom="20dp"
+                android:translationZ="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/aCTVBatchDateValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_calendar"
+                    android:focusable="false"
+                    android:hint="@string/choose_date"
+                    android:inputType="text"
+                    android:text="Coupon Expiry date"
+                    android:textColorHint="@android:color/black"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/aCSpinnerCategory"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/spinner_bg"
+                android:shadowColor="@color/design_default_color_on_primary"
+                android:transitionName="Select Course Category" />
+
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/aCSpinnerCategoryValue"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/spinner_bg"
+                android:shadowColor="@color/design_default_color_on_primary"
+                android:transitionName="Select Course Category" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/assign_to"
+                android:textColor="@color/black" />
+
+            <RadioGroup
+                android:id="@+id/rg_business_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal"
+                app:helperTextTextColor="@color/black">
+
+                <RadioButton
+                    android:id="@+id/rb_individual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/_public" />
+
+                <RadioButton
+                    android:id="@+id/rb_organization"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/student" />
+            </RadioGroup>
+
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/aCSpinnerStudent"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/spinner_bg"
+                android:shadowColor="@color/design_default_color_on_primary"
+                android:transitionName="Select Course Category" />
+
+
+
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

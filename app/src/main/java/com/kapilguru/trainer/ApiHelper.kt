@@ -32,7 +32,6 @@ import com.kapilguru.trainer.student.profile.data.StudentProfileData
 import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
-import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.trainerGallery.UploadImageGallery
 import com.kapilguru.trainer.ui.changePassword.model.LogoutRequest
@@ -41,7 +40,6 @@ import com.kapilguru.trainer.ui.courses.addcourse.models.AddCourseRequest
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourse
 import com.kapilguru.trainer.ui.courses.batchesList.models.BatchListApiRequest
 import com.kapilguru.trainer.ui.courses.view_course.ContactTrainerRequest
-import com.kapilguru.trainer.ui.courses.view_course.WriteReviewRequest
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.AddGuestLectureRequest
 import com.kapilguru.trainer.ui.otpLogin.model.OTPLoginRequest
 import com.kapilguru.trainer.ui.otpLogin.model.OTPLoginValidateRequest
@@ -338,7 +336,14 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun getStudentProfileData(userId: String) = apiKapilTutorService.getStudentProfileData(userId)
 
+
+//    suspend fun getStudyMaterialList(studyMaterialListRequest: StudyMaterialListRequest) = apiKapilTutorService.getStudyMaterialList(studyMaterialListRequest)
+
+    suspend fun getCouponsList(trainerId: Int) = apiKapilTutorService.getCouponsList(trainerId)
+
+
     suspend fun updateStudentProfileData(userId: String, studentProfileData: StudentProfileData) = apiKapilTutorService.updateStudentProfile(userId, studentProfileData)
+
 
 
 }

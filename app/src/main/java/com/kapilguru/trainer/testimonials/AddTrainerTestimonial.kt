@@ -3,6 +3,7 @@ package com.kapilguru.trainer.testimonials
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kapilguru.trainer.ApiHelper
 import com.kapilguru.trainer.R
@@ -24,6 +25,13 @@ class AddTrainerTestimonial : AppCompatActivity() {
         binding.model = viewModel
         binding.lifecycleOwner = this
         setclickListeners()
+        observeVideModel()
+    }
+
+    private fun observeVideModel() {
+        viewModel.postTestimonial.observe(this, Observer {
+
+        })
     }
 
     private fun setclickListeners() {
@@ -31,4 +39,8 @@ class AddTrainerTestimonial : AppCompatActivity() {
             viewModel.addTestimonials()
         }
     }
+
+
+
+
 }

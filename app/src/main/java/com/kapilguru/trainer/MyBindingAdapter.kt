@@ -596,6 +596,46 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("setKeyValueTextString")
+    fun KeyValueText.setKeyValueTextString(toBeStringData: String?) {
+        toBeStringData?.let {
+            this.text_value.text = it.toString()
+        } ?: run {
+            this.text_value.text = ""
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("dateToString")
+    fun KeyValueText.dateToString(endd: String?) {
+        endd?.let { current ->
+            if (current.contains("T", true)) {
+                current.toDateFormat()?.let {
+                    this.text_value.text = it
+                } ?: run {
+                    this.text_value.text = ""
+                }
+            } else {
+                current.toDateFormatWithOutT()?.let {
+                    this.text_value.text = it
+                } ?: run {
+                    this.text_value.text = ""
+                }
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("keyValueToIntPercentage")
+    fun KeyValueText.keyValueToIntPercentage(toBeStringData: Int?) {
+        toBeStringData?.let {
+            this.text_value.text = resources.getString(R.string.percentage_value,it)
+        } ?: run {
+            this.text_value.text =  resources.getString(R.string.percentage_value, 0)
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("setBatchType")
     fun KeyValueText.setBatchType(batchType: String?) {
         batchType?.let {

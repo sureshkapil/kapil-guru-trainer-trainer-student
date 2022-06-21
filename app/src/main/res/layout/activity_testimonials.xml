@@ -64,7 +64,10 @@
             android:id="@+id/gallery_all_images_recy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_10dp"
+            android:layout_marginVertical="@dimen/dimen_10dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/trainer_testimonial_recycler_item_item"
             app:layout_constraintTop_toBottomOf="@id/line"/>
 
 
