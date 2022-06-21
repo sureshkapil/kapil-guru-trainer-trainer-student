@@ -606,6 +606,16 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("setKeyStudentNameOrPublic")
+    fun KeyValueText.setKeyStudentNameOrPublic(toBeStringData: String?) {
+        toBeStringData?.let {
+            this.text_value.text = it.toString()
+        } ?: run {
+            this.text_value.text = resources.getString(R.string._public)
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("dateToString")
     fun KeyValueText.dateToString(endd: String?) {
         endd?.let { current ->
@@ -736,6 +746,17 @@ object Companion {
         id?.let { it ->
             val txt = (it*100.0.roundToInt())/100.0
             this.setText( txt.toString())
+        } ?: run {
+            this.setText("0")
+        }
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("textIntToString")
+    fun TextInputEditText.textIntToString(id: Int?) {
+        id?.let { it ->
+            this.setText(it.toString())
         } ?: run {
             this.setText("0")
         }

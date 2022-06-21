@@ -18,7 +18,7 @@ import com.kapilguru.trainer.announcement.sentItems.data.LastMessageRequest
 import com.kapilguru.trainer.announcement.sentItems.data.SentItemsResponse
 import com.kapilguru.trainer.batchExamReports.BatchReportsRequestModel
 import com.kapilguru.trainer.batchExamReports.BatchStudentReportApi
-import com.kapilguru.trainer.coupons.AllCouponsResponseList
+import com.kapilguru.trainer.coupons.*
 import com.kapilguru.trainer.demo_webinar_students.DemoWebinarStudentsResponse
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.assignExamToBatch.model.BatchByCourseResponse
@@ -557,7 +557,7 @@ interface ApiKapilTutorService {
 //    @POST("/trainer/getStudyMaterials")
 //    suspend fun getStudyMaterialList(studyMaterialListRequest: StudyMaterialListRequest) = apiKapilTutorService.getStudyMaterialList(studyMaterialListRequest)
 
-    @GET("trainer/kg_coupons/created_by/{trainerId}")
+    @GET("trainer/kg_coupons/{trainerId}")
     suspend fun getCouponsList(@Path("trainerId") trainerId: Int) : AllCouponsResponseList
 
     //Student Profile
@@ -576,4 +576,10 @@ interface ApiKapilTutorService {
 
     @POST("student/user_bank_details")
     suspend fun saveStudentBankDetails(@Body bankDetailsUploadReq: BankDetailsUploadRequest): BankDetailsUploadResponce
+
+    @POST("trainer/kg_coupons")
+    suspend fun addCoupon(@Body addCouponsRequest: AddCouponsRequest) : AddCouponResponse
+
+    @POST("trainer/getStudyMaterials")
+    suspend fun  getCategoryCourse(@Body couponCourseCategoryRequest: CouponCourseCategoryRequest): CouponLiveCoursesResponse
 }

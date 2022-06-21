@@ -8,6 +8,8 @@ import com.kapilguru.trainer.announcement.newMessage.data.SendAdminMessageReques
 import com.kapilguru.trainer.announcement.newMessage.data.SendBatchMessageRequest
 import com.kapilguru.trainer.announcement.sentItems.data.LastMessageRequest
 import com.kapilguru.trainer.batchExamReports.BatchReportsRequestModel
+import com.kapilguru.trainer.coupons.AddCouponsRequest
+import com.kapilguru.trainer.coupons.CouponCourseCategoryRequest
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.conductExams.createQuestionPaper.model.QuestionPaperTitleRequest
 import com.kapilguru.trainer.exams.createQuestion.model.AddQuestionRequest
@@ -344,6 +346,9 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun updateStudentProfileData(userId: String, studentProfileData: StudentProfileData) = apiKapilTutorService.updateStudentProfile(userId, studentProfileData)
 
+    suspend fun addCoupon(addCouponsRequest: AddCouponsRequest) = apiKapilTutorService.addCoupon(addCouponsRequest)
 
+
+    open suspend fun getCategoryCourse(couponCourseCategoryRequest: CouponCourseCategoryRequest) = apiKapilTutorService.getCategoryCourse(couponCourseCategoryRequest)
 
 }

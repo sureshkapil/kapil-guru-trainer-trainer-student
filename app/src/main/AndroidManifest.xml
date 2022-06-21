@@ -24,6 +24,9 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".addFaculty.AddFaculty"
+            android:exported="true" />
+        <activity
             android:name=".faculty.Faculty"
             android:exported="true" />
         <activity

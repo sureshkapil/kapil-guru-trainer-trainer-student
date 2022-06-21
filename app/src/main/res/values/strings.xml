@@ -846,6 +846,14 @@
     <string name="assigned_to">Assigned To</string>
     <string name="percentage_value">%d \%%</string>
     <string name="network_connection_error">Network Connection Error</string>
+    <string name="create_coupon">Create Coupon</string>
 
+
+    <string-array name="coupon_code_category">
+        <item>Select Category</item>
+        <item>Live Courses</item>
+        <item>Study Material</item>
+        <item>Recorded Videos</item>
+    </string-array>
 
 </resources>
