@@ -37,8 +37,9 @@
             android:hint="@string/price"
             android:inputType="numberDecimal"
             android:maxLength="6"
-            android:text="@={model.fee}"
+
             android:textSize="15sp" />
+<!--        app:textInputDoubleToCount="@{model.priceModel.offerPrice}"-->
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,8 +58,9 @@
             android:hint="@string/offer_price"
             android:inputType="numberDecimal"
             android:maxLength="6"
-            android:text="@={model.discountAmount}"
+
             android:textSize="15sp" />
+<!--        app:textInputDoubleToCount="@{model.priceModel.offerPrice}"-->
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.SwitchCompat
@@ -66,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:switchPadding="10dp"
-        android:checked="@={model.isInternetChargesAdded}"
+
         android:text="@string/internet_handling_charges"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/aCTVCourseOfferPrice" />
@@ -76,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:switchPadding="10dp"
-        android:checked="@={model.isTaxChargesAdded}"
+
         android:text="@string/is_tax_applicable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/internetToggle" />
@@ -98,8 +100,12 @@
             android:hint="@string/offer_price"
             android:inputType="numberDecimal"
             android:maxLength="6"
-            android:text="@={model.actualFee}"
+
             android:textSize="15sp" />
+       <!-- app:offerPrice="@{model.priceModel.offerPrice}"
+        app:originalAmount="@{model.priceModel.price}"
+        app:isInternetAdded="@{model.priceModel.internetChargesAdded}"
+        app:taxPercentage="@{model.taxCalculationResponseApi.addPercent}"-->
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

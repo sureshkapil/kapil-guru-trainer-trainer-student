@@ -18,6 +18,7 @@ import com.kapilguru.trainer.announcement.sentItems.data.LastMessageRequest
 import com.kapilguru.trainer.announcement.sentItems.data.SentItemsResponse
 import com.kapilguru.trainer.batchExamReports.BatchReportsRequestModel
 import com.kapilguru.trainer.batchExamReports.BatchStudentReportApi
+import com.kapilguru.trainer.coupons.*
 import com.kapilguru.trainer.demo_webinar_students.DemoWebinarStudentsResponse
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.assignExamToBatch.model.BatchByCourseResponse
@@ -56,15 +57,20 @@ import com.kapilguru.trainer.signup.model.validateMail.ValidateMailResponse
 import com.kapilguru.trainer.signup.model.validateOtp.ValidateOtpRequest
 import com.kapilguru.trainer.signup.model.validateOtp.ValidateOtpResponse
 import com.kapilguru.trainer.student.homeActivity.models.*
+import com.kapilguru.trainer.student.profile.data.SaveStudentProfileResponse
+import com.kapilguru.trainer.student.profile.data.StudentProfileData
+import com.kapilguru.trainer.student.profile.data.StudentProfileResponse
 import com.kapilguru.trainer.studentExamBatchResult.BatchExamStudentResultApi
 import com.kapilguru.trainer.studentExamBatchResult.StudentAnswerSheetApi
 import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.AllStudentsListPerTrainerApi
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
+
 import com.kapilguru.trainer.studyMaterial.StudyMaterialListResponse
 import com.kapilguru.trainer.studyMaterial.StudyMatrialListRequest
 import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
+
 import com.kapilguru.trainer.testimonials.FetchTestimonialsResponse
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.testimonials.PostTestimonialsResponse
@@ -177,11 +183,20 @@ interface ApiKapilTutorService {
     @GET("trainer/countries")
     suspend fun countriesList(): CountryResponce
 
+    @GET("student/countries")
+    suspend fun studentCountriesList(): CountryResponce
+
     @GET("trainer/getStatesbyCountryId/{countryId}")
     suspend fun stateList(@Path("countryId") countryId: Int): StateResponce
 
+    @GET("public/getStatesbyCountryId/{countryId}")
+    suspend fun studentStateList(@Path("countryId") countryId: Int): StateResponce
+
     @GET("trainer/getCitiesbyStateId/{stateId}")
     suspend fun cityList(@Path("stateId") stateId: Int): CityResponce
+
+    @GET("public/getCitiesbyStateId/{stateId}")
+    suspend fun studentCityList(@Path("stateId") stateId: Int): CityResponce
 
     @GET("trainer/getTrainerProfileDetails/{id}")
     suspend fun getProfileData(@Path("id") userId: String): ProfileResponse
@@ -540,6 +555,41 @@ interface ApiKapilTutorService {
     @GET("trainer/tax_charges")
     suspend fun getTaxes(): TaxCalculationResponse
 
+
     @POST("trainer/getStudyMaterials")
     suspend fun getListOfStudyMaterials(studyMaterialListRequest: StudyMatrialListRequest) : StudyMaterialListResponse
+
+
+    @GET("/trainer/app_testimonials/{id}")
+    suspend fun updateTestimonialStatus(@Path("id") id: Int): TaxCalculationResponse
+
+//    @POST("/trainer/getStudyMaterials")
+//    suspend fun getStudyMaterialList(studyMaterialListRequest: StudyMaterialListRequest) = apiKapilTutorService.getStudyMaterialList(studyMaterialListRequest)
+
+    @GET("trainer/kg_coupons/{trainerId}")
+    suspend fun getCouponsList(@Path("trainerId") trainerId: Int) : AllCouponsResponseList
+
+    //Student Profile
+    @GET("student/getStudentProfileDetails/{id}")
+    suspend fun getStudentProfileData(@Path("id") userId: String): StudentProfileResponse
+
+    @PUT("student/updateStudent/{id}")
+    suspend fun updateStudentProfile(@Path("id") userId: String, @Body studentProfileDataRequest: StudentProfileData): SaveStudentProfileResponse
+
+    @GET("student/user_bank_details/user_id/{id}")
+    suspend fun getStudentBankDetails(@Path("id") userId: String): BankDetailsFetchResponce
+
+    @PUT("student/user_bank_details/{id}")
+    suspend fun updateStudentBankDetails(@Path("id") bankId: String, @Body bankDetailsUploadReq: BankDetailsUploadRequest):
+            BankDetailsUploadResponce
+
+    @POST("student/user_bank_details")
+    suspend fun saveStudentBankDetails(@Body bankDetailsUploadReq: BankDetailsUploadRequest): BankDetailsUploadResponce
+
+    @POST("trainer/kg_coupons")
+    suspend fun addCoupon(@Body addCouponsRequest: AddCouponsRequest) : AddCouponResponse
+
+    @POST("trainer/getStudyMaterials")
+    suspend fun  getCategoryCourse(@Body couponCourseCategoryRequest: CouponCourseCategoryRequest): CouponLiveCoursesResponse
+
 }

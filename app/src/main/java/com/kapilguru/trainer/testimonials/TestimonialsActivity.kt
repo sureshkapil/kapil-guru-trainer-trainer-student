@@ -8,13 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kapilguru.trainer.ApiHelper
+import com.kapilguru.trainer.BaseActivity
 import com.kapilguru.trainer.CustomProgressDialog
 import com.kapilguru.trainer.databinding.ActivityTestimonialsBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
 
-class TestimonialsActivity : AppCompatActivity() {
+class TestimonialsActivity : BaseActivity() {
 
     lateinit var binding: ActivityTestimonialsBinding
     lateinit var viewModel: TrainerTestimonialViewModel
@@ -30,9 +31,15 @@ class TestimonialsActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this, TrainerTestimonialViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), application)).get(TrainerTestimonialViewModel::class.java)
         dialog = CustomProgressDialog(this)
+        setCustomActionBar()
         setclickListeners()
         setRecycler()
         observeViewModel()
+    }
+
+
+    fun setCustomActionBar() {
+        this.setActionbarBackListener(this, binding.customActionBar, getString(R.string.testimonials))
     }
 
     private fun setclickListeners() {

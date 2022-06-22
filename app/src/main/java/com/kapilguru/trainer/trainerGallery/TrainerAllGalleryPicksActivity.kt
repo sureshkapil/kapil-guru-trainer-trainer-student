@@ -14,8 +14,10 @@ import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
 import java.io.File
+import androidx.recyclerview.widget.GridLayoutManager
 
-class TrainerAllGalleryPicksActivity : AppCompatActivity(), ChoosePictureDialogInteractor {
+
+class TrainerAllGalleryPicksActivity : BaseActivity(), ChoosePictureDialogInteractor {
 
     lateinit var binding: ActivityTrainerAllGalleryPicksBinding
     lateinit var viewModel: TrainerAllGalleyPicksViewModel
@@ -33,9 +35,14 @@ class TrainerAllGalleryPicksActivity : AppCompatActivity(), ChoosePictureDialogI
         viewModel = ViewModelProvider(this, TrainerAllGalleryPicksViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE)))
             .get(TrainerAllGalleyPicksViewModel::class.java)
         dialog = CustomProgressDialog(this)
+        setCustomActionBar()
         setclickListeners()
         setAllgalleryImagesAdapter()
         observeViewModels()
+    }
+
+    fun setCustomActionBar() {
+        this.setActionbarBackListener(this, binding.customActionBar, getString(R.string.upload_image))
     }
 
     private fun setclickListeners() {
@@ -48,6 +55,7 @@ class TrainerAllGalleryPicksActivity : AppCompatActivity(), ChoosePictureDialogI
     }
 
     private fun setAllgalleryImagesAdapter() {
+        binding.galleryAllImagesRecy.layoutManager = GridLayoutManager(this, 2)
         viewModel.getAllImagesList()
         adapter = TrainerAllGalleryPicksReyclerAdapter()
         binding.galleryAllImagesRecy.adapter = adapter
@@ -118,8 +126,11 @@ class TrainerAllGalleryPicksActivity : AppCompatActivity(), ChoosePictureDialogI
     }
 
 
-    private val captureImageRequest = registerForActivityResult(ActivityResultContracts.TakePicture()) {
-        binding.newUploadedImagePreview.setImageURI(appUri)
+    private val captureImageRequest = registerForActivityResult(ActivityResultContracts.TakePicture()) {it->
+        if (it) {
+            binding.newUploadedImagePreview.setImageURI(appUri)
+            uploadGalleryImage()
+        }
     }
 
     private val pickImageRequest = registerForActivityResult(ActivityResultContracts.GetContent()) {

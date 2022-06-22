@@ -24,16 +24,37 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
+
             android:name=".todaysSchedule.TodaysScheduele"
             android:exported="false" />
+        <activity
+            android:name=".addFaculty.AddFaculty"
+            android:exported="true" />
+        <activity
+            android:name=".faculty.Faculty"
+            android:exported="true" />
+        <activity
+            android:name=".coupons.CouponsActivity"
+            android:exported="true"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".coupons.AddCoupons"
+            android:exported="true"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".studyMaterial.StudyMaterial"
+            android:exported="true" />
+
         <activity
             android:name=".testimonials.AddTrainerTestimonial"
             android:exported="false"
             android:theme="@style/customParentNoActionBarStyle" />
+
         <activity
             android:name=".studyMaterial.StudyMaterialActivity"
             android:exported="false"
             android:theme="@style/customParentNoActionBarStyle" />
+
         <activity
             android:name=".testimonials.TestimonialsActivity"
             android:exported="false"
@@ -312,6 +333,9 @@
             android:name=".student.homeActivity.StudentHomeActivity"
             android:exported="false"
             android:theme="@style/Theme.KapilStudent" />
+        <activity
+            android:name=".student.profileInfo.StudentProfileDetailsActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
     </application>
 
 </manifest>

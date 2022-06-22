@@ -11,6 +11,15 @@ import java.util.*
 
 class StudyMaterialRepository(private val apiHelper : ApiHelper) {
 
+
  suspend fun getListOfStudyMaterials(studyMaterialListRequest: StudyMatrialListRequest) = apiHelper.getListOfStudyMaterials(studyMaterialListRequest)
+
+//    suspend fun getStudyMaterialList(studyMaterialListRequest: StudyMaterialListRequest) = apiHelper.getStudyMaterialList(studyMaterialListRequest)
+
+
+    suspend fun getImagesList(packageId: String) = apiHelper.getTrainerGalleryImages(packageId)
+
+
+
 
 }

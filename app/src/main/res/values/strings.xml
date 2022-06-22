@@ -837,4 +837,27 @@
     <string name="both">Both</string>
     <string name="documents">Documents</string>
 
+    <string name="upload_image">Upload Image</string>
+    <string name="coupon_code">Coupon Code</string>
+    <string name="coupons">Coupons</string>
+    <string name="discount_percentage">Discount Percentage</string>
+    <string name="assign_to">Assign To</string>
+    <string name="_public">Public</string>
+    <string name="student">Student</string>
+    <string name="coupon_percentage">Coupon Percentage</string>
+    <string name="coupon_expiry">Coupon Expiry</string>
+    <string name="category">Categorty</string>
+    <string name="assigned_to">Assigned To</string>
+    <string name="percentage_value">%d \%%</string>
+    <string name="network_connection_error">Network Connection Error</string>
+    <string name="create_coupon">Create Coupon</string>
+
+
+    <string-array name="coupon_code_category">
+        <item>Select Category</item>
+        <item>Live Courses</item>
+        <item>Study Material</item>
+        <item>Recorded Videos</item>
+    </string-array>
+
 </resources>

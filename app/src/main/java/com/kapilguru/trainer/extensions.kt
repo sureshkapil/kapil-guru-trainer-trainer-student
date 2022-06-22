@@ -28,6 +28,19 @@ fun String.isPanValid(): Boolean {
     return (this.matches(pattern.toRegex()))
 }
 
+fun String?.isPinCodeValid(): Boolean {
+    this?.let {
+        return if(TextUtils.isEmpty(this)){
+            false
+        }else{
+            val pattern: Pattern = java.util.regex.Pattern.compile("^[1-9][0-9]{5}\$")
+            (this.matches(pattern.toRegex()))
+        }
+    }?: kotlin.run {
+        return false
+    }
+}
+
 fun String.isGstValid(): Boolean {
     val regex = "[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}"
     val pattern: Pattern = java.util.regex.Pattern.compile(regex)

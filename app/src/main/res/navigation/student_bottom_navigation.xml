@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.kapilguru.student.profile.ProfileOptionsFragment"
+        android:name="com.kapilguru.trainer.student.profile.StudentProfileOptionsFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile_options" />
+        tools:layout="@layout/fragment_student_profile_options" />
 
 <!--    <fragment-->
 <!--        android:id="@+id/navigation_howtouse"-->

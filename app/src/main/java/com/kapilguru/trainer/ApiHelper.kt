@@ -8,6 +8,8 @@ import com.kapilguru.trainer.announcement.newMessage.data.SendAdminMessageReques
 import com.kapilguru.trainer.announcement.newMessage.data.SendBatchMessageRequest
 import com.kapilguru.trainer.announcement.sentItems.data.LastMessageRequest
 import com.kapilguru.trainer.batchExamReports.BatchReportsRequestModel
+import com.kapilguru.trainer.coupons.AddCouponsRequest
+import com.kapilguru.trainer.coupons.CouponCourseCategoryRequest
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.conductExams.createQuestionPaper.model.QuestionPaperTitleRequest
 import com.kapilguru.trainer.exams.createQuestion.model.AddQuestionRequest
@@ -28,9 +30,11 @@ import com.kapilguru.trainer.signup.model.sendOtpSms.SendOtpSmsRequest
 import com.kapilguru.trainer.signup.model.validateMail.ValidateMailRequest
 import com.kapilguru.trainer.signup.model.validateOtp.ValidateOtpRequest
 import com.kapilguru.trainer.student.homeActivity.models.CreateLeadRequest
+import com.kapilguru.trainer.student.profile.data.StudentProfileData
 import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
+
 import com.kapilguru.trainer.studyMaterial.StudyMatrialListRequest
 import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
@@ -41,7 +45,6 @@ import com.kapilguru.trainer.ui.courses.addcourse.models.AddCourseRequest
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourse
 import com.kapilguru.trainer.ui.courses.batchesList.models.BatchListApiRequest
 import com.kapilguru.trainer.ui.courses.view_course.ContactTrainerRequest
-import com.kapilguru.trainer.ui.courses.view_course.WriteReviewRequest
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.AddGuestLectureRequest
 import com.kapilguru.trainer.ui.otpLogin.model.OTPLoginRequest
 import com.kapilguru.trainer.ui.otpLogin.model.OTPLoginValidateRequest
@@ -96,9 +99,15 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun getCountryList() = apiKapilTutorService.countriesList()
 
+    suspend fun getStudentCountryList() = apiKapilTutorService.studentCountriesList()
+
     suspend fun getStateList(countryId: Int) = apiKapilTutorService.stateList(countryId)
 
+    suspend fun getStudentStateList(countryId: Int) = apiKapilTutorService.studentStateList(countryId)
+
     suspend fun getCityList(stateId: Int) = apiKapilTutorService.cityList(stateId)
+
+    suspend fun getStudentCityList(stateId: Int) = apiKapilTutorService.studentCityList(stateId)
 
     suspend fun getProfileData(userId: String) = apiKapilTutorService.getProfileData(userId)
 
@@ -330,6 +339,19 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun getTaxes() = apiKapilTutorService.getTaxes()
 
     suspend fun getListOfStudyMaterials(studyMaterialListRequest: StudyMatrialListRequest) = apiKapilTutorService.getListOfStudyMaterials(studyMaterialListRequest)
+    suspend fun getStudentProfileData(userId: String) = apiKapilTutorService.getStudentProfileData(userId)
 
+
+//    suspend fun getStudyMaterialList(studyMaterialListRequest: StudyMaterialListRequest) = apiKapilTutorService.getStudyMaterialList(studyMaterialListRequest)
+
+    suspend fun getCouponsList(trainerId: Int) = apiKapilTutorService.getCouponsList(trainerId)
+
+
+    suspend fun updateStudentProfileData(userId: String, studentProfileData: StudentProfileData) = apiKapilTutorService.updateStudentProfile(userId, studentProfileData)
+
+    suspend fun addCoupon(addCouponsRequest: AddCouponsRequest) = apiKapilTutorService.addCoupon(addCouponsRequest)
+
+
+    open suspend fun getCategoryCourse(couponCourseCategoryRequest: CouponCourseCategoryRequest) = apiKapilTutorService.getCategoryCourse(couponCourseCategoryRequest)
 
 }

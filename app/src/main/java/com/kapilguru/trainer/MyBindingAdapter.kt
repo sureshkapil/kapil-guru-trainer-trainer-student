@@ -407,6 +407,22 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("loadGlideNewImage")
+    fun ImageView.loadGlideNewImage(imageUrl: String?) {
+        imageUrl?.let { it ->
+            when {
+                TextUtils.equals(it, "null") -> this.setImageResource(R.drawable.default_image)
+                imageUrl.contains(".") -> Glide.with(context).load(IMAGE_BASE_URL.plus(it)).placeholder(
+                    ResourcesCompat.getDrawable(resources, R.drawable.default_image, null)).diskCacheStrategy(
+                    DiskCacheStrategy.NONE).skipMemoryCache(true).into(this)
+                else -> Glide.with(context).load(IMAGE_BASE_URL.plus(it).plus(".png")).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(this)
+            }
+        } ?: run {
+            this.setImageResource(R.drawable.default_image)
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("fetchImage")
     fun ImageView.fetchImage(imageUrl: String?) {
         imageUrl?.let { it ->
@@ -590,6 +606,56 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("setKeyValueTextString")
+    fun KeyValueText.setKeyValueTextString(toBeStringData: String?) {
+        toBeStringData?.let {
+            this.text_value.text = it.toString()
+        } ?: run {
+            this.text_value.text = ""
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("setKeyStudentNameOrPublic")
+    fun KeyValueText.setKeyStudentNameOrPublic(toBeStringData: String?) {
+        toBeStringData?.let {
+            this.text_value.text = it.toString()
+        } ?: run {
+            this.text_value.text = resources.getString(R.string._public)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("dateToString")
+    fun KeyValueText.dateToString(endd: String?) {
+        endd?.let { current ->
+            if (current.contains("T", true)) {
+                current.toDateFormat()?.let {
+                    this.text_value.text = it
+                } ?: run {
+                    this.text_value.text = ""
+                }
+            } else {
+                current.toDateFormatWithOutT()?.let {
+                    this.text_value.text = it
+                } ?: run {
+                    this.text_value.text = ""
+                }
+            }
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("keyValueToIntPercentage")
+    fun KeyValueText.keyValueToIntPercentage(toBeStringData: Int?) {
+        toBeStringData?.let {
+            this.text_value.text = resources.getString(R.string.percentage_value,it)
+        } ?: run {
+            this.text_value.text =  resources.getString(R.string.percentage_value, 0)
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("setBatchType")
     fun KeyValueText.setBatchType(batchType: String?) {
         batchType?.let {
@@ -690,6 +756,17 @@ object Companion {
         id?.let { it ->
             val txt = (it*100.0.roundToInt())/100.0
             this.setText( txt.toString())
+        } ?: run {
+            this.setText("0")
+        }
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("textIntToString")
+    fun TextInputEditText.textIntToString(id: Int?) {
+        id?.let { it ->
+            this.setText(it.toString())
         } ?: run {
             this.setText("0")
         }

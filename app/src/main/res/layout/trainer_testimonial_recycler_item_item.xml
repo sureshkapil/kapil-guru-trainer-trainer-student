@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -11,22 +12,75 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/yellow">
+        android:padding="@dimen/dimen_5dp"
+        android:layout_marginVertical="@dimen/dimen_5dp"
+        app:cardCornerRadius="@dimen/dimen_15dp"
+        app:cardBackgroundColor="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="start"
+                android:layout_marginVertical="@dimen/dimen_5dp"
                 android:layout_marginHorizontal="10dp"
-                android:text="@{model.comments}" />
+                android:text="@{model.comments}"
+                android:textColor="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/byWhom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginHorizontal="10dp"
+                android:text="@{@string/by(model.name)}"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_marginVertical="@dimen/dimen_5dp"
+                tools:text="By Ananad"/>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="end"
+               android:layout_marginHorizontal="@dimen/dimen_5dp"
+               android:layout_marginVertical="@dimen/dimen_5dp"
+               android:orientation="horizontal">
+
+
+               <androidx.appcompat.widget.AppCompatImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="end"
+                   android:visibility="gone"
+                   android:layout_marginHorizontal="@dimen/dimen_10dp"
+                   android:src="@drawable/ic_baseline_check_24"/>
+
+               <androidx.appcompat.widget.AppCompatTextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/approved"
+                   android:layout_marginHorizontal="@dimen/dimen_20dp"
+                   android:textColor="@color/green_3"/>
+
+               <androidx.appcompat.widget.AppCompatImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="end"
+                   android:layout_marginHorizontal="@dimen/dimen_5dp"
+                   android:src="@drawable/ic_baseline_delete_24" />
+
+
+           </LinearLayout>
+
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
+
 </layout>

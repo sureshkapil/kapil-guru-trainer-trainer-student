@@ -55,4 +55,9 @@ class TrainerTestimonialViewModel(var trainerTestimonialRepository: TrainerTesti
    }
 
 
+   fun updateStatus() {
+
+   }
+
+
 }
