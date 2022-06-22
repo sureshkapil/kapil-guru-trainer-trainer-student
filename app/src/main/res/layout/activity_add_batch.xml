@@ -8,6 +8,9 @@
         <variable
             name="batchViewModel"
             type="com.kapilguru.trainer.ui.courses.add_batch.viewModel.AddBatchViewModel" />
+
+        <import type="android.view.View" />
+
     </data>
 
     <ScrollView
@@ -291,7 +294,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="4dp"
                     android:layout_marginBottom="20dp"
-                    android:translationZ="10dp">
+                    android:translationZ="10dp"
+                    android:visibility="gone">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/aCTVBatchCourseNUmberOfStudentsValue"
@@ -300,7 +304,6 @@
                         android:drawableEnd="@null"
                         android:hint="@string/number_of_student"
                         android:inputType="number"
-                        android:text="@={batchViewModel.maxNoOfStudents}"
                         android:textSize="15sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -353,6 +356,13 @@
                     android:orientation="horizontal">
 
 
+                    <FrameLayout
+                        android:id="@+id/prices_frame"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp" />
+
+
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/MyAppEditTextViewStyle_new"
                         android:layout_width="match_parent"
@@ -360,7 +370,8 @@
                         android:layout_marginVertical="4dp"
                         android:layout_marginEnd="10dp"
                         android:layout_weight="0.5"
-                        android:translationZ="10dp">
+                        android:translationZ="10dp"
+                        android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/aCTVBatchActualFeeValue"
@@ -369,7 +380,7 @@
                             android:drawableEnd="@null"
                             android:hint="@string/actual_fee"
                             android:inputType="number"
-                            android:text="@={batchViewModel.batchPrice}"
+
                             android:textSize="15sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -382,7 +393,8 @@
                         android:layout_marginVertical="4dp"
                         android:layout_marginStart="10dp"
                         android:layout_weight="0.5"
-                        android:translationZ="10dp">
+                        android:translationZ="10dp"
+                        android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/aCTVBatchOfferPriceValue"
@@ -391,12 +403,58 @@
                             android:drawableEnd="@null"
                             android:hint="@string/offer_price"
                             android:inputType="number"
-                            android:text="@={batchViewModel.discountedPrice}"
+
                             android:textSize="15sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
+
+
+                <RadioGroup
+                    android:id="@+id/radioGroupTrainingMode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/training_mode"
+                        android:textColor="@color/black" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:checked="@={batchViewModel.isOnline}"
+                        android:text="@string/online" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:checked="@={batchViewModel.isOffline}"
+                        android:text="@string/offline" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@={batchViewModel.both}"
+                        android:text="@string/both" />
+
+                </RadioGroup>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:switchPadding="10dp"
+                    android:visibility="@{batchViewModel.isOffline == false ? View.GONE : View.VISIBLE}"
+                    android:checked="@={batchViewModel.isKgMeeting}"
+                    android:text="@string/do_yout_want_to_display_this_course_in_kapilguru"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aCTVCourseOfferPrice" />
 
                 <LinearLayout
                     android:id="@+id/lLayoutButtons"
@@ -419,13 +477,13 @@
                         android:translationZ="10dp" />
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/saveBatch"
                         style="@style/PositiveButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginVertical="16dp"
                         android:drawableEnd="@drawable/ic_tick"
-                        android:onClick="@{batchViewModel::onSaveBatchClick}"
                         android:text="@string/save"
                         android:translationZ="10dp" />
                 </LinearLayout>

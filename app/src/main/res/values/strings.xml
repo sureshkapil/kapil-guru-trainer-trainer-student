@@ -832,5 +832,9 @@
     <string name="course_price">Price</string>
     <string name="internet_handling_charges">Internet Handling Charges</string>
     <string name="is_tax_applicable">Is tax Applicable</string>
+    <string name="do_yout_want_to_display_this_course_in_kapilguru">Do you want to display this Course in KapilGuru.com</string>
+    <string name="training_mode">Training Mode</string>
+    <string name="both">Both</string>
+    <string name="documents">Documents</string>
 
 </resources>

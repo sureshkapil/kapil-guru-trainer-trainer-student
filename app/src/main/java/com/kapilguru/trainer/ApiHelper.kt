@@ -31,6 +31,7 @@ import com.kapilguru.trainer.student.homeActivity.models.CreateLeadRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
+import com.kapilguru.trainer.studyMaterial.StudyMatrialListRequest
 import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.trainerGallery.UploadImageGallery
@@ -57,7 +58,6 @@ open class ApiHelper(private val apiKapilTutorService: ApiKapilTutorService) {
 open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorService.userLogin(loginUserRequest)
 
     suspend fun getCousesList(trainerId: String) = apiKapilTutorService.coursesList(trainerId)
-
     suspend fun getScheduleList(trainerId: String) = apiKapilTutorService.scheduledExamsList(trainerId)
 
     suspend fun deleteCourse(courseId: String) = apiKapilTutorService.deleteCourse(courseId)
@@ -329,7 +329,7 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun getTaxes() = apiKapilTutorService.getTaxes()
 
-
+    suspend fun getListOfStudyMaterials(studyMaterialListRequest: StudyMatrialListRequest) = apiKapilTutorService.getListOfStudyMaterials(studyMaterialListRequest)
 
 
 }

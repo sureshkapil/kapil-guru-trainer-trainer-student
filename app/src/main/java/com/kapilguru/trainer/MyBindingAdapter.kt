@@ -38,6 +38,16 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("doubleToString")
+    fun TextView.IntToString(id: Double?) {
+        id?.let { it ->
+            this.text = it.toString()
+        } ?: run {
+            this.text = ""
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("intToCount")
     fun TextView.IntToCount(id: Int?) {
         id?.let { it ->

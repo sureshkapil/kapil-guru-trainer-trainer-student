@@ -3,7 +3,6 @@ package com.kapilguru.trainer.ui.courses.batchesList
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
@@ -17,7 +16,6 @@ import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.studentsList.view.StudentList
 import com.kapilguru.trainer.ui.courses.adapter.BatchListAdapter
 import com.kapilguru.trainer.ui.courses.add_batch.AddBatchActivity
-import com.kapilguru.trainer.ui.courses.batchesList.batchStudents.BatchStudentsListActivity
 import com.kapilguru.trainer.ui.courses.batchesList.models.BatchListResponse
 import com.kapilguru.trainer.ui.courses.batchesList.viewModel.BatchListViewModel
 import com.kapilguru.trainer.ui.courses.batchesList.viewModel.BatchListViewModelFactory

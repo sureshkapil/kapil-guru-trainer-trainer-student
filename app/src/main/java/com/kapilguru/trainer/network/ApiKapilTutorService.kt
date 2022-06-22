@@ -62,6 +62,8 @@ import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.AllStudentsListPerTrainerApi
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
+import com.kapilguru.trainer.studyMaterial.StudyMaterialListResponse
+import com.kapilguru.trainer.studyMaterial.StudyMatrialListRequest
 import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
 import com.kapilguru.trainer.testimonials.FetchTestimonialsResponse
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
@@ -537,4 +539,7 @@ interface ApiKapilTutorService {
 
     @GET("trainer/tax_charges")
     suspend fun getTaxes(): TaxCalculationResponse
+
+    @POST("trainer/getStudyMaterials")
+    suspend fun getListOfStudyMaterials(studyMaterialListRequest: StudyMatrialListRequest) : StudyMaterialListResponse
 }

@@ -83,7 +83,7 @@ class AddCourseTitleAndDescriptionFragment : Fragment() {
         fm.commit()
     }
 
-    fun getTaxInfo() : PriceModel?{
+    fun getPricesInfo() : PriceModel?{
         val listOfAllFragments = childFragmentManager.fragments
         val fm = listOfAllFragments.first() as TaxCalculationFragment
        return  fm.getPriceData()

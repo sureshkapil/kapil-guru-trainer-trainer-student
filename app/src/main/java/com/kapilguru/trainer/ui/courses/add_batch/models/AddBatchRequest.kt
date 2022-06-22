@@ -14,9 +14,7 @@ data class AddBatchRequest(
     @SerializedName("time_zone")
     var timeZone: String? = "IST",
     @SerializedName("max_no_of_students")
-    var maxNoOfStudents: String? = null,
-    @SerializedName("discounted_price")
-    var discountedPrice: Int? = null,
+    var maxNoOfStudents: String? = "10",
     @SerializedName("no_of_days")
     var noOfDays: String? = null,
     @SerializedName("batch_type")
@@ -25,8 +23,6 @@ data class AddBatchRequest(
     var trainerId: String? = null,
     @SerializedName("start_date")
     var startDate: String? = null,
-    @SerializedName("batch_price")
-    var batchPrice: Int? = null,
     @SerializedName("day_mon")
     var dayMon: Int? = null,
     @SerializedName("day_tue")
@@ -41,4 +37,18 @@ data class AddBatchRequest(
     var daySat: Int? = null,
     @SerializedName("day_sun")
     var daySun: Int? = null,
-)
+    @SerializedName("discount_amount")
+    var discountAmount: Double? = null,
+    @SerializedName("discounted_price")
+    var discountedPrice: Double? = null,
+    @SerializedName("batch_price")
+    var batchPrice: Double? = null,
+    @SerializedName("is_tax")
+    var isTax: Int? = 0,
+    @SerializedName("internet_charges")
+    var internetCharges: Double?=null,
+    @SerializedName("is_online")
+    var isOnline: Int?=1,
+    @SerializedName("is_kg_meeting")
+    var isKgMeeting: Boolean?=false,
+    )

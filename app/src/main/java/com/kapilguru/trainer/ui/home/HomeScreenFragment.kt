@@ -24,7 +24,9 @@ import com.kapilguru.trainer.exams.ExamsActivity
 import com.kapilguru.trainer.myClassRoomDetails.MyClassDetails
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.studentsList.view.StudentList
+import com.kapilguru.trainer.studyMaterial.StudyMaterialActivity
 import com.kapilguru.trainer.testimonials.TestimonialsActivity
+import com.kapilguru.trainer.todaysSchedule.TodaysScheduele
 import com.kapilguru.trainer.trainerFeatures.TrainerFeaturesFragment
 import com.kapilguru.trainer.trainerGallery.TrainerAllGalleryPicksActivity
 import com.kapilguru.trainer.ui.courses.courses_list.CourseActivity
@@ -173,30 +175,6 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
         homeScreenViewModel.listOfHomeItems.observe(HomeScreenFragment@ this, Observer {
             homeAdapter.setData(homeItems = it)
         })
-
-
-       /* homeScreenViewModel.upcomingResponse.observe(HomeScreenFragment@ this, Observer { response ->
-            when (response.status) {
-                Status.LOADING -> {
-                    progressDialog.showLoadingDialog()
-                }
-
-                Status.SUCCESS -> {
-                    response.data?.data?.let { upComingSchedule ->
-                        homeViewBinding.horizontalRecycler.adapter = todayScheduleAdapter
-                        todayScheduleAdapter.upComingScheduleApiList = upComingSchedule
-                        (this.requireActivity().application as MyApplication).initMaintenanceWorker()
-                        (this.requireActivity().application as MyApplication).getPendingIntent(upComingSchedule)
-                    }
-                    progressDialog.dismissLoadingDialog()
-                }
-
-                Status.ERROR -> {
-                    progressDialog.dismissLoadingDialog()
-                }
-            }
-        })*/
-
     }
 
     private fun viewPagerObserver() {
@@ -215,14 +193,20 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
             0 -> startActivity(Intent(activity, CourseActivity::class.java))
 //            0 ->   VideoCallInterfaceImplementation.launchVideoCall(requireContext(),  "1640164942153bt16941",
 //                "PartiTrainerName", "hostTrainerName")
-            1 -> startActivity(Intent(activity, StudentList::class.java).putExtra(PARAM_IS_FROM, PARAM_IS_FROM_DASHBOARD))
-            2 -> startActivity(Intent(activity, AnnouncementActivity::class.java))
-            3 -> WebinarNewActivity.launchWebinarActivity(requireActivity() as Activity)
-            4 -> startActivity(Intent(activity, GuestLecturesNewActivity::class.java))
-            5 -> startActivity(Intent(activity, ExamsActivity::class.java))
-            6 -> startActivity(Intent(activity, EarningsActivity::class.java))
-            7 -> startActivity(Intent(activity, RefundActivity::class.java))
-            8 -> startActivity(Intent(activity, AllSubscriptionActivity::class.java))
+            1 -> startActivity(Intent(activity, StudyMaterialActivity::class.java).putExtra(PARAM_IS_FROM, PARAM_IS_FROM_DASHBOARD)) // done
+            2 -> startActivity(Intent(activity, CourseActivity::class.java)) // done
+            3 -> startActivity(Intent(activity, GuestLecturesNewActivity::class.java)) // done
+
+
+            4 -> startActivity(Intent(activity, TodaysScheduele::class.java)) // done
+
+            5 -> startActivity(Intent(activity, ExamsActivity::class.java)) // done
+
+            6 -> startActivity(Intent(activity, EarningsActivity::class.java)) // enquiries ??
+
+            7 -> startActivity(Intent(activity, RefundActivity::class.java)) // pending
+
+            8 -> startActivity(Intent(activity, AnnouncementActivity::class.java)) // done
         }
     }
 

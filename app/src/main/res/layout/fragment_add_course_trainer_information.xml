@@ -137,6 +137,16 @@
                 android:background="@drawable/spinner_bg"
                 app:layout_constraintTop_toBottomOf="@id/aCTVTotalNumberOfStudentsTrained" />
 
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/displayCourseInKapilGuru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchPadding="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:checked="@={viewModel.displayCourseInKapilWebsite}"
+                android:text="@string/do_yout_want_to_display_this_course_in_kapilguru"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_selectedLanguages" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
@@ -146,7 +156,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
                 app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clTrainerDetails"
-                app:layout_constraintTop_toBottomOf="@+id/tv_selectedLanguages"
+                app:layout_constraintTop_toBottomOf="@+id/displayCourseInKapilGuru"
                 app:layout_constraintVertical_bias="0">
 
                 <LinearLayout

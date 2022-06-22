@@ -23,6 +23,8 @@ import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.ui.courses.add_batch.viewModel.AddBatchViewModel
 import com.kapilguru.trainer.ui.courses.add_batch.viewModel.AddBatchViewModelFactory
 import com.kapilguru.trainer.ui.courses.batchesList.BatchListDetailsActivity
+import com.kapilguru.trainer.ui.courses.tax.PriceModel
+import com.kapilguru.trainer.ui.courses.tax.TaxCalculationFragment
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.android.synthetic.main.activity_add_batch.*
 import org.json.JSONArray
@@ -53,6 +55,8 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
         add(DurationModel("2 Hours 30 Minutes", 150, false))
         add(DurationModel("3 Hours", 180, false))
     }
+
+     var priceModel:PriceModel?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -155,13 +159,37 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
                 aCTVBatchCourseNUmberOfStudentsValue.setText("50")
                 addBatchViewModel.emptyFieldMessage.postValue(8)
             } else if (!text.isNullOrEmpty()) {
-                addBatchViewModel.maxNoOfStudents.value = aCTVBatchCourseNUmberOfStudentsValue.text.toString()
+//                addBatchViewModel.maxNoOfStudents.value = aCTVBatchCourseNUmberOfStudentsValue.text.toString()
             }
 
         }
 
+        addBatchBinding.saveBatch.setOnClickListener {
+            val priceModel = getPricesInfo()
+            addBatchViewModel.batchPrice.value =priceModel?.fee
+            addBatchViewModel.discountedAmount.value =priceModel?.discountAmount
+            addBatchViewModel.discountedPrice.value =priceModel?.actualFee
+            addBatchViewModel.isTax.value =priceModel?.isTaxChargesAdded
+            addBatchViewModel.internetCharges.value =priceModel?.internetCharges
+
+            addBatchViewModel.onSaveBatchClick()
+        }
+
+        setUpPricesFragment(priceModel)
+
+    }
+
+    private fun setUpPricesFragment(priceModel: PriceModel?) {
+        val fm = supportFragmentManager.beginTransaction()
+        fm.replace(R.id.prices_frame, TaxCalculationFragment.newInstance(priceModel))
+        fm.commit()
+    }
 
 
+    fun getPricesInfo() : PriceModel? {
+        val listOfAllFragments = supportFragmentManager.fragments
+        val fm = listOfAllFragments.first() as TaxCalculationFragment
+        return  fm.getPriceData()
     }
 
     private fun setClassDurationClickListener() {
@@ -253,7 +281,7 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
 
     private fun setOfferPriceTextChangeListener() {
         addBatchBinding.aCTVBatchOfferPriceValue.doOnTextChanged { text, start, before, count ->
-            text?.let {
+            text?.let { it->
                 if (it.isNotEmpty()) {
                     if (it.toString().toInt() >
                         addBatchBinding.aCTVBatchActualFeeValue.text.toString().toInt()
@@ -554,9 +582,9 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
                         editBatch[0].startDate?.let { dateAndTime ->
                             setStartDateAndStartTime(dateAndTime)
                         }
-                        addBatchViewModel.maxNoOfStudents.value = editBatch[0].maxNoOfStudents
-                        addBatchViewModel.batchPrice.value = editBatch[0].batchPrice.toString()
-                        addBatchViewModel.offerPrice.value = editBatch[0].discountedPrice.toString()
+//                        addBatchViewModel.maxNoOfStudents.value = editBatch[0].maxNoOfStudents
+//                        addBatchViewModel.batchPrice.value = editBatch[0].batchPrice.toString()
+//                        addBatchViewModel.offerPrice.value = editBatch[0].discountedPrice.toString()
                         addBatchViewModel.dayMon.value = editBatch[0].dayMon
                         addBatchViewModel.dayTue.value = editBatch[0].dayTue
                         addBatchViewModel.dayWed.value = editBatch[0].dayWed
@@ -580,6 +608,17 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
 //                        it[0].classDuration?.toInt()?.let { it1 ->
 //                            getDurationOfWebinar(it1)
 //                        }
+
+                        val price = PriceModel().apply {
+                            fee = editBatch[0].batchPrice.toString()
+                            discountAmount = editBatch[0].discountAmount.toString()
+                            actualFee = editBatch[0].discountedPrice.toString()
+                            isTaxChargesAdded = editBatch[0].isTax == 1
+                            internetCharges = editBatch[0].internetCharges
+                        }
+                            setUpPricesFragment(price)
+
+
                         shouldEnableOtherFields()
                     }
                     dialog.dismissLoadingDialog()
@@ -673,12 +712,9 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
 
     private fun changeEndDate() {
         when {
-           (!addBatchViewModel.startDate.value.isNullOrEmpty() &&
-                    !addBatchViewModel.startTime.value.isNullOrEmpty() &&
-                    !addBatchViewModel.classDuration.value.isNullOrEmpty() &&
-                    !addBatchViewModel.noOfDays.value.isNullOrEmpty()) -> {
-                        setTotalCourseDuration()
-                    }
+            (!addBatchViewModel.startDate.value.isNullOrEmpty() && !addBatchViewModel.startTime.value.isNullOrEmpty() && !addBatchViewModel.classDuration.value.isNullOrEmpty() && !addBatchViewModel.noOfDays.value.isNullOrEmpty()) -> {
+                setTotalCourseDuration()
+            }
         }
     }
 

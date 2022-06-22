@@ -1,7 +1,6 @@
 package com.kapilguru.trainer.ui.courses.add_batch.viewModel
 
 import android.app.Application
-import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -16,6 +15,7 @@ import com.kapilguru.trainer.ui.courses.add_batch.AddBatchRepository
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchApiResponse
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchRequest
 import com.kapilguru.trainer.ui.courses.add_batch.models.EditBatchApiRequest
+import com.kapilguru.trainer.ui.courses.tax.PriceModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -40,8 +40,11 @@ class AddBatchViewModel(
     var endTime: MutableLiveData<String> = MutableLiveData()
     var noOfDays: MutableLiveData<String> = MutableLiveData()
     var batchPrice: MutableLiveData<String> = MutableLiveData()
+    var discountedAmount: MutableLiveData<String> = MutableLiveData()
     var datesJson: MutableLiveData<String> = MutableLiveData()
     var discountedPrice: MutableLiveData<String> = MutableLiveData()
+    var isTax: MutableLiveData<Boolean> = MutableLiveData(false)
+    var internetCharges: MutableLiveData<Double> = MutableLiveData()
     var batchType: MutableLiveData<String> = MutableLiveData(APP_WEEKDAY)
     var classDuration: MutableLiveData<String> = MutableLiveData()
     var courseDuration: MutableLiveData<String> = MutableLiveData()
@@ -57,6 +60,10 @@ class AddBatchViewModel(
     var offerPrice: MutableLiveData<String> = MutableLiveData()
     var courseId: MutableLiveData<Int> = MutableLiveData()
     var batchId: MutableLiveData<Int> = MutableLiveData()
+    var isOnline: MutableLiveData<Boolean> = MutableLiveData(true)
+    var isOffline: MutableLiveData<Boolean> = MutableLiveData()
+    var isBoth: MutableLiveData<Boolean> = MutableLiveData()
+    var isKgMeeting: MutableLiveData<Boolean> = MutableLiveData()
     var emptyFieldMessage: MutableLiveData<Int> = MutableLiveData()
     var isEveryFieldEntered = true
 
@@ -81,11 +88,10 @@ class AddBatchViewModel(
 
     private val TAG = "AddBatchViewModel"
 
-    fun onSaveBatchClick(v: View) {
+    fun onSaveBatchClick() {
         isEveryFieldEntered = true
 
         if (checkValidations()) {
-
             addBatchReq = AddBatchRequest().also {
                 it.trainerId = trainerId.toString()
                 it.courseId = courseId.value
@@ -93,11 +99,9 @@ class AddBatchViewModel(
                 it.endDate = convertEndDate()
                 it.timeZone = timeZone.value.toString()
                 it.noOfDays = noOfDays.value.toString()
-                it.batchPrice = batchPrice.value?.toInt()
-                it.discountedPrice = discountedPrice.value?.toInt()
                 it.batchType = batchType.value.toString()
                 it.classDuration = classDuration.value.toString()
-                it.maxNoOfStudents = maxNoOfStudents.value.toString()
+//                it.maxNoOfStudents = maxNoOfStudents.value.toString()
                 it.datesJson = datesJson.value.toString()
                 it.dayMon = dayMon.value
                 it.dayTue = dayTue.value
@@ -106,12 +110,30 @@ class AddBatchViewModel(
                 it.dayFri = dayFri.value
                 it.daySat = daySat.value
                 it.daySun = daySun.value
+                it.batchPrice = batchPrice.value?.toDouble()
+                it.discountedPrice = discountedPrice.value?.toDouble()
+                it.discountAmount = discountedAmount.value?.toDouble()
+                it.internetCharges = internetCharges.value
+                it.isTax = if(isTax.value!!) 1 else 0
+                it.isOnline =  getTrainingModeStatus()
+                it.isKgMeeting =  isKgMeeting.value
             }
-
         }
 
         if (isEveryFieldEntered) {
             addRequestApiForAddBatch()
+        }
+    }
+
+    private fun getTrainingModeStatus(): Int = when {
+        isOnline.value == true -> {
+            1
+        }
+        isOffline.value == true -> {
+            0
+        }
+        else -> {
+            2
         }
     }
 
@@ -159,17 +181,17 @@ class AddBatchViewModel(
                 isEveryFieldEntered = false
             }
 
-            maxNoOfStudents.value.toString().isEmpty() -> {
-                emptyFieldMessage.value = 7
-                isEveryFieldEntered = false
-            }
-
-            maxNoOfStudents.value.toString().isEmpty() -> {
-                if (noOfDays.value!!.toInt() > 50) {
-                    emptyFieldMessage.postValue(8)
-                    isEveryFieldEntered = false
-                }
-            }
+//            maxNoOfStudents.value.toString().isEmpty() -> {
+//                emptyFieldMessage.value = 7
+//                isEveryFieldEntered = false
+//            }
+//
+//            maxNoOfStudents.value.toString().isEmpty() -> {
+//                if (noOfDays.value!!.toInt() > 50) {
+//                    emptyFieldMessage.postValue(8)
+//                    isEveryFieldEntered = false
+//                }
+//            }
 
         }
 
