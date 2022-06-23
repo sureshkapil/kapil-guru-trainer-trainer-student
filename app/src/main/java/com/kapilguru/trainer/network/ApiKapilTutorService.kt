@@ -69,7 +69,10 @@ import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
 
 import com.kapilguru.trainer.studyMaterial.StudyMaterialListResponse
 import com.kapilguru.trainer.studyMaterial.StudyMatrialListRequest
-import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
+import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentRequest
+import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentResponse
+import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMaterialOverViewResponse
+import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMatrialOverViewRequest
 
 import com.kapilguru.trainer.testimonials.FetchTestimonialsResponse
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
@@ -557,7 +560,7 @@ interface ApiKapilTutorService {
 
 
     @POST("trainer/getStudyMaterials")
-    suspend fun getListOfStudyMaterials(studyMaterialListRequest: StudyMatrialListRequest) : StudyMaterialListResponse
+    suspend fun getListOfStudyMaterials(@Body studyMaterialListRequest: StudyMatrialListRequest) : StudyMaterialListResponse
 
 
     @GET("/trainer/app_testimonials/{id}")
@@ -591,5 +594,14 @@ interface ApiKapilTutorService {
 
     @POST("trainer/getStudyMaterials")
     suspend fun  getCategoryCourse(@Body couponCourseCategoryRequest: CouponCourseCategoryRequest): CouponLiveCoursesResponse
+
+    @POST("trainer/getStudyMaterialsOverview")
+    suspend fun getStudyMaterialOverView(@Body studyMatrialOverViewRequest: StudyMatrialOverViewRequest): StudyMaterialOverViewResponse
+
+    @POST("trainer/getFolderContent")
+    suspend fun getFolderContent(@Body folderContentRequest: FolderContentRequest): FolderContentResponse
+
+
+
 
 }

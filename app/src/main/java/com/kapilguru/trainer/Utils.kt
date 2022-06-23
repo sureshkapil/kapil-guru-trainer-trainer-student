@@ -148,6 +148,9 @@ const val INSTAGRAM_URL = "https://www.instagram.com/accounts/login/?next=/kapil
 const val LINKED_IN_URL = "https://in.linkedin.com/company/kapil-guru"
 const val YOUTUBE_URL = "https://www.youtube.com/channel/UCk2-2a8XTUMrya5YQrE4SAw"
 const val DIALOG_FRAGMENT_TAG_PROFILE: String = "dialog_fragment_tag_profile"
+const val STUDY_MATERIAL_COURSE_ID: String = "study_material_course_id"
+const val STUDY_MATERIAL_ID: String = "study_material_id"
+const val PARENT_ID: String = "parent_id"
 
 fun showAppToast(context: Context, text: String) {
     Toast.makeText(context, text, Toast.LENGTH_LONG).show()

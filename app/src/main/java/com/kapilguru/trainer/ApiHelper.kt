@@ -36,6 +36,8 @@ import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
 
 import com.kapilguru.trainer.studyMaterial.StudyMatrialListRequest
+import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentRequest
+import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMatrialOverViewRequest
 import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.trainerGallery.UploadImageGallery
@@ -339,8 +341,13 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun getTaxes() = apiKapilTutorService.getTaxes()
 
     suspend fun getListOfStudyMaterials(studyMaterialListRequest: StudyMatrialListRequest) = apiKapilTutorService.getListOfStudyMaterials(studyMaterialListRequest)
+
     suspend fun getStudentProfileData(userId: String) = apiKapilTutorService.getStudentProfileData(userId)
 
+    suspend fun getStudyMaterialOverView(studyMatrialOverViewRequest: StudyMatrialOverViewRequest) = apiKapilTutorService.getStudyMaterialOverView(studyMatrialOverViewRequest)
+
+
+    suspend fun getFolderContent(folderContentRequest: FolderContentRequest) = apiKapilTutorService.getFolderContent(folderContentRequest)
 
 //    suspend fun getStudyMaterialList(studyMaterialListRequest: StudyMaterialListRequest) = apiKapilTutorService.getStudyMaterialList(studyMaterialListRequest)
 

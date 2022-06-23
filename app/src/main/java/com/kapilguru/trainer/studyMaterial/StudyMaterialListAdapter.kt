@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kapilguru.trainer.databinding.StudyMaterialListItemBinding
 
-class StudyMaterialListAdapter: RecyclerView.Adapter<StudyMaterialListAdapter.Holder>() {
+class StudyMaterialListAdapter(var studyMaterialItemClick: StudyMaterialItemClick): RecyclerView.Adapter<StudyMaterialListAdapter.Holder>() {
 
 
-    var listOfItems = emptyList<StudyMaterialListResponseApi>()
+    var listOfItems = arrayListOf<StudyMaterialListResponseApi>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -32,8 +32,19 @@ class StudyMaterialListAdapter: RecyclerView.Adapter<StudyMaterialListAdapter.Ho
 
 
 
-    class Holder(studyMaterialListItemBinding: StudyMaterialListItemBinding) : RecyclerView.ViewHolder(studyMaterialListItemBinding.root) {
+  inner class Holder(studyMaterialListItemBinding: StudyMaterialListItemBinding) : RecyclerView.ViewHolder(studyMaterialListItemBinding.root) {
         var view =studyMaterialListItemBinding
+        var cardView = view.cardView
+        init {
+            cardView.setOnClickListener {
+                studyMaterialItemClick.onItemClickListener(listOfItems[absoluteAdapterPosition])
+            }
+        }
+
+    }
+
+    interface StudyMaterialItemClick {
+        fun onItemClickListener(studyMaterialListResponseApi:StudyMaterialListResponseApi)
     }
 
 }

@@ -851,6 +851,7 @@
     <string name="percentage_value">%d \%%</string>
     <string name="network_connection_error">Network Connection Error</string>
     <string name="create_coupon">Create Coupon</string>
+    <string name="view_content">View Content</string>
 
 
     <string-array name="coupon_code_category">

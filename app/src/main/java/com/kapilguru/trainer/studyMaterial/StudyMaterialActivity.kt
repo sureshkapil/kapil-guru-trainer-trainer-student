@@ -1,5 +1,6 @@
 package com.kapilguru.trainer.studyMaterial
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,13 +13,13 @@ import com.kapilguru.trainer.databinding.ActivityTrainerAllGalleryPicksBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
+import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMaterialOverViewActivity
 import java.io.File
 
-class StudyMaterialActivity : AppCompatActivity() {
+class StudyMaterialActivity : BaseActivity(), StudyMaterialListAdapter.StudyMaterialItemClick {
 
     lateinit var binding: ActivityStudyMaterialBinding
     lateinit var viewModel: StudyMaterialViewModel
-    var imageFile: File? = null
     lateinit var appUri: Uri
     lateinit var adapter: StudyMaterialListAdapter
     lateinit var dialog: CustomProgressDialog
@@ -28,9 +29,9 @@ class StudyMaterialActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_study_material)
-        binding.lifecycleOwner = this
         viewModel = ViewModelProvider(this, StudyMaterialViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE))).get(StudyMaterialViewModel::class.java)
         dialog = CustomProgressDialog(this)
+        binding.lifecycleOwner = this
         setclickListeners()
         setAdapterInfo()
         observeViewModels()
@@ -49,7 +50,7 @@ class StudyMaterialActivity : AppCompatActivity() {
             trainerId = id
             isRecorded = 1
         })
-        adapter = StudyMaterialListAdapter()
+        adapter = StudyMaterialListAdapter(this)
         binding.studyMaterialRecy.adapter = adapter
     }
 
@@ -77,6 +78,12 @@ class StudyMaterialActivity : AppCompatActivity() {
 
     private fun setDataToAdapter(list: List<StudyMaterialListResponseApi>) {
         adapter.listOfItems = (list as ArrayList<StudyMaterialListResponseApi>)
+    }
+
+    override fun onItemClickListener(studyMaterialListResponseApi: StudyMaterialListResponseApi) {
+        startActivity(Intent(this,StudyMaterialOverViewActivity::class.java)
+            .putExtra(STUDY_MATERIAL_COURSE_ID,studyMaterialListResponseApi.id)
+            .putExtra(STUDY_MATERIAL_ID,studyMaterialListResponseApi.studyMaterialId))
     }
 
 }

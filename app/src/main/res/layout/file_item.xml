@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentResponseApi" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:src="@drawable/main_bg">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/apCTVFileName"
+            style="@style/CardViewTextHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_5dp"
+            android:gravity="start|center_vertical"
+            android:text="@{model.name}"
+            app:folderDrawable="@{model.isFolder}"
+            app:fileType="@{model.mimetype}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:fontFamily="@font/montserrat_bold"
+            app:layout_constraintEnd_toStartOf="@id/ll_batches_count"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Python" />
+
+    </LinearLayout>
+
+</layout>

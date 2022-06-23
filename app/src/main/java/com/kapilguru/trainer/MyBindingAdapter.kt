@@ -398,6 +398,7 @@ object Companion {
         imageUrl?.let { it ->
             when {
                 TextUtils.equals(it, "null") -> this.setImageResource(R.drawable.default_image)
+                TextUtils.equals(it, "") -> this.setImageResource(R.drawable.default_image)
                 imageUrl.contains(".") -> Glide.with(context).load(IMAGE_BASE_URL.plus(it)).placeholder(ResourcesCompat.getDrawable(resources, R.drawable.default_image, null)).into(this)
                 else -> Glide.with(context).load(IMAGE_BASE_URL.plus(it).plus(".png")).into(this)
             }
@@ -769,6 +770,28 @@ object Companion {
             this.setText(it.toString())
         } ?: run {
             this.setText("0")
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter(value =["folderDrawable", "fileType"])
+    fun TextView.setFolderDrawable(folderDrawable: Int?, fileType: String?) {
+        folderDrawable?.let {
+            if (it == 1) {
+                this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_folder_24, 0, 0, 0)
+            } else {
+                fileType?.let {
+                    if(it.contains("pdf",true)) {
+                        this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_picture_as_pdf_24, 0, 0, 0)
+                    }   else {
+                        this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_ondemand_video_24, 0, 0, 0)
+                    }
+                }?:run {
+
+                }
+            }
+        } ?: run {
+//            this.text = getSingularDay(this.context,0)
         }
     }
 }
