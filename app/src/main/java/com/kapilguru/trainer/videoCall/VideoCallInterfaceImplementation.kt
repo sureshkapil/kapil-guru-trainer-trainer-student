@@ -21,4 +21,11 @@ object VideoCallInterfaceImplementation : VideoCallInterface {
         TODO("Not yet implemented")
     }
 
+    override fun launchStudentVideoCall(context: Context, roomName: String, participantName: String) {
+        try {
+            EntryActivity.launch(context,roomName,participantName);  //DEMO1642666018870DL15610
+        } catch (exception: Exception) {
+        }
+    }
+
 }

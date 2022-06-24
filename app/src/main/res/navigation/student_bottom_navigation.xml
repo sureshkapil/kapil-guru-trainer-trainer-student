@@ -11,11 +11,11 @@
         android:label="@string/title_home"
         tools:layout="@layout/student_fragment_dash_board" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_myclassroom"-->
-<!--        android:name="com.kapilguru.student.myClassroom.MyClassroomFragment"-->
-<!--        android:label="@string/title_myclassroom"-->
-<!--        tools:layout="@layout/activity_my_classroom" />-->
+    <fragment
+        android:id="@+id/navigation_myclassroom"
+        android:name="com.kapilguru.trainer.student.myClassroom.StudentMyClassroomFragment"
+        android:label="@string/title_myclassroom"
+        tools:layout="@layout/activity_student_my_classroom" />
 
 <!--    <fragment-->
 <!--        android:id="@+id/navigation_upcoming"-->
