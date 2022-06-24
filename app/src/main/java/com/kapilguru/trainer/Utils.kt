@@ -153,6 +153,9 @@ const val YOUTUBE_URL = "https://www.youtube.com/channel/UCk2-2a8XTUMrya5YQrE4SA
 const val DIALOG_FRAGMENT_TAG_PROFILE: String = "dialog_fragment_tag_profile"
 const val PARAM_QUESTIONS_REQUEST = "questionsRequest"
 const val PARAM_REPORTS_REQUEST = "repostRequest"
+const val STUDY_MATERIAL_COURSE_ID: String = "study_material_course_id"
+const val STUDY_MATERIAL_ID: String = "study_material_id"
+const val PARENT_ID: String = "parent_id"
 
 
 fun showAppToast(context: Context, text: String) {

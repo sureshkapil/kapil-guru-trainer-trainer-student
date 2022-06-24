@@ -18,7 +18,7 @@ import com.kapilguru.trainer.announcement.sentItems.data.LastMessageRequest
 import com.kapilguru.trainer.announcement.sentItems.data.SentItemsResponse
 import com.kapilguru.trainer.batchExamReports.BatchReportsRequestModel
 import com.kapilguru.trainer.batchExamReports.BatchStudentReportApi
-import com.kapilguru.trainer.coupons.AllCouponsResponseList
+import com.kapilguru.trainer.coupons.*
 import com.kapilguru.trainer.demo_webinar_students.DemoWebinarStudentsResponse
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.assignExamToBatch.model.BatchByCourseResponse
@@ -71,6 +71,14 @@ import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.AllStudentsListPerTrainerApi
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
+
+import com.kapilguru.trainer.studyMaterial.StudyMaterialListResponse
+import com.kapilguru.trainer.studyMaterial.StudyMatrialListRequest
+import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentRequest
+import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentResponse
+import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMaterialOverViewResponse
+import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMatrialOverViewRequest
+
 import com.kapilguru.trainer.testimonials.FetchTestimonialsResponse
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.testimonials.PostTestimonialsResponse
@@ -556,13 +564,17 @@ interface ApiKapilTutorService {
     suspend fun getTaxes(): TaxCalculationResponse
 
 
+    @POST("trainer/getStudyMaterials")
+    suspend fun getListOfStudyMaterials(@Body studyMaterialListRequest: StudyMatrialListRequest) : StudyMaterialListResponse
+
+
     @GET("/trainer/app_testimonials/{id}")
     suspend fun updateTestimonialStatus(@Path("id") id: Int): TaxCalculationResponse
 
 //    @POST("/trainer/getStudyMaterials")
 //    suspend fun getStudyMaterialList(studyMaterialListRequest: StudyMaterialListRequest) = apiKapilTutorService.getStudyMaterialList(studyMaterialListRequest)
 
-    @GET("trainer/kg_coupons/created_by/{trainerId}")
+    @GET("trainer/kg_coupons/{trainerId}")
     suspend fun getCouponsList(@Path("trainerId") trainerId: Int) : AllCouponsResponseList
 
     //Student Profile
@@ -617,4 +629,17 @@ interface ApiKapilTutorService {
 
     @GET("student/allQuestionPaperList/{batchId}")
     suspend fun getStudentExamList(@Path("batchId") batchId: String): StudentQuestionPaperListResponse
+
+    @POST("trainer/kg_coupons")
+    suspend fun addCoupon(@Body addCouponsRequest: AddCouponsRequest) : AddCouponResponse
+
+    @POST("trainer/getStudyMaterials")
+    suspend fun  getCategoryCourse(@Body couponCourseCategoryRequest: CouponCourseCategoryRequest): CouponLiveCoursesResponse
+
+    @POST("trainer/getStudyMaterialsOverview")
+    suspend fun getStudyMaterialOverView(@Body studyMatrialOverViewRequest: StudyMatrialOverViewRequest): StudyMaterialOverViewResponse
+
+    @POST("trainer/getFolderContent")
+    suspend fun getFolderContent(@Body folderContentRequest: FolderContentRequest): FolderContentResponse
+
 }

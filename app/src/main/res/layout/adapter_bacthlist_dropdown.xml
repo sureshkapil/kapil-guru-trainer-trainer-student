@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/rubik_bold"
             android:padding="4dp"
-            app:intToString="@{batchViewModel.fee}"
+            app:doubleToString="@{batchViewModel.fee}"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@id/actv_course_fee"
             app:layout_constraintTop_toBottomOf="@id/actv_course_fee"

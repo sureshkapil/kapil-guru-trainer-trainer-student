@@ -832,6 +832,10 @@
     <string name="course_price">Price</string>
     <string name="internet_handling_charges">Internet Handling Charges</string>
     <string name="is_tax_applicable">Is tax Applicable</string>
+    <string name="do_yout_want_to_display_this_course_in_kapilguru">Do you want to display this Course in KapilGuru.com</string>
+    <string name="training_mode">Training Mode</string>
+    <string name="both">Both</string>
+    <string name="documents">Documents</string>
 
     <string name="upload_image">Upload Image</string>
     <string name="coupon_code">Coupon Code</string>
@@ -846,6 +850,8 @@
     <string name="assigned_to">Assigned To</string>
     <string name="percentage_value">%d \%%</string>
     <string name="network_connection_error">Network Connection Error</string>
+    <string name="create_coupon">Create Coupon</string>
+    <string name="view_content">View Content</string>
 
     <!--Student-->
     <string name="recordings">Recordings</string>
@@ -881,5 +887,12 @@
     <string name="question_paper">Question Paper</string>
     <string name="question_no">Q %d/%d </string>
     <string name="all_exams">All Exams</string>
+
+    <string-array name="coupon_code_category">
+        <item>Select Category</item>
+        <item>Live Courses</item>
+        <item>Study Material</item>
+        <item>Recorded Videos</item>
+    </string-array>
 
 </resources>

@@ -40,6 +40,16 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("doubleToString")
+    fun TextView.IntToString(id: Double?) {
+        id?.let { it ->
+            this.text = it.toString()
+        } ?: run {
+            this.text = ""
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("intToCount")
     fun TextView.IntToCount(id: Int?) {
         id?.let { it ->
@@ -428,6 +438,7 @@ object Companion {
         imageUrl?.let { it ->
             when {
                 TextUtils.equals(it, "null") -> this.setImageResource(R.drawable.default_image)
+                TextUtils.equals(it, "") -> this.setImageResource(R.drawable.default_image)
                 imageUrl.contains(".") -> Glide.with(context).load(IMAGE_BASE_URL.plus(it)).placeholder(ResourcesCompat.getDrawable(resources, R.drawable.default_image, null)).into(this)
                 else -> Glide.with(context).load(IMAGE_BASE_URL.plus(it).plus(".png")).into(this)
             }
@@ -646,6 +657,16 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("setKeyStudentNameOrPublic")
+    fun KeyValueText.setKeyStudentNameOrPublic(toBeStringData: String?) {
+        toBeStringData?.let {
+            this.text_value.text = it.toString()
+        } ?: run {
+            this.text_value.text = resources.getString(R.string._public)
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("dateToString")
     fun KeyValueText.dateToString(endd: String?) {
         endd?.let { current ->
@@ -798,6 +819,16 @@ object Companion {
 //            }else{
 //                this.text = resources.getString(R.string.continue_text)
 //            }
+            }
+    }
+
+    @JvmStatic
+    @BindingAdapter("textIntToString")
+    fun TextInputEditText.textIntToString(id: Int?) {
+        id?.let { it ->
+            this.setText(it.toString())
+        } ?: run {
+            this.setText("0")
         }
     }
 
@@ -807,4 +838,25 @@ object Companion {
         this.text = "$id Mins"
     }
 
+
+    @BindingAdapter(value =["folderDrawable", "fileType"])
+    fun TextView.setFolderDrawable(folderDrawable: Int?, fileType: String?) {
+        folderDrawable?.let {
+            if (it == 1) {
+                this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_folder_24, 0, 0, 0)
+            } else {
+                fileType?.let {
+                    if(it.contains("pdf",true)) {
+                        this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_picture_as_pdf_24, 0, 0, 0)
+                    }   else {
+                        this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_ondemand_video_24, 0, 0, 0)
+                    }
+                }?:run {
+
+                }
+            }
+        } ?: run {
+//            this.text = getSingularDay(this.context,0)
+        }
+    }
 }

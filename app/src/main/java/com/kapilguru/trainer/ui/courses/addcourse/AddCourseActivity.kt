@@ -183,7 +183,7 @@ class AddCourseActivity : BaseActivity() {
         addCourseViewModel.addCourseRequest.trainerName =
             StorePreferences(AddCourseActivity@ this).userName.toString()
 
-        (myFragment as AddCourseTitleAndDescriptionFragment).getTaxInfo()?.let {
+        (myFragment as AddCourseTitleAndDescriptionFragment).getPricesInfo()?.let {
             it.fee?.let { fee ->
                 addCourseViewModel.addCourseRequest.fee = fee.toDouble()
             }
@@ -552,6 +552,17 @@ class AddCourseActivity : BaseActivity() {
                     dialog.dismissLoadingDialog()
                 }
             }
+        })
+
+        addCourseViewModel.displayCourseInKapilWebsite.observe(this, Observer {
+            if (it) {
+                addCourseViewModel.addCourseRequest.isVerified = 0
+                addCourseViewModel.addCourseRequest.isSubmitted = 1
+            } else {
+                addCourseViewModel.addCourseRequest.isVerified = 1
+                addCourseViewModel.addCourseRequest.isSubmitted = 0
+            }
+
         })
 
     }

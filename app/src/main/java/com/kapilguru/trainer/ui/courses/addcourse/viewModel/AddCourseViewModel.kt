@@ -52,6 +52,7 @@ class AddCourseViewModel(private val addCourseRepository: AddCourseRepository, a
     var uploadVideoResponse: MutableLiveData<ApiResource<UploadVideoResponse>> = MutableLiveData()
     var getPdfResponse: MutableLiveData<ApiResource<CoursePdfResponse>> = MutableLiveData()
     var downloadPdfUrl: MutableLiveData<String> = MutableLiveData()
+    var displayCourseInKapilWebsite: MutableLiveData<Boolean> = MutableLiveData()
 
 
 

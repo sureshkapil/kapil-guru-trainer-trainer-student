@@ -121,7 +121,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/study_material"
+            android:id="@+id/add_coupons"
             android:layout_width="@dimen/dimen_140_dp"
             android:layout_height="@dimen/dimen_100_dp"
             android:background="@drawable/light_green_rectangle_bg"
@@ -134,7 +134,7 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/add_coupons"
+                android:id="@+id/add_coupons_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_coupons"
@@ -172,7 +172,7 @@
             android:paddingTop="@dimen/dimen_4dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/study_material"
+            app:layout_constraintStart_toEndOf="@+id/add_coupons"
             app:layout_constraintTop_toBottomOf="@+id/recorded_courses">
 
             <androidx.appcompat.widget.AppCompatTextView

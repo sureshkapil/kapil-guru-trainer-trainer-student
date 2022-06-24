@@ -31,9 +31,9 @@ data class AddCourseRequest(
         @SerializedName("trainer_name") var trainerName: String?=null,
         @SerializedName("trainers_year_of_exp") var trainersYearOfExp: String?=null,
         @SerializedName("code") var code: String?=null,
-        @SerializedName("is_verified") var isVerified: Int=0,
+        @SerializedName("is_verified") var isVerified: Int=1, // default considered as show in Mobile only
         @SerializedName("is_rejected") var isRejected: Int=0,
-        @SerializedName("is_submitted") var is_verified: Int=1,
+        @SerializedName("is_submitted") var isSubmitted: Int=0, // default considered as show in Mobile only
         @SerializedName("internet_charges") var internetCharges: Double?=null,
         @SerializedName("is_tax") var istax: Int =0,
         @Transient var isApiRequestMade: Boolean = false,

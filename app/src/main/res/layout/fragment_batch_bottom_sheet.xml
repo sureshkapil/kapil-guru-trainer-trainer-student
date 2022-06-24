@@ -133,7 +133,7 @@
                         android:layout_gravity="end"
                         android:layout_weight="1"
                         android:gravity="end"
-                        app:id="@{batchListData.fee}"
+                        app:doubleToString="@{batchListData.fee}"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="normal" />

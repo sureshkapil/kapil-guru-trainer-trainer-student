@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<data>
 
-</data>
+    <data>
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.coupons.CouponsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,10 +41,11 @@
                     android:id="@+id/aCTVCouponCodeValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableEnd="@null"
                     android:hint="@string/coupon_code"
                     android:inputType="text"
                     android:maxLength="100"
-                    android:text=""
+                    android:text="@={model.couponCode}"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,15 +63,16 @@
                     android:id="@+id/aCTVCouponPercentageValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableEnd="@null"
                     android:hint="@string/discount_percentage"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/aCTVBatchDate"
+                android:id="@+id/end_calander"
                 style="@style/MyAppEditTextViewStyle_new"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,14 +81,14 @@
                 android:translationZ="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/aCTVBatchDateValue"
+                    android:id="@+id/calander"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/ic_calendar"
                     android:focusable="false"
                     android:hint="@string/choose_date"
                     android:inputType="text"
-                    android:text="Coupon Expiry date"
+                    android:text="@={model.varidUpto}"
                     android:textColorHint="@android:color/black"
                     android:textSize="15sp" />
 
@@ -92,6 +98,7 @@
                 android:id="@+id/aCSpinnerCategory"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:entries="@array/coupon_code_category"
                 android:layout_marginVertical="8dp"
                 android:background="@drawable/spinner_bg"
                 android:shadowColor="@color/design_default_color_on_primary"
@@ -149,8 +156,12 @@
                 android:transitionName="Select Course Category" />
 
 
-
-
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/create_coupon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:text="@string/create_coupon" />
 
         </LinearLayout>
 

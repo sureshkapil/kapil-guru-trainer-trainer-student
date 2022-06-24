@@ -11,7 +11,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.courses.tax.TaxCalculationFragment">
+    tools:context=".ui.courses.tax.TaxCalculationFragment"
+    tools:showIn="@layout/activity_add_batch">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineVertical_0_05_clAddCourseTitle"
