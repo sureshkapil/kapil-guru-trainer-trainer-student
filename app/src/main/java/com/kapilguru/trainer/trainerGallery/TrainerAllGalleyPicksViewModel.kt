@@ -11,47 +11,62 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
-class TrainerAllGalleyPicksViewModel(var trainerAllGalleryPicksRepository: TrainerAllGalleryPicksRepository):ViewModel() {
+class TrainerAllGalleyPicksViewModel(var trainerAllGalleryPicksRepository: TrainerAllGalleryPicksRepository) : ViewModel() {
 
-   var commonUploadImageResponse:MutableLiveData<ApiResource<UploadImageCourseResponse>> = MutableLiveData()
-
-
-   var getAllImages:MutableLiveData<ApiResource<TrainerGalleryImagesResponse>> = MutableLiveData()
+    var commonUploadImageResponse: MutableLiveData<ApiResource<UploadImageCourseResponse>> = MutableLiveData()
 
 
+    var getAllImages: MutableLiveData<ApiResource<TrainerGalleryImagesResponse>> = MutableLiveData()
 
-   fun uploadGalleryImage(uploadImageGallery: UploadImageGallery) {
+    var deleteImageResponse: MutableLiveData<ApiResource<DeleteImageResponse>> = MutableLiveData()
 
-      commonUploadImageResponse.postValue(ApiResource.loading(null))
-      viewModelScope.launch(Dispatchers.IO) {
-         try {
-            commonUploadImageResponse.postValue(ApiResource.success(trainerAllGalleryPicksRepository.uploadImage(uploadImageGallery)))
-         } catch (e: HttpException) {
-            commonUploadImageResponse.postValue(ApiResource.error(data = null, message = e.code().toString() ?: "Error Occurred!"))
-         }catch (e: IOException) {
-            commonUploadImageResponse.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
-         }
-         catch(e: Exception){
-            commonUploadImageResponse.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
-         }
-      }
-   }
 
-   fun getAllImagesList() {
-      getAllImages.postValue(ApiResource.loading(null))
-      viewModelScope.launch(Dispatchers.IO) {
-         try {
-            getAllImages.postValue(ApiResource.success(trainerAllGalleryPicksRepository.getImagesList(BuildConfig.PACKAGE_ID)))
-         } catch (e: HttpException) {
-            getAllImages.postValue(ApiResource.error(data = null, message = e.code().toString() ?: "Error Occurred!"))
-         } catch (e: IOException) {
-            getAllImages.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
-         } catch (e: Exception) {
-            getAllImages.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
-         }
-      }
-      getAllImages
-   }
+    fun uploadGalleryImage(uploadImageGallery: UploadImageGallery) {
 
+        commonUploadImageResponse.postValue(ApiResource.loading(null))
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                commonUploadImageResponse.postValue(ApiResource.success(trainerAllGalleryPicksRepository.uploadImage(uploadImageGallery)))
+            } catch (e: HttpException) {
+                commonUploadImageResponse.postValue(ApiResource.error(data = null, message = e.code().toString() ?: "Error Occurred!"))
+            } catch (e: IOException) {
+                commonUploadImageResponse.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
+            } catch (e: Exception) {
+                commonUploadImageResponse.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
+            }
+        }
+    }
+
+    fun getAllImagesList() {
+        getAllImages.postValue(ApiResource.loading(null))
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                getAllImages.postValue(ApiResource.success(trainerAllGalleryPicksRepository.getImagesList(BuildConfig.PACKAGE_ID)))
+            } catch (e: HttpException) {
+                getAllImages.postValue(ApiResource.error(data = null, message = e.code().toString() ?: "Error Occurred!"))
+            } catch (e: IOException) {
+                getAllImages.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
+            } catch (e: Exception) {
+                getAllImages.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
+            }
+        }
+        getAllImages
+    }
+
+
+    fun deleteImage(code: String, imageName: String) {
+        deleteImageResponse.postValue(ApiResource.loading(null))
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                deleteImageResponse.postValue(ApiResource.success(trainerAllGalleryPicksRepository.deleteTrainerGalleryImages(code, imageName = imageName)))
+            } catch (e: HttpException) {
+                deleteImageResponse.postValue(ApiResource.error(data = null, message = e.code().toString() ?: "Error Occurred!"))
+            } catch (e: IOException) {
+                deleteImageResponse.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
+            } catch (e: Exception) {
+                deleteImageResponse.postValue(ApiResource.error(data = null, message = e.message ?: "Error Occurred!"))
+            }
+        }
+    }
 
 }

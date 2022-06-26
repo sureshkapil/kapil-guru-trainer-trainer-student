@@ -678,6 +678,7 @@
     <string name="delete_batch_negative_msg">There are already batches for %s</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="you_want_to_delete">You want to delete %s</string>
+    <string name="you_want_to_delete_image">You want to delete this Image</string>
     <string name="yes_delete_it">Yes, Delete It</string>
     <string name="exam_time">Exam Time</string>
     <string name="exam_duration">Exam Duration</string>

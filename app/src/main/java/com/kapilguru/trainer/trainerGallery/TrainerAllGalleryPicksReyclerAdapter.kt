@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kapilguru.trainer.databinding.TrainerAllGalleryPicksRecyItemBinding
 
-class TrainerAllGalleryPicksReyclerAdapter: RecyclerView.Adapter<TrainerAllGalleryPicksReyclerAdapter.Holder>() {
+class TrainerAllGalleryPicksReyclerAdapter(var itemClickListener: ItemClickListener) : RecyclerView.Adapter<TrainerAllGalleryPicksReyclerAdapter.Holder>() {
 
     var trainerGalleryImagesResponseApi = mutableListOf<TrainerGalleryImagesResponseApi>()
 
@@ -29,6 +29,16 @@ class TrainerAllGalleryPicksReyclerAdapter: RecyclerView.Adapter<TrainerAllGalle
 
     inner class Holder(var viewItem: TrainerAllGalleryPicksRecyItemBinding) : RecyclerView.ViewHolder(viewItem.root) {
         val view = viewItem
+
+        init {
+            view.deleteImage.setOnClickListener {
+                itemClickListener.onDeleteItemClick(trainerGalleryImagesResponseApi[absoluteAdapterPosition])
+            }
+        }
+    }
+
+    interface ItemClickListener {
+        fun onDeleteItemClick(trainerGalleryImagesResponseApi: TrainerGalleryImagesResponseApi)
     }
 
 }

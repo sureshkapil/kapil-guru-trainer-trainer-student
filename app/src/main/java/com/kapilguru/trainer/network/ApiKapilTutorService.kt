@@ -82,6 +82,8 @@ import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMatrialOve
 import com.kapilguru.trainer.testimonials.FetchTestimonialsResponse
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.testimonials.PostTestimonialsResponse
+import com.kapilguru.trainer.trainerGallery.DeleteImageRequest
+import com.kapilguru.trainer.trainerGallery.DeleteImageResponse
 import com.kapilguru.trainer.trainerGallery.TrainerGalleryImagesResponse
 import com.kapilguru.trainer.trainerGallery.UploadImageGallery
 import com.kapilguru.trainer.ui.changePassword.model.LogoutRequest
@@ -641,5 +643,9 @@ interface ApiKapilTutorService {
 
     @POST("trainer/getFolderContent")
     suspend fun getFolderContent(@Body folderContentRequest: FolderContentRequest): FolderContentResponse
+
+
+    @DELETE("image/deleteFile/{code}/{imageName}")
+    suspend  fun deleteTrainerGalleryImages(@Path("code") code: String,@Path("imageName") imageName: String): DeleteImageResponse
 
 }

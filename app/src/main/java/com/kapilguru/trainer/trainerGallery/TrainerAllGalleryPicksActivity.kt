@@ -3,9 +3,9 @@ package com.kapilguru.trainer.trainerGallery
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kapilguru.trainer.*
@@ -17,8 +17,10 @@ import java.io.File
 import androidx.recyclerview.widget.GridLayoutManager
 
 
-class TrainerAllGalleryPicksActivity : BaseActivity(), ChoosePictureDialogInteractor {
+class TrainerAllGalleryPicksActivity : BaseActivity(), ChoosePictureDialogInteractor, TrainerAllGalleryPicksReyclerAdapter.ItemClickListener,
+    TwoButtonDialogInteractor{
 
+    private var deletImageName: String?=null
     lateinit var binding: ActivityTrainerAllGalleryPicksBinding
     lateinit var viewModel: TrainerAllGalleyPicksViewModel
     var imageFile: File? = null
@@ -57,7 +59,7 @@ class TrainerAllGalleryPicksActivity : BaseActivity(), ChoosePictureDialogIntera
     private fun setAllgalleryImagesAdapter() {
         binding.galleryAllImagesRecy.layoutManager = GridLayoutManager(this, 2)
         viewModel.getAllImagesList()
-        adapter = TrainerAllGalleryPicksReyclerAdapter()
+        adapter = TrainerAllGalleryPicksReyclerAdapter(this)
         binding.galleryAllImagesRecy.adapter = adapter
     }
 
@@ -81,6 +83,55 @@ class TrainerAllGalleryPicksActivity : BaseActivity(), ChoosePictureDialogIntera
             }
 
         })
+
+
+        viewModel.commonUploadImageResponse.observe(this, Observer {commonUploadImageResponse->
+            when (commonUploadImageResponse.status) {
+                Status.LOADING -> {
+                    dialog.showLoadingDialog()
+                }
+                Status.SUCCESS -> {
+                    dialog.dismissLoadingDialog()
+                    commonUploadImageResponse.data?.status?.let {
+                        if(it == 200) {
+                            showUpdatedMessage()
+                        }
+                    }
+                }
+                Status.ERROR -> {
+                    dialog.dismissLoadingDialog()
+                }
+            }
+        })
+
+        viewModel.deleteImageResponse.observe(this, Observer {deleteImageResponse->
+            when (deleteImageResponse.status) {
+                Status.LOADING -> {
+                    dialog.showLoadingDialog()
+                }
+                Status.SUCCESS -> {
+                    dialog.dismissLoadingDialog()
+                    deleteImageResponse.data?.status?.let {
+                        if(it == 200) {
+                            showDeletedMessage()
+                        }
+                    }
+                }
+                Status.ERROR -> {
+                    dialog.dismissLoadingDialog()
+                }
+            }
+        })
+    }
+
+    private fun showUpdatedMessage() {
+        viewModel.getAllImagesList()
+        showAppToast(this,"Image Uploaded Success fully");
+    }
+
+    private fun showDeletedMessage() {
+        viewModel.getAllImagesList()
+        showAppToast(this,"Image Deleted Successfully");
     }
 
     private fun setDataToAdapter(list: List<TrainerGalleryImagesResponseApi>) {
@@ -143,6 +194,31 @@ class TrainerAllGalleryPicksActivity : BaseActivity(), ChoosePictureDialogIntera
             getImageAsBase64(imageFile)
         } else {
             null
+        }
+    }
+
+    override fun onDeleteItemClick(trainerGalleryImagesResponseApi: TrainerGalleryImagesResponseApi) {
+        trainerGalleryImagesResponseApi.name?.let {name ->
+            deletImageName = name
+            showTwoButtonDialog(name)
+
+        }
+    }
+
+    private fun showTwoButtonDialog(courseTitle: String) {
+        val fm: FragmentManager = supportFragmentManager
+        val editNameDialogFragment: TwoButtonDialog = TwoButtonDialog.newInstance(
+            String.format(getString(R.string.you_want_to_delete_image)),this)
+        editNameDialogFragment.show(fm, "two_button_dialog")
+    }
+
+    override fun onNegativeClick() {
+
+    }
+
+    override fun onPositiveClick() {
+        deletImageName?.let {name->
+            viewModel.deleteImage(BuildConfig.PACKAGE_ID, name)
         }
     }
 

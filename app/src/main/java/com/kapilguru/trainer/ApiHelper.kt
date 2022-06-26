@@ -47,6 +47,8 @@ import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentRequest
 import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMatrialOverViewRequest
 import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
+import com.kapilguru.trainer.trainerGallery.DeleteImageRequest
+import com.kapilguru.trainer.trainerGallery.DeleteImageResponse
 import com.kapilguru.trainer.trainerGallery.UploadImageGallery
 import com.kapilguru.trainer.ui.changePassword.model.LogoutRequest
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchRequest
@@ -64,6 +66,8 @@ import com.kapilguru.trainer.ui.profile.data.ProfileData
 import com.kapilguru.trainer.ui.webiner.addWebinar.model.AddWebinarRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.http.Body
+import retrofit2.http.Path
 
 open class ApiHelper(private val apiKapilTutorService: ApiKapilTutorService) {
 
@@ -338,6 +342,8 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun getTrainerGalleryImages(packageId: String) =
         apiKapilTutorService.getTrainerGalleryImages(packageId)
+
+    suspend  fun deleteTrainerGalleryImages(code: String,imageName: String) =  apiKapilTutorService.deleteTrainerGalleryImages(code,imageName)
 
     suspend fun addtestimonials(addTrainerTestimonial: PostTestimonialsModel) = apiKapilTutorService.addtestimonials(addTrainerTestimonial)
 

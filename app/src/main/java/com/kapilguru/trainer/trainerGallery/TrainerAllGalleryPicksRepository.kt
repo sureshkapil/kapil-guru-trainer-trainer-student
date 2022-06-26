@@ -16,6 +16,6 @@ class TrainerAllGalleryPicksRepository(private val apiHelper : ApiHelper) {
 
     suspend fun getImagesList(packageId: String) = apiHelper.getTrainerGalleryImages(packageId)
 
-
+    suspend  fun deleteTrainerGalleryImages(code: String,imageName: String) =  apiHelper.deleteTrainerGalleryImages(code,imageName)
 
 }
