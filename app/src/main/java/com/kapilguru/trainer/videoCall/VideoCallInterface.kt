@@ -6,4 +6,5 @@ interface VideoCallInterface {
     fun launchVideoCall(context: Context, roomName: String, participantName: String, hostName: String)
     fun closeVideoCall()
     fun onVideoCallClosed()
+    fun launchStudentVideoCall(context: Context, roomName: String, participantName: String)
 }

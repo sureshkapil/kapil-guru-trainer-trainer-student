@@ -56,7 +56,12 @@ import com.kapilguru.trainer.signup.model.validateMail.ValidateMailRequest
 import com.kapilguru.trainer.signup.model.validateMail.ValidateMailResponse
 import com.kapilguru.trainer.signup.model.validateOtp.ValidateOtpRequest
 import com.kapilguru.trainer.signup.model.validateOtp.ValidateOtpResponse
+import com.kapilguru.trainer.student.exam.model.*
 import com.kapilguru.trainer.student.homeActivity.models.*
+import com.kapilguru.trainer.student.myClassRoomDetails.exam.model.StudentQuestionPaperListRequest
+import com.kapilguru.trainer.student.myClassRoomDetails.exam.model.StudentQuestionPaperListResponse
+import com.kapilguru.trainer.student.myClassRoomDetails.model.*
+import com.kapilguru.trainer.student.myClassroom.liveClasses.model.StudentAllClassesResponse
 import com.kapilguru.trainer.student.profile.data.SaveStudentProfileResponse
 import com.kapilguru.trainer.student.profile.data.StudentProfileData
 import com.kapilguru.trainer.student.profile.data.StudentProfileResponse
@@ -589,6 +594,42 @@ interface ApiKapilTutorService {
     @POST("student/user_bank_details")
     suspend fun saveStudentBankDetails(@Body bankDetailsUploadReq: BankDetailsUploadRequest): BankDetailsUploadResponce
 
+    @GET("student/getStudentsClassroom/{userId}")
+    suspend fun getAllStudentClasses(@Path("userId") userId: String): StudentAllClassesResponse
+
+    @GET("student/batchDetails/{batchId}")
+    suspend fun getStudentBatchDetails(@Path("batchId") batchId: String): StudentBatchDetailsResponse
+
+    @POST("student/user_complaints")
+    suspend fun raiseComplaintByStudent(@Body raiseComplaintByStudentRequest: RaiseComplaintByStudentRequest): RaiseComplaintByStudentResponse
+
+    @POST("student/requestRefund")
+    suspend fun requestRefundByStudent(@Body refundStudentRequest: RefundStudentRequest): RefundStudentResponse
+
+    @PUT("student/updateReview")
+    suspend fun updateReviewByStudent(@Body reviewStudentRequest: ReviewStudentRequest): ReviewStudentResponse
+
+    @POST("student/questionPaperList")
+    suspend fun studentQuestionPaperList(@Body studentQuestionPaperListRequest: StudentQuestionPaperListRequest): StudentQuestionPaperListResponse
+
+    @GET("student/getStudentsBatchDcuments/{batchId}")
+    suspend fun getStudentStudyMaterial(@Path("batchId") batchId: String): StudentStudyMaterialResponse
+
+    @POST("student/getQuestions")
+    suspend fun getStudentQuestions(@Body studentQuestionsRequest: StudentQuestionsRequest) : StudentQuestionsReponse
+
+    @POST("student/submitResponse")
+    suspend fun submitStudentQuestion(@Body studentSubmitQuestionRequest: StudentSubmitQuestionRequest) : CommonResponse
+
+    @POST("student/submitFinalResponse")
+    suspend fun submitStudentAllQuestion(@Body studentSubmitAllQuestionsRequest: StudentSubmitAllQuestionsRequest) : CommonResponse
+
+    @POST("student/studentReport")
+    suspend fun getStudentReportByStudent(@Body studentReportRequest: StudentReportRequest) : StudentReportResponse
+
+    @GET("student/allQuestionPaperList/{batchId}")
+    suspend fun getStudentExamList(@Path("batchId") batchId: String): StudentQuestionPaperListResponse
+
     @POST("trainer/kg_coupons")
     suspend fun addCoupon(@Body addCouponsRequest: AddCouponsRequest) : AddCouponResponse
 
@@ -600,8 +641,5 @@ interface ApiKapilTutorService {
 
     @POST("trainer/getFolderContent")
     suspend fun getFolderContent(@Body folderContentRequest: FolderContentRequest): FolderContentResponse
-
-
-
 
 }

@@ -868,6 +868,40 @@
     <string name="price_terms_conditions"><u>Terms &amp; Conditions apply</u></string>
     <string name="buy_now">Buy now</string>
 
+    <!--Student-->
+    <string name="recordings">Recordings</string>
+    <string name="no_data_available">No data available</string>
+    <string name="no_live_classes">No Live Classes Available</string>
+    <string name="no_active_classes">No Active Classes Available</string>
+    <string name="enroll_now_pre_course_text"> Enroll Now for Courses</string>
+    <string name="no_completed_classes">No Completed Classes Available</string>
+    <string name="no_upcoming_classes">No Upcoming Classes Available</string>
+    <string name="start_exam">Start Exam</string>
+    <string name="trainer_id_colon">Trainer ID : </string>
+    <string name="no_exams">No Exams</string>
+    <string name="request_refund">Request Refund</string>
+    <string name="raise_a_complaint">Raise a complaint</string>
+    <string name="view_result">View Result</string>
+    <string name="refund_note">
+        Refund amount will be added to your dashboard wallet.\n\n
+        By using wallet amount, You can change the trainer for same course or you purchase new course.\n\n
+        You can also withdraw 90 percent of your refunded amount from wallet to your bank account. \n
+    </string>
+    <string name="note_refund_will_be_processed_with_in_first_2_classes_only">Note:- Refund will be processed with in first 2 classes only.</string>
+    <declare-styleable name="CustomLoadingButton">
+        <attr name="customText" format="string" />
+        <attr name="backgroundt" format="color" />
+        <attr name="shouldLoadingShow" format="boolean" />
+        <attr name="textColor" format="integer" />
+        <attr name="loadingTrackColor" format="integer" />
+        <attr name="loadingIndicatorColor" format="integer" />
+    </declare-styleable>
+    <string name="batch_timing">Batch Timing</string>
+    <string name="batch_end_date">Batch End Date</string>
+    <string name="trainer_id_colon_string">Trainer Id : %s</string>
+    <string name="question_paper">Question Paper</string>
+    <string name="question_no">Q %d/%d </string>
+    <string name="all_exams">All Exams</string>
 
     <string-array name="coupon_code_category">
         <item>Select Category</item>

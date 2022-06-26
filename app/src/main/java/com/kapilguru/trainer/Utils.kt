@@ -1,6 +1,7 @@
 package com.kapilguru.trainer
 
 import android.app.Activity
+import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
@@ -12,12 +13,14 @@ import android.provider.MediaStore
 import android.provider.OpenableColumns
 import android.util.Base64
 import android.util.Log
+import android.view.Gravity
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
+import com.kapilguru.trainer.preferences.StorePreferences
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -148,12 +151,21 @@ const val INSTAGRAM_URL = "https://www.instagram.com/accounts/login/?next=/kapil
 const val LINKED_IN_URL = "https://in.linkedin.com/company/kapil-guru"
 const val YOUTUBE_URL = "https://www.youtube.com/channel/UCk2-2a8XTUMrya5YQrE4SAw"
 const val DIALOG_FRAGMENT_TAG_PROFILE: String = "dialog_fragment_tag_profile"
+const val PARAM_QUESTIONS_REQUEST = "questionsRequest"
+const val PARAM_REPORTS_REQUEST = "repostRequest"
 const val STUDY_MATERIAL_COURSE_ID: String = "study_material_course_id"
 const val STUDY_MATERIAL_ID: String = "study_material_id"
 const val PARENT_ID: String = "parent_id"
 
+
 fun showAppToast(context: Context, text: String) {
     Toast.makeText(context, text, Toast.LENGTH_LONG).show()
+}
+
+fun showAppToastCenter(context: Context, text: String) {
+    val toast = Toast.makeText(context, text, Toast.LENGTH_LONG)
+    toast.setGravity(Gravity.CENTER, 0, 0)
+    toast.show()
 }
 
 fun generateUuid() = UUID.randomUUID()
@@ -453,4 +465,16 @@ fun openUrl(activity: Activity, url: String) {
 
 fun networkConnectionErrorDialog(context: Context) {
     showSingleButtonErrorDialog(context, context.getString(R.string.network_connection_error))
+}
+
+fun downloadManager(context: Context, url: String, fileName: String, downloadManager: DownloadManager): Long {
+    val request: DownloadManager.Request = DownloadManager.Request(Uri.parse(url))
+    val token = StorePreferences(context).token
+    request.addRequestHeader("Authorization", token)
+    request.setTitle(fileName).setDescription("File is downloading...").setDestinationInExternalFilesDir(
+        context, Environment.DIRECTORY_DOWNLOADS, "Kapil Guru Study Material"
+    ).setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+    //Enqueue the download.The download will start automatically once the download manager is ready
+    // to execute it and connectivity is available.
+    return downloadManager.enqueue(request)
 }

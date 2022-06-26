@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
@@ -18,6 +19,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.textfield.TextInputEditText
+import com.kapilguru.trainer.student.exam.model.StudentQuestionsAndOptions
 import com.kapilguru.trainer.studentExamBatchResult.QuestionPaperResponse
 import kotlinx.android.synthetic.main.custom_merger_view.view.*
 import kotlinx.android.synthetic.main.earnings_merger_view.view.*
@@ -298,7 +300,6 @@ object Companion {
         }
     }
 
-
     @JvmStatic
     @BindingAdapter("timeToString")
     fun CustomMergerText.timeToString(endd: String) {
@@ -371,6 +372,24 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("StudentQuestionsBg")
+    fun AppCompatButton.StudentQuestionsBg(studentQuestionsAndOptions: StudentQuestionsAndOptions?) {
+        studentQuestionsAndOptions?.let { it ->
+            when {
+                it.selectedOpt == null -> {
+                    this.background = ContextCompat.getDrawable(this.context, R.drawable.rectangle_yellow_selection_bg)
+                }
+                it.correctOpt == it.selectedOpt -> {
+                    this.background = ContextCompat.getDrawable(this.context, R.drawable.rectangle_green_selection_bg)
+                }
+                it.correctOpt != it.selectedOpt -> {
+                    this.background = ContextCompat.getDrawable(this.context, R.drawable.rectangle_red_selection_bg)
+                }
+            }
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter(value = ["answersBackground", "answersOptionNumber"], requireAll = true)
     fun TextView.answersBackground(questionPaperResponse: QuestionPaperResponse?, answersOptionNumber: String) {
         questionPaperResponse?.let { it ->
@@ -390,6 +409,27 @@ object Companion {
             }
         }
 
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["answersBackground", "answersOptionNumber"], requireAll = true)
+    fun TextView.answersBackgroundStudent(studentQuestionsAndOptions: StudentQuestionsAndOptions?, answersOptionNumber: String) {
+        studentQuestionsAndOptions?.let { it ->
+            when {
+                it.correctOpt == answersOptionNumber -> {
+                    this.background = ContextCompat.getDrawable(this.context, R.drawable.rectangle_green_solid_bg)
+                    this.setTextColor(ContextCompat.getColor(this.context, R.color.purple))
+                }
+                it.selectedOpt == answersOptionNumber -> {
+                    this.background = ContextCompat.getDrawable(this.context, R.drawable.rectangle_red_solid_bg)
+                    this.setTextColor(ContextCompat.getColor(this.context, R.color.purple))
+                }
+                else -> {
+                    this.background = ContextCompat.getDrawable(this.context, R.drawable.rectangle_stroke_grey)
+                    this.setTextColor(ContextCompat.getColor(this.context, R.color.black))
+                }
+            }
+        }
     }
 
     @JvmStatic
@@ -762,6 +802,25 @@ object Companion {
         }
     }
 
+    @JvmStatic
+    @BindingAdapter("underlinetext")
+    fun TextView.underlinetext(boolean: Boolean) {
+        this.paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["isExamAttempted","isExamCompleted"],requireAll = true)
+    fun TextView.ExamAction(isExamAttempted : Int, isExamCompleted : Int) {
+        if(isExamCompleted ==1){
+            this.text = resources.getString(R.string.view_result)
+        }else{
+//            if(isExamAttempted == 0){
+            this.text = resources.getString(R.string.start_exam)
+//            }else{
+//                this.text = resources.getString(R.string.continue_text)
+//            }
+            }
+    }
 
     @JvmStatic
     @BindingAdapter("textIntToString")
@@ -774,6 +833,12 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("appendMins")
+    fun TextView.AppendMins(id: Int) {
+        this.text = "$id Mins"
+    }
+
+
     @BindingAdapter(value =["folderDrawable", "fileType"])
     fun TextView.setFolderDrawable(folderDrawable: Int?, fileType: String?) {
         folderDrawable?.let {
