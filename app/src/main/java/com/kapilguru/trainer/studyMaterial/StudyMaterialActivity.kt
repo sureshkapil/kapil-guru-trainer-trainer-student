@@ -33,6 +33,7 @@ class StudyMaterialActivity : BaseActivity(), StudyMaterialListAdapter.StudyMate
         dialog = CustomProgressDialog(this)
         binding.lifecycleOwner = this
         setclickListeners()
+        setCustomActionBar()
         setAdapterInfo()
         observeViewModels()
     }
@@ -42,6 +43,10 @@ class StudyMaterialActivity : BaseActivity(), StudyMaterialListAdapter.StudyMate
         /*    binding.uploadImage.setOnClickListener {
                 uploadGalleryImage()
             }*/
+    }
+
+    fun setCustomActionBar() {
+        setActionbarBackListener(this, binding.actionbar, getString(R.string.study_material))
     }
 
     private fun setAdapterInfo() {

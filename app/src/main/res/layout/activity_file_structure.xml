@@ -3,36 +3,182 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/main_bg"
-    tools:context=".studyMaterial.fileStructure.FileStructureActivity">
 
+    <data>
 
-    <include
-        android:id="@+id/actionbar"
-        layout="@layout/custom_action_bar_layout"
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.studyMaterial.StudyMaterialViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="10dp"
-        android:paddingVertical="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/file_recy"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg"
+        tools:context=".studyMaterial.fileStructure.FileStructureActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/file_recy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/actionbar"
-        android:layout_marginVertical="@dimen/dimen_10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/file_item"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/custom_action_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="10dp"
+            android:paddingVertical="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/content_summary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/content_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dimen_10dp"
+            android:backgroundTint="@color/white"
+            android:padding="@dimen/dimen_5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actionbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingVertical="@dimen/dimen_5dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/content_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:text="@string/content_summary"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/share"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginHorizontal="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:src="@drawable/share"
+                    android:text="@string/content_summary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/videoImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="30dp"
+                    android:layout_marginStart="@dimen/dimen_2dp"
+                    android:src="@drawable/ic_baseline_ondemand_video_24"
+                    app:layout_constraintEnd_toStartOf="@+id/video"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/content_title" />
+
+                <com.kapilguru.trainer.KeyValueText
+                    android:id="@+id/video"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dimen_20dp"
+                    android:layout_marginStart="@dimen/dimen_3dp"
+                    android:visibility="@{viewModel.studyMaterialOverViewResponseApi.videoCount>0? View.VISIBLE : View.GONE}"
+                    app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.videoCount}"
+                    app:key_title="@string/videos"
+                    app:layout_constraintEnd_toStartOf="@+id/materialImage"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/videoImage"
+                    app:layout_constraintTop_toBottomOf="@id/content_title" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/materialImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="30dp"
+                    android:layout_marginStart="@dimen/dimen_3dp"
+                    android:src="@drawable/ic_baseline_document_scanner_24"
+                    app:layout_constraintEnd_toStartOf="@+id/materials"
+                    app:layout_constraintStart_toEndOf="@id/video"
+                    app:layout_constraintTop_toBottomOf="@id/content_title" />
+
+                <com.kapilguru.trainer.KeyValueText
+                    android:id="@+id/materials"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dimen_20dp"
+                    android:layout_marginStart="@dimen/dimen_3dp"
+                    android:visibility="@{viewModel.studyMaterialOverViewResponseApi.docCount>0? View.VISIBLE : View.GONE}"
+                    app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.docCount}"
+                    app:key_title="@string/documents"
+                    app:layout_constraintEnd_toStartOf="@id/testPaperImage"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/materialImage"
+                    app:layout_constraintTop_toBottomOf="@id/content_title" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/testPaperImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="30dp"
+                    android:layout_marginStart="@dimen/dimen_3dp"
+                    android:src="@drawable/ic_baseline_file_copy_24"
+                    app:layout_constraintEnd_toStartOf="@+id/testPapers"
+                    app:layout_constraintStart_toEndOf="@id/materials"
+                    app:layout_constraintTop_toBottomOf="@id/content_title" />
+
+                <com.kapilguru.trainer.KeyValueText
+                    android:id="@+id/testPapers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_5dp"
+                    android:layout_marginVertical="@dimen/dimen_20dp"
+                    android:visibility="@{viewModel.studyMaterialOverViewResponseApi.videoCount>0? View.VISIBLE : View.GONE}"
+                    app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.videoCount}"
+                    app:key_title="@string/test_papers"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/testPaperImage"
+                    app:layout_constraintTop_toBottomOf="@id/content_title" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/validity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dimen_14dp"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:layout_marginBottom="@dimen/dimen_5dp"
+                    android:drawableStart="@drawable/ic_baseline_timelapse_24"
+                    android:drawablePadding="@dimen/dimen_5dp"
+                    android:text="@string/validity_txt"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/testPapers"
+                    tools:text="You can access this course for 2 yrs" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/file_recy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dimen_10dp"
+            android:background="@color/white"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content_summary"
+            tools:listitem="@layout/file_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

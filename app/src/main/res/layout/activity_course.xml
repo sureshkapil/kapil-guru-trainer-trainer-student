@@ -80,7 +80,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/add_course_all_caps"
                         android:textColor="@color/white"
-                        android:textSize="8sp"/>
+                        android:textSize="8sp" />
                 </LinearLayout>
 
             </RelativeLayout>

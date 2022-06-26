@@ -258,8 +258,20 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="CardViewTextNormal" parent="Widget.AppCompat.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/orange_2</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="CardViewIcons">
         <item name="android:layout_height">35dp</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="CardViewIcons_small">
+        <item name="android:layout_height">25dp</item>
         <item name="android:layout_width">0dp</item>
     </style>
 

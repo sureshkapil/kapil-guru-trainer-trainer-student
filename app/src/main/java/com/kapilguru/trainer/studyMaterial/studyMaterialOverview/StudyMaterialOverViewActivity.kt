@@ -32,9 +32,14 @@ class StudyMaterialOverViewActivity : BaseActivity() {
         binding.viewModel = viewModel
         dialog = CustomProgressDialog(this)
         binding.lifecycleOwner = this
+        setCustomActionBar()
         fetchIntentAndMakeApiCall()
         clickListeners()
         observeViewModels()
+    }
+
+    fun setCustomActionBar() {
+        setActionbarBackListener(this, binding.actionbar, getString(R.string.study_material))
     }
 
     private fun observeViewModels() {

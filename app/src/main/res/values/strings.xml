@@ -97,6 +97,7 @@
     <string name="tutor_name">Tutor Name</string>
     <string name="batch_details">Batch Details</string>
     <string name="total_courses">Total Courses - %s</string>
+    <string name="total_study_materials">Study Materials - %s</string>
     <string name="total_batches">Total Batches - %s</string>
     <string name="total_students">Total Students (%s)</string>
     <string name="total_webinars">Total Webinars %s</string>
@@ -852,6 +853,20 @@
     <string name="network_connection_error">Network Connection Error</string>
     <string name="create_coupon">Create Coupon</string>
     <string name="view_content">View Content</string>
+    <string name="permissions">Permissions</string>
+    <string name="add_live_course">Add Live Course</string>
+    <string name="add_study_material">Add Study Material</string>
+    <string name="test_papers">Test Papers</string>
+    <string name="add_recorded_courses">Add Recorded Courses</string>
+    <string name="add_free_classes">Add Free Classes</string>
+    <string name="exams">Exams</string>
+    <string name="content_summary">Content Summary</string>
+    <string name="student_enquiry">Student Enquiry</string>
+    <string name="faculty">Faculty</string>
+    <string name="validity_txt">You can access this course for 2 yrs</string>
+    <string name="price_terms_conditions_txt">Amount payable is inclusive of taxes.</string>
+    <string name="price_terms_conditions"><u>Terms &amp; Conditions apply</u></string>
+    <string name="buy_now">Buy now</string>
 
 
     <string-array name="coupon_code_category">
