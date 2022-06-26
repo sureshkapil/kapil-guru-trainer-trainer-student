@@ -47,6 +47,7 @@ import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentRequest
 import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMatrialOverViewRequest
 import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
+import com.kapilguru.trainer.testimonials.TestimonialApproveRequest
 import com.kapilguru.trainer.trainerGallery.DeleteImageRequest
 import com.kapilguru.trainer.trainerGallery.DeleteImageResponse
 import com.kapilguru.trainer.trainerGallery.UploadImageGallery
@@ -348,6 +349,10 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun addtestimonials(addTrainerTestimonial: PostTestimonialsModel) = apiKapilTutorService.addtestimonials(addTrainerTestimonial)
 
     suspend fun getTestimonials(tenantId: Int) = apiKapilTutorService.getTestimonials(tenantId)
+
+    suspend  fun updateTestimonialStatus(id: String, testimonialApproveRequest: TestimonialApproveRequest) = apiKapilTutorService.updateTestimonialStatus(id, testimonialApproveRequest)
+
+    suspend  fun deleteTestimonial(id: String) = apiKapilTutorService.deleteTestimonial(id)
 
     suspend fun getTaxes() = apiKapilTutorService.getTaxes()
 

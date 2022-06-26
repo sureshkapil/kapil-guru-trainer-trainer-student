@@ -8,7 +8,7 @@ data class FetchTestimonialsResponseApi(
     @SerializedName("is_active") var isActive: Int? = 0,
     @SerializedName("name") var name: String? = "",
     @SerializedName("modified_by") var modifiedBy: Int? = 0,
-    @SerializedName("is_approved") var isApproved: Int? = 0,
+    @SerializedName("is_approved") var isApproved: Int = 0,
     @SerializedName("id") var id: Int? = 0,
     @SerializedName("created_date") var createdDate: String? = "",
     @SerializedName("modified_date") var modifiedDate: String? = null,

@@ -61,6 +61,7 @@
         <activity
             android:name=".testimonials.TestimonialsActivity"
             android:exported="false"
+            android:launchMode="singleTask"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity
             android:name=".trainerGallery.TrainerAllGalleryPicksActivity"

@@ -47,7 +47,7 @@
             android:layout_marginHorizontal="10dp"
             android:backgroundTint="@color/blue_3"
             android:gravity="center"
-            android:text="@string/yes_delete_it" />
+            android:text="@string/yes" />
 
     </LinearLayout>
 </LinearLayout>

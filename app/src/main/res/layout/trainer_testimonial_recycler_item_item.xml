@@ -7,6 +7,8 @@
         <variable
             name="model"
             type="com.kapilguru.trainer.testimonials.FetchTestimonialsResponseApi" />
+
+        <import type="android.view.View"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -54,10 +56,11 @@
 
 
                <androidx.appcompat.widget.AppCompatImageView
+                   android:id="@+id/approve"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_gravity="end"
-                   android:visibility="gone"
+                   android:visibility="@{model.isApproved == 0? View.VISIBLE : View.GONE}"
                    android:layout_marginHorizontal="@dimen/dimen_10dp"
                    android:src="@drawable/ic_baseline_check_24"/>
 
@@ -65,19 +68,19 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="@string/approved"
+                   android:visibility="@{model.isApproved==1? View.VISIBLE : View.GONE}"
                    android:layout_marginHorizontal="@dimen/dimen_20dp"
                    android:textColor="@color/green_3"/>
 
                <androidx.appcompat.widget.AppCompatImageView
+                   android:id="@+id/delete"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_gravity="end"
                    android:layout_marginHorizontal="@dimen/dimen_5dp"
                    android:src="@drawable/ic_baseline_delete_24" />
 
-
            </LinearLayout>
-
 
         </LinearLayout>
 

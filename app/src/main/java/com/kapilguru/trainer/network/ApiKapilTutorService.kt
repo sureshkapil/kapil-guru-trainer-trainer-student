@@ -82,6 +82,7 @@ import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMatrialOve
 import com.kapilguru.trainer.testimonials.FetchTestimonialsResponse
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.testimonials.PostTestimonialsResponse
+import com.kapilguru.trainer.testimonials.TestimonialApproveRequest
 import com.kapilguru.trainer.trainerGallery.DeleteImageRequest
 import com.kapilguru.trainer.trainerGallery.DeleteImageResponse
 import com.kapilguru.trainer.trainerGallery.TrainerGalleryImagesResponse
@@ -562,16 +563,18 @@ interface ApiKapilTutorService {
     @GET("trainer/app_testimonials/tenant_id/{tenantId}")
     suspend fun getTestimonials(@Path("tenantId") tenantId: Int): FetchTestimonialsResponse
 
+    @PUT("trainer/app_testimonials/{id}")
+    suspend  fun updateTestimonialStatus(@Path("id") id: String, @Body testimonialApproveRequest: TestimonialApproveRequest) : CommonResponseApi
+
+    @DELETE("trainer/app_testimonials/{id}")
+    suspend  fun deleteTestimonial(@Path("id") id: String) :CommonResponseApi
+
     @GET("trainer/tax_charges")
     suspend fun getTaxes(): TaxCalculationResponse
 
 
     @POST("trainer/getStudyMaterials")
     suspend fun getListOfStudyMaterials(@Body studyMaterialListRequest: StudyMatrialListRequest) : StudyMaterialListResponse
-
-
-    @GET("/trainer/app_testimonials/{id}")
-    suspend fun updateTestimonialStatus(@Path("id") id: Int): TaxCalculationResponse
 
 //    @POST("/trainer/getStudyMaterials")
 //    suspend fun getStudyMaterialList(studyMaterialListRequest: StudyMaterialListRequest) = apiKapilTutorService.getStudyMaterialList(studyMaterialListRequest)

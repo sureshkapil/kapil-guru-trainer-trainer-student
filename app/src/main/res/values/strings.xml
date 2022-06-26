@@ -679,6 +679,8 @@
     <string name="are_you_sure">Are you sure?</string>
     <string name="you_want_to_delete">You want to delete %s</string>
     <string name="you_want_to_delete_image">You want to delete this Image</string>
+    <string name="you_want_to_approve_testimonial">Approved testimonial will be visible to Students, would you like to proceed ?</string>
+    <string name="you_want_to_delete_testimonial">Wold you like to delete this testimonial?,\n No longer it would be visible to user</string>
     <string name="yes_delete_it">Yes, Delete It</string>
     <string name="exam_time">Exam Time</string>
     <string name="exam_duration">Exam Duration</string>

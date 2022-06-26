@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kapilguru.trainer.databinding.TrainerTestimonialRecyclerItemItemBinding
 
-class TestimonialReyclerAdapter : RecyclerView.Adapter<TestimonialReyclerAdapter.Holder>() {
+class TestimonialReyclerAdapter(var itemClickListener: ItemClickListener) : RecyclerView.Adapter<TestimonialReyclerAdapter.Holder>() {
 
     var fetchTestimonialsResponseApi = mutableListOf<FetchTestimonialsResponseApi>()
 
@@ -29,6 +29,19 @@ class TestimonialReyclerAdapter : RecyclerView.Adapter<TestimonialReyclerAdapter
 
     inner class Holder(var viewItem: TrainerTestimonialRecyclerItemItemBinding) : RecyclerView.ViewHolder(viewItem.root) {
         val view = viewItem
+        init {
+            view.approve.setOnClickListener {
+                itemClickListener.onApproveClickListener(fetchTestimonialsResponseApi[absoluteAdapterPosition])
+            }
+            view.delete.setOnClickListener {
+                itemClickListener.onDeleteClickListener(fetchTestimonialsResponseApi[absoluteAdapterPosition])
+            }
+        }
+    }
+
+    interface ItemClickListener {
+        fun onApproveClickListener(fetchTestimonialsResponseApi: FetchTestimonialsResponseApi)
+        fun onDeleteClickListener(fetchTestimonialsResponseApi: FetchTestimonialsResponseApi)
     }
 
 }
