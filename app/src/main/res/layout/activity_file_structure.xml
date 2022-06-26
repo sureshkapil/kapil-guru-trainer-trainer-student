@@ -28,6 +28,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginVertical="10dp"
             android:paddingVertical="5dp"
+            app:layout_constraintVertical_bias="0"
             app:layout_constraintBottom_toTopOf="@+id/content_summary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,8 +42,10 @@
             android:layout_marginVertical="@dimen/dimen_10dp"
             android:backgroundTint="@color/white"
             android:padding="@dimen/dimen_5dp"
+            app:layout_constraintVertical_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/actionbar">
+            app:layout_constraintTop_toBottomOf="@id/actionbar"
+            app:layout_constraintBottom_toTopOf="@id/file_recy">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -58,6 +61,7 @@
                     android:text="@string/content_summary"
                     android:textColor="@color/black"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/content_details"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,87 +76,92 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/videoImage"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/content_details"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="30dp"
+                    android:layout_marginVertical="20dp"
                     android:layout_marginStart="@dimen/dimen_2dp"
-                    android:src="@drawable/ic_baseline_ondemand_video_24"
-                    app:layout_constraintEnd_toStartOf="@+id/video"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/content_title" />
-
-                <com.kapilguru.trainer.KeyValueText
-                    android:id="@+id/video"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/dimen_20dp"
-                    android:layout_marginStart="@dimen/dimen_3dp"
-                    android:visibility="@{viewModel.studyMaterialOverViewResponseApi.videoCount>0? View.VISIBLE : View.GONE}"
-                    app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.videoCount}"
-                    app:key_title="@string/videos"
-                    app:layout_constraintEnd_toStartOf="@+id/materialImage"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toEndOf="@id/videoImage"
-                    app:layout_constraintTop_toBottomOf="@id/content_title" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/materialImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="30dp"
-                    android:layout_marginStart="@dimen/dimen_3dp"
-                    android:src="@drawable/ic_baseline_document_scanner_24"
-                    app:layout_constraintEnd_toStartOf="@+id/materials"
-                    app:layout_constraintStart_toEndOf="@id/video"
-                    app:layout_constraintTop_toBottomOf="@id/content_title" />
-
-                <com.kapilguru.trainer.KeyValueText
-                    android:id="@+id/materials"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/dimen_20dp"
-                    android:layout_marginStart="@dimen/dimen_3dp"
-                    android:visibility="@{viewModel.studyMaterialOverViewResponseApi.docCount>0? View.VISIBLE : View.GONE}"
-                    app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.docCount}"
-                    app:key_title="@string/documents"
-                    app:layout_constraintEnd_toStartOf="@id/testPaperImage"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toEndOf="@id/materialImage"
-                    app:layout_constraintTop_toBottomOf="@id/content_title" />
-
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/testPaperImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="30dp"
-                    android:layout_marginStart="@dimen/dimen_3dp"
-                    android:src="@drawable/ic_baseline_file_copy_24"
-                    app:layout_constraintEnd_toStartOf="@+id/testPapers"
-                    app:layout_constraintStart_toEndOf="@id/materials"
-                    app:layout_constraintTop_toBottomOf="@id/content_title" />
-
-                <com.kapilguru.trainer.KeyValueText
-                    android:id="@+id/testPapers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/dimen_5dp"
-                    android:layout_marginVertical="@dimen/dimen_20dp"
-                    android:visibility="@{viewModel.studyMaterialOverViewResponseApi.videoCount>0? View.VISIBLE : View.GONE}"
-                    app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.videoCount}"
-                    app:key_title="@string/test_papers"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toEndOf="@id/testPaperImage"
-                    app:layout_constraintTop_toBottomOf="@id/content_title" />
+                    app:layout_constraintTop_toBottomOf="@id/content_title"
+                    app:layout_constraintBottom_toTopOf="@id/validity">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/videoImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_ondemand_video_24"
+                        app:layout_constraintEnd_toStartOf="@+id/video"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.kapilguru.trainer.KeyValueText
+                        android:id="@+id/video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_3dp"
+                        android:visibility="@{viewModel.studyMaterialOverViewResponseApi.videoCount>0? View.VISIBLE : View.GONE}"
+                        app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.videoCount}"
+                        app:key_title="@string/videos"
+                        app:layout_constraintEnd_toStartOf="@+id/materialImage"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toEndOf="@id/videoImage"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/materialImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_3dp"
+                        android:src="@drawable/ic_baseline_document_scanner_24"
+                        app:layout_constraintEnd_toStartOf="@+id/materials"
+                        app:layout_constraintStart_toEndOf="@id/video"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.kapilguru.trainer.KeyValueText
+                        android:id="@+id/materials"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_3dp"
+                        android:visibility="@{viewModel.studyMaterialOverViewResponseApi.docCount>0? View.VISIBLE : View.GONE}"
+                        app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.docCount}"
+                        app:key_title="@string/documents"
+                        app:layout_constraintEnd_toStartOf="@id/testPaperImage"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toEndOf="@id/materialImage"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/testPaperImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_3dp"
+                        android:src="@drawable/ic_baseline_file_copy_24"
+                        app:layout_constraintEnd_toStartOf="@+id/testPapers"
+                        app:layout_constraintStart_toEndOf="@id/materials"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.kapilguru.trainer.KeyValueText
+                        android:id="@+id/testPapers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dimen_5dp"
+                        android:visibility="@{viewModel.studyMaterialOverViewResponseApi.videoCount>0? View.VISIBLE : View.GONE}"
+                        app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.videoCount}"
+                        app:key_title="@string/test_papers"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toEndOf="@id/testPaperImage"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/validity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/dimen_14dp"
                     android:layout_marginStart="@dimen/dimen_10dp"
                     android:layout_marginBottom="@dimen/dimen_5dp"
                     android:drawableStart="@drawable/ic_baseline_timelapse_24"
@@ -161,8 +170,23 @@
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/testPapers"
+                    app:layout_constraintTop_toBottomOf="@id/content_details"
                     tools:text="You can access this course for 2 yrs" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/price"
+                    amountInRupees="@{viewModel.studyMaterialOverViewResponseApi.fee}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dimen_10dp"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:drawableStart="@drawable/ic_baseline_timelapse_24"
+                    android:drawablePadding="@dimen/dimen_5dp"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/validity"
+                    tools:text="200 " />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -171,11 +195,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/file_recy"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginVertical="@dimen/dimen_10dp"
+            app:layout_constraintVertical_bias="0"
             android:background="@color/white"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/content_summary"
             tools:listitem="@layout/file_item" />
 

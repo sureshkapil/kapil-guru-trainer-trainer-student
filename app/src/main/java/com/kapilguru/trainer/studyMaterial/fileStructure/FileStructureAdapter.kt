@@ -36,9 +36,9 @@ class FileStructureAdapter(var fileItemClick: FileItemClick): RecyclerView.Adapt
 
     inner class Holder(fileItemBinding: FileItemBinding) : RecyclerView.ViewHolder(fileItemBinding.root) {
         var view =fileItemBinding
-        var cardView = view.apCTVFileName
+        var layout = view.layout
         init {
-            cardView.setOnClickListener {
+            layout.setOnClickListener {
                 fileItemClick.onItemClickListener(listOfItems[absoluteAdapterPosition])
             }
         }

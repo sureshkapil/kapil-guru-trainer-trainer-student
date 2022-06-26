@@ -23,9 +23,12 @@
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="0.3"
-            android:src="@drawable/ic_baseline_folder_24" />
+            folderDrawable="@{model.isFolder}"
+            fileType="@{model.mimetype}"
+            tools:src="@drawable/ic_baseline_folder_24" />
 
         <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.65"
@@ -46,9 +49,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_15dp"
-                android:text="200 videos, 300 Materials, 300 test papers"
+                videoCount = "@{model.videoCount}"
+                docCount = "@{model.docCount}"
+                tpCount = "@{model.tpCount}"
                 android:textSize="12sp"
-                tools:text="Python" />
+                tools:text="200 videos, 300 Materials, 300 test papers"
+                />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/free_content"

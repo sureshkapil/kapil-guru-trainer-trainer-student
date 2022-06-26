@@ -2,6 +2,7 @@ package com.kapilguru.trainer.studyMaterial.fileStructure
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -13,6 +14,7 @@ import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.studyMaterial.StudyMaterialViewModel
 import com.kapilguru.trainer.studyMaterial.StudyMaterialViewModelFactory
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.kapilguru.trainer.ui.courses.view_course.PdfViewerActivity
 
 class FileStructureActivity: BaseActivity(), FileStructureAdapter.FileItemClick {
 
@@ -24,6 +26,7 @@ class FileStructureActivity: BaseActivity(), FileStructureAdapter.FileItemClick 
     var studyMaterialId: Int = 0
     var parentId: Int = 0
     var courseTitle: String ? = ""
+    private  val TAG = "FileStructureActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,7 +92,25 @@ class FileStructureActivity: BaseActivity(), FileStructureAdapter.FileItemClick 
     }
 
     override fun onItemClickListener(studyMaterialListResponseApi: FolderContentResponseApi) {
-        launchSameActivity(studyMaterialListResponseApi)
+        studyMaterialListResponseApi.isFolder?.let {isFolder->
+            if (isFolder == 1) {
+                launchSameActivity(studyMaterialListResponseApi)
+            } else {
+                studyMaterialListResponseApi.mimetype?.let { type ->
+                    if(type.contains("pdf",true)) {
+                        launchPdfActivity(studyMaterialListResponseApi.filename!!)
+                    }
+                }
+            }
+        }?:run {
+            studyMaterialListResponseApi.mimetype?.let { type ->
+                if(type.contains("pdf",true)) {
+                    launchPdfActivity(studyMaterialListResponseApi.filename!!)
+                }
+            }
+
+        }
+
     }
 
     private fun launchSameActivity(studyMaterialListResponseApi: FolderContentResponseApi) {
@@ -100,6 +121,13 @@ class FileStructureActivity: BaseActivity(), FileStructureAdapter.FileItemClick 
             .putExtra(COURSE_TITLE_PARAM,studyMaterialListResponseApi.name)
             .putExtra(PARENT_ID,studyMaterialListResponseApi.id)
         )
+    }
+
+
+    private fun launchPdfActivity(name: String) {
+        val url = BuildConfig.BASE_URL+PDF_URL_STUDY_MATERIAL+name
+        val intent = Intent(this, PdfViewerActivity::class.java).putExtra(PDF_PARAM,url)
+        startActivity(intent)
     }
 
 }

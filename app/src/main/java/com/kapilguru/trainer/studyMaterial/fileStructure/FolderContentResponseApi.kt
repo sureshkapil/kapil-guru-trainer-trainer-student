@@ -15,4 +15,7 @@ data class FolderContentResponseApi(
     @SerializedName("id") var id: Int? = 0,
     @SerializedName("trainer_id") var trainerId: Int? = 0,
     @SerializedName("is_folder") var isFolder: Int? = 0,
+    @SerializedName("doc_count") var docCount: Int? = 0,
+    @SerializedName("video_count") var videoCount: Int? = 0,
+    @SerializedName("tp_count") var tpCount: Int? = 0,
 )

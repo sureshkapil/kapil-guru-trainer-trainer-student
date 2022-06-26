@@ -141,6 +141,7 @@ const val MAX_VIDEO_FILE_SIZE: Int = 150 * 1024 * 1024
 const val PARAM_PROFILE: String = "param_profile"
 const val INDIAN_COUNTRY_CODE = "91"
 const val PDF_URL = "courseFiles/files/"
+const val PDF_URL_STUDY_MATERIAL = "studyMaterials/files/"
 const val PDF_PARAM = "pdf_param"
 const val PARAM_COURSE_SYLLABUS = "paramCourseSyllabus"
 const val PARAM_COURSE_DESCRIPTION = "paramCourseDescription"

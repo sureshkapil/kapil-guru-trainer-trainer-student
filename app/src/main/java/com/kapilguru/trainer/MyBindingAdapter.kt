@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
@@ -838,25 +839,53 @@ object Companion {
         this.text = "$id Mins"
     }
 
-
-    @BindingAdapter(value =["folderDrawable", "fileType"])
-    fun TextView.setFolderDrawable(folderDrawable: Int?, fileType: String?) {
-        folderDrawable?.let {
+    @JvmStatic
+    @BindingAdapter(value = ["folderDrawable", "fileType"], requireAll = true)
+    fun AppCompatImageView.setFolderDrawable(folderDrawable: Int?, fileType: String?) {
+        folderDrawable?.let { it ->
             if (it == 1) {
-                this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_folder_24, 0, 0, 0)
+                this.setImageDrawable(ContextCompat.getDrawable(this.context, R.drawable.ic_baseline_folder_24))
             } else {
                 fileType?.let {
-                    if(it.contains("pdf",true)) {
-                        this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_picture_as_pdf_24, 0, 0, 0)
-                    }   else {
-                        this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_ondemand_video_24, 0, 0, 0)
+                    if (it.contains("pdf", true)) {
+                        this.setImageDrawable(ContextCompat.getDrawable(this.context, R.drawable.ic_baseline_picture_as_pdf_24))
+                    } else {
+                        this.setImageDrawable(ContextCompat.getDrawable(this.context, R.drawable.ic_baseline_ondemand_video_24))
                     }
-                }?:run {
+                } ?: run {
 
                 }
             }
         } ?: run {
 //            this.text = getSingularDay(this.context,0)
         }
+    }
+
+
+    @JvmStatic
+    @BindingAdapter(value = ["videoCount", "docCount", "tpCount"], requireAll = true)
+    fun AppCompatTextView.setCountOfvideo(videoCount: Int?, docCount: Int?, tpCount: Int?) {
+        var contentCountTxt: String = ""
+        videoCount?.let {video ->
+            if(video>0) {
+                contentCountTxt = "$videoCount Videos,"
+            }
+        }
+        docCount?.let {docCOunt ->
+            if(docCOunt>0) {
+                contentCountTxt = "$videoCount Videos,"
+            }
+        }
+        tpCount?.let {tpCount ->
+            if(tpCount>0) {
+                contentCountTxt = "$videoCount Videos,"
+            }
+        }
+        if(contentCountTxt.trim().isNotEmpty()) {
+            this.text = contentCountTxt.trim()
+        } else {
+            this.visibility = View.GONE
+        }
+
     }
 }
