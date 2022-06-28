@@ -707,6 +707,7 @@
     <string name="view_more">View More</string>
     <string name="zero">0</string>
     <string name="rupee_symbol">\u20B9 %.2f</string>
+    <string name="only_rupee_symbol">\u20B9</string>
     <string name="rupee_symbol_without_float">\u20B9 %s</string>
     <string name="isVisible">true</string>
     <string name="enrollment_date">Enrollment Date</string>
@@ -905,6 +906,10 @@
     <string name="question_paper">Question Paper</string>
     <string name="question_no">Q %d/%d </string>
     <string name="all_exams">All Exams</string>
+    <string name="add_fee_management">Add Fee Management</string>
+    <string name="date_of_joining">Date of Joining</string>
+    <string name="number_of_installments">Number of Instalments</string>
+    <string name="add_instalment">Add Instalment</string>
 
     <string-array name="coupon_code_category">
         <item>Select Category</item>

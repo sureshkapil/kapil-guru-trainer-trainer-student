@@ -24,8 +24,13 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".feeManagement.AddFeeManagement"
+            android:exported="true"
+            android:theme="@style/customParentNoActionBarStyle"/>
+        <activity
             android:name=".feeManagement.FeeManagement"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/customParentNoActionBarStyle"/>
         <activity
             android:name=".faculty.addFaculty.AddFacultyActivity"
             android:exported="true"

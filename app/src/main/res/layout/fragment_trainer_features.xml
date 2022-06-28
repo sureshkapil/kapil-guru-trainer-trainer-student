@@ -41,7 +41,7 @@
             android:background="@drawable/pink__rounded_rectangle_bg"
             android:paddingStart="@dimen/dimen_8dp"
             android:paddingTop="@dimen/dimen_4dp"
-            app:layout_constraintEnd_toStartOf="@id/recorded_courses"
+            app:layout_constraintEnd_toStartOf="@id/fee_management"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/categories">
 
@@ -78,7 +78,7 @@
 
 
         <RelativeLayout
-            android:id="@+id/recorded_courses"
+            android:id="@+id/fee_management"
             android:layout_width="@dimen/dimen_140_dp"
             android:layout_height="@dimen/dimen_100_dp"
             android:background="@drawable/light_blue_rectangle_bg"
@@ -94,8 +94,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textAlignment="center"
                 android:text="@string/fee_management"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -173,7 +173,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/add_coupons"
-            app:layout_constraintTop_toBottomOf="@+id/recorded_courses">
+            app:layout_constraintTop_toBottomOf="@+id/fee_management">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/free_lectures_txt"

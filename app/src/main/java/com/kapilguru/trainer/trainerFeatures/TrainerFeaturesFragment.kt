@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.kapilguru.trainer.R
 import com.kapilguru.trainer.faculty.FacultyActivity
 import com.kapilguru.trainer.coupons.CouponsActivity
+import com.kapilguru.trainer.feeManagement.FeeManagement
 import kotlinx.android.synthetic.main.fragment_trainer_features.*
 
 /**
@@ -50,6 +51,11 @@ class TrainerFeaturesFragment : Fragment() {
 
         faculty.setOnClickListener {
             startActivity(Intent(activity, FacultyActivity::class.java))
+        }
+
+
+        fee_management.setOnClickListener {
+            startActivity(Intent(activity, FeeManagement::class.java))
         }
 
     }
