@@ -12,4 +12,9 @@ open class CouponRepository(private val apiHelper: ApiHelper) {
 
   open suspend fun getCategoryCourse(couponCourseCategoryRequest:CouponCourseCategoryRequest) = apiHelper.getCategoryCourse(couponCourseCategoryRequest)
 
+  open suspend fun getStudentList(studentRequestModel: StudentRequestModel) = apiHelper.getStudentList(studentRequestModel)
+
+  open suspend fun createCouponCode(createCouponCodeRequestModel: CreateCouponCodeRequestModel) = apiHelper.createCouponCode(createCouponCodeRequestModel)
+
+
 }

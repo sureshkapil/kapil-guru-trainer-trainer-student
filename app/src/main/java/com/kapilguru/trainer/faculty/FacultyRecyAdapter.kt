@@ -3,20 +3,19 @@ package com.kapilguru.trainer.faculty
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kapilguru.trainer.databinding.AddFacultyItemBinding
-import com.kapilguru.trainer.studyMaterial.StudyMaterialListResponseApi
+import com.kapilguru.trainer.databinding.FacultyItemBinding
 
-class AddFacultyRecyAdapter(var studyMaterialItemClick: StudyMaterialItemClick): RecyclerView.Adapter<AddFacultyRecyAdapter.Holder>() {
+class FacultyRecyAdapter(var studyMaterialItemClick: FacultyItemClick): RecyclerView.Adapter<FacultyRecyAdapter.Holder>() {
 
 
-    var listOfItems = arrayListOf<StudyMaterialListResponseApi>()
+    var listOfItems = arrayListOf<FacultyListResponseApi>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val binding = AddFacultyItemBinding.inflate(
+        val binding = FacultyItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -33,19 +32,19 @@ class AddFacultyRecyAdapter(var studyMaterialItemClick: StudyMaterialItemClick):
 
 
 
-  inner class Holder(studyMaterialListItemBinding: AddFacultyItemBinding) : RecyclerView.ViewHolder(studyMaterialListItemBinding.root) {
+  inner class Holder(studyMaterialListItemBinding: FacultyItemBinding) : RecyclerView.ViewHolder(studyMaterialListItemBinding.root) {
         var view =studyMaterialListItemBinding
-        var cardView = view.cardView
+        var editIcon = view.edit
         init {
-            cardView.setOnClickListener {
+            editIcon.setOnClickListener {
                 studyMaterialItemClick.onItemClickListener(listOfItems[absoluteAdapterPosition])
             }
         }
 
     }
 
-    interface StudyMaterialItemClick {
-        fun onItemClickListener(studyMaterialListResponseApi:StudyMaterialListResponseApi)
+    interface FacultyItemClick {
+        fun onItemClickListener(studyMaterialListResponseApi:FacultyListResponseApi)
     }
 
 }

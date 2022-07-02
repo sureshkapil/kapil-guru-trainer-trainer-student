@@ -13,9 +13,9 @@ class FeeManagementViewModel(private val feeManagementRepository: FeeManagementR
 
     var totalAmount : MutableLiveData<Double> = MutableLiveData(0.0)
 
-    var dueAmount : MutableLiveData<Double> = MutableLiveData(0.0)
+    var dueAmount : MutableLiveData<Double> = MutableLiveData(100.0)
 
-    var numberOfInstallments : MutableLiveData<Int> = MutableLiveData()
+    var numberOfInstallments : MutableLiveData<Int> = MutableLiveData(5)
 
 
 }

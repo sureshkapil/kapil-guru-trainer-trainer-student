@@ -31,6 +31,7 @@ import com.kapilguru.trainer.exams.previousQuestionPapersList.model.PreviousQues
 import com.kapilguru.trainer.exams.previousQuestionsList.model.AddExistingQuesApiRequest
 import com.kapilguru.trainer.exams.previousQuestionsList.model.PreviousQuestionsListResponse
 import com.kapilguru.trainer.exams.scheduledExams.ScheduledExamsAPI
+import com.kapilguru.trainer.faculty.*
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordRequest
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordResponse
 import com.kapilguru.trainer.forgotPassword.model.ValidateMobileRequest
@@ -83,7 +84,6 @@ import com.kapilguru.trainer.testimonials.FetchTestimonialsResponse
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.testimonials.PostTestimonialsResponse
 import com.kapilguru.trainer.testimonials.TestimonialApproveRequest
-import com.kapilguru.trainer.trainerGallery.DeleteImageRequest
 import com.kapilguru.trainer.trainerGallery.DeleteImageResponse
 import com.kapilguru.trainer.trainerGallery.TrainerGalleryImagesResponse
 import com.kapilguru.trainer.trainerGallery.UploadImageGallery
@@ -310,7 +310,7 @@ interface ApiKapilTutorService {
     suspend fun deleteWebinarItem(@Path("id") webinarId: String): CommonResponseApi
 
     @GET("trainer/webinarDetails/{webinarId}")
-    suspend fun fetchWebinarDetails(@Path("webinarId")webinarId: String) : WebinarResponse
+    suspend fun fetchWebinarDetails(@Path("webinarId") webinarId: String): WebinarResponse
 
     @PUT("trainer/webinars/{id}")
     suspend fun updateWebinarDetailsAfterEdit(@Path("id") webinarId: String, @Body addWebinarRequest: AddWebinarRequest): CommonResponseApi
@@ -501,7 +501,7 @@ interface ApiKapilTutorService {
     suspend fun getMyReferrals(@Path("trainerId") trainerId: String): MyReferralResponse
 
     @PUT("trainer/updateKyc/{trainerId}")
-    suspend fun updateKyc(@Path("trainerId") trainerId: String,@Body updateKycRequest: UpdateKycRequest): CommonResponseApi
+    suspend fun updateKyc(@Path("trainerId") trainerId: String, @Body updateKycRequest: UpdateKycRequest): CommonResponseApi
 
     @GET("trainer/guest_lectures/{demoLectureId}")
     suspend fun getGuestLectureStudentViewDetails(@Path("demoLectureId") demoLectureId: String): GuestLectureStudentViewRes
@@ -549,13 +549,13 @@ interface ApiKapilTutorService {
     suspend fun getAllPopularAndTrendingCourses(): PopularAndTrendingResponse
 
     @POST("leads/createLead")
-    suspend  fun createLeadApi(@Body createLeadRequest: CreateLeadRequest): CommonResponse
+    suspend fun createLeadApi(@Body createLeadRequest: CreateLeadRequest): CommonResponse
 
     @POST("image/uploadGalleryImage")
-    suspend  fun uploadTrainerGalleryImages(@Body uploadImageCourse: UploadImageGallery): UploadImageCourseResponse
+    suspend fun uploadTrainerGalleryImages(@Body uploadImageCourse: UploadImageGallery): UploadImageCourseResponse
 
     @GET("image/getImagesList/{packageId}")
-    suspend  fun getTrainerGalleryImages(@Path("packageId") packageId: String): TrainerGalleryImagesResponse
+    suspend fun getTrainerGalleryImages(@Path("packageId") packageId: String): TrainerGalleryImagesResponse
 
     @POST("trainer/app_testimonials")
     suspend fun addtestimonials(@Body addTrainerTestimonial: PostTestimonialsModel): PostTestimonialsResponse
@@ -564,23 +564,23 @@ interface ApiKapilTutorService {
     suspend fun getTestimonials(@Path("tenantId") tenantId: Int): FetchTestimonialsResponse
 
     @PUT("trainer/app_testimonials/{id}")
-    suspend  fun updateTestimonialStatus(@Path("id") id: String, @Body testimonialApproveRequest: TestimonialApproveRequest) : CommonResponseApi
+    suspend fun updateTestimonialStatus(@Path("id") id: String, @Body testimonialApproveRequest: TestimonialApproveRequest): CommonResponseApi
 
     @DELETE("trainer/app_testimonials/{id}")
-    suspend  fun deleteTestimonial(@Path("id") id: String) :CommonResponseApi
+    suspend fun deleteTestimonial(@Path("id") id: String): CommonResponseApi
 
     @GET("trainer/tax_charges")
     suspend fun getTaxes(): TaxCalculationResponse
 
 
     @POST("trainer/getStudyMaterials")
-    suspend fun getListOfStudyMaterials(@Body studyMaterialListRequest: StudyMatrialListRequest) : StudyMaterialListResponse
+    suspend fun getListOfStudyMaterials(@Body studyMaterialListRequest: StudyMatrialListRequest): StudyMaterialListResponse
 
 //    @POST("/trainer/getStudyMaterials")
 //    suspend fun getStudyMaterialList(studyMaterialListRequest: StudyMaterialListRequest) = apiKapilTutorService.getStudyMaterialList(studyMaterialListRequest)
 
     @GET("trainer/kg_coupons/{trainerId}")
-    suspend fun getCouponsList(@Path("trainerId") trainerId: Int) : AllCouponsResponseList
+    suspend fun getCouponsList(@Path("trainerId") trainerId: Int): AllCouponsResponseList
 
     //Student Profile
     @GET("student/getStudentProfileDetails/{id}")
@@ -593,8 +593,7 @@ interface ApiKapilTutorService {
     suspend fun getStudentBankDetails(@Path("id") userId: String): BankDetailsFetchResponce
 
     @PUT("student/user_bank_details/{id}")
-    suspend fun updateStudentBankDetails(@Path("id") bankId: String, @Body bankDetailsUploadReq: BankDetailsUploadRequest):
-            BankDetailsUploadResponce
+    suspend fun updateStudentBankDetails(@Path("id") bankId: String, @Body bankDetailsUploadReq: BankDetailsUploadRequest): BankDetailsUploadResponce
 
     @POST("student/user_bank_details")
     suspend fun saveStudentBankDetails(@Body bankDetailsUploadReq: BankDetailsUploadRequest): BankDetailsUploadResponce
@@ -621,25 +620,25 @@ interface ApiKapilTutorService {
     suspend fun getStudentStudyMaterial(@Path("batchId") batchId: String): StudentStudyMaterialResponse
 
     @POST("student/getQuestions")
-    suspend fun getStudentQuestions(@Body studentQuestionsRequest: StudentQuestionsRequest) : StudentQuestionsReponse
+    suspend fun getStudentQuestions(@Body studentQuestionsRequest: StudentQuestionsRequest): StudentQuestionsReponse
 
     @POST("student/submitResponse")
-    suspend fun submitStudentQuestion(@Body studentSubmitQuestionRequest: StudentSubmitQuestionRequest) : CommonResponse
+    suspend fun submitStudentQuestion(@Body studentSubmitQuestionRequest: StudentSubmitQuestionRequest): CommonResponse
 
     @POST("student/submitFinalResponse")
-    suspend fun submitStudentAllQuestion(@Body studentSubmitAllQuestionsRequest: StudentSubmitAllQuestionsRequest) : CommonResponse
+    suspend fun submitStudentAllQuestion(@Body studentSubmitAllQuestionsRequest: StudentSubmitAllQuestionsRequest): CommonResponse
 
     @POST("student/studentReport")
-    suspend fun getStudentReportByStudent(@Body studentReportRequest: StudentReportRequest) : StudentReportResponse
+    suspend fun getStudentReportByStudent(@Body studentReportRequest: StudentReportRequest): StudentReportResponse
 
     @GET("student/allQuestionPaperList/{batchId}")
     suspend fun getStudentExamList(@Path("batchId") batchId: String): StudentQuestionPaperListResponse
 
     @POST("trainer/kg_coupons")
-    suspend fun addCoupon(@Body addCouponsRequest: AddCouponsRequest) : AddCouponResponse
+    suspend fun addCoupon(@Body addCouponsRequest: AddCouponsRequest): AddCouponResponse
 
     @POST("trainer/getStudyMaterials")
-    suspend fun  getCategoryCourse(@Body couponCourseCategoryRequest: CouponCourseCategoryRequest): CouponLiveCoursesResponse
+    suspend fun getCategoryCourse(@Body couponCourseCategoryRequest: CouponCourseCategoryRequest): CouponLiveCoursesResponse
 
     @POST("trainer/getStudyMaterialsOverview")
     suspend fun getStudyMaterialOverView(@Body studyMatrialOverViewRequest: StudyMatrialOverViewRequest): StudyMaterialOverViewResponse
@@ -649,6 +648,22 @@ interface ApiKapilTutorService {
 
 
     @DELETE("image/deleteFile/{code}/{imageName}")
-    suspend  fun deleteTrainerGalleryImages(@Path("code") code: String,@Path("imageName") imageName: String): DeleteImageResponse
+    suspend fun deleteTrainerGalleryImages(@Path("code") code: String, @Path("imageName") imageName: String): DeleteImageResponse
+
+
+    @POST("trainer/trainerAppStudents")
+    suspend fun getStudentList(@Body studentRequestModel: StudentRequestModel): ResponseStudentModel
+
+    @POST("trainer/kg_coupons")
+    suspend fun createCouponCode(@Body createCouponCodeRequestModel: CreateCouponCodeRequestModel): CreateCouponResponse
+
+    @POST("trainer/addFaculty")
+    suspend fun addFaculty(@Body addFacultyRequest: AddFacultyRequest): AddFacultyResponse
+
+    @POST("trainer/getFacultyList")
+    suspend fun getFaculty(@Body getFacultyRequest: GetFacultyRequest) : FacultyListResponse
+
+    @PUT("trainer/trainer_faculty_map/{id}")
+    suspend fun updateFaculty(@Path("id") id: String, @Body facultySettingsModel: FacultySettingsModel) : FacultySettingsResponse
 
 }

@@ -2,17 +2,20 @@ package com.kapilguru.trainer.feeManagement
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.kapilguru.trainer.ApiHelper
-import com.kapilguru.trainer.BaseActivity
-import com.kapilguru.trainer.R
+import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.ActivityAddFeeManagementBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
+import kotlinx.android.synthetic.main.add_instalment.view.*
 import kotlinx.android.synthetic.main.add_syllabus.view.*
+import kotlinx.android.synthetic.main.add_syllabus.view.imageView
+import java.util.*
 
 class AddFeeManagement : BaseActivity() {
     lateinit var binding: ActivityAddFeeManagementBinding
@@ -61,12 +64,24 @@ class AddFeeManagement : BaseActivity() {
         for(i in 0 until numberOfInstallments) {
             val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val v: View = layoutInflater.inflate(R.layout.add_instalment, null)
+            v.instalment_number.text = getString(R.string.instalment,i+1)
             v.imageView.setOnClickListener {
                 binding.lLayoutParent.removeView(it.parent as View)
             }
-//            v.imageView.setOnClickListener {
-//                binding.lLayoutParent.removeView(it.parent as View)
-//            }
+            v.aCTVtTrainerSpiltAmount.setText(calculateSplitAmount.toString())
+
+            v.aCTVTrainerDateCalendar.setOnClickListener {
+                val newFragment: DialogFragment = CustomCalendar(object:CalendarSelectionListener{
+                    override fun onDateSet(calendarSelectedDate: Calendar) {
+                        val abc = calendarSelectedDate.convertDateAndTimeToApiDataWithoutT()
+                        val finaldate = abc.toDateFormatWithOutT()
+                        v.aCTVTrainerDateCalendar.setText(finaldate)
+                    }
+
+                } )
+                newFragment.show(supportFragmentManager, "datePicker");
+            }
+
             binding.lLayoutParent.addView(v)
             val params = v.layoutParams as LinearLayout.LayoutParams
             params.setMargins(0, 3, 0, 3)

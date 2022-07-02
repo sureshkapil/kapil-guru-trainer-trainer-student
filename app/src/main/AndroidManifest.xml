@@ -49,11 +49,13 @@
         <activity
             android:name=".faculty.FacultyActivity"
             android:exported="true"
-            android:theme="@style/customParentNoActionBarStyle" />
+            android:theme="@style/customParentNoActionBarStyle"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".coupons.CouponsActivity"
             android:exported="true"
-            android:theme="@style/customParentNoActionBarStyle" />
+            android:theme="@style/customParentNoActionBarStyle"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".coupons.AddCoupons"
             android:exported="true"

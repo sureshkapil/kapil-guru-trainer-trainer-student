@@ -8,7 +8,17 @@ import android.widget.ArrayAdapter
 import com.kapilguru.trainer.R
 import kotlinx.android.synthetic.main.item_custom_spinner.view.*
 
-class CustomSpinnerAdapter(ctx: Context, couponLiveCoursesResponseApi: ArrayList<CouponLiveCoursesResponseApi>) : ArrayAdapter<CouponLiveCoursesResponseApi>(ctx, 0, couponLiveCoursesResponseApi) {
+class CustomStudentListSpinnerAdapter(ctx: Context, studentModelResponseApi: ArrayList<StudentModelResponseApi>) : ArrayAdapter<StudentModelResponseApi>(ctx, 0, studentModelResponseApi) {
+
+
+    var studentModelResponseApi: ArrayList<StudentModelResponseApi> = ArrayList()
+    get(){
+        return field
+    }
+    set(value) {
+        field = value
+        notifyDataSetChanged()
+    }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         return createItemView(position, convertView, parent);
@@ -19,7 +29,7 @@ class CustomSpinnerAdapter(ctx: Context, couponLiveCoursesResponseApi: ArrayList
     }
 
     fun createItemView(position: Int, recycledView: View?, parent: ViewGroup):View {
-        val country = getItem(position)
+        val student = getItem(position)
 
         val view = recycledView ?: LayoutInflater.from(context).inflate(
             R.layout.item_custom_spinner,
@@ -27,8 +37,8 @@ class CustomSpinnerAdapter(ctx: Context, couponLiveCoursesResponseApi: ArrayList
             false
         )
 
-        country?.let {
-            view.courseTitle.text = country.courseTitle
+        student?.let {
+            view.courseTitle.text = student.studentName
         }
         return view
     }

@@ -162,6 +162,28 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aCTVtTrainerCourseAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:hint="Course Amount"
+                        android:inputType="numberDecimal"
+                        android:maxLength="100"
+                        android:text=""
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -169,22 +191,22 @@
                     android:weightSum="1">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/aCTVtTrainerTotalAmount"
+                        android:id="@+id/aCTVtTrainerPaidAmount"
                         style="@style/MyAppEditTextViewStyle_new"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="8dp"
                         android:layout_weight="0.4"
-                        app:suffixText="@string/only_rupee_symbol"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:suffixText="@string/only_rupee_symbol">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/aCTVtTrainerTotalValue"
+                            android:id="@+id/aCTVtTrainerPaidAmountValue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@null"
-                            android:hint="Total Amount"
+                            android:hint="Paid Amount"
                             android:inputType="numberDecimal"
                             android:maxLength="100"
                             android:text="@={``+viewModel.totalAmount}"
@@ -204,9 +226,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="8dp"
                         android:layout_weight="0.4"
-                        app:suffixText="@string/only_rupee_symbol"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:suffixText="@string/only_rupee_symbol">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/aCTVtTrainerDueValue"
@@ -246,7 +268,7 @@
                             android:hint="@string/number_of_installments"
                             android:inputType="number"
                             android:maxLength="100"
-                            app:intToCount="@{viewModel.numberOfInstallments}"
+                            android:text="@={``+viewModel.numberOfInstallments}"
                             android:textSize="15sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -266,7 +288,6 @@
                         android:background="@color/blue_3"
                         android:text="@string/add_instalment"
                         android:textColor="@color/white" />
-
                 </LinearLayout>
 
                 <LinearLayout

@@ -10,12 +10,17 @@ import com.kapilguru.trainer.announcement.sentItems.data.LastMessageRequest
 import com.kapilguru.trainer.batchExamReports.BatchReportsRequestModel
 import com.kapilguru.trainer.coupons.AddCouponsRequest
 import com.kapilguru.trainer.coupons.CouponCourseCategoryRequest
+import com.kapilguru.trainer.coupons.CreateCouponCodeRequestModel
+import com.kapilguru.trainer.coupons.StudentRequestModel
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.conductExams.createQuestionPaper.model.QuestionPaperTitleRequest
 import com.kapilguru.trainer.exams.createQuestion.model.AddQuestionRequest
 import com.kapilguru.trainer.exams.createQuestion.model.UpdateQuestionRequest
 import com.kapilguru.trainer.exams.previousQuestionPapersList.model.CopyFromQuesPaperRequest
 import com.kapilguru.trainer.exams.previousQuestionsList.model.AddExistingQuesApiRequest
+import com.kapilguru.trainer.faculty.AddFacultyRequest
+import com.kapilguru.trainer.faculty.FacultySettingsModel
+import com.kapilguru.trainer.faculty.GetFacultyRequest
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordRequest
 import com.kapilguru.trainer.forgotPassword.model.ValidateMobileRequest
 import com.kapilguru.trainer.login.models.LoginUserRequest
@@ -399,5 +404,16 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun addCoupon(addCouponsRequest: AddCouponsRequest) = apiKapilTutorService.addCoupon(addCouponsRequest)
 
     open suspend fun getCategoryCourse(couponCourseCategoryRequest: CouponCourseCategoryRequest) = apiKapilTutorService.getCategoryCourse(couponCourseCategoryRequest)
+
+    open suspend fun getStudentList(studentRequestModel: StudentRequestModel) = apiKapilTutorService.getStudentList(studentRequestModel)
+
+
+    open suspend fun createCouponCode(createCouponCodeRequestModel: CreateCouponCodeRequestModel) = apiKapilTutorService.createCouponCode(createCouponCodeRequestModel)
+
+    suspend fun addFaculty(addFacultyRequest: AddFacultyRequest) = apiKapilTutorService.addFaculty(addFacultyRequest)
+
+    suspend fun getFaculty(getFacultyRequest: GetFacultyRequest) = apiKapilTutorService.getFaculty(getFacultyRequest)
+
+    suspend fun updateFaculty(id: String, facultySettingsModel: FacultySettingsModel) = apiKapilTutorService.updateFaculty(id,facultySettingsModel)
 
 }

@@ -5,10 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.kapilguru.trainer.ApiHelper
-import com.kapilguru.trainer.BaseActivity
-import com.kapilguru.trainer.CustomProgressDialog
-import com.kapilguru.trainer.R
+import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.ActivityCouponsBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
@@ -33,6 +30,11 @@ class CouponsActivity : BaseActivity() {
         observeViewModel()
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        getCouponsInfo()
+    }
+
     private fun setCustomActionBar() {
         this.setActionbarBackListener(this, binding.actionbar, getString(R.string.coupons))
     }
@@ -44,7 +46,7 @@ class CouponsActivity : BaseActivity() {
     }
 
     private fun navigateToAddCoupons() {
-        startActivity(Intent(this,AddCoupons::class.java))
+        startActivity(Intent(this,AddCoupons::class.java).putParcelableArrayListExtra(COUPONS_DATA,viewModel.allCouponsResponseListApi))
     }
 
     fun setRecycler() {
@@ -53,8 +55,7 @@ class CouponsActivity : BaseActivity() {
     }
 
     private fun observeViewModel() {
-        val trainerId: Int = StorePreferences(this).userId
-        viewModel.getCouponsList(trainerId)
+        getCouponsInfo()
         viewModel.couponsList.observe(this, Observer {it->
             when (it.status) {
                 Status.LOADING -> {
@@ -79,7 +80,13 @@ class CouponsActivity : BaseActivity() {
         })
     }
 
+    private fun getCouponsInfo() {
+        val trainerId: Int = StorePreferences(this).userId
+        viewModel.getCouponsList(trainerId)
+    }
+
     private fun setAdapterData(response: List<AllCouponsResponseListApi>) {
+        viewModel.allCouponsResponseListApi = response as ArrayList<AllCouponsResponseListApi>
         adapter.couponsList = response as ArrayList<AllCouponsResponseListApi>
     }
 

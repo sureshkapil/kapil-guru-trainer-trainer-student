@@ -9,7 +9,7 @@ class FacultyViewModelFactory(private val apiHelper: ApiHelper) : ViewModelProvi
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FacultyViewModel::class.java)) {
             return FacultyViewModel(
-                FacultyRepository(apiHelper)
+                FacultyRepository(apiHelper),
             ) as T
         }
         throw IllegalArgumentException("Unknown class name")

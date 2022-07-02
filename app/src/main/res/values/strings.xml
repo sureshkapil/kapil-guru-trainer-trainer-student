@@ -910,6 +910,15 @@
     <string name="date_of_joining">Date of Joining</string>
     <string name="number_of_installments">Number of Instalments</string>
     <string name="add_instalment">Add Instalment</string>
+    <string name="cash">Cash</string>
+    <string name="upi">upi</string>
+    <string name="check">Check</string>
+    <string name="cheque">Cheque</string>
+    <string name="bank_transfer">Bank Transfer</string>
+    <string name="mode_of_payment">Mode Of Payment</string>
+    <string name="instalment">Instalment %d</string>
+    <string name="paid_fee">Paid Fee</string>
+    <string name="valid_upto">Valid Upto</string>
 
     <string-array name="coupon_code_category">
         <item>Select Category</item>

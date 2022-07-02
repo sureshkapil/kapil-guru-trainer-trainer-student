@@ -14,9 +14,12 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import androidx.databinding.BindingConversion
+import androidx.databinding.InverseBindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.textfield.TextInputEditText
@@ -832,6 +835,23 @@ object Companion {
             this.setText("0")
         }
     }
+
+    @JvmStatic
+    @BindingAdapter("customchecked")
+    fun SwitchCompat.abc(id: Int?) {
+        id?.let { it ->
+            this.isChecked = it != 0
+        } ?: run {
+            this.isChecked = false
+        }
+    }
+
+    @JvmStatic
+    @InverseBindingAdapter(attribute = "customchecked", event = "android:checkedAttrChanged")
+    fun abcInverse(switchCompat: SwitchCompat):Int {
+        return if(switchCompat.isChecked) 1 else 0
+    }
+
 
     @JvmStatic
     @BindingAdapter("appendMins")
