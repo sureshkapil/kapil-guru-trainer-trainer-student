@@ -661,6 +661,16 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("setKeyTextString")
+    fun KeyValueText.setKeyTextString(toBeStringData: String?) {
+        toBeStringData?.let {
+            this.text_key.text = it
+        } ?: run {
+            this.text_key.text = ""
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("setKeyStudentNameOrPublic")
     fun KeyValueText.setKeyStudentNameOrPublic(toBeStringData: String?) {
         toBeStringData?.let {
@@ -772,8 +782,8 @@ object Companion {
     @JvmStatic
     @BindingAdapter(value = ["offerPrice","originalAmount","isInternetAdded","taxPercentage"], requireAll = true)
     fun TextInputEditText.addTaxOnDiscountAmount(offerPrice: Double?,originalAmount: Double?,isInternetAdded: Boolean, taxPercentage:Double?) {
-        if(isInternetAdded) {
-         /*   offerPrice?.let {
+      /*  if(isInternetAdded) {
+            offerPrice?.let {
 
             }
             afterDiscountAmount?.let {amount ->
@@ -785,9 +795,9 @@ object Companion {
         } else {
             afterDiscountAmount?.let {amount ->
                 this.setText(afterDiscountAmount.toString())
-            }*/
+            }
         }
-        /*afterDiscountAmount?.let { it ->
+        afterDiscountAmount?.let { it ->
             val text = afterDiscountAmount +(it*100.0.roundToInt())/100.0
             this.text = text.toString()
         } ?: run {

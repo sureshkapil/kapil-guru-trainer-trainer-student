@@ -45,7 +45,8 @@
             android:theme="@style/customParentNoActionBarStyle" />
         <activity
             android:name=".todaysSchedule.TodaysScheduele"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/customParentNoActionBarStyle"/>
         <activity
             android:name=".faculty.FacultyActivity"
             android:exported="true"

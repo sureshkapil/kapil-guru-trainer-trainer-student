@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kapilguru.trainer.ApiHelper
+import com.kapilguru.trainer.BaseActivity
 import com.kapilguru.trainer.CustomProgressDialog
 import com.kapilguru.trainer.R
 import com.kapilguru.trainer.databinding.ActivityTodaysSchedueleBinding
@@ -17,7 +18,7 @@ import com.kapilguru.trainer.ui.home.HomeScreenViewModelFactory
 import com.kapilguru.trainer.ui.home.TodayScheduleAdapter
 import com.kapilguru.trainer.ui.home.UpComingScheduleApi
 
-class TodaysScheduele : AppCompatActivity(), TodayScheduleAdapter.OnItemClick {
+class TodaysScheduele : BaseActivity(), TodayScheduleAdapter.OnItemClick {
 
 
     lateinit var todayScheduleAdapter: TodayScheduleAdapter
@@ -32,6 +33,7 @@ class TodaysScheduele : AppCompatActivity(), TodayScheduleAdapter.OnItemClick {
         binding.lifecycleOwner = this
         dialog = CustomProgressDialog(this)
         setTodaySchedule()
+        setCustomActionBar()
         observerViewModel()
     }
 
@@ -40,6 +42,10 @@ class TodaysScheduele : AppCompatActivity(), TodayScheduleAdapter.OnItemClick {
         binding.todaysRecy.adapter = todayScheduleAdapter
         viewModel.fetchUpcomingSchedule()
 
+    }
+
+    fun setCustomActionBar() {
+        this.setActionbarBackListener(this, binding.actionbar, getString(R.string.todays_schedule))
     }
 
 

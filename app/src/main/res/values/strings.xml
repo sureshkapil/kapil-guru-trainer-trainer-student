@@ -919,6 +919,8 @@
     <string name="instalment">Instalment %d</string>
     <string name="paid_fee">Paid Fee</string>
     <string name="valid_upto">Valid Upto</string>
+    <string name="discount">Discount</string>
+    <string name="effective_price">Effective Price</string>
 
     <string-array name="coupon_code_category">
         <item>Select Category</item>

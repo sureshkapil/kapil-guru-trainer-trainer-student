@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kapilguru.trainer.network.ApiResource
+import com.kapilguru.trainer.showAppToast
 import com.kapilguru.trainer.ui.courses.addcourse.AddCourseRepository
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -22,6 +23,7 @@ class TaxCalculationFragmentViewModel(private val addCourseRepository: AddCourse
     var actualFee: MutableLiveData<String> = MutableLiveData()
     var isInternetChargesAdded: MutableLiveData<Boolean> = MutableLiveData(false)
     var isTaxChargesAdded: MutableLiveData<Boolean> = MutableLiveData(false)
+    var errorText: MutableLiveData<String> = MutableLiveData()
 
 
     init {
@@ -54,18 +56,24 @@ class TaxCalculationFragmentViewModel(private val addCourseRepository: AddCourse
         val price: String = this.fee.value ?: return
         val offerPrice: String = this.discountAmount.value ?:  "0"
         val isInternetChargesAdded: Boolean = this.isInternetChargesAdded.value ?: return
-        var afterDeductionsPrice: Double=0.0
-        when(isInternetChargesAdded) {
-            true -> {
-                afterDeductionsPrice = price.toDouble() - offerPrice.toDouble()
-                afterDeductionsPrice += (afterDeductionsPrice * (taxCalculationResponseApi.value!!.addPercent/100.0))
-            }
+        var afterDeductionsPrice: Double = 0.0
+        if(offerPrice.toDouble()<=price.toDouble()) {
+            when (isInternetChargesAdded) {
+                true -> {
+                    afterDeductionsPrice = price.toDouble() - offerPrice.toDouble()
+                    afterDeductionsPrice += (afterDeductionsPrice * (taxCalculationResponseApi.value!!.addPercent / 100.0))
+                }
 
-            false -> {
-                afterDeductionsPrice = price.toDouble() - offerPrice.toDouble()
+                false -> {
+                    afterDeductionsPrice = price.toDouble() - offerPrice.toDouble()
+                }
             }
+            actualFee.value = afterDeductionsPrice.toString()
+        } else {
+            errorText.value = "Discount Amount can't be more than price"
+            this.discountAmount.value = price
+            return
         }
-        actualFee.value = afterDeductionsPrice.toString()
     }
 
 }

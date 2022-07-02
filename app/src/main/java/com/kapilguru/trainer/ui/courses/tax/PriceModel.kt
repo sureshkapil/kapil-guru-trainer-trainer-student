@@ -4,9 +4,9 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class PriceModel() : Parcelable {
-    var fee: String? = "0"
-    var discountAmount: String? = "0"
-    var actualFee: String? = "0"
+    var fee: String? = "0" // original price
+    var discountAmount: String? = "0" // discount %
+    var actualFee: String? = "0" // after discounted price
     var isInternetChargesAdded: Boolean? = false
     var isTaxChargesAdded: Boolean? = false
     var internetCharges: Double? = 0.0
