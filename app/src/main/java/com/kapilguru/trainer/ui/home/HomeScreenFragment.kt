@@ -204,7 +204,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
 
             6 -> startActivity(Intent(activity, EarningsActivity::class.java)) // enquiries ??
 
-            7 -> startActivity(Intent(activity, RefundActivity::class.java)) // pending
+            7 -> startActivity(Intent(activity, StudentList::class.java)) // pending
 
             8 -> startActivity(Intent(activity, AnnouncementActivity::class.java)) // done
         }

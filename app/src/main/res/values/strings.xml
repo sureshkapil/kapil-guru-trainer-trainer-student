@@ -835,7 +835,7 @@
     <string name="enquiry_reminders">Enquiries</string>
     <string name="add_testimonial">Add Testimonial</string>
     <string name="course_price">Price</string>
-    <string name="internet_handling_charges">Internet Handling Charges</string>
+    <string name="internet_handling_charges">Do you want to collect internet handling charges from students? (%.1f)%%</string>
     <string name="is_tax_applicable">Is tax Applicable</string>
     <string name="do_yout_want_to_display_this_course_in_kapilguru">Do you want to display this Course in KapilGuru.com</string>
     <string name="training_mode">Training Mode</string>
@@ -921,6 +921,9 @@
     <string name="valid_upto">Valid Upto</string>
     <string name="discount">Discount</string>
     <string name="effective_price">Effective Price</string>
+    <string name="add_student_all_caps">ADD STUDENT</string>
+    <string name="add_online_student">Add Online Student</string>
+    <string name="add_offline_student">Add Offline Student</string>
 
     <string-array name="coupon_code_category">
         <item>Select Category</item>

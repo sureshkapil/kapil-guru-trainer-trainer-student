@@ -54,6 +54,7 @@
                 android:layout_marginVertical="8dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:visibility="gone"
                 style="@style/MyAppEditTextViewStyle_new"
                 app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
                 app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clTrainerDetails"
@@ -79,6 +80,7 @@
                 android:layout_marginVertical="8dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:visibility="gone"
                 style="@style/MyAppEditTextViewStyle_new"
                 app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
                 app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clTrainerDetails"
@@ -103,6 +105,7 @@
                 android:layout_marginVertical="8dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:visibility="gone"
                 app:helperTextTextColor="@color/black"
                 app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
                 app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clTrainerDetails"
@@ -139,19 +142,21 @@
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/displayCourseInKapilGuru"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:switchPadding="10dp"
                 android:layout_marginHorizontal="20dp"
                 android:checked="@={viewModel.displayCourseInKapilWebsite}"
                 android:text="@string/do_yout_want_to_display_this_course_in_kapilguru"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_selectedLanguages" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="20dp"
+                android:visibility="gone"
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guidelineVertical_95_clTrainerDetails"
@@ -162,6 +167,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:background="@drawable/card_bg"
                     android:orientation="vertical">
 
@@ -236,6 +242,7 @@
                         android:id="@+id/richEditor"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
+                        android:visibility="gone"
                         android:scrollbars="vertical" />
 
                 </LinearLayout>

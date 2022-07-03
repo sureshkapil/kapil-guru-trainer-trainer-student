@@ -50,5 +50,5 @@ data class AddBatchRequest(
     @SerializedName("is_online")
     var isOnline: Int?=1,
     @SerializedName("is_kg_meeting")
-    var isKgMeeting: Boolean?=false,
+    var isKgMeeting: Int?=0,
     )

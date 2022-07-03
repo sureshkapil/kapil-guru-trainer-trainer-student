@@ -3,6 +3,10 @@ package com.kapilguru.trainer.network
 import com.kapilguru.student.courseDetails.model.BatchRequest
 import com.kapilguru.student.courseDetails.model.ContactTrainerResponseAPi
 import com.kapilguru.student.courseDetails.review.model.StudentReviewResponse
+import com.kapilguru.trainer.addStudent.AddOnlineStudentResponse
+import com.kapilguru.trainer.addStudent.CheckStudentRequest
+import com.kapilguru.trainer.addStudent.CheckStudentResponse
+import com.kapilguru.trainer.addStudent.OnlineStudentRequest
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.BestTrainerResponse
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapRequest
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapResponce
@@ -666,4 +670,9 @@ interface ApiKapilTutorService {
     @PUT("trainer/trainer_faculty_map/{id}")
     suspend fun updateFaculty(@Path("id") id: String, @Body facultySettingsModel: FacultySettingsModel) : FacultySettingsResponse
 
+    @POST("trainer/checkStudentBeforeAdd")
+    suspend fun checkStudent(@Body checkStudentRequest: CheckStudentRequest) : CheckStudentResponse
+
+    @POST("trainer/addStudentToBatch")
+    suspend fun addOnlineStudent(@Body onlineStudentRequest: OnlineStudentRequest): AddOnlineStudentResponse
 }

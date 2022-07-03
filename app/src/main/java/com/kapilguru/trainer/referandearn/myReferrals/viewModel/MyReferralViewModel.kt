@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.referandearn.myReferrals.MyReferralRepository
 import com.kapilguru.trainer.referandearn.myReferrals.model.MyReferralResponse
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -16,7 +17,7 @@ class MyReferralViewModel(private val repository : MyReferralRepository) : ViewM
 
     fun getMyReferrals(trainerId : String){
         myReferralsApiResponse.value = ApiResource.loading(data = null)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 myReferralsApiResponse.postValue(ApiResource.success(data = repository.getMyReferrals(trainerId)))
             } catch (exception: HttpException) {

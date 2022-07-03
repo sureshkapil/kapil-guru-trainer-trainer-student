@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.showAppToast
 import com.kapilguru.trainer.ui.courses.addcourse.AddCourseRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -41,7 +42,7 @@ class TaxCalculationFragmentViewModel(private val addCourseRepository: AddCourse
 
     fun getTax() {
         taxCalculationResponse.value = ApiResource.loading(data = null)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 taxCalculationResponse.postValue(ApiResource.success(addCourseRepository.getTaxes()))
             } catch (e: HttpException) {

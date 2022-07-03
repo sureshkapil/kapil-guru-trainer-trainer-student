@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kapilguru.trainer.*
+import com.kapilguru.trainer.addStudent.AddStudentActivity
 import com.kapilguru.trainer.databinding.ActivityStudentListBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
@@ -34,9 +35,16 @@ class StudentList : BaseActivity(), StudentListActivityTOAdapters {
         this.setActionbarBackListener(this, studentListBinding.actionbar, getString(R.string.my_students))
         dialog = CustomProgressDialog(this)
         setAdapter()
+        setClickListeners()
         apiCallToFetchStudents()
         observeViewModelData()
 
+    }
+
+    private fun setClickListeners() {
+        studentListBinding.buttonAdd.setOnClickListener {
+            startActivity(Intent(this, AddStudentActivity::class.java))
+        }
     }
 
     private fun apiCallToFetchStudents() {

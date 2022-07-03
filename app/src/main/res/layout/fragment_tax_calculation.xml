@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:switchPadding="10dp"
             android:checked="@={model.isInternetChargesAdded}"
-            android:text="@string/internet_handling_charges"
+            android:text="@{@string/internet_handling_charges(model.taxCalculationResponseApi.addPercent)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/aCTVCourseOfferPrice" />
 
@@ -103,6 +103,9 @@
                 android:inputType="numberDecimal"
                 android:maxLength="6"
                 android:textSize="15sp"
+                android:backgroundTint="@color/disabled_grey_color"
+                android:enabled="false"
+                android:focusable="false"
                 android:text="@={model.actualFee}"
                />
 <!--            app:isInternetAdded="@{model.priceModel.internetChargesAdded}"-->

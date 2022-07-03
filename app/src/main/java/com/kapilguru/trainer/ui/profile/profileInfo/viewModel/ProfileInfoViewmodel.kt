@@ -133,7 +133,7 @@ class ProfileInfoViewmodel(private val profileInfoRepository: ProfileInfoReposit
 
     fun uploadProfileImage(uploadImageCourse: UploadImageCourse) {
         uploadImageCourseResponse.value = ApiResource.loading(data = null)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 Log.d(TAG, "updatedText: ${uploadImageCourse.baseImage} other_ino_id${uploadImageCourse.sourceId}")
                 uploadImageCourseResponse.postValue(ApiResource.success(profileInfoRepository.uploadCourseImage(uploadImageCourse)))

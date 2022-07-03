@@ -24,13 +24,17 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".feeManagement.AddFeeManagement"
+            android:name=".addStudent.AddStudentActivity"
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle"/>
         <activity
+            android:name=".feeManagement.AddFeeManagement"
+            android:exported="true"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
             android:name=".feeManagement.FeeManagement"
             android:exported="true"
-            android:theme="@style/customParentNoActionBarStyle"/>
+            android:theme="@style/customParentNoActionBarStyle" />
         <activity
             android:name=".faculty.addFaculty.AddFacultyActivity"
             android:exported="true"
@@ -46,17 +50,17 @@
         <activity
             android:name=".todaysSchedule.TodaysScheduele"
             android:exported="false"
-            android:theme="@style/customParentNoActionBarStyle"/>
+            android:theme="@style/customParentNoActionBarStyle" />
         <activity
             android:name=".faculty.FacultyActivity"
             android:exported="true"
-            android:theme="@style/customParentNoActionBarStyle"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:theme="@style/customParentNoActionBarStyle" />
         <activity
             android:name=".coupons.CouponsActivity"
             android:exported="true"
-            android:theme="@style/customParentNoActionBarStyle"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:theme="@style/customParentNoActionBarStyle" />
         <activity
             android:name=".coupons.AddCoupons"
             android:exported="true"

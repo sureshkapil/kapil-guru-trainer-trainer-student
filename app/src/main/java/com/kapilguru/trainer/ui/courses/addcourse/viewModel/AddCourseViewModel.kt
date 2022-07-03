@@ -83,7 +83,7 @@ class AddCourseViewModel(private val addCourseRepository: AddCourseRepository, a
     fun saveAndPostTitleAndText() {
         Log.d(TAG, "saveAndPostTitleAndText: ${addCourseRequest.toString()}")
         addCourseResponse.value = ApiResource.loading(data = null)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
 //                Log.d(TAG, "saveAndPostTitleAndText: ${addCourseRequest.toString()}")
                 addCourseRequest.isApiRequestMade = true
@@ -98,7 +98,7 @@ class AddCourseViewModel(private val addCourseRepository: AddCourseRepository, a
 
     fun updateCourse() {
         updateCourseApi.value = ApiResource.loading(data = null)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 Log.d(TAG, "updatedText: ${addCourseRequest.toString()} other_ino_id${courseId.value.toString()}")
                 updateCourseApi.postValue(
@@ -120,7 +120,7 @@ class AddCourseViewModel(private val addCourseRepository: AddCourseRepository, a
 
     fun uploadCourseImage(uploadImageCourse: UploadImageCourse) {
         uploadImageCourseResponse.value = ApiResource.loading(data = null)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 Log.d(TAG, "updatedText: ${addCourseRequest.toString()} other_ino_id${courseId.value.toString()}")
                 uploadImageCourseResponse.postValue(
@@ -142,7 +142,7 @@ class AddCourseViewModel(private val addCourseRepository: AddCourseRepository, a
 
     fun fetchCourseDetails() {
         getCourseRequest.value = ApiResource.loading(data = null)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 Log.d(TAG, "updatedText: ${addCourseRequest.toString()} other_ino_id${courseId.value.toString()}")
                 getCourseRequest.postValue(
@@ -232,7 +232,7 @@ class AddCourseViewModel(private val addCourseRepository: AddCourseRepository, a
 
     fun getPDF(pdfId: String) {
         getPdfResponse.postValue(ApiResource.loading(null))
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 getPdfResponse.postValue(
                     ApiResource.success(

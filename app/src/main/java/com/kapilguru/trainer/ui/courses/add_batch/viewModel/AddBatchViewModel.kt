@@ -116,7 +116,7 @@ class AddBatchViewModel(
                 it.internetCharges = internetCharges.value
                 it.isTax = if(isTax.value!!) 1 else 0
                 it.isOnline =  getTrainingModeStatus()
-                it.isKgMeeting =  isKgMeeting.value
+                it.isKgMeeting =  if(isKgMeeting.value!!) 1 else 0
             }
         }
 
@@ -164,17 +164,25 @@ class AddBatchViewModel(
 //
 //            }
 
+            noOfDays.value.toString() =="null"-> {
+                isEveryFieldEntered = false
+                emptyFieldMessage.value = 7
+            }
+            noOfDays.value.toString().trim().isEmpty() -> {
+                emptyFieldMessage.value = 4
+                isEveryFieldEntered = false
+            }
+
+            noOfDays.value.toString().trim().isEmpty() -> {
+                emptyFieldMessage.value = 4
+                isEveryFieldEntered = false
+            }
+
             noOfDays.value.toString().isNotEmpty() -> {
-                if (noOfDays.value!!.toInt() > 100) {
+                if (noOfDays.value!!.toInt() <1) {
                     emptyFieldMessage.postValue(6)
                     isEveryFieldEntered = false
                 }
-
-            }
-
-            noOfDays.value.toString().isEmpty() -> {
-                emptyFieldMessage.value = 4
-                isEveryFieldEntered = false
             }
             batchPrice.value.toString().isEmpty() -> {
                 emptyFieldMessage.value = 5

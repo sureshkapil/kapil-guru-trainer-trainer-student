@@ -1,5 +1,6 @@
 package com.kapilguru.trainer.ui.courses.tax
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kapilguru.trainer.ApiHelper
+import com.kapilguru.trainer.CustomDrawableClickListener
 import com.kapilguru.trainer.CustomProgressDialog
 import com.kapilguru.trainer.databinding.FragmentTaxCalculationBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.showAppToast
+import kotlinx.android.synthetic.main.fragment_add_course_titile_and_description.*
+import kotlinx.android.synthetic.main.fragment_add_course_titile_and_description.aCETCourseOfferPriceValue
+import kotlinx.android.synthetic.main.fragment_add_course_titile_and_description.aCETCoursePriceValue
+import kotlinx.android.synthetic.main.fragment_tax_calculation.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -46,7 +52,7 @@ class TaxCalculationFragment : Fragment() {
             .get(TaxCalculationFragmentViewModel::class.java)
         viewBinding.model = viewModel
         viewBinding.lifecycleOwner = this
-        dialog = CustomProgressDialog(requireContext())
+        dialog = CustomProgressDialog(this.requireActivity())
         param1?.let {
             viewModel.actualFee.value = it.actualFee
             viewModel.discountAmount.value = it.discountAmount
@@ -63,6 +69,31 @@ class TaxCalculationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getTax()
         observeViewModel()
+        onclickListerners()
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun onclickListerners() {
+        viewBinding.aCETCoursePriceValue.setOnTouchListener(
+            CustomDrawableClickListener( textInputEditText =aCETCoursePriceValue,
+            title = "What is the Course price?",
+            subTitle = "(Price of the course)",
+            lifecycleOwner = this)
+        )
+
+        viewBinding.aCETCourseOfferPriceValue.setOnTouchListener(
+            CustomDrawableClickListener( textInputEditText =aCETCourseOfferPriceValue,
+            title = "What is the offered price ?",
+            subTitle = "(Discounted Price)",
+            lifecycleOwner = this)
+        )
+
+        viewBinding.aCTVCourseFinalPriceValue.setOnTouchListener(
+            CustomDrawableClickListener( textInputEditText =aCTVCourseFinalPriceValue,
+            title = "What is the Effective price ?",
+            subTitle = "(Price shown to the Student)",
+            lifecycleOwner = this)
+        )
     }
 
     private fun observeViewModel() {
