@@ -1,6 +1,7 @@
 package com.kapilguru.trainer.studyMaterial.studyMaterialOverview
 
 import com.google.gson.annotations.SerializedName
+import com.kapilguru.trainer.studyMaterial.FreeContent
 
 data class StudyMaterialOverViewResponseApi(
     @SerializedName("doc_count") var docCount: Int? = 0,
@@ -13,5 +14,8 @@ data class StudyMaterialOverViewResponseApi(
     @SerializedName("id") var id: Int? = 0,
     @SerializedName("category") var category: String? = "",
     @SerializedName("course_image") var courseImage: String? = null,
-    @SerializedName("study_material_id") var studyMaterialId: Int? = 0
+    @SerializedName("study_material_id") var studyMaterialId: Int? = 0,
+    @SerializedName("duration_days") var durationDays: Int? = 0,
+    @SerializedName("validity") var validity: String? = "",
+    @SerializedName("free") var freeContent: List<FreeContent>?=null,
 )

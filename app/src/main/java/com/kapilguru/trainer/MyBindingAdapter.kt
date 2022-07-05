@@ -23,6 +23,7 @@ import androidx.databinding.InverseBindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.textfield.TextInputEditText
+import com.kapilguru.trainer.Companion.setFolderDrawable
 import com.kapilguru.trainer.student.exam.model.StudentQuestionsAndOptions
 import com.kapilguru.trainer.studentExamBatchResult.QuestionPaperResponse
 import kotlinx.android.synthetic.main.custom_merger_view.view.*
@@ -867,6 +868,32 @@ object Companion {
     @BindingAdapter("appendMins")
     fun TextView.AppendMins(id: Int) {
         this.text = "$id Mins"
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("isonline")
+    fun AppCompatTextView.isonline(id: Int?) {
+        id?.let {it->
+            when(it) {
+                0 -> {
+                    this.text = "Offline"
+                    this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.disable_background, 0, 0, 0);
+
+                }
+                1-> {
+                    this.text = "OnLine"
+                    this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.status_approved_circle_small, 0, 0, 0);
+
+                }
+                2-> {
+                    this.text = "Online/Offline"
+                    this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.status_approved_circle_small, 0, 0, 0);
+                }
+            }
+        }
+
+
     }
 
     @JvmStatic

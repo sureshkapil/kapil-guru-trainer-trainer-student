@@ -101,7 +101,10 @@ class StudyMaterialActivity : BaseActivity(), StudyMaterialListAdapter.StudyMate
     override fun onItemClickListener(studyMaterialListResponseApi: StudyMaterialListResponseApi) {
         startActivity(Intent(this,StudyMaterialOverViewActivity::class.java)
             .putExtra(STUDY_MATERIAL_COURSE_ID,studyMaterialListResponseApi.id)
-            .putExtra(STUDY_MATERIAL_ID,studyMaterialListResponseApi.studyMaterialId))
+            .putExtra(PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL,isStudyMaterial)
+            .putExtra(STUDY_MATERIAL_ID,studyMaterialListResponseApi.studyMaterialId)
+        )
+
     }
 
 }

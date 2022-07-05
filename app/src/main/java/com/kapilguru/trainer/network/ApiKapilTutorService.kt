@@ -187,7 +187,7 @@ interface ApiKapilTutorService {
     suspend fun addBatchInfo(@Body addBatchRequest: AddBatchRequest): AddBatchApiResponse
 
     @PUT("trainer/updateBatch/{batchId}")
-    suspend fun updatedateBatch(@Path("batchId") batchId: Int,@Body addBatchRequest: AddBatchRequest): AddBatchApiResponse
+    suspend fun updatedateBatch(@Path("batchId") batchId: Int, @Body addBatchRequest: AddBatchRequest): AddBatchApiResponse
 
     @GET("trainer/courses_batch/{batchId}")
     suspend fun getEditBatchInfo(@Path("batchId") batchId: Int): EditBatchApiRequest

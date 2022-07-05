@@ -87,7 +87,7 @@
                     android:drawableStart="@drawable/status_approved_circle_small"
                     android:layout_gravity="center"
                     android:drawablePadding="@dimen/dimen_5dp"
-                    android:text="@string/online"/>
+                    app:isonline="@{model.isOnline}"/>
 
             </LinearLayout>
 

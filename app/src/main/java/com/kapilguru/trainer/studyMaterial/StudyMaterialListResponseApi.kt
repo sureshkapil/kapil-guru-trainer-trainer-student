@@ -11,5 +11,5 @@ data class StudyMaterialListResponseApi(
     @SerializedName("is_recorded") var isRecorded: Int = 0,
     @SerializedName("video_count") var videoCount: Int = 0,
     @SerializedName("doc_count") var docCount: Int = 0,
-    @SerializedName("study_material_id") var studyMaterialId: Int = 0
+    @SerializedName("study_material_id") var studyMaterialId: Int = 0,
 )

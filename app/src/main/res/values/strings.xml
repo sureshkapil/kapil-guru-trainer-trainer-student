@@ -868,7 +868,7 @@
     <string name="content_summary">Content Summary</string>
     <string name="student_enquiry">Student Enquiry</string>
     <string name="faculty">Faculty</string>
-    <string name="validity_txt">You can access this course for 2 yrs</string>
+    <string name="validity_txt">You can access this course for %d %s</string>
     <string name="price_terms_conditions_txt">Amount payable is inclusive of taxes.</string>
     <string name="price_terms_conditions"><u>Terms &amp; Conditions apply</u></string>
     <string name="buy_now">Buy now</string>
