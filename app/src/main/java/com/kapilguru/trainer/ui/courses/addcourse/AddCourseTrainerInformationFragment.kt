@@ -81,6 +81,7 @@ class AddCourseTrainerInformationFragment : Fragment() {
             val aboutTrainer = viewModel.addCourseRequest.aboutTrainer.toString()
             val convertedInfo = aboutTrainer.fromBase64ToString()
             viewBinding.richEditor.html = convertedInfo
+            viewModel.displayCourseInKapilWebsite.value = viewModel.addCourseRequest.isSubmitted==1
         }
             return viewBinding.root
 

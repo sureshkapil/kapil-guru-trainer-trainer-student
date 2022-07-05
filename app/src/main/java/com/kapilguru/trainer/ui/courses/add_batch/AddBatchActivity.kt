@@ -176,8 +176,11 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
             addBatchViewModel.discountedPrice.value =priceModel?.actualFee
             addBatchViewModel.isTax.value =priceModel?.isTaxChargesAdded
             addBatchViewModel.internetCharges.value =priceModel?.internetCharges
-
-            addBatchViewModel.onSaveBatchClick()
+            if(shouldEdit) {
+                addBatchViewModel.onSaveBatchClick()
+            } else {
+                addBatchViewModel.onSaveBatchClick()
+            }
         }
         if(!shouldEdit) setUpPricesFragment(priceModel)
 
@@ -583,6 +586,7 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
                 Status.SUCCESS -> {
                     it?.data?.editBatchList?.let { editBatch ->
                         Log.d(TAG, "observeViewModelData: ${editBatch[0]}")
+                        addBatchViewModel.isKgMeeting.value = editBatch[0].isKgMeeting == 1
                         editBatch[0].startDate?.let { dateAndTime ->
                             setStartDateAndStartTime(dateAndTime)
                         }

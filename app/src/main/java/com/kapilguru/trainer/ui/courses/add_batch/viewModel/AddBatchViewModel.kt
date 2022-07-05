@@ -63,7 +63,7 @@ class AddBatchViewModel(
     var isOnline: MutableLiveData<Boolean> = MutableLiveData(true)
     var isOffline: MutableLiveData<Boolean> = MutableLiveData()
     var isBoth: MutableLiveData<Boolean> = MutableLiveData()
-    var isKgMeeting: MutableLiveData<Boolean> = MutableLiveData()
+    var isKgMeeting: MutableLiveData<Boolean> = MutableLiveData(false)
     var emptyFieldMessage: MutableLiveData<Int> = MutableLiveData()
     var isEveryFieldEntered = true
 
@@ -121,7 +121,14 @@ class AddBatchViewModel(
         }
 
         if (isEveryFieldEntered) {
-            addRequestApiForAddBatch()
+            when (shouldEdit.value) {
+                true -> {
+                    upDateRequestApiForAddBatch()
+                }
+                false -> {
+                    addRequestApiForAddBatch()
+                }
+            }
         }
     }
 
@@ -263,6 +270,36 @@ class AddBatchViewModel(
                     ApiResource.success(
                         addBatchRepository.postAddBatch(
                             addBatchReq
+                        )
+                    )
+                )
+            } catch (exception: HttpException) {
+                resultOfAddBatchApi.postValue(
+                    ApiResource.error(
+                        data = null, message = exception.message
+                            ?: "Error Occurred!"
+                    )
+                )
+            } catch (exception: IOException) {
+                resultOfAddBatchApi.postValue(
+                    ApiResource.error(
+                        data = null, message = exception.message
+                            ?: "Error Occurred!"
+                    )
+                )
+            }
+        }
+
+    }
+
+    private fun upDateRequestApiForAddBatch() {
+        resultOfAddBatchApi.value = ApiResource.loading(data = null)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                resultOfAddBatchApi.postValue(
+                    ApiResource.success(
+                        addBatchRepository.updateBatch(
+                            batchId.value!!,addBatchReq
                         )
                     )
                 )

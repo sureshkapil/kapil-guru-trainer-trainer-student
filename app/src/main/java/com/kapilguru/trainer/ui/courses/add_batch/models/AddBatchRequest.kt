@@ -49,6 +49,6 @@ data class AddBatchRequest(
     var internetCharges: Double?=null,
     @SerializedName("is_online")
     var isOnline: Int?=1,
-    @SerializedName("is_kg_meeting")
+    @SerializedName("is_show_in_web")
     var isKgMeeting: Int?=0,
     )

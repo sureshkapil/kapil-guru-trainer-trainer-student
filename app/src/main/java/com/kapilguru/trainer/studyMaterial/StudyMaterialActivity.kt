@@ -23,6 +23,7 @@ class StudyMaterialActivity : BaseActivity(), StudyMaterialListAdapter.StudyMate
     lateinit var appUri: Uri
     lateinit var adapter: StudyMaterialListAdapter
     lateinit var dialog: CustomProgressDialog
+    var isStudyMaterial = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,10 +33,16 @@ class StudyMaterialActivity : BaseActivity(), StudyMaterialListAdapter.StudyMate
         viewModel = ViewModelProvider(this, StudyMaterialViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE))).get(StudyMaterialViewModel::class.java)
         dialog = CustomProgressDialog(this)
         binding.lifecycleOwner = this
+        getIntentData()
         setclickListeners()
         setCustomActionBar()
         setAdapterInfo()
         observeViewModels()
+    }
+
+    private fun getIntentData() {
+        isStudyMaterial = intent.getBooleanExtra(PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL,false)
+        binding.addButton.text = if(isStudyMaterial)getString(R.string.study_material) else getString(R.string.recorded_courses)
     }
 
     private fun setclickListeners() {
@@ -46,18 +53,24 @@ class StudyMaterialActivity : BaseActivity(), StudyMaterialListAdapter.StudyMate
     }
 
     fun setCustomActionBar() {
-        setActionbarBackListener(this, binding.actionbar, getString(R.string.study_material))
+        if(isStudyMaterial) {
+            setActionbarBackListener(this, binding.actionbar, getString(R.string.study_material))
+        } else {
+            setActionbarBackListener(this, binding.actionbar, getString(R.string.recorded_courses))
+        }
     }
 
     private fun setAdapterInfo() {
         val id = StorePreferences(this).userId
         viewModel.getListOfStudyMaterials(StudyMatrialListRequest().apply {
             trainerId = id
-            isRecorded = 1
+            isRecorded = getStudyMaterialStatus()
         })
         adapter = StudyMaterialListAdapter(this)
         binding.studyMaterialRecy.adapter = adapter
     }
+
+    private fun getStudyMaterialStatus() = if(isStudyMaterial) 2 else 1
 
     private fun observeViewModels() {
         viewModel.studyMaterialListResponse.observe(this, Observer { studyMaterialListResponse ->

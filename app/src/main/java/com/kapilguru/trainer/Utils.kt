@@ -161,6 +161,7 @@ const val COUPONS_DATA: String = "coupons_data"
 const val Faculty_Settings_PARAM: String = "faculty_settings_param"
 const val UPDATE_FACULTY_ID: String = "update_faculty_id"
 const val ADD_FACULTY_REQUEST_PARAM: String = "add_faculty_request_param"
+const val PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL: String = "param_is_from_dashboard_as_recorded"
 
 
 fun showAppToast(context: Context, text: String) {

@@ -98,6 +98,7 @@
     <string name="batch_details">Batch Details</string>
     <string name="total_courses">Total Courses - %s</string>
     <string name="total_study_materials">Study Materials - %s</string>
+    <string name="total_recorded_courses">Recorded Courses - %s</string>
     <string name="total_batches">Total Batches - %s</string>
     <string name="total_students">Total Students (%s)</string>
     <string name="total_webinars">Total Webinars %s</string>

@@ -9,7 +9,7 @@ class PriceModel() : Parcelable {
     var actualFee: String? = "0" // after discounted price
     var isInternetChargesAdded: Boolean? = false
     var isTaxChargesAdded: Boolean? = false
-    var internetCharges: Double? = 0.0
+    var internetCharges: Double? = 0.0 // if 0
 
     constructor(parcel: Parcel) : this() {
         fee = parcel.readString()

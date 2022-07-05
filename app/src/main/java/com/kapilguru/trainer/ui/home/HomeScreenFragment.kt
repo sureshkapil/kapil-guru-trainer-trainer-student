@@ -1,6 +1,5 @@
 package com.kapilguru.trainer.ui.home
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.kapilguru.trainer.*
-import com.kapilguru.trainer.allSubscription.AllSubscriptionActivity
 import com.kapilguru.trainer.announcement.AnnouncementActivity
 import com.kapilguru.trainer.databinding.FragmentHomeScreenBinding
 import com.kapilguru.trainer.exams.ExamsActivity
@@ -32,7 +30,6 @@ import com.kapilguru.trainer.trainerGallery.TrainerAllGalleryPicksActivity
 import com.kapilguru.trainer.ui.courses.courses_list.CourseActivity
 import com.kapilguru.trainer.ui.earnings.EarningsActivity
 import com.kapilguru.trainer.ui.guestLectures.GuestLecturesNewActivity
-import com.kapilguru.trainer.ui.refund.RefundActivity
 import com.kapilguru.trainer.ui.webiner.WebinarNewActivity
 import com.kapilguru.trainer.ui.webiner.webinarDetailsActivity.WebinarDetailsActivity
 import kotlinx.android.synthetic.main.fragment_home_screen.*
@@ -193,8 +190,8 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
             0 -> startActivity(Intent(activity, CourseActivity::class.java))
 //            0 ->   VideoCallInterfaceImplementation.launchVideoCall(requireContext(),  "1640164942153bt16941",
 //                "PartiTrainerName", "hostTrainerName")
-            1 -> startActivity(Intent(activity, StudyMaterialActivity::class.java).putExtra(PARAM_IS_FROM, PARAM_IS_FROM_DASHBOARD)) // done
-            2 -> startActivity(Intent(activity, CourseActivity::class.java)) // done
+            1 -> startActivity(Intent(activity, StudyMaterialActivity::class.java).putExtra(PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL, false)) // done
+            2 -> startActivity(Intent(activity, StudyMaterialActivity::class.java).putExtra(PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL, true)) // done
             3 -> startActivity(Intent(activity, GuestLecturesNewActivity::class.java)) // done
 
 

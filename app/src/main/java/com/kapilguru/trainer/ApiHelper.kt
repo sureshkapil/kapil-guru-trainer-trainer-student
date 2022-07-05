@@ -107,6 +107,8 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun postAddBatch(addBatchApiRequest: AddBatchRequest) = apiKapilTutorService.addBatchInfo(addBatchApiRequest)
 
+    suspend fun updateBatch(batchId: Int,addBatchApiRequest: AddBatchRequest) = apiKapilTutorService.updatedateBatch(batchId,addBatchApiRequest)
+
     suspend fun getEditBatch(batchId: Int) = apiKapilTutorService.getEditBatchInfo(batchId)
 
     suspend fun getOnGoingABatchList(trainerId: String) = apiKapilTutorService.getOnGoingBatchesList(trainerId)

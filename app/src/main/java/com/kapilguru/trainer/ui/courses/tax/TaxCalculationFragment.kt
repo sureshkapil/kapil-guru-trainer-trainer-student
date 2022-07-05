@@ -58,6 +58,7 @@ class TaxCalculationFragment : Fragment() {
             viewModel.discountAmount.value = it.discountAmount
             viewModel.fee.value = it.fee
             viewModel.isTaxChargesAdded.value = it.isTaxChargesAdded
+            viewModel.isInternetChargesAdded.value = it.internetCharges!! > 0.0
         }?: kotlin.run {
 
         }
@@ -108,6 +109,7 @@ class TaxCalculationFragment : Fragment() {
                     it.data?.data?.let { response ->
                         if (response.isNotEmpty()) {
                             viewModel.taxCalculationResponseApi.value = response.filter { item -> item.id == 1 }[0]
+                            callaginOnEditToUpdateInfo()
                         }
                     }
                 }
@@ -136,6 +138,13 @@ class TaxCalculationFragment : Fragment() {
         viewModel.errorText.observe(viewLifecycleOwner, Observer {
             showerorText(it)
         })
+
+    }
+
+    private fun callaginOnEditToUpdateInfo() {
+        param1?.let {
+            viewModel.calculateFinalPrice()
+        }
 
     }
 
@@ -171,7 +180,11 @@ class TaxCalculationFragment : Fragment() {
             actualFee = viewModel.actualFee.value
             isInternetChargesAdded = viewModel.isInternetChargesAdded.value!!
             isTaxChargesAdded = viewModel.isTaxChargesAdded.value!!
-            internetCharges = viewModel.taxCalculationResponseApi.value!!.addPercent
+            internetCharges = if (viewModel.isInternetChargesAdded.value!!) {
+                 viewModel.taxCalculationResponseApi.value!!.addPercent
+            }  else {
+                 0.0
+            }
         }
     }
 }

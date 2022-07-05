@@ -35,10 +35,10 @@ class BatchListDetailsActivity : BaseActivity(), BatchListAdapter.OnItemClickedF
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_batch_list_details)
         dialog = CustomProgressDialog(this)
+        viewModel = ViewModelProvider(this, BatchListViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), application, ))
+            .get(BatchListViewModel::class.java)
         fetchDataFromPreviousActivity()
         setCustomActionBarListener()
-        viewModel = ViewModelProvider(this, BatchListViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), application, courseId.toString()))
-            .get(BatchListViewModel::class.java)
         binding.batchListViewModel = viewModel
         binding.lifecycleOwner = this
         setAdapter()
@@ -48,6 +48,7 @@ class BatchListDetailsActivity : BaseActivity(), BatchListAdapter.OnItemClickedF
 
     private fun fetchDataFromPreviousActivity() {
         courseId = intent.getIntExtra("courseId", 0)
+        viewModel.courseid.value = courseId.toString()
         courseName = intent.getStringExtra(COURSE_NAME_PARAM).toString() + " Batches"
     }
 
@@ -70,6 +71,7 @@ class BatchListDetailsActivity : BaseActivity(), BatchListAdapter.OnItemClickedF
 
     private fun observeViewModelData() {
         // get batch List API response
+        viewModel.constructBatchListRequest(viewModel.courseid.value!!)
         viewModel.batchListApi.observe(this, Observer {
             when (it.status) {
                 Status.LOADING -> {
@@ -154,6 +156,7 @@ class BatchListDetailsActivity : BaseActivity(), BatchListAdapter.OnItemClickedF
             val intent = Intent(this, AddBatchActivity::class.java)
             intent.putExtra(EDIT_BATCH_ID_PARAM, batchDetails.batchId)
             intent.putExtra(IS_FROM_EDIT_PARAM, true)
+            intent.putExtra("courseId", batchDetails.courseId)
             startActivity(intent)
         }
     }

@@ -62,7 +62,10 @@ class TaxCalculationFragmentViewModel(private val addCourseRepository: AddCourse
             when (isInternetChargesAdded) {
                 true -> {
                     afterDeductionsPrice = price.toDouble() - offerPrice.toDouble()
-                    afterDeductionsPrice += (afterDeductionsPrice * (taxCalculationResponseApi.value!!.addPercent / 100.0))
+                    taxCalculationResponseApi.value?.let {it->
+                        afterDeductionsPrice += (afterDeductionsPrice * (it.addPercent / 100.0))
+                    }
+
                 }
 
                 false -> {
