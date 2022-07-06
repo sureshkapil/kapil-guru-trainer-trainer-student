@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.enquiries.viewModel.EnquiriesViewModel" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/course_empty_view"
+                layout="@layout/my_course_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="50dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/courese_non_empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/aCTVCourseCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/btn_add_enquiry"
+                        android:padding="5dp"
+                        android:text="@{@string/total_offline_enquiries(viewModel.offlineEnquiries.size)}"
+                        android:textColor="@color/purple"
+                        android:textSize="15sp"
+                        tools:text="Total courses - 16" />
+
+
+                    <LinearLayout
+                        android:id="@+id/btn_add_enquiry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="end"
+                        android:background="@drawable/rectangle_curve_pink_2"
+                        android:backgroundTint="@color/blue_5"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="4dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/add_icon" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/add_new_enquiry"
+                            android:textColor="@color/white"
+                            android:textSize="8sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/orange_3" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/enquiries_item" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>

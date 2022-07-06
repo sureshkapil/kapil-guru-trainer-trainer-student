@@ -20,6 +20,9 @@ import com.kapilguru.trainer.batchExamReports.BatchReportsRequestModel
 import com.kapilguru.trainer.batchExamReports.BatchStudentReportApi
 import com.kapilguru.trainer.coupons.*
 import com.kapilguru.trainer.demo_webinar_students.DemoWebinarStudentsResponse
+import com.kapilguru.trainer.enquiries.addOfflineEnquiry.data.AddEnquiryReq
+import com.kapilguru.trainer.enquiries.addOfflineEnquiry.data.AddEnquiryRes
+import com.kapilguru.trainer.enquiries.kapilGuruEnquiries.data.EnquiriesResponse
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.assignExamToBatch.model.BatchByCourseResponse
 import com.kapilguru.trainer.exams.conductExams.createQuestionPaper.model.QuestionPaperTitleRequest
@@ -56,6 +59,10 @@ import com.kapilguru.trainer.signup.model.validateMail.ValidateMailRequest
 import com.kapilguru.trainer.signup.model.validateMail.ValidateMailResponse
 import com.kapilguru.trainer.signup.model.validateOtp.ValidateOtpRequest
 import com.kapilguru.trainer.signup.model.validateOtp.ValidateOtpResponse
+import com.kapilguru.trainer.student.announcement.inbox.data.StudentInboxResponse
+import com.kapilguru.trainer.student.announcement.inbox.data.StudentLastMessageRequest
+import com.kapilguru.trainer.student.announcement.newMessage.data.*
+import com.kapilguru.trainer.student.announcement.sentItems.data.StudentSentItemsResponse
 import com.kapilguru.trainer.student.exam.model.*
 import com.kapilguru.trainer.student.homeActivity.models.*
 import com.kapilguru.trainer.student.myClassRoomDetails.exam.model.StudentQuestionPaperListRequest
@@ -650,5 +657,32 @@ interface ApiKapilTutorService {
 
     @DELETE("image/deleteFile/{code}/{imageName}")
     suspend  fun deleteTrainerGalleryImages(@Path("code") code: String,@Path("imageName") imageName: String): DeleteImageResponse
+
+    @GET("student/getBatchTrainer/{id}")
+    suspend fun getBatchListForStudent(@Path("id") userId: String): StudentNewMessageResponse
+
+    @GET("student/admin")
+    suspend fun getAdminListForStudent(): StudentAdminMessageResponse
+
+    @POST("student/announcements")
+    suspend fun postNewMessageReqByStudent(@Body newMessageRequest: StudentSendNewMessageRequest): StudentSendNewMessageResponce
+
+    @POST("student/announcements_user_map")
+    suspend fun postAdminNewMessageReqByStudent(@Body sendAdminMessageReq: StudentSendAdminMessageRequest): StudentSendNewMessageResponce
+
+    @GET("student/receivedMessages/{id}")
+    suspend fun getInBoxResponseForStudent(@Path("id") userId: String): StudentInboxResponse
+
+    @GET("student/sentMessages/{id}")
+    suspend fun getSentItemsResponseForStudent(@Path("id") userId: String): StudentSentItemsResponse
+
+    @PUT("student/users/{userId}")
+    suspend fun updateLastMessageIdForStudent(@Path("userId") userId: String, @Body studentLastMessageRequest: StudentLastMessageRequest): CommonResponse
+
+    @GET("trainer/getEnquiries/{trainerId}")
+    suspend fun getEnquiries(@Path("trainerId") userId: String): EnquiriesResponse
+
+    @POST("trainer/student_enquiry_to_trainer")
+    suspend fun addEnquiry(@Body addEnquiryRequest: AddEnquiryReq): AddEnquiryRes
 
 }

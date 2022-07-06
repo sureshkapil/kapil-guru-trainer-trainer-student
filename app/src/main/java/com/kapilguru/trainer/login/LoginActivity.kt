@@ -130,9 +130,9 @@ class LoginActivity : AppCompatActivity() {
         } else if (it.data?.data?.userRoleId == UserRole.STUDENT.roleId()) {
             saveAndNavigateToNextScreens(UserRole.STUDENT.roleId(), it.data.data)
         } else {
-            if(it.data?.status ==208){
+            if (it.data?.status == 208) {
                 showErrorDialog(getString(R.string.login_exceeded))
-            }else{
+            } else {
                 showErrorDialog("Login Credentials are incorrect")
             }
         }
@@ -140,7 +140,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun saveAndNavigateToNextScreens(roleId: Int, data: Data) {
         ProfileUtils.saveProfileData(this, data)
-        when(roleId) {
+        when (roleId) {
             UserRole.TRAINER.roleId() -> {
                 navigateToTrainerNextScreens(data.isSubscribed)
             }
@@ -151,7 +151,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToStudentHomeScreen() {
-        startActivity(Intent(this,StudentHomeActivity::class.java))
+        startActivity(Intent(this, StudentHomeActivity::class.java))
     }
 
     private fun showErrorDialog(message: String) {
@@ -165,13 +165,13 @@ class LoginActivity : AppCompatActivity() {
             }
             builder.create()
         }
-        alertDialog?.show()
+        alertDialog.show()
     }
 
-    private fun navigateToTrainerNextScreens(isSubscribed : Int){
-        if(isSubscribed ==1){
+    private fun navigateToTrainerNextScreens(isSubscribed: Int) {
+        if (isSubscribed == 1) {
             navigateToHomeActivity()
-        }else{
+        } else {
             launchSubscriptionsActivity()
         }
     }
@@ -181,7 +181,7 @@ class LoginActivity : AppCompatActivity() {
         finishAffinity()
     }
 
-    private fun launchSubscriptionsActivity(){
+    private fun launchSubscriptionsActivity() {
         startActivity(Intent(this, AllSubscriptionActivity::class.java))
         finishAffinity()
     }

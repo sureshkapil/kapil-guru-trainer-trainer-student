@@ -20,6 +20,7 @@ import com.kapilguru.trainer.*
 import com.kapilguru.trainer.allSubscription.AllSubscriptionActivity
 import com.kapilguru.trainer.announcement.AnnouncementActivity
 import com.kapilguru.trainer.databinding.FragmentHomeScreenBinding
+import com.kapilguru.trainer.enquiries.EnquiriesActivity
 import com.kapilguru.trainer.exams.ExamsActivity
 import com.kapilguru.trainer.myClassRoomDetails.MyClassDetails
 import com.kapilguru.trainer.network.RetrofitNetwork
@@ -191,8 +192,6 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
     override fun onItemClick(position: Int) {
         when (position) {
             0 -> startActivity(Intent(activity, CourseActivity::class.java))
-//            0 ->   VideoCallInterfaceImplementation.launchVideoCall(requireContext(),  "1640164942153bt16941",
-//                "PartiTrainerName", "hostTrainerName")
             1 -> startActivity(Intent(activity, StudyMaterialActivity::class.java).putExtra(PARAM_IS_FROM, PARAM_IS_FROM_DASHBOARD)) // done
             2 -> startActivity(Intent(activity, CourseActivity::class.java)) // done
             3 -> startActivity(Intent(activity, GuestLecturesNewActivity::class.java)) // done
@@ -202,7 +201,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
 
             5 -> startActivity(Intent(activity, ExamsActivity::class.java)) // done
 
-            6 -> startActivity(Intent(activity, EarningsActivity::class.java)) // enquiries ??
+            6 -> startActivity(Intent(activity, EnquiriesActivity::class.java)) // enquiries ??
 
             7 -> startActivity(Intent(activity, RefundActivity::class.java)) // pending
 

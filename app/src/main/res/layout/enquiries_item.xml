@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.enquiries.kapilGuruEnquiries.data.EnquiriesResData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            style="@style/AppCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="8dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_student_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_regular"
+                    android:padding="1dp"
+                    android:text="@string/student_name"
+                    android:textColor="@color/black_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_student_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="1dp"
+                    android:text="@{model.fullName}"
+                    android:textColor="@color/purple"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_student_name"
+                    tools:text="Iron man" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_regular"
+                    android:padding="1dp"
+                    android:text="@string/contact"
+                    android:textColor="@color/black_2"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_student_name_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_contact_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="1dp"
+                    android:text="@{model.contactNumber}"
+                    android:textColor="@color/purple"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_contact"
+                    tools:text="9701034141" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_regular"
+                    android:padding="1dp"
+                    android:text="@string/email_id"
+                    android:textColor="@color/black_2"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_contact_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_email_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="1dp"
+                    android:text="@{model.emailId}"
+                    android:textColor="@color/purple"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_email"
+                    tools:text="abc.def@gmail.com" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_course"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_regular"
+                    android:padding="1dp"
+                    android:text="@string/course"
+                    android:textColor="@color/black_2"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_email_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_course_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="1dp"
+                    android:text="@{model.courseTitle}"
+                    android:textColor="@color/purple"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_course"
+                    tools:text="Android" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_expiry_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_regular"
+                    android:padding="1dp"
+                    android:text="@string/expiry_date"
+                    android:textColor="@color/black_2"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_course_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_expiry_date_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="1dp"
+                    app:dateToString="@{model.createdDate}"
+                    android:textColor="@color/purple"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/actv_expiry_date"
+                    tools:text="Android" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_regular"
+                    android:padding="1dp"
+                    android:text="@string/status"
+                    android:textColor="@color/black_2"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/actv_status_value"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_status_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="1dp"
+                    android:text="@{model.status}"
+                    android:textColor="@color/purple"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="Update" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

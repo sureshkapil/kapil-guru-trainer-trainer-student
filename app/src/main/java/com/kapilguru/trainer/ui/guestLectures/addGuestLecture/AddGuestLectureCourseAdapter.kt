@@ -17,7 +17,6 @@ class AddGuestLectureCourseAdapter(context: FragmentActivity?) : ArrayAdapter<Co
     fun setCategoryList(courses: List<CourseResponse>) {
         Log.d(TAG,"setCategoryList courses : "+courses.toString())
         this.courses.addAll(courses.toMutableList())
-
         notifyDataSetChanged()
     }
 
@@ -26,19 +25,12 @@ class AddGuestLectureCourseAdapter(context: FragmentActivity?) : ArrayAdapter<Co
     }
 
     override fun getDropDownView(position: Int, recycledView: View?, parent: ViewGroup): View {
-        val view = recycledView ?: LayoutInflater.from(context).inflate(
-            R.layout.spinneritem,
-            parent,
-            false
-        )
-
+        val view = recycledView ?: LayoutInflater.from(context).inflate(R.layout.spinneritem, parent, false)
         view.aCTVCategoryName.text = courses[position].courseTitle
-
         return view
     }
 
     override fun getCount(): Int {
         return courses.size
     }
-
 }
