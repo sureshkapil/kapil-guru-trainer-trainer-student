@@ -96,6 +96,7 @@ import com.kapilguru.trainer.ui.changePassword.model.LogoutResponse
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchApiResponse
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchRequest
 import com.kapilguru.trainer.ui.courses.add_batch.models.EditBatchApiRequest
+import com.kapilguru.trainer.ui.courses.add_batch.models.EditBatchResponse
 import com.kapilguru.trainer.ui.courses.addcourse.models.*
 import com.kapilguru.trainer.ui.courses.batchesList.batchInfo.batchInfoFragments.syllabus.models.BatchSyllabusAPI
 import com.kapilguru.trainer.ui.courses.batchesList.batchStudents.models.BatchStudentListApi
@@ -187,7 +188,7 @@ interface ApiKapilTutorService {
     suspend fun addBatchInfo(@Body addBatchRequest: AddBatchRequest): AddBatchApiResponse
 
     @PUT("trainer/updateBatch/{batchId}")
-    suspend fun updatedateBatch(@Path("batchId") batchId: Int, @Body addBatchRequest: AddBatchRequest): AddBatchApiResponse
+    suspend fun updatedateBatch(@Path("batchId") batchId: Int, @Body addBatchRequest: AddBatchRequest): EditBatchResponse
 
     @GET("trainer/courses_batch/{batchId}")
     suspend fun getEditBatchInfo(@Path("batchId") batchId: Int): EditBatchApiRequest

@@ -358,6 +358,7 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
                 addBatchViewModel.courseDuration.value = (counter - 1).toString()
 
                 val info = checkObject.get(checkObject.length() - 1) as JSONObject
+                addBatchViewModel.datesJson.value = checkObject.toBase64()
                 val endate = info.getLong("end_time")
                 Log.d(TAG, "setTotalCourseDuration: $endate")
                 val formatter: DateFormat = SimpleDateFormat("MMM d, y, h:mm:ss a")
@@ -368,7 +369,6 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
                 addBatchViewModel.endDate.value = d.toString()
             }
         }
-
 
     }
 
@@ -382,7 +382,6 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
         loopCalendar.set(Calendar.MINUTE, endTimeCalendar.get(Calendar.MINUTE))
         loopCalendar.set(Calendar.AM_PM, isItAMPM(loopCalendar.get(Calendar.HOUR_OF_DAY)))
         jsonObject.put("end_time", loopCalendar.timeInMillis)
-        addBatchViewModel.datesJson.value = jsonObject.toBase64()
         return jsonObject
     }
 
@@ -639,6 +638,31 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
                         it.message?.let { it1 -> showErrorDialog(it1) }
                     } else {
                         Log.v("showSomething", "readData_2")
+                        showErrorDialog(getString(R.string.try_again))
+                    }
+                }
+            }
+
+        })
+
+
+
+        addBatchViewModel.editBatchResponse.observe(this,{
+            when (it.status) {
+                Status.LOADING -> {
+                    dialog.showLoadingDialog()
+                }
+
+                Status.SUCCESS -> {
+                    dialog.dismissLoadingDialog()
+                    navigateToBatchListActivity()
+                }
+
+                Status.ERROR -> {
+                    dialog.dismissLoadingDialog()
+                    if (it.data?.status != 200) {
+                        it.message?.let { it1 -> showErrorDialog(it1) }
+                    } else {
                         showErrorDialog(getString(R.string.try_again))
                     }
                 }

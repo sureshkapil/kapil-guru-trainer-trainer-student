@@ -1,6 +1,7 @@
 package com.kapilguru.trainer.ui.courses.add_batch.models
 
 import com.google.gson.annotations.SerializedName
+import com.kapilguru.trainer.APP_WEEKDAY
 
 data class AddBatchRequest(
     @SerializedName("end_date")
@@ -18,21 +19,21 @@ data class AddBatchRequest(
     @SerializedName("no_of_days")
     var noOfDays: String? = null,
     @SerializedName("batch_type")
-    var batchType: String? = null,
+    var batchType: String? = APP_WEEKDAY,
     @SerializedName("trainer_id")
     var trainerId: String? = null,
     @SerializedName("start_date")
     var startDate: String? = null,
     @SerializedName("day_mon")
-    var dayMon: Int? = null,
+    var dayMon: Int? = 1,
     @SerializedName("day_tue")
-    var dayTue: Int? = null,
+    var dayTue: Int? = 1,
     @SerializedName("day_wed")
-    var dayWed: Int? = null,
+    var dayWed: Int? = 1,
     @SerializedName("day_thu")
-    var dayThu: Int? = null,
+    var dayThu: Int? = 1,
     @SerializedName("day_fri")
-    var dayFri: Int? = null,
+    var dayFri: Int? = 1,
     @SerializedName("day_sat")
     var daySat: Int? = null,
     @SerializedName("day_sun")

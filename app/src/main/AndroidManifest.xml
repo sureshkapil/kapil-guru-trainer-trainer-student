@@ -252,6 +252,12 @@
             android:name=".ui.courses.add_batch.AddBatchActivity"
             android:label="@string/add_batch"
             android:theme="@style/customParentNoActionBarStyle" />
+
+        <activity
+            android:name=".ui.courses.add_batch.NewAddBatchActivity"
+            android:label="@string/add_batch"
+            android:theme="@style/customParentNoActionBarStyle" />
+
         <activity android:name=".studentsList.view.StudentsDetailsInfo" />
         <activity
             android:name=".studentsList.view.StudentList"
