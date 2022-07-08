@@ -27,6 +27,7 @@ import com.kapilguru.trainer.testimonials.TestimonialsActivity
 import com.kapilguru.trainer.todaysSchedule.TodaysScheduele
 import com.kapilguru.trainer.trainerFeatures.TrainerFeaturesFragment
 import com.kapilguru.trainer.trainerGallery.TrainerAllGalleryPicksActivity
+import com.kapilguru.trainer.ui.courses.addcourse.AddCourseActivity
 import com.kapilguru.trainer.ui.courses.courses_list.CourseActivity
 import com.kapilguru.trainer.ui.earnings.EarningsActivity
 import com.kapilguru.trainer.ui.guestLectures.GuestLecturesNewActivity
@@ -44,6 +45,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
     lateinit var todayScheduleAdapter: TodayScheduleAdapter
     lateinit var homeScreenViewModel: HomeScreenViewModel
     lateinit var progressDialog: CustomProgressDialog
+    var viewPagerPosition: Int=0
 
     companion object {
         fun newInstance() = HomeScreenFragment()
@@ -154,9 +156,14 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
         homeViewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
+                viewPagerPosition=0
                 setCurrentOnboardingIndicators(position)
             }
         })
+    }
+
+    private fun navigateToAddCourse() {
+        startActivity(Intent(this.requireContext(),AddCourseActivity::class.java))
     }
 
     private fun setFeaturesFragment() {
@@ -190,8 +197,8 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
             0 -> startActivity(Intent(activity, CourseActivity::class.java))
 //            0 ->   VideoCallInterfaceImplementation.launchVideoCall(requireContext(),  "1640164942153bt16941",
 //                "PartiTrainerName", "hostTrainerName")
-            1 -> startActivity(Intent(activity, StudyMaterialActivity::class.java).putExtra(PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL, false)) // done
-            2 -> startActivity(Intent(activity, StudyMaterialActivity::class.java).putExtra(PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL, true)) // done
+            1 -> navigateToStudyMaterial(false) // done
+            2 -> navigateToStudyMaterial(true) // done
             3 -> startActivity(Intent(activity, GuestLecturesNewActivity::class.java)) // done
 
 
@@ -205,6 +212,10 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
 
             8 -> startActivity(Intent(activity, AnnouncementActivity::class.java)) // done
         }
+    }
+
+    private fun navigateToStudyMaterial(isStudyMateria: Boolean) {
+        startActivity(Intent(activity, StudyMaterialActivity::class.java).putExtra(PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL, isStudyMateria))
     }
 
     override fun onCardClick(upComingScheduleApi: UpComingScheduleApi) {
@@ -224,17 +235,14 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
     }
 
     override fun onCourseClicked() {
-        val intent = Intent(requireActivity(), CourseActivity::class.java)
-        startActivity(intent)
+        navigateToAddCourse()
     }
 
     override fun onWebinarClicked() {
-        val intent = Intent(requireActivity(), WebinarNewActivity::class.java)
-        startActivity(intent)
+        navigateToStudyMaterial(false)
     }
 
     override fun onGuestLectureClicked() {
-        val intent = Intent(requireActivity(), GuestLecturesNewActivity::class.java)
-        startActivity(intent)
+        navigateToStudyMaterial(true)
     }
 }

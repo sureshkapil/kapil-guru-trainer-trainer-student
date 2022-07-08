@@ -36,7 +36,7 @@ class HomeViewPagerAdapter(val listener : CardClickListener) : RecyclerView.Adap
                         listener.onCourseClicked()
                     }
                     1->{
-                        listener.onWebinarClicked()
+                        listener.onCourseClicked()
 
                     }else->{
                         listener.onGuestLectureClicked()
