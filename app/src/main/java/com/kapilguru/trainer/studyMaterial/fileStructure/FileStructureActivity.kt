@@ -47,6 +47,9 @@ class FileStructureActivity: BaseActivity(), FileStructureAdapter.FileItemClick 
         parentId = intent.getIntExtra(PARENT_ID, 0)
         studyMaterialId = intent.getIntExtra(STUDY_MATERIAL_ID, 0)
         courseTitle = intent.getStringExtra(COURSE_TITLE_PARAM)
+        binding.videoCount = intent.getIntExtra(PARAM_VIDEO_COUNT,0)
+        binding.docCount = intent.getIntExtra(PARAM_DOCUMENT_COUNT,0)
+        binding.testCount = intent.getIntExtra(PARAM_TEXT_PAPER_COUNT,0)
         val folderContentRequest = FolderContentRequest(
             courseId = this.courseId,
             parentId = this.parentId,

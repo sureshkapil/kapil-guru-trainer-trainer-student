@@ -58,7 +58,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="@id/gl_vertical_30"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/cl_start_date">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/aciv_batch_code"
@@ -101,7 +101,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="@id/gl_vertical_30"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cl_batch_code">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/aciv_start_date"
@@ -144,7 +144,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="@id/gl_vertical_30"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cl_start_date">
+                    app:layout_constraintTop_toBottomOf="@id/cl_batch_code">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/aciv_end_date"
@@ -188,7 +188,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="@id/gl_vertical_70"
                     app:layout_constraintStart_toStartOf="@id/gl_vertical_30"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/cl_batch_time">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/aciv_trainer"
@@ -231,7 +231,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="@id/gl_vertical_70"
                     app:layout_constraintStart_toStartOf="@id/gl_vertical_30"
-                    app:layout_constraintTop_toBottomOf="@id/cl_trainer_name">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/aciv_batch_time"
@@ -276,7 +276,7 @@
                     android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cl_batch_time">
+                    app:layout_constraintTop_toBottomOf="@id/cl_trainer_name">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/aCTVMonday"
@@ -334,7 +334,7 @@
                     android:background="@drawable/rectangle_curve_pink_2"
                     android:backgroundTint="@color/pink_3"
                     app:courseStatus="@{batchViewModel.isActive}"
-
+                    android:visibility="invisible"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/aciv_down_arrow"
                     tools:drawableStart="@drawable/status_approved_circle"
@@ -345,8 +345,8 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:src="@drawable/ic_arrow_down_24px"
-                    app:layout_constraintTop_toTopOf="@id/actv_status"
-                    app:layout_constraintBottom_toBottomOf="@+id/actv_status"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/rl_student_count"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
                 <RelativeLayout
@@ -354,7 +354,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:gravity="bottom"
-                    app:layout_constraintBottom_toBottomOf="@+id/cl_batch_time"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/aciv_down_arrow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/cl_batch_time">
 
@@ -362,8 +363,8 @@
                         android:id="@+id/aciv_student"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_my_students"
-                        android:padding="10dp"/>
+                        android:padding="10dp"
+                        android:src="@drawable/ic_my_students" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/actv_students_count"

@@ -26,6 +26,7 @@ import com.kofigyan.stateprogressbar.StateProgressBar
 import kotlinx.android.synthetic.main.activity_add_course.*
 import java.io.File
 import java.util.*
+
 class AddCourseActivity : BaseActivity() {
     lateinit var courseListInfo: ArrayList<CourseResponse>
     lateinit var addCourseViewModel: AddCourseViewModel
@@ -266,9 +267,6 @@ class AddCourseActivity : BaseActivity() {
             addCourseRequest.courseTitle.isNullOrBlank() -> {
                 showErrorMessage("please fill the Course Title")
             }
-            addCourseRequest.courseSubTitle.isNullOrBlank() -> {
-                showErrorMessage("please fill courseSubTitle")
-            }
             addCourseRequest.categoryID.isNullOrBlank() -> {
                 showErrorMessage("please fill category")
             }
@@ -290,8 +288,14 @@ class AddCourseActivity : BaseActivity() {
             addCourseRequest.durationDays.isNullOrBlank() -> {
                 showErrorMessage("please fill course Duration Days")
             }
+            addCourseRequest.durationDays!!.toInt()<1 -> {
+                showErrorMessage("Course Duration should be at least 1 Day")
+            }
             addCourseRequest.description.isNullOrBlank() -> {
                 showErrorMessage("please fill the Description")
+            }
+            isPriceInRange(addCourseRequest.actualFee) -> {
+                showErrorMessage("Effective price can't be less than 100")
             }
             else -> {
                 if(!addCourseViewModel.newisApiRequestMade) {
@@ -303,9 +307,15 @@ class AddCourseActivity : BaseActivity() {
         }
     }
 
-    private fun actualPriceIsInLimits(addCourseRequest: AddCourseRequest) = addCourseRequest.actualFee!!.toInt() > addCourseRequest.fee!!.toInt()
+    private fun actualPriceIsInLimits(addCourseRequest: AddCourseRequest) = addCourseRequest.discountAmount!! > addCourseRequest.fee!!
 
-    private fun isPriceInRange(price: String): Boolean = (price.toInt()<400 ||price.toInt()>100000)
+    private fun isPriceInRange(price: Double?): Boolean {
+        price?.let {
+            return (price < 100)
+        } ?: kotlin.run {
+            return true
+        }
+    }
 
 
     private fun imageValidations(addCourseRequest: AddCourseRequest) {
@@ -327,21 +337,21 @@ class AddCourseActivity : BaseActivity() {
 
     private fun validateTrainerDetails(addCourseRequest: AddCourseRequest) {
         when {
-            addCourseRequest.trainerName.isNullOrBlank() -> {
+            /*addCourseRequest.trainerName.isNullOrBlank() -> {
                 showErrorMessage("please fill the trainer name")
-            }
-            addCourseRequest.trainersYearOfExp.isNullOrBlank() -> {
+            }*/
+            /*addCourseRequest.trainersYearOfExp.isNullOrBlank() -> {
                 showErrorMessage("please fill Training yrs of Experience")
-            }
-            experienceValidation(addCourseRequest) -> {
+            }*/
+            /*experienceValidation(addCourseRequest) -> {
                     showErrorMessage("Training Experience Can't exceed 50")
-            }
-            addCourseRequest.totalNoOfStudentsTrained.isNullOrBlank() -> {
+            }*/
+            /*addCourseRequest.totalNoOfStudentsTrained.isNullOrBlank() -> {
                 showErrorMessage("please fill Number Of students trained")
-            }
-            addCourseRequest.aboutTrainer.isNullOrBlank() -> {
+            }*/
+            /*addCourseRequest.aboutTrainer.isNullOrBlank() -> {
                 showErrorMessage("please fill info about trainer")
-            }
+            }*/
             addCourseRequest.language.isNullOrBlank() -> {
                 showErrorMessage("please select languages")
             }

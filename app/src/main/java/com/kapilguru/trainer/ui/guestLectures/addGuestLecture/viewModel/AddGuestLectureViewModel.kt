@@ -182,7 +182,7 @@ class AddGuestLectureViewModel(private val repository: AddGuestLectureRepository
     /*for the first time we are adding a guest lecture i.e, only details are sent to server*/
     fun addGuestLectureDetails() {
         addGuestLectureDetailsApiResponse.value = ApiResource.loading(data = null)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 addGuestLectureDetailsApiResponse.postValue(ApiResource.success(repository.addGuestLectureDetails(addGuestLectureRequest)))
             } catch (e: HttpException) {
@@ -196,7 +196,7 @@ class AddGuestLectureViewModel(private val repository: AddGuestLectureRepository
     fun addGuestLectureImage(imageBase64: String) {
         setGuestLectureImageRequest(imageBase64, getIsLaunchedForEdit())
         addGuestLectureImageApiResponse.value = ApiResource.loading(data = null)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 addGuestLectureImageApiResponse.postValue(ApiResource.success(repository.addGuestLectureImage(addGuestLectureImageRequest)))
             } catch (e: HttpException) {

@@ -10,6 +10,17 @@
             name="viewModel"
             type="com.kapilguru.trainer.studyMaterial.StudyMaterialViewModel" />
 
+        <variable
+            name="videoCount"
+            type="java.lang.Integer" />
+        <variable
+            name="docCount"
+            type="java.lang.Integer" />
+        
+        <variable
+            name="testCount"
+            type="java.lang.Integer" />
+
         <import type="android.view.View" />
     </data>
 
@@ -91,6 +102,7 @@
                         android:id="@+id/videoImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="@{videoCount>0? View.VISIBLE : View.GONE}"
                         android:src="@drawable/ic_baseline_ondemand_video_24"
                         app:layout_constraintEnd_toStartOf="@+id/video"
                         app:layout_constraintStart_toStartOf="parent"
@@ -101,8 +113,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_3dp"
-                        android:visibility="@{viewModel.studyMaterialOverViewResponseApi.videoCount>0? View.VISIBLE : View.GONE}"
-                        app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.videoCount}"
+                        android:visibility="@{videoCount>0? View.VISIBLE : View.GONE}"
+                        app:keyValueToInt="@{videoCount}"
                         app:key_title="@string/videos"
                         app:layout_constraintEnd_toStartOf="@+id/materialImage"
                         app:layout_constraintHorizontal_bias="0"
@@ -114,6 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_3dp"
+                        android:visibility="@{docCount>0? View.VISIBLE : View.GONE}"
                         android:src="@drawable/ic_baseline_document_scanner_24"
                         app:layout_constraintEnd_toStartOf="@+id/materials"
                         app:layout_constraintStart_toEndOf="@id/video"
@@ -124,8 +137,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_3dp"
-                        android:visibility="@{viewModel.studyMaterialOverViewResponseApi.docCount>0? View.VISIBLE : View.GONE}"
-                        app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.docCount}"
+                        android:visibility="@{docCount>0? View.VISIBLE : View.GONE}"
+                        app:keyValueToInt="@{docCount}"
                         app:key_title="@string/documents"
                         app:layout_constraintEnd_toStartOf="@id/testPaperImage"
                         app:layout_constraintHorizontal_bias="0"
@@ -138,6 +151,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_3dp"
+                        android:visibility="@{testCount>0? View.VISIBLE : View.GONE}"
                         android:src="@drawable/ic_baseline_file_copy_24"
                         app:layout_constraintEnd_toStartOf="@+id/testPapers"
                         app:layout_constraintStart_toEndOf="@id/materials"
@@ -148,8 +162,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dimen_5dp"
-                        android:visibility="@{viewModel.studyMaterialOverViewResponseApi.videoCount>0? View.VISIBLE : View.GONE}"
-                        app:keyValueToInt="@{viewModel.studyMaterialOverViewResponseApi.videoCount}"
+                        android:visibility="@{testCount>0? View.VISIBLE : View.GONE}"
+                        app:keyValueToInt="@{testCount}"
                         app:key_title="@string/test_papers"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0"

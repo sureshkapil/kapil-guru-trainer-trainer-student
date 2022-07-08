@@ -12,10 +12,12 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
-        android:layout_width="120dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="5dp"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginVertical="@dimen/dimen_5dp"
         app:cardCornerRadius="8dp"
+        android:padding="@dimen/dimen_5dp"
         app:strokeColor="@color/orange_2"
         app:strokeWidth="1dp">
 
@@ -23,6 +25,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:paddingHorizontal="10dp"
+                android:layout_marginVertical="@dimen/dimen_5dp"
+                android:text="@{model.activityTitle.toUpperCase()}"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:fontFamily="@font/rubik_regular"
+                tools:text="10:00 am" />
+
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
@@ -33,44 +48,113 @@
                 android:visibility="gone"
                 app:srcCompat="@drawable/ic_today_schedule_clock" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="10dp"
-                android:paddingTop="5dp"
-                android:textSize="14sp"
-                android:drawablePadding="3dp"
-                app:fontFamily="@font/rubik_regular"
-                android:drawableStart="@drawable/ic_today_schedule_clock"
-                android:textColor="@color/black"
-                app:timeToString="@{model.startTime}"
-                tools:text="10:00 am" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="10dp"
-                android:paddingTop="1dp"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                app:fontFamily="@font/rubik_regular"
-                app:dateToString="@{model.startTime}"
-                tools:text="10:00 am" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/rubik_regular"
-                android:background="@color/orange_2"
-                android:paddingHorizontal="10dp"
-                app:capitalizeFirstLetter="@{model.activityType}"
-                android:textColor="@color/white"
-                tools:text="Lecture" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/date"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/rubik_regular"
+                    tools:text="10:00 am" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:paddingTop="1dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:dateToString="@{model.startTime}"
+                    app:fontFamily="@font/rubik_regular"
+                    tools:text="10:00 am" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:drawableStart="@drawable/status_approved_circle_small"
+                    android:layout_gravity="center"
+                    android:drawablePadding="@dimen/dimen_5dp"
+                    app:isonline="@{model.isOnline}"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:layout_marginBottom="@dimen/dimen_5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/time"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/rubik_regular"
+                    tools:text="10:00 am" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:paddingTop="1dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/rubik_regular"
+                    app:timeToString="@{model.startTime}"
+                    tools:text="10:00 am" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:background="@color/orange_2"
+                    android:fontFamily="@font/rubik_regular"
+                    android:paddingHorizontal="10dp"
+                    android:textColor="@color/white"
+                    android:text="@{model.code+`-`}"
+                    tools:text="Lecture" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:background="@color/orange_2"
+                    android:fontFamily="@font/rubik_regular"
+                    android:paddingHorizontal="10dp"
+                    android:textColor="@color/white"
+                    app:capitalizeFirstLetter="@{model.activityType}"
+                    tools:text="Lecture" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>

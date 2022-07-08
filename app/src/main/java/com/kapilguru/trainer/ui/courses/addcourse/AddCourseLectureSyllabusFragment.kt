@@ -155,7 +155,6 @@ class AddCourseLectureSyllabusFragment : Fragment() {
         v.imageView.setOnClickListener {
             viewBinding.lLayoutParent.removeView(it.parent as View)
         }
-
         viewBinding.lLayoutParent.addView(v)
     }
 

@@ -35,6 +35,7 @@ import java.util.*
 
 class AddBatchActivity : BaseActivity(), View.OnClickListener {
 
+    private var shouldEdit: Boolean= false
     lateinit var addBatchViewModel: AddBatchViewModel
     lateinit var addBatchBinding: ActivityAddBatchBinding
     lateinit var dialog : CustomProgressDialog
@@ -99,7 +100,7 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
         batchId = intent.getIntExtra(EDIT_BATCH_ID_PARAM, -1)
         if(batchId >= 0) addBatchViewModel.batchId.value = this.batchId
 
-        val shouldEdit = intent.getBooleanExtra(IS_FROM_EDIT_PARAM, false)
+        shouldEdit = intent.getBooleanExtra(IS_FROM_EDIT_PARAM, false)
         if(shouldEdit) {
             addBatchViewModel.shouldEdit.value = shouldEdit
             addBatchViewModel.editBatchRequestInfo()
@@ -126,8 +127,10 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
         aCTVBatchCourseDurationValue.onFocusChangeListener =
             View.OnFocusChangeListener { v, hasFocus ->
                 if (!hasFocus) {
-                    addBatchViewModel.noOfDays.value = aCTVBatchCourseDurationValue.text.toString()
-                    setTotalCourseDuration()
+                    if(aCTVBatchCourseDurationValue.text.toString().toInt()>=1) {
+                        addBatchViewModel.noOfDays.value = aCTVBatchCourseDurationValue.text.toString()
+                        setTotalCourseDuration()
+                    }
                 }
 
             }
@@ -148,8 +151,10 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
                 aCTVBatchCourseDurationValue.setText("100")
                 addBatchViewModel.emptyFieldMessage.postValue(6)
             } else if (!text.isNullOrEmpty()) {
-                addBatchViewModel.noOfDays.value = aCTVBatchCourseDurationValue.text.toString()
-                setTotalCourseDuration()
+                if(aCTVBatchCourseDurationValue.text.toString().toInt()>=1) {
+                    addBatchViewModel.noOfDays.value = aCTVBatchCourseDurationValue.text.toString()
+                    setTotalCourseDuration()
+                }
             }
 
         }
@@ -171,11 +176,13 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
             addBatchViewModel.discountedPrice.value =priceModel?.actualFee
             addBatchViewModel.isTax.value =priceModel?.isTaxChargesAdded
             addBatchViewModel.internetCharges.value =priceModel?.internetCharges
-
-            addBatchViewModel.onSaveBatchClick()
+            if(shouldEdit) {
+                addBatchViewModel.onSaveBatchClick()
+            } else {
+                addBatchViewModel.onSaveBatchClick()
+            }
         }
-
-        setUpPricesFragment(priceModel)
+        if(!shouldEdit) setUpPricesFragment(priceModel)
 
     }
 
@@ -553,10 +560,10 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
                     showToastMessage("please fill the batch price")
                 }
                 6 -> {
-                    showToastMessage("No of class can't be greater than 100")
+                    showToastMessage("No of class can't Less than 1")
                 }
                 7 -> {
-                    showToastMessage("Please fill total Number of Students")
+                    showToastMessage("Please fill total Number of Days")
                 }
                 8 -> {
                     showToastMessage("total No of students can't be greater than 50")
@@ -579,6 +586,7 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
                 Status.SUCCESS -> {
                     it?.data?.editBatchList?.let { editBatch ->
                         Log.d(TAG, "observeViewModelData: ${editBatch[0]}")
+                        addBatchViewModel.isKgMeeting.value = editBatch[0].isKgMeeting == 1
                         editBatch[0].startDate?.let { dateAndTime ->
                             setStartDateAndStartTime(dateAndTime)
                         }

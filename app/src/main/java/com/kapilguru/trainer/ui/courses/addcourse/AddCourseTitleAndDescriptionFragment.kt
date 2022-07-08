@@ -96,24 +96,9 @@ class AddCourseTitleAndDescriptionFragment : Fragment() {
             subTitle = "Course search depends on course title",
             lifecycleOwner = this))
 
-        viewBinding.aCETCourseSubTitleValue.setOnTouchListener(CustomDrawableClickListener( textInputEditText =aCETCourseSubTitleValue,
-            title = "What students will learn in your course",
-            subTitle = "(Do not add your personal information, contact number, Mail id, Address, Company Name Etc)",
-            lifecycleOwner = this))
-
-        viewBinding.aCETCoursePriceValue.setOnTouchListener(CustomDrawableClickListener( textInputEditText =aCETCourseSubTitleValue,
-            title = "What is the Course price?",
-            subTitle = "(Price of the course)",
-            lifecycleOwner = this))
-
-        viewBinding.aCETCoursePriceValue.setOnTouchListener(CustomDrawableClickListener( textInputEditText =aCETCourseSubTitleValue,
-            title = "What is the offered price ?",
-            subTitle = "(Discounted Price)",
-            lifecycleOwner = this))
-
-        viewBinding.aCETCoursePriceValue.setOnTouchListener(CustomDrawableClickListener( textInputEditText =aCETCourseSubTitleValue,
+        viewBinding.aCTVCourseDurationValue.setOnTouchListener(CustomDrawableClickListener( textInputEditText =aCTVCourseDurationValue,
             title = "What is the no. of sessions ?",
-            subTitle = "(No.of Sessions not less than 10 and greater than 100.)",
+            subTitle = "(No.of Sessions not less than 1 and greater than 999.)",
             lifecycleOwner = this))
     }
 

@@ -10,16 +10,6 @@ import kotlinx.android.synthetic.main.item_custom_spinner.view.*
 
 class CustomSpinnerAdapter(ctx: Context, couponLiveCoursesResponseApi: ArrayList<CouponLiveCoursesResponseApi>) : ArrayAdapter<CouponLiveCoursesResponseApi>(ctx, 0, couponLiveCoursesResponseApi) {
 
-
-    var couponLiveCoursesResponseApi: ArrayList<CouponLiveCoursesResponseApi> = ArrayList()
-    get(){
-        return field
-    }
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         return createItemView(position, convertView, parent);
     }

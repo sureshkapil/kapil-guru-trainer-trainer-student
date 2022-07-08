@@ -16,7 +16,7 @@ class BottomSheetDialogFragmentInfo : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.BottomSheetDialogTheme)
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.BottomSheetDialogFixedHeight)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

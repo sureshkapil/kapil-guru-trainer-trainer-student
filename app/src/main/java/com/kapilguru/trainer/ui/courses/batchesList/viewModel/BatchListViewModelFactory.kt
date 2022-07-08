@@ -9,14 +9,13 @@ import com.kapilguru.trainer.ui.courses.batchesList.BatchListRepository
 class BatchListViewModelFactory(
     private val apiHelper: ApiHelper,
     private val appliaction: Application,
-    private val courseid: String
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(BatchListViewModel::class.java)) {
             return BatchListViewModel(
                     BatchListRepository(apiHelper),
-                appliaction,courseid) as T
+                appliaction) as T
         }
         throw IllegalArgumentException("Unknown class name")
     }

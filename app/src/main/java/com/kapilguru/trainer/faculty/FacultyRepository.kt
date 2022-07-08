@@ -9,4 +9,10 @@ open class FacultyRepository(private val apiHelper: ApiHelper) {
 
     suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiHelper.getUsers(loginUserRequest)
 
+    suspend fun addFaculty(addFacultyRequest: AddFacultyRequest) = apiHelper.addFaculty(addFacultyRequest)
+
+    suspend fun getFaculty(getFacultyRequest: GetFacultyRequest) = apiHelper.getFaculty(getFacultyRequest)
+
+    suspend fun updateFaculty(id: String, facultySettingsModel: FacultySettingsModel) = apiHelper.updateFaculty(id, facultySettingsModel)
+
 }

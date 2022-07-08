@@ -11,6 +11,7 @@ import com.kapilguru.trainer.myClassroom.liveClasses.model.LiveUpComingClassData
 import com.kapilguru.trainer.myClassroom.liveClasses.model.LiveUpComingClassResponse
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.preferences.StorePreferences
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -31,7 +32,7 @@ class MyClassroomViewModel(
     val activeBatchesList: MutableLiveData<List<NewMessageData>> = MutableLiveData()
 
     fun getAllClasses() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             liveUpComingClassResponse.postValue(ApiResource.loading(data = null))
             try {
                 val liveUpComingClassesDeferred = async { repository.getLiveUpComingClasses(trainerId) }

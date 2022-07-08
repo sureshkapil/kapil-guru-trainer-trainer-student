@@ -14,7 +14,7 @@ data class AddBatchRequest(
     @SerializedName("time_zone")
     var timeZone: String? = "IST",
     @SerializedName("max_no_of_students")
-    var maxNoOfStudents: String? = "10",
+    var maxNoOfStudents: String? = null,
     @SerializedName("no_of_days")
     var noOfDays: String? = null,
     @SerializedName("batch_type")
@@ -49,6 +49,6 @@ data class AddBatchRequest(
     var internetCharges: Double?=null,
     @SerializedName("is_online")
     var isOnline: Int?=1,
-    @SerializedName("is_kg_meeting")
-    var isKgMeeting: Boolean?=false,
+    @SerializedName("is_show_in_web")
+    var isKgMeeting: Int?=0,
     )

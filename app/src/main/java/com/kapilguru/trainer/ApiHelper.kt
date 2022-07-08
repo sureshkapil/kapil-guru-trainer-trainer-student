@@ -1,6 +1,8 @@
 package com.kapilguru.trainer
 
 import com.kapilguru.student.courseDetails.model.BatchRequest
+import com.kapilguru.trainer.addStudent.CheckStudentRequest
+import com.kapilguru.trainer.addStudent.OnlineStudentRequest
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapRequest
 import com.kapilguru.trainer.allSubscription.models.UpdateKycRequest
 import com.kapilguru.trainer.allSubscription.positionSubscription.model.CoursePositionMapRequest
@@ -11,12 +13,17 @@ import com.kapilguru.trainer.batchExamReports.BatchReportsRequestModel
 import com.kapilguru.trainer.coupons.AddCouponsRequest
 import com.kapilguru.trainer.coupons.CouponCourseCategoryRequest
 import com.kapilguru.trainer.enquiries.addOfflineEnquiry.data.AddEnquiryReq
+import com.kapilguru.trainer.coupons.CreateCouponCodeRequestModel
+import com.kapilguru.trainer.coupons.StudentRequestModel
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.conductExams.createQuestionPaper.model.QuestionPaperTitleRequest
 import com.kapilguru.trainer.exams.createQuestion.model.AddQuestionRequest
 import com.kapilguru.trainer.exams.createQuestion.model.UpdateQuestionRequest
 import com.kapilguru.trainer.exams.previousQuestionPapersList.model.CopyFromQuesPaperRequest
 import com.kapilguru.trainer.exams.previousQuestionsList.model.AddExistingQuesApiRequest
+import com.kapilguru.trainer.faculty.AddFacultyRequest
+import com.kapilguru.trainer.faculty.FacultySettingsModel
+import com.kapilguru.trainer.faculty.GetFacultyRequest
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordRequest
 import com.kapilguru.trainer.forgotPassword.model.ValidateMobileRequest
 import com.kapilguru.trainer.login.models.LoginUserRequest
@@ -49,11 +56,8 @@ import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
 import com.kapilguru.trainer.studyMaterial.StudyMatrialListRequest
 import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentRequest
 import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMatrialOverViewRequest
-import com.kapilguru.trainer.testimonials.AddTrainerTestimonial
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.testimonials.TestimonialApproveRequest
-import com.kapilguru.trainer.trainerGallery.DeleteImageRequest
-import com.kapilguru.trainer.trainerGallery.DeleteImageResponse
 import com.kapilguru.trainer.trainerGallery.UploadImageGallery
 import com.kapilguru.trainer.ui.changePassword.model.LogoutRequest
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchRequest
@@ -71,8 +75,6 @@ import com.kapilguru.trainer.ui.profile.data.ProfileData
 import com.kapilguru.trainer.ui.webiner.addWebinar.model.AddWebinarRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.http.Body
-import retrofit2.http.Path
 
 open class ApiHelper(private val apiKapilTutorService: ApiKapilTutorService) {
 
@@ -109,6 +111,8 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 //    suspend fun postGuestLectures(addGuestLecturesRequest: AddGuestLectureRequest)=apiKapilTutorService.addGuestLecturesInfo(addGuestLecturesRequest)
 
     suspend fun postAddBatch(addBatchApiRequest: AddBatchRequest) = apiKapilTutorService.addBatchInfo(addBatchApiRequest)
+
+    suspend fun updateBatch(batchId: Int,addBatchApiRequest: AddBatchRequest) = apiKapilTutorService.updatedateBatch(batchId,addBatchApiRequest)
 
     suspend fun getEditBatch(batchId: Int) = apiKapilTutorService.getEditBatchInfo(batchId)
 
@@ -422,5 +426,20 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun getEnquiries(trainerId : String) = apiKapilTutorService.getEnquiries(trainerId)
 
     suspend fun addEnquiry(addEnquiryReq : AddEnquiryReq) = apiKapilTutorService.addEnquiry(addEnquiryReq)
+
+    open suspend fun getStudentList(studentRequestModel: StudentRequestModel) = apiKapilTutorService.getStudentList(studentRequestModel)
+
+
+    open suspend fun createCouponCode(createCouponCodeRequestModel: CreateCouponCodeRequestModel) = apiKapilTutorService.createCouponCode(createCouponCodeRequestModel)
+
+    suspend fun addFaculty(addFacultyRequest: AddFacultyRequest) = apiKapilTutorService.addFaculty(addFacultyRequest)
+
+    suspend fun getFaculty(getFacultyRequest: GetFacultyRequest) = apiKapilTutorService.getFaculty(getFacultyRequest)
+
+    suspend fun updateFaculty(id: String, facultySettingsModel: FacultySettingsModel) = apiKapilTutorService.updateFaculty(id,facultySettingsModel)
+
+    suspend fun checkStudent(checkStudentRequest: CheckStudentRequest) = apiKapilTutorService.checkStudent(checkStudentRequest)
+
+    suspend fun addOnlineStudent(onlineStudentRequest: OnlineStudentRequest) = apiKapilTutorService.addOnlineStudent(onlineStudentRequest)
 
 }

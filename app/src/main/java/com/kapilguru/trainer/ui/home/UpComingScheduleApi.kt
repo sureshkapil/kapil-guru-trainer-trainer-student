@@ -17,6 +17,7 @@ data class UpComingScheduleApi(
     @SerializedName("trainer_id") var trainerId: Int? = 0,
     @SerializedName("activity_title") var activityTitle: String? = "",
     @SerializedName("db_ctime") var dbTime: String? = "",
+    @SerializedName("is_online") var isOnline: Int? = 0,
 ):Parcelable {
     val oneHourInMilliSec = 1 * 60 * 60 * 1000
 

@@ -133,6 +133,14 @@
         <item name="bottomSheetStyle">@style/BottomSheet</item>
     </style>
 
+    <style name="BottomSheetDialogFixedHeight" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="behavior_peekHeight">600dp</item>
+    </style>
+
     <style name="BottomSheet" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottomsheetstyle</item>
     </style>
@@ -193,6 +201,44 @@
         <item name="boxBackgroundColor">#FFFFFF</item>
         <item name="strokeWidth">0dp</item>
         <item name="strokeColor">#FFFFFF</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="hintTextAppearance">@style/TextLabel</item>
+        <item name="hintTextColor">#CCCCCC</item>
+        <item name="boxCornerRadiusBottomEnd">4dp</item>
+        <item name="boxCornerRadiusBottomStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="materialThemeOverlay">@style/MyThemeOverlayOutlinedDense_1</item>
+        <item name="android:textColorHint">#77787B</item>
+    </style>
+
+    <style name="MyAppEditTextViewStyle_text_color_black" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="helperTextEnabled">true</item>
+        <item name="maxLines">1</item>
+        <item name="singleLine">true</item>
+        <item name="boxBackgroundColor">#FFFFFF</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="strokeColor">#FFFFFF</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="hintTextAppearance">@style/TextLabel</item>
+        <item name="hintTextColor">#000000</item>
+        <item name="boxCornerRadiusBottomEnd">4dp</item>
+        <item name="boxCornerRadiusBottomStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="materialThemeOverlay">@style/MyThemeOverlayOutlinedDense_1</item>
+        <item name="android:textColorHint">#000000</item>
+    </style>
+
+    <style name="MyAppEditTextViewStyle_black" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="helperTextEnabled">true</item>
+        <item name="maxLines">1</item>
+        <item name="singleLine">true</item>
+        <item name="boxBackgroundColor">#F0f0f0</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="strokeColor">#000000</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="hintTextAppearance">@style/TextLabel</item>

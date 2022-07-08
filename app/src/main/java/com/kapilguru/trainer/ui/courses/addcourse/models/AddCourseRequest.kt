@@ -1,10 +1,6 @@
 package com.kapilguru.trainer.ui.courses.addcourse.models
 
-import android.util.Log
-import android.widget.EditText
 import androidx.annotation.Keep
-import androidx.databinding.InverseBindingAdapter
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Keep
@@ -13,7 +9,6 @@ data class AddCourseRequest(
         @SerializedName("batchtype") var batchType: String?="Weekday", //Weekend, Weekday, both
         @SerializedName("category_id") var categoryID: String ?= null,
         @SerializedName("course_image") var courseImage: String?=null,
-        @SerializedName("course_sub_title") var courseSubTitle: String?=null,
         @SerializedName("course_title") var courseTitle: String?=null,
         @SerializedName("demo_video") var demoVideo: String?=null,
         @SerializedName("course_video") var courseVideo: String?=null,

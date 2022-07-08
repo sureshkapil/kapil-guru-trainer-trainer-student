@@ -157,6 +157,14 @@ const val PARAM_REPORTS_REQUEST = "repostRequest"
 const val STUDY_MATERIAL_COURSE_ID: String = "study_material_course_id"
 const val STUDY_MATERIAL_ID: String = "study_material_id"
 const val PARENT_ID: String = "parent_id"
+const val COUPONS_DATA: String = "coupons_data"
+const val Faculty_Settings_PARAM: String = "faculty_settings_param"
+const val UPDATE_FACULTY_ID: String = "update_faculty_id"
+const val ADD_FACULTY_REQUEST_PARAM: String = "add_faculty_request_param"
+const val PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL: String = "param_is_from_dashboard_as_recorded"
+const val PARAM_VIDEO_COUNT: String = "param_video_count"
+const val PARAM_DOCUMENT_COUNT: String = "param_document_count"
+const val PARAM_TEXT_PAPER_COUNT: String = "param_text_paper_count"
 
 
 fun showAppToast(context: Context, text: String) {

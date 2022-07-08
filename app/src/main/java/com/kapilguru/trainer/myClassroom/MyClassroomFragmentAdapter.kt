@@ -1,6 +1,5 @@
 package com.kapilguru.trainer.myClassroom
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView

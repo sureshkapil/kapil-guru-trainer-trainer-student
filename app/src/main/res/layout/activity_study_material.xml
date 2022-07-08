@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/buttonAddCourse"
                     android:padding="5dp"
-                    android:text="@{@string/total_study_materials(5)}"
+                    android:text="Filters"
                     android:textColor="@color/purple"
                     android:textSize="15sp"
                     tools:text="Total courses - 16" />
@@ -91,6 +91,7 @@
                         android:src="@drawable/add_icon" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/add_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/add_study_material"

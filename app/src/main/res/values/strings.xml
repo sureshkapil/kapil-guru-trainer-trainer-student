@@ -98,6 +98,7 @@
     <string name="batch_details">Batch Details</string>
     <string name="total_courses">Total Courses - %s</string>
     <string name="total_study_materials">Study Materials - %s</string>
+    <string name="total_recorded_courses">Recorded Courses - %s</string>
     <string name="total_batches">Total Batches - %s</string>
     <string name="total_students">Total Students (%s)</string>
     <string name="total_webinars">Total Webinars %s</string>
@@ -707,6 +708,7 @@
     <string name="view_more">View More</string>
     <string name="zero">0</string>
     <string name="rupee_symbol">\u20B9 %.2f</string>
+    <string name="only_rupee_symbol">\u20B9</string>
     <string name="rupee_symbol_without_float">\u20B9 %s</string>
     <string name="isVisible">true</string>
     <string name="enrollment_date">Enrollment Date</string>
@@ -834,7 +836,7 @@
     <string name="enquiry_reminders">Enquiries</string>
     <string name="add_testimonial">Add Testimonial</string>
     <string name="course_price">Price</string>
-    <string name="internet_handling_charges">Internet Handling Charges</string>
+    <string name="internet_handling_charges">Do you want to collect internet handling charges from students? (%.1f)%%</string>
     <string name="is_tax_applicable">Is tax Applicable</string>
     <string name="do_yout_want_to_display_this_course_in_kapilguru">Do you want to display this Course in KapilGuru.com</string>
     <string name="training_mode">Training Mode</string>
@@ -866,7 +868,7 @@
     <string name="content_summary">Content Summary</string>
     <string name="student_enquiry">Student Enquiry</string>
     <string name="faculty">Faculty</string>
-    <string name="validity_txt">You can access this course for 2 yrs</string>
+    <string name="validity_txt">You can access this course for %d %s</string>
     <string name="price_terms_conditions_txt">Amount payable is inclusive of taxes.</string>
     <string name="price_terms_conditions"><u>Terms &amp; Conditions apply</u></string>
     <string name="buy_now">Buy now</string>
@@ -905,6 +907,24 @@
     <string name="question_paper">Question Paper</string>
     <string name="question_no">Q %d/%d </string>
     <string name="all_exams">All Exams</string>
+    <string name="add_fee_management">Add Fee Management</string>
+    <string name="date_of_joining">Date of Joining</string>
+    <string name="number_of_installments">Number of Instalments</string>
+    <string name="add_instalment">Add Instalment</string>
+    <string name="cash">Cash</string>
+    <string name="upi">upi</string>
+    <string name="check">Check</string>
+    <string name="cheque">Cheque</string>
+    <string name="bank_transfer">Bank Transfer</string>
+    <string name="mode_of_payment">Mode Of Payment</string>
+    <string name="instalment">Instalment %d</string>
+    <string name="paid_fee">Paid Fee</string>
+    <string name="valid_upto">Valid Upto</string>
+    <string name="discount">Discount</string>
+    <string name="effective_price">Effective Price</string>
+    <string name="add_student_all_caps">ADD STUDENT</string>
+    <string name="add_online_student">Add Online Student</string>
+    <string name="add_offline_student">Add Offline Student</string>
 
     <string-array name="coupon_code_category">
         <item>Select Category</item>

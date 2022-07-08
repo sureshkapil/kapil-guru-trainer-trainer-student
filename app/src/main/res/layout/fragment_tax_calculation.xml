@@ -1,112 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="model"
             type="com.kapilguru.trainer.ui.courses.tax.TaxCalculationFragmentViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.courses.tax.TaxCalculationFragment"
-    tools:showIn="@layout/activity_add_batch">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineVertical_0_05_clAddCourseTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/aCTVCoursePrice"
-        style="@style/MyAppEditTextViewStyle_new"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clAddCourseTitle"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.courses.tax.TaxCalculationFragment"
+        tools:showIn="@layout/activity_add_batch">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/aCETCoursePriceValue"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical_0_05_clAddCourseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/aCTVCoursePrice"
+            style="@style/MyAppEditTextViewStyle_new"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/price"
-            android:inputType="numberDecimal"
-            android:maxLength="6"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clAddCourseTitle"
+            app:layout_constraintTop_toTopOf="parent">
 
-            android:textSize="15sp" />
-<!--        app:textInputDoubleToCount="@{model.priceModel.offerPrice}"-->
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/aCETCoursePriceValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/price"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:textSize="15sp"
+                android:text="@={model.fee}" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/aCTVCourseOfferPrice"
-        style="@style/MyAppEditTextViewStyle_new"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clAddCourseTitle"
-        app:layout_constraintTop_toBottomOf="@id/aCTVCoursePrice">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/aCETCourseOfferPriceValue"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/aCTVCourseOfferPrice"
+            style="@style/MyAppEditTextViewStyle_new"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/offer_price"
-            android:inputType="numberDecimal"
-            android:maxLength="6"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clAddCourseTitle"
+            app:layout_constraintTop_toBottomOf="@id/aCTVCoursePrice">
 
-            android:textSize="15sp" />
-<!--        app:textInputDoubleToCount="@{model.priceModel.offerPrice}"-->
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/aCETCourseOfferPriceValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/discount"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:textSize="15sp"
+                android:text="@={model.discountAmount}" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/internetToggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:switchPadding="10dp"
+        </com.google.android.material.textfield.TextInputLayout>
 
-        android:text="@string/internet_handling_charges"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aCTVCourseOfferPrice" />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/internetToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchPadding="10dp"
+            android:checked="@={model.isInternetChargesAdded}"
+            android:text="@{@string/internet_handling_charges(model.taxCalculationResponseApi.addPercent)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aCTVCourseOfferPrice" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/taxToggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:switchPadding="10dp"
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/taxToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchPadding="10dp"
+            android:text="@string/is_tax_applicable"
+            android:checked="@={model.isTaxChargesAdded}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/internetToggle" />
 
-        android:text="@string/is_tax_applicable"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/internetToggle" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/aCTVCourseFinalprice"
-        style="@style/MyAppEditTextViewStyle_new"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clAddCourseTitle"
-        app:layout_constraintTop_toBottomOf="@id/taxToggle">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/aCTVCourseFinalPriceValue"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/aCTVCourseFinalprice"
+            style="@style/MyAppEditTextViewStyle_new"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/offer_price"
-            android:inputType="numberDecimal"
-            android:maxLength="6"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintStart_toStartOf="@id/guidelineVertical_0_05_clAddCourseTitle"
+            app:layout_constraintTop_toBottomOf="@id/taxToggle">
 
-            android:textSize="15sp" />
-       <!-- app:offerPrice="@{model.priceModel.offerPrice}"
-        app:originalAmount="@{model.priceModel.price}"
-        app:isInternetAdded="@{model.priceModel.internetChargesAdded}"
-        app:taxPercentage="@{model.taxCalculationResponseApi.addPercent}"-->
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/aCTVCourseFinalPriceValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/effective_price"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:textSize="15sp"
+                android:backgroundTint="@color/disabled_grey_color"
+                android:enabled="false"
+                android:focusable="false"
+                android:text="@={model.actualFee}"
+               />
+<!--            app:isInternetAdded="@{model.priceModel.internetChargesAdded}"-->
+<!--            app:offerPrice="@{model.priceModel.discountAmount}"-->
+<!--            app:originalAmount="@{model.priceModel.fee}"-->
+<!--            app:taxPercentage="@{model.taxCalculationResponseApi.addPercent}"-->
+        </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.studyMaterial.FreeContent" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/dimen_10dp"
+        android:src="@drawable/main_bg"
+        android:weightSum="1">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            fileType="@{model.mimetype}"
+            folderDrawable="@{0}"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="0.3"
+            tools:src="@drawable/ic_baseline_folder_24" />
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.65"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apCTVFileName"
+                style="@style/CardViewTextNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.title}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                app:fontFamily="@font/montserrat_bold"
+                tools:text="Python" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/file_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:textSize="12sp"
+                android:visibility="invisible"
+                tools:text="200 videos, 300 Materials, 300 test papers" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/free_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@android:color/holo_red_light"
+                android:padding="@dimen/dimen_2dp"
+                android:text="free content"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                tools:text="Python" />
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="@dimen/dimen_5dp"
+            android:layout_weight="0.050"
+            android:src="@drawable/ic_forward" />
+
+    </LinearLayout>
+
+</layout>

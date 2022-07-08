@@ -22,21 +22,25 @@ import java.io.IOException
 class BatchListViewModel(
     private val batchListRepository: BatchListRepository,
     application: Application,
-    courseid: String,
 
     ) : AndroidViewModel(application) {
 
+    lateinit var  batchListRequest: BatchListApiRequest
     var resultOfBatchListApi: MutableLiveData<ApiResource<BatchListApiRequest>> = MutableLiveData()
     var trainerId: Int
     var totalBatches: MutableLiveData<String> = MutableLiveData("0")
     var deleteBatchResponse: MutableLiveData<ApiResource<CommonResponseApi>> = MutableLiveData()
-
+    var courseid: MutableLiveData<String> = MutableLiveData()
     init {
         val pref = StorePreferences(application)
         trainerId = pref.userId
+
     }
 
-    val batchListRequest = BatchListApiRequest(trainerId, courseid)
+    fun constructBatchListRequest(courseId: String) {
+         batchListRequest = BatchListApiRequest(trainerId, courseId)
+    }
+
 
 
     var batchListApi = liveData(Dispatchers.IO) {

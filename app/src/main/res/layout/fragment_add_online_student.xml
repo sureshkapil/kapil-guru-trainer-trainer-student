@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.addStudent.AddStudentViewModel" />
+    </data>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".addStudent.AddOnlineStudentFragment">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/MyAppEditTextViewStyle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@null"
+                    android:hint="@string/student_name"
+                    android:text="@={model.name}"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/MyAppEditTextViewStyle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@null"
+                    android:hint="@string/email"
+                    android:text="@={model.checkStudentRequest.emailId}"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/MyAppEditTextViewStyle_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@null"
+                    android:hint="@string/phone_no"
+                    android:text="@={model.checkStudentRequest.contactNumber}"
+                    android:inputType="number"
+                    android:maxLength="100"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/aCSpinnerCourse"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="14dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/spinner_bg"
+                android:shadowColor="@color/design_default_color_on_primary"
+                android:transitionName="Select Course" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/aCSpinnerBatch"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="14dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/spinner_bg"
+                android:shadowColor="@color/design_default_color_on_primary"
+                android:transitionName="Select Batch" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_margin="@dimen/dimen_40dp"
+                android:backgroundTint="@color/blue"
+                android:text="Add Student"
+                android:textColor="@color/white"
+                app:cornerRadius="@dimen/dimen_10dp" />
+
+        </LinearLayout>
+
+</layout>

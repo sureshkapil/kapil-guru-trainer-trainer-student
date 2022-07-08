@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:id="@+id/card_view"-->
+<!--            style="@style/AppCardViewStyle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:cardCornerRadius="10dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginHorizontal="12dp"-->
+<!--                android:layout_marginVertical="12dp">-->
+
+
+<!--                <androidx.constraintlayout.widget.Guideline-->
+<!--                    android:id="@+id/guideline_vertical_50"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    app:layout_constraintGuide_percent=".5" />-->
+
+<!--                <com.kapilguru.trainer.KeyValueText-->
+<!--                    android:id="@+id/name"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="10dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:key_title="@string/name"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/phone"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:setKeyValueTextString="Raghu" />-->
+
+
+<!--                <com.kapilguru.trainer.KeyValueText-->
+<!--                    android:id="@+id/phone"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:key_title="@string/phone"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0"-->
+<!--                    app:layout_constraintHorizontal_chainStyle="spread"-->
+<!--                    app:layout_constraintStart_toEndOf="@id/guideline_vertical_50"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:setKeyValueTextString="Phone Number" />-->
+
+<!--                <com.kapilguru.trainer.KeyValueText-->
+<!--                    android:id="@+id/email"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="10dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:key_title="email Id"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/name"-->
+<!--                    app:setKeyValueTextString="raghu@gmail.com" />-->
+
+
+<!--                <com.kapilguru.trainer.KeyValueText-->
+<!--                    android:id="@+id/courseTitle"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="10dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:key_title="course title"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/email"-->
+<!--                    app:setKeyValueTextString="ABCXZ" />-->
+
+<!--                <com.kapilguru.trainer.KeyValueText-->
+<!--                    android:id="@+id/total_fee"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="10dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:key_title="@string/total_fee"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/paid_fee"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/courseTitle"-->
+<!--                    app:setKeyValueTextString="1000" />-->
+
+<!--                <com.kapilguru.trainer.KeyValueText-->
+<!--                    android:id="@+id/paid_fee"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="10dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:key_title="@string/paid_fee"-->
+<!--                    app:layout_constraintStart_toEndOf="@id/guideline_vertical_50"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/courseTitle"-->
+<!--                    app:setKeyValueTextString="1000" />-->
+
+
+<!--                <com.kapilguru.trainer.KeyValueText-->
+<!--                    android:id="@+id/dueAmount"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="10dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:key_title="Due title"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/total_fee"-->
+<!--                    app:setKeyValueTextString="ABCXZ" />-->
+
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+</LinearLayout>

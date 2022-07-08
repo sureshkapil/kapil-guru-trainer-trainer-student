@@ -14,12 +14,16 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import androidx.databinding.BindingConversion
+import androidx.databinding.InverseBindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.textfield.TextInputEditText
+import com.kapilguru.trainer.Companion.setFolderDrawable
 import com.kapilguru.trainer.student.exam.model.StudentQuestionsAndOptions
 import com.kapilguru.trainer.studentExamBatchResult.QuestionPaperResponse
 import kotlinx.android.synthetic.main.custom_merger_view.view.*
@@ -658,6 +662,16 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("setKeyTextString")
+    fun KeyValueText.setKeyTextString(toBeStringData: String?) {
+        toBeStringData?.let {
+            this.text_key.text = it
+        } ?: run {
+            this.text_key.text = ""
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("setKeyStudentNameOrPublic")
     fun KeyValueText.setKeyStudentNameOrPublic(toBeStringData: String?) {
         toBeStringData?.let {
@@ -769,8 +783,8 @@ object Companion {
     @JvmStatic
     @BindingAdapter(value = ["offerPrice","originalAmount","isInternetAdded","taxPercentage"], requireAll = true)
     fun TextInputEditText.addTaxOnDiscountAmount(offerPrice: Double?,originalAmount: Double?,isInternetAdded: Boolean, taxPercentage:Double?) {
-        if(isInternetAdded) {
-         /*   offerPrice?.let {
+      /*  if(isInternetAdded) {
+            offerPrice?.let {
 
             }
             afterDiscountAmount?.let {amount ->
@@ -782,9 +796,9 @@ object Companion {
         } else {
             afterDiscountAmount?.let {amount ->
                 this.setText(afterDiscountAmount.toString())
-            }*/
+            }
         }
-        /*afterDiscountAmount?.let { it ->
+        afterDiscountAmount?.let { it ->
             val text = afterDiscountAmount +(it*100.0.roundToInt())/100.0
             this.text = text.toString()
         } ?: run {
@@ -834,9 +848,52 @@ object Companion {
     }
 
     @JvmStatic
+    @BindingAdapter("customchecked")
+    fun SwitchCompat.abc(id: Int?) {
+        id?.let { it ->
+            this.isChecked = it != 0
+        } ?: run {
+            this.isChecked = false
+        }
+    }
+
+    @JvmStatic
+    @InverseBindingAdapter(attribute = "customchecked", event = "android:checkedAttrChanged")
+    fun abcInverse(switchCompat: SwitchCompat):Int {
+        return if(switchCompat.isChecked) 1 else 0
+    }
+
+
+    @JvmStatic
     @BindingAdapter("appendMins")
     fun TextView.AppendMins(id: Int) {
         this.text = "$id Mins"
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("isonline")
+    fun AppCompatTextView.isonline(id: Int?) {
+        id?.let {it->
+            when(it) {
+                0 -> {
+                    this.text = "Offline"
+                    this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.disable_background, 0, 0, 0);
+
+                }
+                1-> {
+                    this.text = "OnLine"
+                    this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.status_approved_circle_small, 0, 0, 0);
+
+                }
+                2-> {
+                    this.text = "Online/Offline"
+                    this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.status_approved_circle_small, 0, 0, 0);
+                }
+            }
+        }
+
+
     }
 
     @JvmStatic
