@@ -16,6 +16,7 @@ data class CourseResponse(
     @SerializedName("trainer_name") val trainerName: String? = "",
     @SerializedName("is_verified") var isVerified: Int? = 0,
     @SerializedName("is_rejected") var isRejected: Int? = 0,
+    @SerializedName("is_submitted") var isSubmitted: Int? = 0,
     var isSelected :Boolean = false
 ) : Parcelable {
 

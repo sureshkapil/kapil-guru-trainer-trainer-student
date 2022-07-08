@@ -10,11 +10,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayout
 import com.kapilguru.trainer.ApiHelper
+import com.kapilguru.trainer.BaseActivity
 import com.kapilguru.trainer.R
 import com.kapilguru.trainer.databinding.ActivityAddStudentBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 
-class AddStudentActivity : AppCompatActivity() {
+class AddStudentActivity : BaseActivity() {
 
     lateinit var binding: ActivityAddStudentBinding
     lateinit var viewModel: AddStudentViewModel
@@ -25,9 +26,14 @@ class AddStudentActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_student)
         viewModel = ViewModelProvider(this, AddStudentViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), application)).get(AddStudentViewModel::class.java)
         binding.lifecycleOwner = this
+        setCustomActionBar()
         setFragmentAdapter()
         addTabSelectListener()
         addTabs()
+    }
+
+    private fun setCustomActionBar() {
+        setActionbarBackListener(this, binding.actionbar, getString(R.string.add_student))
     }
 
     private fun setFragmentAdapter() {

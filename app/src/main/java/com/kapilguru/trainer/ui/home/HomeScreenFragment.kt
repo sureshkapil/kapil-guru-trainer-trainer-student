@@ -164,7 +164,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
     }
 
     private fun navigateToAddCourse() {
-        startActivity(Intent(this.requireContext(),AddCourseActivity::class.java))
+        startActivity(Intent(this.requireContext(),CourseActivity::class.java))
     }
 
     private fun setFeaturesFragment() {

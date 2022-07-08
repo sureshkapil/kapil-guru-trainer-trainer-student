@@ -450,6 +450,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:switchPadding="10dp"
+                    android:visibility="@{batchViewModel.isSubmitted == 1? View.VISIBLE: View.GONE}"
                     android:checked="@={batchViewModel.isKgMeeting}"
                     android:text="@string/do_yout_want_to_display_this_course_in_kapilguru"
                     app:layout_constraintStart_toStartOf="parent"

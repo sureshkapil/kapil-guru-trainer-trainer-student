@@ -97,6 +97,8 @@ class AddBatchActivity : BaseActivity(), View.OnClickListener {
         courseId = intent.getIntExtra("courseId", -1)
         addBatchViewModel.courseId.value = this.courseId
 
+        addBatchViewModel.isSubmitted.value =  intent.getIntExtra(IS_SUBMITTED_PARAM, 0)
+
         batchId = intent.getIntExtra(EDIT_BATCH_ID_PARAM, -1)
         if(batchId >= 0) addBatchViewModel.batchId.value = this.batchId
 

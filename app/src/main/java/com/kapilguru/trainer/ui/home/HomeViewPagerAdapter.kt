@@ -30,15 +30,16 @@ class HomeViewPagerAdapter(val listener : CardClickListener) : RecyclerView.Adap
 
     inner class HomeViewPagerViewHolder(val binding: HomeViewpagerItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init{
-            binding.btnSchedule.setOnClickListener {
-                when(bindingAdapterPosition){
-                    0->{
+            binding.card.setOnClickListener {
+                when (bindingAdapterPosition) {
+                    0 -> {
                         listener.onCourseClicked()
                     }
-                    1->{
-                        listener.onCourseClicked()
+                    1 -> {
+                        listener.onWebinarClicked()
 
-                    }else->{
+                    }
+                    else -> {
                         listener.onGuestLectureClicked()
                     }
                 }

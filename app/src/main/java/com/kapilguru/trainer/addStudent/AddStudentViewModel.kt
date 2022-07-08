@@ -18,6 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddStudentViewModel(
     private val repository: AddStudentRepository, application: Application
@@ -48,6 +50,16 @@ class AddStudentViewModel(
 
     var trainerId: Int =0
     var tenantId: Int=0
+
+    // add offline Student Request
+    var offlineStudentRequest: MutableLiveData<AddOfflineStudentRequest> = MutableLiveData(AddOfflineStudentRequest())
+    var offlineStudentStartDate: MutableLiveData<Calendar> = MutableLiveData(Calendar.getInstance())
+    var offlineStudentStartTime: MutableLiveData<Calendar> = MutableLiveData(Calendar.getInstance())
+    var startDate: MutableLiveData<String> = MutableLiveData("")
+    var startTime: MutableLiveData<String> = MutableLiveData("")
+    var addOfflineStudentResponse: MutableLiveData<ApiResource<AddOfflineStudentResponse>> = MutableLiveData()
+    var errorOfflineText: MutableLiveData<String> = MutableLiveData("")
+
 
     init {
         val pref = StorePreferences(application)
@@ -153,6 +165,94 @@ class AddStudentViewModel(
             isAddedByTrainer = 1,
             trainerId = trainerId
         )
+    }
+
+    fun validateOfflineAddStudentUserData(): Boolean {
+        var shouldAllow: Boolean = true
+        when {
+            offlineStudentRequest.value?.name!!.trim().isEmpty() -> {
+                errorOfflineText.value = "Please Enter Email Id"
+                shouldAllow = false
+            }
+            offlineStudentRequest.value?.emailId!!.emailValidation() -> {
+                errorOfflineText.value = "Please Enter valid Email Id"
+                shouldAllow = false
+            }
+            offlineStudentRequest.value?.contactNumber!!.isEmpty() -> {
+                errorOfflineText.value = "Please Phone Number"
+                shouldAllow = false
+            }
+            offlineStudentRequest.value?.contactNumber!!.length<10 -> {
+                errorOfflineText.value = "Please Enter valid phone Number"
+                shouldAllow = false
+            }
+            offlineStudentRequest.value?.course!!.trim().isEmpty() -> {
+                errorOfflineText.value = "Please Enter course Name"
+                shouldAllow = false
+            }
+            startDate.value!!.toString().trim().isEmpty() -> {
+                errorOfflineText.value = "Please Add Batch Start Date"
+                shouldAllow = false
+            }
+            startTime.value!!.toString().trim().isEmpty() -> {
+                errorOfflineText.value = "Please Add Batch Start Time"
+                shouldAllow = false
+            }
+            offlineStudentRequest.value?.fee!!.isEmpty() -> {
+                errorOfflineText.value = "Please Add Fee Details"
+                shouldAllow = false
+            }
+            offlineStudentRequest.value?.daysAttended!!.toString().trim().isEmpty() -> {
+                errorOfflineText.value = "Please add days Attended Details"
+                shouldAllow = false
+            }
+            offlineStudentRequest.value?.daysConducted!!.toString().trim().isEmpty() -> {
+                errorOfflineText.value = "Please Add Days Conducted"
+                shouldAllow = false
+            }
+        }
+        return shouldAllow
+    }
+
+
+    fun addOfflineStudent() {
+        viewModelScope.launch (Dispatchers.IO) {
+            addOfflineStudentResponse.postValue(ApiResource.loading(data = null))
+            try {
+                addOfflineStudentResponse.postValue(ApiResource.success(data = repository.addOfflineStudent(offlineStudentRequest.value!!)))
+            } catch (exception: HttpException) {
+                addOfflineStudentResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            } catch (exception: IOException) {
+                addOfflineStudentResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            }
+        }
+    }
+
+    fun setBatchStartDate() {
+        offlineStudentRequest.value!!.batchDate = convertStartDate()
+    }
+
+    fun convertStartDate(): String {
+        val calendar = Calendar.getInstance()
+        var dateString: String = ""
+        offlineStudentStartDate.value?.let { startCalendar ->
+            offlineStudentStartTime.value?.let { startTimeCalendar ->
+                calendar.set(
+                    startCalendar.get(Calendar.YEAR),
+                    startCalendar.get(Calendar.MONTH),
+                    startCalendar.get(Calendar.DATE),
+                    startTimeCalendar.get(Calendar.HOUR_OF_DAY),
+                    startTimeCalendar.get(Calendar.MINUTE),
+                    0
+                )
+                val outputFmt = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+                outputFmt.timeZone = TimeZone.getTimeZone("GMT")
+//                calendar.timeZone = TimeZone.getTimeZone("UTC")
+                val time = calendar.time
+                dateString = outputFmt.format(time)
+            }
+        }
+        return dateString
     }
 
 }

@@ -1,6 +1,7 @@
 package com.kapilguru.trainer
 
 import com.kapilguru.student.courseDetails.model.BatchRequest
+import com.kapilguru.trainer.addStudent.AddOfflineStudentRequest
 import com.kapilguru.trainer.addStudent.CheckStudentRequest
 import com.kapilguru.trainer.addStudent.OnlineStudentRequest
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapRequest
@@ -441,5 +442,8 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun checkStudent(checkStudentRequest: CheckStudentRequest) = apiKapilTutorService.checkStudent(checkStudentRequest)
 
     suspend fun addOnlineStudent(onlineStudentRequest: OnlineStudentRequest) = apiKapilTutorService.addOnlineStudent(onlineStudentRequest)
+
+
+    suspend fun addOfflineStudent(addOfflineStudentRequest: AddOfflineStudentRequest) = apiKapilTutorService.addOfflineStudent(addOfflineStudentRequest)
 
 }

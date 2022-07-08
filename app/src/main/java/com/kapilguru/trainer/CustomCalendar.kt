@@ -7,16 +7,20 @@ import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class CustomCalendar(var calendarSelectionListener: CalendarSelectionListener) : DialogFragment(), DatePickerDialog.OnDateSetListener {
+class CustomCalendar(var calendarSelectionListener: CalendarSelectionListener,var  dontSetMinmumDate:Boolean?=true) : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     var calendarSelectedDate: Calendar = Calendar.getInstance()
+     var  ONE_YEAR_IN_MILLI_SECONDS =  31556926000
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val c: Calendar = Calendar.getInstance()
         val year: Int = c.get(Calendar.YEAR)
         val month: Int = c.get(Calendar.MONTH)
         val day: Int = c.get(Calendar.DAY_OF_MONTH)
         val dialog = DatePickerDialog(requireContext(), this, year, month, day)
-        dialog.datePicker.minDate = c.timeInMillis
+        if(dontSetMinmumDate == true) {
+            dialog.datePicker.minDate = c.timeInMillis
+        }
         return dialog
     }
 

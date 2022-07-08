@@ -12,4 +12,7 @@ class AddStudentRepository(val apiHelper: ApiHelper) {
 
     suspend fun addOnlineStudent(onlineStudentRequest: OnlineStudentRequest) = apiHelper.addOnlineStudent(onlineStudentRequest)
 
+
+    suspend fun addOfflineStudent(addOfflineStudentRequest: AddOfflineStudentRequest) = apiHelper.addOfflineStudent(addOfflineStudentRequest)
+
 }
