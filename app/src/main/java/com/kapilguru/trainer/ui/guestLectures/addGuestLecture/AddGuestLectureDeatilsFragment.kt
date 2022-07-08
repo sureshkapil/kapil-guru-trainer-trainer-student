@@ -132,7 +132,7 @@ class AddGuestLectureDeatilsFragment : Fragment() {
     }
 
     private fun observeCoursesData() {
-        viewModel.courses.observe(viewLifecycleOwner, {
+        viewModel.courses.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.LOADING -> {
                     dialog.showLoadingDialog()
@@ -148,7 +148,7 @@ class AddGuestLectureDeatilsFragment : Fragment() {
                     dialog.dismissLoadingDialog()
                 }
             }
-        })
+        }
     }
 
     private fun checkAndSetCourse(courseList: List<CourseResponse>) {

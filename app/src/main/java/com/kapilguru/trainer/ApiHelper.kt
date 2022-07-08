@@ -12,6 +12,7 @@ import com.kapilguru.trainer.announcement.sentItems.data.LastMessageRequest
 import com.kapilguru.trainer.batchExamReports.BatchReportsRequestModel
 import com.kapilguru.trainer.coupons.AddCouponsRequest
 import com.kapilguru.trainer.coupons.CouponCourseCategoryRequest
+import com.kapilguru.trainer.enquiries.addOfflineEnquiry.data.AddEnquiryReq
 import com.kapilguru.trainer.coupons.CreateCouponCodeRequestModel
 import com.kapilguru.trainer.coupons.StudentRequestModel
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
@@ -36,6 +37,9 @@ import com.kapilguru.trainer.signup.model.register.RegisterRequest
 import com.kapilguru.trainer.signup.model.sendOtpSms.SendOtpSmsRequest
 import com.kapilguru.trainer.signup.model.validateMail.ValidateMailRequest
 import com.kapilguru.trainer.signup.model.validateOtp.ValidateOtpRequest
+import com.kapilguru.trainer.student.announcement.inbox.data.StudentLastMessageRequest
+import com.kapilguru.trainer.student.announcement.newMessage.data.StudentSendAdminMessageRequest
+import com.kapilguru.trainer.student.announcement.newMessage.data.StudentSendNewMessageRequest
 import com.kapilguru.trainer.student.exam.model.StudentQuestionsRequest
 import com.kapilguru.trainer.student.exam.model.StudentSubmitAllQuestionsRequest
 import com.kapilguru.trainer.student.exam.model.StudentSubmitQuestionRequest
@@ -77,6 +81,7 @@ open class ApiHelper(private val apiKapilTutorService: ApiKapilTutorService) {
 open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorService.userLogin(loginUserRequest)
 
     suspend fun getCousesList(trainerId: String) = apiKapilTutorService.coursesList(trainerId)
+
     suspend fun getScheduleList(trainerId: String) = apiKapilTutorService.scheduledExamsList(trainerId)
 
     suspend fun deleteCourse(courseId: String) = apiKapilTutorService.deleteCourse(courseId)
@@ -403,6 +408,24 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun addCoupon(addCouponsRequest: AddCouponsRequest) = apiKapilTutorService.addCoupon(addCouponsRequest)
 
     open suspend fun getCategoryCourse(couponCourseCategoryRequest: CouponCourseCategoryRequest) = apiKapilTutorService.getCategoryCourse(couponCourseCategoryRequest)
+
+    suspend fun getBatchListForStudents(userId: String) = apiKapilTutorService.getBatchListForStudent(userId)
+
+    suspend fun getAdminListForStudent() = apiKapilTutorService.getAdminListForStudent()
+
+    suspend fun sendNewMessageReqByStudent(request: StudentSendNewMessageRequest) = apiKapilTutorService.postNewMessageReqByStudent(request)
+
+    suspend fun sendAdminNewMessageReqByStudent(request: StudentSendAdminMessageRequest) = apiKapilTutorService.postAdminNewMessageReqByStudent(request)
+
+    suspend fun getInBoxResponseForStudent(trainerId: String) = apiKapilTutorService.getInBoxResponseForStudent(trainerId)
+
+    suspend fun getSentItemsResponseForStudent(trainerId: String) = apiKapilTutorService.getSentItemsResponseForStudent(trainerId)
+
+    suspend fun updateLastMessageIdForStudent(userId : String, studentLastMessageRequest: StudentLastMessageRequest) = apiKapilTutorService.updateLastMessageIdForStudent(userId,studentLastMessageRequest)
+
+    suspend fun getEnquiries(trainerId : String) = apiKapilTutorService.getEnquiries(trainerId)
+
+    suspend fun addEnquiry(addEnquiryReq : AddEnquiryReq) = apiKapilTutorService.addEnquiry(addEnquiryReq)
 
     open suspend fun getStudentList(studentRequestModel: StudentRequestModel) = apiKapilTutorService.getStudentList(studentRequestModel)
 

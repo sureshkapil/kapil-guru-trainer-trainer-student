@@ -18,6 +18,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.kapilguru.trainer.*
 import com.kapilguru.trainer.announcement.AnnouncementActivity
 import com.kapilguru.trainer.databinding.FragmentHomeScreenBinding
+import com.kapilguru.trainer.enquiries.EnquiriesActivity
 import com.kapilguru.trainer.exams.ExamsActivity
 import com.kapilguru.trainer.myClassRoomDetails.MyClassDetails
 import com.kapilguru.trainer.network.RetrofitNetwork
@@ -199,6 +200,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
 //                "PartiTrainerName", "hostTrainerName")
             1 -> navigateToStudyMaterial(false) // done
             2 -> navigateToStudyMaterial(true) // done
+
             3 -> startActivity(Intent(activity, GuestLecturesNewActivity::class.java)) // done
 
 
@@ -206,7 +208,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
 
             5 -> startActivity(Intent(activity, ExamsActivity::class.java)) // done
 
-            6 -> startActivity(Intent(activity, EarningsActivity::class.java)) // enquiries ??
+            6 -> startActivity(Intent(activity, EnquiriesActivity::class.java)) // enquiries ??
 
             7 -> startActivity(Intent(activity, StudentList::class.java)) // pending
 

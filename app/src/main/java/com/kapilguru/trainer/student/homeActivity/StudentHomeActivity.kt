@@ -1,6 +1,7 @@
 package com.kapilguru.trainer.student.homeActivity
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -25,6 +26,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.kapilguru.trainer.*
+import com.kapilguru.trainer.announcement.AnnouncementActivity
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
@@ -263,7 +265,7 @@ class StudentHomeActivity : AppCompatActivity() {
     }
 
     private fun navigateToMessages() {
-//        startActivity(Intent(this, AnnouncementActivity::class.java).putExtra(PARAM_IS_FROM, PARAM_IS_FROM_HOME_ACTIVITY))
+        startActivity(Intent(this, AnnouncementActivity::class.java).putExtra(PARAM_IS_FROM, PARAM_IS_FROM_HOME_ACTIVITY))
     }
 
     private fun initVariables() {
