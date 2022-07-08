@@ -1,6 +1,7 @@
 package com.kapilguru.trainer.ui.courses.add_batch.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -15,7 +16,7 @@ import com.kapilguru.trainer.ui.courses.add_batch.AddBatchRepository
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchApiResponse
 import com.kapilguru.trainer.ui.courses.add_batch.models.AddBatchRequest
 import com.kapilguru.trainer.ui.courses.add_batch.models.EditBatchApiRequest
-import com.kapilguru.trainer.ui.courses.tax.PriceModel
+import com.kapilguru.trainer.ui.courses.add_batch.models.EditBatchResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -78,6 +79,8 @@ class AddBatchViewModel(
 
     var getEditBatchRequest: MutableLiveData<ApiResource<EditBatchApiRequest>> = MutableLiveData()
 
+    var editBatchResponse: MutableLiveData<ApiResource<EditBatchResponse>> = MutableLiveData()
+
     var shouldEdit: MutableLiveData<Boolean> = MutableLiveData(false)
 
 
@@ -121,6 +124,7 @@ class AddBatchViewModel(
         }
 
         if (isEveryFieldEntered) {
+            Log.d(TAG, "onSaveBatchClick: $addBatchReq")
             when (shouldEdit.value) {
                 true -> {
                     upDateRequestApiForAddBatch()
@@ -293,10 +297,10 @@ class AddBatchViewModel(
     }
 
     private fun upDateRequestApiForAddBatch() {
-        resultOfAddBatchApi.value = ApiResource.loading(data = null)
+        editBatchResponse.value = ApiResource.loading(data = null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                resultOfAddBatchApi.postValue(
+                editBatchResponse.postValue(
                     ApiResource.success(
                         addBatchRepository.updateBatch(
                             batchId.value!!,addBatchReq
@@ -304,14 +308,14 @@ class AddBatchViewModel(
                     )
                 )
             } catch (exception: HttpException) {
-                resultOfAddBatchApi.postValue(
+                editBatchResponse.postValue(
                     ApiResource.error(
                         data = null, message = exception.message
                             ?: "Error Occurred!"
                     )
                 )
             } catch (exception: IOException) {
-                resultOfAddBatchApi.postValue(
+                editBatchResponse.postValue(
                     ApiResource.error(
                         data = null, message = exception.message
                             ?: "Error Occurred!"

@@ -214,6 +214,11 @@ fun JSONObject.toBase64(): String {
     return formattedToString.toBase64()
 }
 
+fun JSONArray.toBase64(): String {
+    val formattedToString = this.toString()
+    return formattedToString.toBase64()
+}
+
 fun String.toBitMap(): Bitmap? {
     val imageBytes = Base64.decode(this, Base64.DEFAULT)
     val image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)

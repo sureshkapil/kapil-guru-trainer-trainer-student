@@ -16,6 +16,7 @@ import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.studentsList.view.StudentList
 import com.kapilguru.trainer.ui.courses.adapter.BatchListAdapter
 import com.kapilguru.trainer.ui.courses.add_batch.AddBatchActivity
+import com.kapilguru.trainer.ui.courses.add_batch.NewAddBatchActivity
 import com.kapilguru.trainer.ui.courses.batchesList.models.BatchListResponse
 import com.kapilguru.trainer.ui.courses.batchesList.viewModel.BatchListViewModel
 import com.kapilguru.trainer.ui.courses.batchesList.viewModel.BatchListViewModelFactory
@@ -67,6 +68,12 @@ class BatchListDetailsActivity : BaseActivity(), BatchListAdapter.OnItemClickedF
             intent.putExtra("courseId", courseId)
             startActivity(intent)
         }
+
+//        buttonAddCourse.setOnClickListener {
+//            val intent = Intent(this, NewAddBatchActivity::class.java)
+//            intent.putExtra("courseId", courseId)
+//            startActivity(intent)
+//        }
     }
 
     private fun observeViewModelData() {
