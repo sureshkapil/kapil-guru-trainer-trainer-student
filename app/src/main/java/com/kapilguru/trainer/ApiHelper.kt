@@ -446,4 +446,12 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun addOfflineStudent(addOfflineStudentRequest: AddOfflineStudentRequest) = apiKapilTutorService.addOfflineStudent(addOfflineStudentRequest)
 
+
+    suspend fun getMyCourseStudents(trainerId: String)= apiKapilTutorService.getMyCourseStudents(trainerId)
+
+    suspend fun getMyRecordedStudents(trainerId: String)= apiKapilTutorService.getMyRecordedStudents(trainerId)
+
+    suspend fun geOfflineStudents(trainerId: String)= apiKapilTutorService.geOfflineStudents(trainerId)
+
+    suspend fun getSignedUpStudentsList(trainerId: String)= apiKapilTutorService.getSignedUpStudentsList(trainerId)
 }

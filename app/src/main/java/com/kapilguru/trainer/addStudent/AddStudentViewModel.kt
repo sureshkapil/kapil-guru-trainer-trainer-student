@@ -61,6 +61,19 @@ class AddStudentViewModel(
     var errorOfflineText: MutableLiveData<String> = MutableLiveData("")
 
 
+    // MyCourseStudents
+    var myCourseStudents: MutableLiveData<ApiResource<MyCourseStudents>> = MutableLiveData()
+
+    // My RecordedStudents
+    var myRecordedStudents: MutableLiveData<ApiResource<MyStudentsRecordedStudyMaterialsResponse>> = MutableLiveData()
+
+    // My Offline students
+    var offlineStudentsListResponse: MutableLiveData<ApiResource<OfflineStudentsListResponse>> = MutableLiveData()
+
+
+    // SignedUpStudents
+    var signedUpStudentsResponse: MutableLiveData<ApiResource<SignedUpStudentsListResponse>> = MutableLiveData()
+
     init {
         val pref = StorePreferences(application)
         trainerId = pref.userId
@@ -253,6 +266,59 @@ class AddStudentViewModel(
             }
         }
         return dateString
+    }
+
+
+    fun getMyCourseStudents() {
+        viewModelScope.launch (Dispatchers.IO) {
+            myCourseStudents.postValue(ApiResource.loading(data = null))
+            try {
+                myCourseStudents.postValue(ApiResource.success(data = repository.getMyCourseStudents(trainerId.toString())))
+            } catch (exception: HttpException) {
+                myCourseStudents.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            } catch (exception: IOException) {
+                myCourseStudents.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            }
+        }
+    }
+
+    fun getMyRecordedStudents() {
+        viewModelScope.launch (Dispatchers.IO) {
+            myRecordedStudents.postValue(ApiResource.loading(data = null))
+            try {
+                myRecordedStudents.postValue(ApiResource.success(data = repository.getMyRecordedStudents(trainerId.toString())))
+            } catch (exception: HttpException) {
+                myRecordedStudents.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            } catch (exception: IOException) {
+                myRecordedStudents.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            }
+        }
+    }
+
+    fun geOfflineStudents() {
+        viewModelScope.launch (Dispatchers.IO) {
+            myRecordedStudents.postValue(ApiResource.loading(data = null))
+            try {
+                offlineStudentsListResponse.postValue(ApiResource.success(data = repository.geOfflineStudents(trainerId.toString())))
+            } catch (exception: HttpException) {
+                offlineStudentsListResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            } catch (exception: IOException) {
+                offlineStudentsListResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            }
+        }
+    }
+
+    fun getSignedUpStudentsList() {
+        viewModelScope.launch (Dispatchers.IO) {
+            signedUpStudentsResponse.postValue(ApiResource.loading(data = null))
+            try {
+                signedUpStudentsResponse.postValue(ApiResource.success(data = repository.getSignedUpStudentsList(trainerId.toString())))
+            } catch (exception: HttpException) {
+                signedUpStudentsResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            } catch (exception: IOException) {
+                signedUpStudentsResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            }
+        }
     }
 
 }

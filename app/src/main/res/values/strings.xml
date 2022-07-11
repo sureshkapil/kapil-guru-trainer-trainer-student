@@ -946,6 +946,10 @@
     <string name="days_attended">Days Attended</string>
     <string name="days_conducted">Days Conducted</string>
     <string name="add_student">Add Student</string>
+    <string name="purchase_date">Purchase Date</string>
+    <string name="purchase_time">Purchase Time</string>
+    <string name="created_time">Created Time</string>
+    <string name="created_date">Created Date</string>
 
     <string-array name="offLineStudentsStatusSpinner">
         <item>Status 1</item>

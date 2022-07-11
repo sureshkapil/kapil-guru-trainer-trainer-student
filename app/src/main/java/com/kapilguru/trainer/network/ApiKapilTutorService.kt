@@ -713,4 +713,17 @@ interface ApiKapilTutorService {
 
     @POST("trainer/offline_students")
     suspend fun addOfflineStudent(@Body addOfflineStudentRequest: AddOfflineStudentRequest) : AddOfflineStudentResponse
+
+    @GET("trainer/getTrainerStudentDetails/{trainerId}")
+    suspend fun getMyCourseStudents(@Path("trainerId") userId: String) : MyCourseStudents
+
+    @GET("trainer/getStudyMaterialsPurchase/{trainerId}")
+    suspend fun getMyRecordedStudents(@Path("trainerId") userId: String) : MyStudentsRecordedStudyMaterialsResponse
+
+    @GET("trainer/offline_students/trainer_id/{trainerId}")
+    suspend fun geOfflineStudents(@Path("trainerId") userId: String) : OfflineStudentsListResponse
+
+
+    @GET("trainer/getSignUpStudents/{trainerId}")
+    suspend fun getSignedUpStudentsList(@Path("trainerId") trainerId: String): SignedUpStudentsListResponse
 }

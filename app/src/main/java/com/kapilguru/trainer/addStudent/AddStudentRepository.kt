@@ -15,4 +15,16 @@ class AddStudentRepository(val apiHelper: ApiHelper) {
 
     suspend fun addOfflineStudent(addOfflineStudentRequest: AddOfflineStudentRequest) = apiHelper.addOfflineStudent(addOfflineStudentRequest)
 
+
+    suspend fun getMyCourseStudents(trainerId: String)= apiHelper.getMyCourseStudents(trainerId)
+
+    suspend fun getMyRecordedStudents(trainerId: String)= apiHelper.getMyRecordedStudents(trainerId)
+
+    suspend fun geOfflineStudents(trainerId: String)= apiHelper.geOfflineStudents(trainerId)
+
+
+    suspend fun getSignedUpStudentsList(trainerId: String)= apiHelper.getSignedUpStudentsList(trainerId)
+
+
+
 }

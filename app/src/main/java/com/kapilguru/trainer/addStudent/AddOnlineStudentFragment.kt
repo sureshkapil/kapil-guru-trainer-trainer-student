@@ -9,7 +9,6 @@ import android.widget.AdapterView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.kapilguru.trainer.CustomProgressDialog
-import com.kapilguru.trainer.coupons.*
 import com.kapilguru.trainer.databinding.FragmentAddOnlineStudentBinding
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.showAppToast

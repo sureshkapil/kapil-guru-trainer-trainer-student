@@ -25,7 +25,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".addStudent.AllMyStudents"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/customParentNoActionBarStyle"/>
         <activity
             android:name=".enquiries.addOfflineEnquiry.AddOfflineEnquiryActivity"
             android:exported="false"

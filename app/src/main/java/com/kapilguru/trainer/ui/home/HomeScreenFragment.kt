@@ -16,21 +16,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.kapilguru.trainer.*
+import com.kapilguru.trainer.addStudent.AllMyStudents
 import com.kapilguru.trainer.announcement.AnnouncementActivity
 import com.kapilguru.trainer.databinding.FragmentHomeScreenBinding
 import com.kapilguru.trainer.enquiries.EnquiriesActivity
 import com.kapilguru.trainer.exams.ExamsActivity
 import com.kapilguru.trainer.myClassRoomDetails.MyClassDetails
 import com.kapilguru.trainer.network.RetrofitNetwork
-import com.kapilguru.trainer.studentsList.view.StudentList
 import com.kapilguru.trainer.studyMaterial.StudyMaterialActivity
 import com.kapilguru.trainer.testimonials.TestimonialsActivity
 import com.kapilguru.trainer.todaysSchedule.TodaysScheduele
 import com.kapilguru.trainer.trainerFeatures.TrainerFeaturesFragment
 import com.kapilguru.trainer.trainerGallery.TrainerAllGalleryPicksActivity
-import com.kapilguru.trainer.ui.courses.addcourse.AddCourseActivity
 import com.kapilguru.trainer.ui.courses.courses_list.CourseActivity
-import com.kapilguru.trainer.ui.earnings.EarningsActivity
 import com.kapilguru.trainer.ui.guestLectures.GuestLecturesNewActivity
 import com.kapilguru.trainer.ui.webiner.WebinarNewActivity
 import com.kapilguru.trainer.ui.webiner.webinarDetailsActivity.WebinarDetailsActivity
@@ -210,7 +208,8 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
 
             6 -> startActivity(Intent(activity, EnquiriesActivity::class.java)) // enquiries ??
 
-            7 -> startActivity(Intent(activity, StudentList::class.java)) // pending
+//            7 -> startActivity(Intent(activity, StudentList::class.java)) // pending
+            7 -> startActivity(Intent(activity, AllMyStudents::class.java)) // pending
 
             8 -> startActivity(Intent(activity, AnnouncementActivity::class.java)) // done
         }
