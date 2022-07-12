@@ -1,4 +1,4 @@
-package com.kapilguru.trainer.addStudent
+package com.kapilguru.trainer.addStudent.recordedStudentList
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.kapilguru.trainer.CustomProgressDialog
-import com.kapilguru.trainer.R
+import com.kapilguru.trainer.addStudent.AddStudentViewModel
+import com.kapilguru.trainer.addStudent.studyMaterialStudentsList.MyStudentsRecordedStudyMaterialsResponseApi
 import com.kapilguru.trainer.databinding.FragmentMyStudentsRecordedBinding
 import com.kapilguru.trainer.network.Status
 
@@ -18,10 +19,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MyStudentMaterialFragment.newInstance] factory method to
+ * Use the [MyStudentsRecordedFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MyStudentMaterialFragment : Fragment() {
+class MyStudentsRecordedFragment : Fragment() {
 
     lateinit var binding: FragmentMyStudentsRecordedBinding
     val viewModel: AddStudentViewModel by viewModels({ requireActivity() })
@@ -76,7 +77,7 @@ class MyStudentMaterialFragment : Fragment() {
     }
 
     private fun addDataToAdapter(it: List<MyStudentsRecordedStudyMaterialsResponseApi>) {
-        val data = it.filter { value -> value.isRecorded != 1 }
+        val data = it.filter { value -> value.isRecorded == 1 }
         adapter.listItem = data as ArrayList<MyStudentsRecordedStudyMaterialsResponseApi>
     }
 

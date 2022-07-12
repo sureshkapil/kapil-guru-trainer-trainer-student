@@ -4,6 +4,13 @@ import com.kapilguru.student.courseDetails.model.BatchRequest
 import com.kapilguru.student.courseDetails.model.ContactTrainerResponseAPi
 import com.kapilguru.student.courseDetails.review.model.StudentReviewResponse
 import com.kapilguru.trainer.addStudent.*
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentRequest
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentResponse
+import com.kapilguru.trainer.addStudent.addOnlineStudent.OnlineStudentRequest
+import com.kapilguru.trainer.addStudent.coursesStudentList.MyCourseStudents
+import com.kapilguru.trainer.addStudent.offlineStudentList.OfflineStudentsListResponse
+import com.kapilguru.trainer.addStudent.signedUpStudentList.SignedUpStudentsListResponse
+import com.kapilguru.trainer.addStudent.studyMaterialStudentsList.MyStudentsRecordedStudyMaterialsResponse
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.BestTrainerResponse
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapRequest
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapResponce

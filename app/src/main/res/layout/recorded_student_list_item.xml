@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.kapilguru.trainer.addStudent.MyStudentsRecordedStudyMaterialsResponseApi" />
+            type="com.kapilguru.trainer.addStudent.studyMaterialStudentsList.MyStudentsRecordedStudyMaterialsResponseApi" />
 
     </data>
 

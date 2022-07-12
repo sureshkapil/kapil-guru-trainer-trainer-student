@@ -4,6 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentRequest
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentResponse
+import com.kapilguru.trainer.addStudent.addOnlineStudent.OnlineStudentRequest
+import com.kapilguru.trainer.addStudent.coursesStudentList.MyCourseStudents
+import com.kapilguru.trainer.addStudent.offlineStudentList.OfflineStudentsListResponse
+import com.kapilguru.trainer.addStudent.signedUpStudentList.SignedUpStudentsListResponse
+import com.kapilguru.trainer.addStudent.studyMaterialStudentsList.MyStudentsRecordedStudyMaterialsResponse
 import com.kapilguru.trainer.emailValidation
 import com.kapilguru.trainer.generateUuid
 import com.kapilguru.trainer.isValidMobileNo

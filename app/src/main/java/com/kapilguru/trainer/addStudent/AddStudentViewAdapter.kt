@@ -9,6 +9,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.kapilguru.trainer.MyApplication.Companion.context
 import com.kapilguru.trainer.R
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentFragment
+import com.kapilguru.trainer.addStudent.addOnlineStudent.AddOnlineStudentFragment
 
 
 class AddStudentViewAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :

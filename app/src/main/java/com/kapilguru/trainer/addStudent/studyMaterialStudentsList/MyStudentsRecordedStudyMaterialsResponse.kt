@@ -1,4 +1,4 @@
-package com.kapilguru.trainer.addStudent
+package com.kapilguru.trainer.addStudent.studyMaterialStudentsList
 
 import com.google.gson.annotations.SerializedName
 

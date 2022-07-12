@@ -1,9 +1,9 @@
 package com.kapilguru.trainer
 
 import com.kapilguru.student.courseDetails.model.BatchRequest
-import com.kapilguru.trainer.addStudent.AddOfflineStudentRequest
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentRequest
 import com.kapilguru.trainer.addStudent.CheckStudentRequest
-import com.kapilguru.trainer.addStudent.OnlineStudentRequest
+import com.kapilguru.trainer.addStudent.addOnlineStudent.OnlineStudentRequest
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapRequest
 import com.kapilguru.trainer.allSubscription.models.UpdateKycRequest
 import com.kapilguru.trainer.allSubscription.positionSubscription.model.CoursePositionMapRequest

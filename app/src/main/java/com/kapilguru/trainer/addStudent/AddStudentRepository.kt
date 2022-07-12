@@ -1,6 +1,8 @@
 package com.kapilguru.trainer.addStudent
 
 import com.kapilguru.trainer.ApiHelper
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentRequest
+import com.kapilguru.trainer.addStudent.addOnlineStudent.OnlineStudentRequest
 import com.kapilguru.trainer.ui.courses.batchesList.models.BatchListApiRequest
 
 class AddStudentRepository(val apiHelper: ApiHelper) {

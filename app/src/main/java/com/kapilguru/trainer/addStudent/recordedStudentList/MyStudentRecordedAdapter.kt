@@ -1,15 +1,10 @@
-package com.kapilguru.trainer.addStudent
+package com.kapilguru.trainer.addStudent.recordedStudentList
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kapilguru.trainer.coupons.AllCouponsResponseListApi
-import com.kapilguru.trainer.coupons.CouponsAdapter
-import com.kapilguru.trainer.databinding.AdapterCouponListItemBinding
-import com.kapilguru.trainer.databinding.CoursesListItemBinding
+import com.kapilguru.trainer.addStudent.studyMaterialStudentsList.MyStudentsRecordedStudyMaterialsResponseApi
 import com.kapilguru.trainer.databinding.RecordedStudentListItemBinding
-import com.kapilguru.trainer.databinding.StudentRecordedCoursesItemBinding
 
 class MyStudentRecordedAdapter : RecyclerView.Adapter<MyStudentRecordedAdapter.Holder>() {
 

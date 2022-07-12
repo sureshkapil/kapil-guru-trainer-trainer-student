@@ -1,4 +1,4 @@
-package com.kapilguru.trainer.addStudent
+package com.kapilguru.trainer.addStudent.addOnlineStudent
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,9 @@ import android.widget.AdapterView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.kapilguru.trainer.CustomProgressDialog
+import com.kapilguru.trainer.addStudent.AddStudentViewModel
+import com.kapilguru.trainer.addStudent.BatchSpinnerAdapter
+import com.kapilguru.trainer.addStudent.CourseSpinnerAdapter
 import com.kapilguru.trainer.databinding.FragmentAddOnlineStudentBinding
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.showAppToast

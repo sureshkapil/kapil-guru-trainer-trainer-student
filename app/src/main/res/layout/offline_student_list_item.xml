@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.kapilguru.trainer.addStudent.OfflineStudentsListResponseApi" />
+            type="com.kapilguru.trainer.addStudent.offlineStudentList.OfflineStudentsListResponseApi" />
 
 
     </data>
