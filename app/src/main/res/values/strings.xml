@@ -950,6 +950,9 @@
     <string name="purchase_time">Purchase Time</string>
     <string name="created_time">Created Time</string>
     <string name="created_date">Created Date</string>
+    <string name="joining_date">Joining Date</string>
+    <string name="due_date">Due Date</string>
+    <string name="transactionId">Transaction Id</string>
 
     <string-array name="offLineStudentsStatusSpinner">
         <item>Status 1</item>

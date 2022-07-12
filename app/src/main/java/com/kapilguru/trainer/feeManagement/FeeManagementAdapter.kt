@@ -9,11 +9,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.kapilguru.trainer.MyApplication.Companion.context
 import com.kapilguru.trainer.R
+import com.kapilguru.trainer.feeManagement.paidRecords.PaidRecordsFragment
+import com.kapilguru.trainer.feeManagement.studentFeeRecords.FeeRecordsFragment
 
 class FeeManagementAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
     private val TAG = "AnnounceFragAdap"
 
-    var titles = arrayListOf("Fee Followups", "Fee Records")
+    var titles = arrayListOf("Fee Records", "Paid Records", )
 
     override fun getItemCount(): Int {
         return titles.size
@@ -21,8 +23,9 @@ class FeeManagementAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycl
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> FeeFollowUps()
-            else -> FeeRecords()
+            0 -> FeeRecordsFragment()
+            1 -> PaidRecordsFragment()
+            else -> FeeFollowUpsFragment()
         }
     }
 

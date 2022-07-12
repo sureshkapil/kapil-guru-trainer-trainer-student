@@ -9,4 +9,14 @@ open class FeeManagementRepository(private val apiHelper: ApiHelper) {
 
     suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiHelper.getUsers(loginUserRequest)
 
+
+    suspend fun getStudentFeeRecords(trainerId: String) = apiHelper.getStudentFeeRecords(trainerId)
+
+
+    suspend fun getStudentPaidRecords(trainerId: String) = apiHelper.getStudentPaidRecords(trainerId)
+
+
+
+
+
 }

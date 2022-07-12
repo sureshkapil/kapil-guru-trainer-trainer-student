@@ -43,6 +43,8 @@ import com.kapilguru.trainer.exams.previousQuestionsList.model.AddExistingQuesAp
 import com.kapilguru.trainer.exams.previousQuestionsList.model.PreviousQuestionsListResponse
 import com.kapilguru.trainer.exams.scheduledExams.ScheduledExamsAPI
 import com.kapilguru.trainer.faculty.*
+import com.kapilguru.trainer.feeManagement.paidRecords.StudentFeePaidResponse
+import com.kapilguru.trainer.feeManagement.studentFeeRecords.StudentFeeRecordsResponse
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordRequest
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordResponse
 import com.kapilguru.trainer.forgotPassword.model.ValidateMobileRequest
@@ -733,4 +735,10 @@ interface ApiKapilTutorService {
 
     @GET("trainer/getSignUpStudents/{trainerId}")
     suspend fun getSignedUpStudentsList(@Path("trainerId") trainerId: String): SignedUpStudentsListResponse
+
+    @GET("trainer/fee_installments/trainer_id/{trainerId}")
+    suspend fun getStudentFeeRecords(@Path("trainerId") trainerId: String) : StudentFeeRecordsResponse
+
+    @GET("trainer/getFeeRecords/{trainerId}")
+    suspend fun getStudentPaidRecords(@Path("trainerId") trainerId: String) : StudentFeePaidResponse
 }

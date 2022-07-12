@@ -26,13 +26,14 @@ class FeeManagement : BaseActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_fee_management)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_fee_management)
-        viewModel = ViewModelProvider(this, FeeManagementViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE))).get(FeeManagementViewModel::class.java)
+        viewModel = ViewModelProvider(this, FeeManagementViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE),application)).get(FeeManagementViewModel::class.java)
         binding.viewModel = viewModel
         setCustomActionBarListener()
         setClickListeners()
         setFragmentManager()
         addTabsAndSetDefault()
         tabListeners()
+        registerOnPageChangeCallBacks()
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -104,6 +105,14 @@ class FeeManagement : BaseActivity() {
                 headerTitle!!.setTextColor(ContextCompat.getColor(view.context, R.color.blue))
             }
         }
+    }
+    private fun registerOnPageChangeCallBacks() {
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.tabLayout.selectTab(binding.tabLayout.getTabAt(position))
+            }
+        })
     }
 
 }

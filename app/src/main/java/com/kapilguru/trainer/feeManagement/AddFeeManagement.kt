@@ -25,7 +25,7 @@ class AddFeeManagement : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_fee_management)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_fee_management)
-        viewModel = ViewModelProvider(this, FeeManagementViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE))).get(FeeManagementViewModel::class.java)
+        viewModel = ViewModelProvider(this, FeeManagementViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE),application)).get(FeeManagementViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         setCustomActionBarListener()
