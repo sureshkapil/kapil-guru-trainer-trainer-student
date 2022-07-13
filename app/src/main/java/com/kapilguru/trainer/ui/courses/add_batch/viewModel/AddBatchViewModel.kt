@@ -30,6 +30,7 @@ class AddBatchViewModel(
 ) : AndroidViewModel(application) {
 
 
+    var isSubmitted: MutableLiveData<Int> = MutableLiveData()
     var startCalendar: MutableLiveData<Calendar> = MutableLiveData()
     var startTimeCalendar: MutableLiveData<Calendar> = MutableLiveData()
     var endCalendar: MutableLiveData<Calendar> = MutableLiveData()

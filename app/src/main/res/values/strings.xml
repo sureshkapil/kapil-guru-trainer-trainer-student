@@ -957,5 +957,29 @@
         <item>Not Answering</item>
         <item>Not Interested</item>
     </string-array>
+    <string name="batch_start_time">Batch Start Time</string>
+    <string name="days_attended">Days Attended</string>
+    <string name="days_conducted">Days Conducted</string>
+    <string name="add_student">Add Student</string>
+    <string name="purchase_date">Purchase Date</string>
+    <string name="purchase_time">Purchase Time</string>
+    <string name="created_time">Created Time</string>
+    <string name="created_date">Created Date</string>
+    <string name="joining_date">Joining Date</string>
+    <string name="due_date">Due Date</string>
+    <string name="transactionId">Transaction Id</string>
+    <string name="social_media_links">Social Media Links</string>
+    <string name="promotional_images">Promotional Images</string>
+    <string name="share_app">Share App</string>
+    <string name="how_to_use">How To Use</string>
+    <string name="terms_and_conditions_text">Terms and Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+
+    <string-array name="offLineStudentsStatusSpinner">
+        <item>Status 1</item>
+        <item>Status 2</item>
+        <item>Status 3</item>
+        <item>Status 4</item>
+    </string-array>
 
 </resources>

@@ -24,11 +24,15 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".enquiries.enquiryStatusUpdate.EnquiryStatusUpdateActivity"
-            android:exported="false"
+            android:name=".addStudent.AllMyStudents"
+            android:exported="true"
             android:theme="@style/customParentNoActionBarStyle"/>
         <activity
             android:name=".enquiries.addOfflineEnquiry.AddOfflineEnquiryActivity"
+            android:exported="false"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".enquiries.enquiryStatusUpdate.EnquiryStatusUpdateActivity"
             android:exported="false"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity

@@ -154,10 +154,11 @@ class CourseActivity : BaseActivity(), CourseAdapter.OnItemClicked, TwoButtonDia
         alertDialog.show()
     }
 
-    override fun onItemClick(courseTitle: String, courseId: Int) {
+    override fun onItemClick(courseTitle: String, courseId: Int, courseResponse: CourseResponse) {
         val intent = Intent(this, BatchListDetailsActivity::class.java)
         intent.putExtra("courseId", courseId)
         intent.putExtra(COURSE_NAME_PARAM, courseTitle)
+        intent.putExtra(IS_SUBMITTED_PARAM, courseResponse.isSubmitted)
         startActivity(intent)
     }
 

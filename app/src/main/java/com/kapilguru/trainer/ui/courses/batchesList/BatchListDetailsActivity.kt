@@ -28,6 +28,7 @@ class BatchListDetailsActivity : BaseActivity(), BatchListAdapter.OnItemClickedF
     lateinit var batchAdapter: BatchListAdapter
     lateinit var dialog: CustomProgressDialog
     var courseId: Int = 0
+    var isSubmitted: Int = 0 // to show is availabale in web or only in APP
     var courseName: String? = ""
     var batchId: String?=""
     var deletedIndex: Int=-1
@@ -49,6 +50,7 @@ class BatchListDetailsActivity : BaseActivity(), BatchListAdapter.OnItemClickedF
 
     private fun fetchDataFromPreviousActivity() {
         courseId = intent.getIntExtra("courseId", 0)
+        isSubmitted = intent.getIntExtra(IS_SUBMITTED_PARAM, 0)
         viewModel.courseid.value = courseId.toString()
         courseName = intent.getStringExtra(COURSE_NAME_PARAM).toString() + " Batches"
     }
@@ -66,6 +68,7 @@ class BatchListDetailsActivity : BaseActivity(), BatchListAdapter.OnItemClickedF
         buttonAddCourse.setOnClickListener {
             val intent = Intent(this, AddBatchActivity::class.java)
             intent.putExtra("courseId", courseId)
+            intent.putExtra(IS_SUBMITTED_PARAM, isSubmitted)
             startActivity(intent)
         }
 
@@ -163,6 +166,7 @@ class BatchListDetailsActivity : BaseActivity(), BatchListAdapter.OnItemClickedF
             val intent = Intent(this, AddBatchActivity::class.java)
             intent.putExtra(EDIT_BATCH_ID_PARAM, batchDetails.batchId)
             intent.putExtra(IS_FROM_EDIT_PARAM, true)
+            intent.putExtra(IS_SUBMITTED_PARAM, isSubmitted)
             intent.putExtra("courseId", batchDetails.courseId)
             startActivity(intent)
         }

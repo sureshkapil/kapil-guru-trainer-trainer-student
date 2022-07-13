@@ -49,7 +49,7 @@ class CourseAdapter(var onItemClicked: OnItemClicked) :
             textView.setOnClickListener {
                 courses[absoluteAdapterPosition].courseId?.let {  courseid ->
                     courses[absoluteAdapterPosition].courseTitle?.let { title ->
-                        onItemClicked.onItemClick(title, courseid)
+                        onItemClicked.onItemClick(title, courseid,courses[absoluteAdapterPosition])
                     }
                 }
             }
@@ -75,7 +75,7 @@ class CourseAdapter(var onItemClicked: OnItemClicked) :
     }
 
     interface OnItemClicked {
-        fun onItemClick(courseTitle: String, courseId: Int)
+        fun onItemClick(courseTitle: String, courseId: Int, courseResponse: CourseResponse)
         fun onEditCLick(selectedCourse: CourseResponse)
         fun onDeleteClick(selectedCourse: CourseResponse)
         fun onShareClick(selectedCourse: CourseResponse)

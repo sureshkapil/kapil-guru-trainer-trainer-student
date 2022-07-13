@@ -3,10 +3,14 @@ package com.kapilguru.trainer.network
 import com.kapilguru.student.courseDetails.model.BatchRequest
 import com.kapilguru.student.courseDetails.model.ContactTrainerResponseAPi
 import com.kapilguru.student.courseDetails.review.model.StudentReviewResponse
-import com.kapilguru.trainer.addStudent.AddOnlineStudentResponse
-import com.kapilguru.trainer.addStudent.CheckStudentRequest
-import com.kapilguru.trainer.addStudent.CheckStudentResponse
-import com.kapilguru.trainer.addStudent.OnlineStudentRequest
+import com.kapilguru.trainer.addStudent.*
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentRequest
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentResponse
+import com.kapilguru.trainer.addStudent.addOnlineStudent.OnlineStudentRequest
+import com.kapilguru.trainer.addStudent.coursesStudentList.MyCourseStudents
+import com.kapilguru.trainer.addStudent.offlineStudentList.OfflineStudentsListResponse
+import com.kapilguru.trainer.addStudent.signedUpStudentList.SignedUpStudentsListResponse
+import com.kapilguru.trainer.addStudent.studyMaterialStudentsList.MyStudentsRecordedStudyMaterialsResponse
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.BestTrainerResponse
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapRequest
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapResponce
@@ -43,6 +47,8 @@ import com.kapilguru.trainer.exams.previousQuestionsList.model.AddExistingQuesAp
 import com.kapilguru.trainer.exams.previousQuestionsList.model.PreviousQuestionsListResponse
 import com.kapilguru.trainer.exams.scheduledExams.ScheduledExamsAPI
 import com.kapilguru.trainer.faculty.*
+import com.kapilguru.trainer.feeManagement.paidRecords.StudentFeePaidResponse
+import com.kapilguru.trainer.feeManagement.studentFeeRecords.StudentFeeRecordsResponse
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordRequest
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordResponse
 import com.kapilguru.trainer.forgotPassword.model.ValidateMobileRequest
@@ -727,5 +733,25 @@ interface ApiKapilTutorService {
     @GET("trainer/enquiry_status_updates/enquiry_id/{enquiryId}")
     suspend fun getEnquiryStatusUpdates(@Path("enquiryId") enquiryId: String): EnquiryUpdatedStatusListResponse
 
+    @POST("trainer/offline_students")
+    suspend fun addOfflineStudent(@Body addOfflineStudentRequest: AddOfflineStudentRequest) : AddOfflineStudentResponse
 
+    @GET("trainer/getTrainerStudentDetails/{trainerId}")
+    suspend fun getMyCourseStudents(@Path("trainerId") userId: String) : MyCourseStudents
+
+    @GET("trainer/getStudyMaterialsPurchase/{trainerId}")
+    suspend fun getMyRecordedStudents(@Path("trainerId") userId: String) : MyStudentsRecordedStudyMaterialsResponse
+
+    @GET("trainer/offline_students/trainer_id/{trainerId}")
+    suspend fun geOfflineStudents(@Path("trainerId") userId: String) : OfflineStudentsListResponse
+
+
+    @GET("trainer/getSignUpStudents/{trainerId}")
+    suspend fun getSignedUpStudentsList(@Path("trainerId") trainerId: String): SignedUpStudentsListResponse
+
+    @GET("trainer/fee_installments/trainer_id/{trainerId}")
+    suspend fun getStudentFeeRecords(@Path("trainerId") trainerId: String) : StudentFeeRecordsResponse
+
+    @GET("trainer/getFeeRecords/{trainerId}")
+    suspend fun getStudentPaidRecords(@Path("trainerId") trainerId: String) : StudentFeePaidResponse
 }

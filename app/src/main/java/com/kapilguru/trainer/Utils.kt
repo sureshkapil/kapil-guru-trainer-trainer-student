@@ -72,6 +72,7 @@ const val EDIT_BATCH_ID_PARAM = "editBatchId"
 const val WEBINAR_EDIT_ID_PARAM = "webinarEditId"
 const val WEBINAR_EDIT_KEY_PARAM = "webinarEditKey"
 const val COURSE_NAME_PARAM = "courseName"
+const val IS_SUBMITTED_PARAM = "is_submitted_param"
 const val IS_VERIFIED = 1
 const val IS_SUBSCRIBED = "isSubscribed"
 const val TENANT_ID = "tenantId"

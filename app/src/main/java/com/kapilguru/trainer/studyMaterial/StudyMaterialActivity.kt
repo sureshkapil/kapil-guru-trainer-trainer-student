@@ -50,6 +50,18 @@ class StudyMaterialActivity : BaseActivity(), StudyMaterialListAdapter.StudyMate
         /*    binding.uploadImage.setOnClickListener {
                 uploadGalleryImage()
             }*/
+
+        binding.buttonAddCourse.setOnClickListener {
+            showCustomDialog()
+        }
+    }
+
+    private fun showCustomDialog() {
+        if(isStudyMaterial) {
+            showSingleButtonErrorDialog(this, "Please visit www.kapilguru.com to Add Study Material")
+        } else {
+            showSingleButtonErrorDialog(this, "Please visit www.kapilguru.com to Add Recorded Course")
+        }
     }
 
     fun setCustomActionBar() {
