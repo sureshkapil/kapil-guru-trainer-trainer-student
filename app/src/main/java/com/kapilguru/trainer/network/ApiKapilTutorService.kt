@@ -26,7 +26,11 @@ import com.kapilguru.trainer.coupons.*
 import com.kapilguru.trainer.demo_webinar_students.DemoWebinarStudentsResponse
 import com.kapilguru.trainer.enquiries.addOfflineEnquiry.data.AddEnquiryReq
 import com.kapilguru.trainer.enquiries.addOfflineEnquiry.data.AddEnquiryRes
+import com.kapilguru.trainer.enquiries.enquiryStatusUpdate.model.EnquiryUpdatedStatusListResponse
 import com.kapilguru.trainer.enquiries.kapilGuruEnquiries.data.EnquiriesResponse
+import com.kapilguru.trainer.enquiries.kapilGuruEnquiries.data.EnquiryStatusUpdateRequest
+import com.kapilguru.trainer.enquiries.kapilGuruEnquiries.data.EnquiryStatusUpdateResponse
+import com.kapilguru.trainer.enquiries.todaysFollowUp.model.TodaysFollowUpResponse
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.assignExamToBatch.model.BatchByCourseResponse
 import com.kapilguru.trainer.exams.conductExams.createQuestionPaper.model.QuestionPaperTitleRequest
@@ -713,4 +717,15 @@ interface ApiKapilTutorService {
 
     @POST("trainer/addStudentToBatch")
     suspend fun addOnlineStudent(@Body onlineStudentRequest: OnlineStudentRequest): AddOnlineStudentResponse
+
+    @POST("trainer/enquiry_status_updates")
+    suspend fun enquiryStatusUpdate(@Body enquiryStatusUpdateRequest: EnquiryStatusUpdateRequest): EnquiryStatusUpdateResponse
+
+    @GET("trainer/getFollowUps/{trainerId}")
+    suspend fun getFollowUps(@Path("trainerId") userId: String): TodaysFollowUpResponse
+
+    @GET("trainer/enquiry_status_updates/enquiry_id/{enquiryId}")
+    suspend fun getEnquiryStatusUpdates(@Path("enquiryId") enquiryId: String): EnquiryUpdatedStatusListResponse
+
+
 }

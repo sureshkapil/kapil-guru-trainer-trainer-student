@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".enquiries.todaysFollowUp.TodayFollowUpFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.enquiries.viewModel.EnquiriesViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        tools:context=".enquiries.todaysFollowUp.TodayFollowUpFragment">
 
-</FrameLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/aCTVCourseCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:padding="5dp"
+            android:paddingTop="10dp"
+            android:text="@{@string/todays_followup(viewModel.todaysFollowUpListMutLiveData.size)}"
+            android:textColor="@color/purple"
+            android:textSize="15sp"
+            tools:text="Total courses - 16" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="4dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/orange_3" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/enquiry_today_followup" />
+
+    </LinearLayout>
+
+</layout>
