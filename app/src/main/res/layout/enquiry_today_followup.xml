@@ -4,15 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
 
         <variable
             name="model"
-            type="com.kapilguru.trainer.enquiries.kapilGuruEnquiries.data.EnquiriesResData" />
-
-        <variable
-            name="shouldShowContactBeforeStatusUpdate"
-            type="Boolean" />
+            type="com.kapilguru.trainer.enquiries.todaysFollowUp.model.TodaysFollowUpResData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,6 +54,30 @@
                     tools:text="Iron man" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik_regular"
+                    android:padding="1dp"
+                    android:text="@string/contact"
+                    android:textColor="@color/black_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/actv_student_name_value"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/actv_contact_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:padding="1dp"
+                    android:text="@{model.contactNumber}"
+                    android:textColor="@color/purple"
+                    tools:text="9701034141"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/actv_contact"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/actv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,7 +87,7 @@
                     android:text="@string/email_id"
                     android:textColor="@color/black_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/actv_student_name_value" />
+                    app:layout_constraintTop_toBottomOf="@id/actv_contact_value" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/actv_email_value"
@@ -83,30 +102,6 @@
                     tools:text="abc.def@gmail.com" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/actv_course"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/rubik_regular"
-                    android:padding="1dp"
-                    android:text="@string/course"
-                    android:textColor="@color/black_2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/actv_email_value" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/actv_course_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/rubik_medium"
-                    android:padding="1dp"
-                    android:text="@{model.courseTitle}"
-                    android:textColor="@color/purple"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/actv_course"
-                    tools:text="Android" />
-
-                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/actv_expiry_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,7 +111,7 @@
                     android:text="@string/expiry_date"
                     android:textColor="@color/black_2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/actv_course_value" />
+                    app:layout_constraintTop_toBottomOf="@id/actv_email_value" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/actv_expiry_date_value"
@@ -125,55 +120,10 @@
                     android:fontFamily="@font/rubik_medium"
                     android:padding="1dp"
                     android:textColor="@color/purple"
-                    app:dateToString="@{model.createdDate}"
+                    app:dateToString="@{model.followUpDate}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/actv_expiry_date"
                     tools:text="Android" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_show_contact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
-                    android:backgroundTint="@color/gold"
-                    android:text="@string/view_contact"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:paddingVertical="8dp"
-                    android:paddingHorizontal="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/actv_expiry_date_value"
-                    android:visibility="@{model.shouldHideContact(shouldShowContactBeforeStatusUpdate) ? View.VISIBLE : View.GONE}"/>
-
-                <LinearLayout
-                    android:id="@+id/ll_contact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/actv_expiry_date_value"
-                    android:visibility="@{model.shouldHideContact(shouldShowContactBeforeStatusUpdate) ? View.GONE : View.VISIBLE}">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/actv_contact"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/rubik_regular"
-                        android:padding="1dp"
-                        android:text="@string/contact"
-                        android:textColor="@color/black_2" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/actv_contact_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/rubik_medium"
-                        android:padding="1dp"
-                        android:text="@{model.contactNumber}"
-                        android:textColor="@color/purple"
-                        tools:text="9701034141" />
-                </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/actv_status"

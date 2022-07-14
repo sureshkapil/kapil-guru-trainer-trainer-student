@@ -16,6 +16,7 @@ import com.kapilguru.trainer.coupons.CouponCourseCategoryRequest
 import com.kapilguru.trainer.enquiries.addOfflineEnquiry.data.AddEnquiryReq
 import com.kapilguru.trainer.coupons.CreateCouponCodeRequestModel
 import com.kapilguru.trainer.coupons.StudentRequestModel
+import com.kapilguru.trainer.enquiries.kapilGuruEnquiries.data.EnquiryStatusUpdateRequest
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.conductExams.createQuestionPaper.model.QuestionPaperTitleRequest
 import com.kapilguru.trainer.exams.createQuestion.model.AddQuestionRequest
@@ -444,9 +445,13 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun addOnlineStudent(onlineStudentRequest: OnlineStudentRequest) = apiKapilTutorService.addOnlineStudent(onlineStudentRequest)
 
+    suspend fun enquiryStatusUpdate(enquiryStatusUpdateRequest: EnquiryStatusUpdateRequest) = apiKapilTutorService.enquiryStatusUpdate(enquiryStatusUpdateRequest)
+
+    suspend fun getTodaysFollowUp(trainerId: String) = apiKapilTutorService.getFollowUps(trainerId)
+
+    suspend fun getEnquiryUpdatedStatusList(enquiryId: String) = apiKapilTutorService.getEnquiryStatusUpdates(enquiryId)
 
     suspend fun addOfflineStudent(addOfflineStudentRequest: AddOfflineStudentRequest) = apiKapilTutorService.addOfflineStudent(addOfflineStudentRequest)
-
 
     suspend fun getMyCourseStudents(trainerId: String)= apiKapilTutorService.getMyCourseStudents(trainerId)
 

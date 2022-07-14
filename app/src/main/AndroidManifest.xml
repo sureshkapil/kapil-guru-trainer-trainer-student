@@ -32,6 +32,10 @@
             android:exported="false"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity
+            android:name=".enquiries.enquiryStatusUpdate.EnquiryStatusUpdateActivity"
+            android:exported="false"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
             android:name=".enquiries.EnquiriesActivity"
             android:exported="false"
             android:theme="@style/customParentNoActionBarStyle" />

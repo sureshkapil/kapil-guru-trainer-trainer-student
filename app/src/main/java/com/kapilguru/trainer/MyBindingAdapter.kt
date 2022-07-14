@@ -956,6 +956,15 @@ object Companion {
         } else {
             this.visibility = View.GONE
         }
+    }
 
+    @JvmStatic
+    @BindingAdapter("enquiryMail")
+    fun AppCompatTextView.enquiryMail(mail : String?){
+        if(mail.isStringEmpty()){
+            this.text = "NA"
+        }else{
+            this.text = mail
+        }
     }
 }

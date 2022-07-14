@@ -942,6 +942,21 @@
     <string name="email_id">Email ID</string>
     <string name="contact">Contact</string>
     <string name="total_offline_enquiries">Total Offline Enquiries - %d</string>
+    <string name="view_contact">View Contact</string>
+    <string name="todays_followup">Today\'s Followup - %d</string>
+    <string name="follow_up_date">Followup Date</string>
+    <string name="comment">Comment</string>
+    <string name="enter_comment">Enter Comment</string>
+    <string name="followup_date">Follow Up Date</string>
+
+    <string-array name="enquiry_status">
+        <item>Select Status</item>
+        <item>Interested</item>
+        <item>Follow Up</item>
+        <item>Invalid</item>
+        <item>Not Answering</item>
+        <item>Not Interested</item>
+    </string-array>
     <string name="batch_start_time">Batch Start Time</string>
     <string name="days_attended">Days Attended</string>
     <string name="days_conducted">Days Conducted</string>

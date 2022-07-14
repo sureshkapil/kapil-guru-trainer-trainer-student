@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kapilguru.trainer.enquiries.enquiryStatusUpdate.viewModel.EnquiryStatusUpdateViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg"
+        android:paddingTop="8dp"
+        tools:context=".enquiries.enquiryStatusUpdate.EnquiryStatusUpdateActivity">
+
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/custom_action_bar_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_status"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/spinner_bg"
+            android:drawSelectorOnTop="true"
+            android:spinnerMode="dropdown"
+            android:entries="@array/enquiry_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actionbar"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/MyAppEditTextViewStyle_new"
+            android:id="@+id/til_followup_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="8dp"
+            app:helperTextTextColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_status">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_followup_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:focusable="false"
+            android:hint="@string/follow_up_date"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+<!--        android:text="@={viewModel.addGuestLectureRequest.lectureDate}"-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/MyAppEditTextViewStyle_new"
+            android:id="@+id/til_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:helperTextTextColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/til_followup_date">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_comment"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:drawableEnd="@null"
+                android:gravity="top"
+                android:hint="@string/enter_comment"
+                android:inputType="text"
+                android:maxLength="500"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--check max length che___ck-->
+<!--        android:text="@={viewModel.addGuestLectureRequest.trainerName}"-->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_update_enquiry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:text="@string/update"
+            android:backgroundTint="@color/gold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_comment"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerview"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_update_enquiry"
+            tools:listitem="@layout/item_updated_enquiry_list" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
