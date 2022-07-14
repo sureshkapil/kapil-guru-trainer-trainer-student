@@ -24,6 +24,10 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.earnings.earningsDetails.NewTrainerEarningsDetailsActivity"
+            android:exported="true"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
             android:name=".addStudent.AllMyStudents"
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle" />
@@ -44,7 +48,7 @@
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity
-            android:name=".feeManagement.AddFeeManagement"
+            android:name=".feeManagement.addFeeManagement.AddFeeManagement"
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity

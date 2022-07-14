@@ -36,6 +36,7 @@
                 android:layout_gravity="end"
                 android:layout_margin="10dp"
                 android:layout_height="35dp"
+                android:visibility="gone"
                 android:background="@drawable/button_bg"
                 android:text="@string/history"/>
 
@@ -47,22 +48,23 @@
                 android:layout_marginBottom="5dp"
                 app:isRequestMoneyAvailable="@{true}"
                 app:earnings_type="0"
-                app:earnings_title="@string/available_amount"
-                app:courseAmount="@{earningsModel.earningsApiResponse.coursesAmountAvailable}"
-                app:referralAmount="@{earningsModel.earningsApiResponse.referralAmountAvailable}"
-                app:webinarAmount="@{earningsModel.earningsApiResponse.webinarAmountAvailable}" />
+                app:earnings_title="@string/total_earnings"
+                app:courseAmount="@{earningsModel.EarningsDataResponseApi.liveCourses}"
+                app:referralAmount="@{earningsModel.EarningsDataResponseApi.recordedCourses}"
+                app:webinarAmount="@{earningsModel.EarningsDataResponseApi.studyMaterials}" />
 
-            <com.kapilguru.trainer.EarningsMergerView
+          <!--  <com.kapilguru.trainer.EarningsMergerView
                 android:id="@+id/lockedAmountView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:earnings_type="1"
+                android:visibility="gone"
                 app:earnings_title="@string/locked_amount"
                 app:courseAmount="@{earningsModel.earningsApiResponse.coursesAmountExpected}"
                 app:referralAmount="@{earningsModel.earningsApiResponse.referralAmountExpected}"
                 app:webinarAmount="@{earningsModel.earningsApiResponse.webinarAmountExpected}"
-                app:isRequestMoneyAvailable="@{false}"/>
+                app:isRequestMoneyAvailable="@{false}"/>-->
 
         </LinearLayout>
 

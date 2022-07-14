@@ -26,6 +26,7 @@ import com.kapilguru.trainer.exams.previousQuestionsList.model.AddExistingQuesAp
 import com.kapilguru.trainer.faculty.AddFacultyRequest
 import com.kapilguru.trainer.faculty.FacultySettingsModel
 import com.kapilguru.trainer.faculty.GetFacultyRequest
+import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementRequest
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordRequest
 import com.kapilguru.trainer.forgotPassword.model.ValidateMobileRequest
 import com.kapilguru.trainer.login.models.LoginUserRequest
@@ -226,6 +227,11 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun getTrainerCourseData(id: String) = apiKapilTutorService.getTrainerCourseData(id)
 
     suspend fun getEarningsList(trainerId: String) = apiKapilTutorService.earningsList(trainerId)
+
+    suspend fun getEarningData(trainerId: String) = apiKapilTutorService.getEarningData(trainerId)
+
+
+    suspend fun getEarningDetails(trainerId: String) = apiKapilTutorService.getEarningDetails(trainerId)
 
     suspend fun getEarningsDetailsList(trainerId: String) = apiKapilTutorService.earningsDetailsList(trainerId)
 
@@ -463,4 +469,8 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun getStudentFeeRecords(trainerId: String) = apiKapilTutorService.getStudentFeeRecords(trainerId)
 
     suspend fun getStudentPaidRecords(trainerId: String) = apiKapilTutorService.getStudentPaidRecords(trainerId)
+
+    suspend fun getStudentFeeFollowUps(trainerId: String) = apiKapilTutorService.getStudentFeeFollowUps(trainerId)
+
+    suspend fun addFeeDetailsRequest(addFeeDetailsRequest: AddFeeManagementRequest) = apiKapilTutorService.addFeeDetailsRequest(addFeeDetailsRequest)
 }

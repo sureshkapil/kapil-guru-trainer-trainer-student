@@ -47,6 +47,9 @@ import com.kapilguru.trainer.exams.previousQuestionsList.model.AddExistingQuesAp
 import com.kapilguru.trainer.exams.previousQuestionsList.model.PreviousQuestionsListResponse
 import com.kapilguru.trainer.exams.scheduledExams.ScheduledExamsAPI
 import com.kapilguru.trainer.faculty.*
+import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementResponse
+import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementRequest
+import com.kapilguru.trainer.feeManagement.feeFollowUps.FeeFollowUpResponse
 import com.kapilguru.trainer.feeManagement.paidRecords.StudentFeePaidResponse
 import com.kapilguru.trainer.feeManagement.studentFeeRecords.StudentFeeRecordsResponse
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordRequest
@@ -125,8 +128,10 @@ import com.kapilguru.trainer.ui.courses.tax.TaxCalculationResponse
 import com.kapilguru.trainer.ui.courses.view_course.ContactTrainerRequest
 import com.kapilguru.trainer.ui.courses.view_course.CourseDetailsResponse
 import com.kapilguru.trainer.ui.courses.view_course.CourseSyllabusResponse
+import com.kapilguru.trainer.ui.earnings.earningsDetails.EarningsDetailsResponse
 import com.kapilguru.trainer.ui.earnings.history.model.EarningsHistoryResponseApi
 import com.kapilguru.trainer.ui.earnings.history.model.HistoryPaymentAmountDetailsApi
+import com.kapilguru.trainer.ui.earnings.model.EarningsDataResponse
 import com.kapilguru.trainer.ui.earnings.model.EarningsDetailsApiResponse
 import com.kapilguru.trainer.ui.earnings.model.EarningsListResponse
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.AddGuestLectureRequest
@@ -354,6 +359,12 @@ interface ApiKapilTutorService {
 
     @GET("trainer/getEarnings/{trainerId}")
     suspend fun earningsList(@Path("trainerId") trainerId: String): EarningsListResponse
+
+    @GET("trainer/getTrainerEarnings/{trainerId}")
+    suspend fun getEarningData(@Path("trainerId") trainerId: String): EarningsDataResponse
+
+    @GET("trainer/getTrainerEarningsDetails/{trainerId}")
+    suspend fun getEarningDetails(@Path("trainerId") trainerId: String): EarningsDetailsResponse
 
     @GET("trainer/getEarningsDetails/{trainerId}")
     suspend fun earningsDetailsList(@Path("trainerId") trainerId: String): EarningsDetailsApiResponse
@@ -754,4 +765,12 @@ interface ApiKapilTutorService {
 
     @GET("trainer/getFeeRecords/{trainerId}")
     suspend fun getStudentPaidRecords(@Path("trainerId") trainerId: String) : StudentFeePaidResponse
+
+    @GET("trainer/getFeeFollowups/{trainerId}")
+    suspend fun getStudentFeeFollowUps(@Path("trainerId") trainerId: String) : FeeFollowUpResponse
+
+
+
+    @POST("trainer/addFeeDetails")
+    suspend fun addFeeDetailsRequest(@Body addFeeManagementRequest: AddFeeManagementRequest) : AddFeeManagementResponse
 }

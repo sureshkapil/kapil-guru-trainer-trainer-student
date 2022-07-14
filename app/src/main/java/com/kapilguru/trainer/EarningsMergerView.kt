@@ -27,7 +27,7 @@ class EarningsMergerView @JvmOverloads constructor(
             val titleValue = resources.getText(typedArray.getResourceId(R.styleable.earningsMergerView_earningsMergerView_earnings_amount, R.string.batch_time))
             amount.text = titleValue
 
-            type = typedArray.getInteger(R.styleable.earningsMergerView_earnings_type,0)
+            type = typedArray.getInteger(R.styleable.earningsMergerView_earnings_type, 0)
 
 
             parentCard.setOnClickListener { _ ->
@@ -43,23 +43,30 @@ class EarningsMergerView @JvmOverloads constructor(
                 if (isClickedTypeAvailable()) {
                     itemClickListener.onItemClick(AmountType.COURSEAMOUNT)
                 } else {
-                    itemClickListener.onItemClick(AmountType.EXPECTEDCOURSEAMOUNT)
+//                    itemClickListener.onItemClick(AmountType.EXPECTEDCOURSEAMOUNT)
                 }
             }
 
             webinar_view_more.setOnClickListener {
                 if (isClickedTypeAvailable()) {
-                    itemClickListener.onItemClick(AmountType.WEBINARAMOUNT)
+                    itemClickListener.onItemClick(AmountType.RECORDEDCOURSES)
                 } else {
-                    itemClickListener.onItemClick(AmountType.EXPECTEDWEBINARAMOUNT)
+//                    itemClickListener.onItemClick(AmountType.EXPECTEDWEBINARAMOUNT)
                 }
             }
 
             referral_view_more.setOnClickListener {
                 if (isClickedTypeAvailable()) {
-                    itemClickListener.onItemClick(AmountType.REFERRALAMOUNT)
+                    itemClickListener.onItemClick(AmountType.STUDYMATERIAL)
                 } else {
-                    itemClickListener.onItemClick(AmountType.EXPECTEDREFERRALAMOUNT)
+//                    itemClickListener.onItemClick(AmountType.EXPECTEDREFERRALAMOUNT)
+                }
+            }
+            request_money.setOnClickListener {
+                if (isClickedTypeAvailable()) {
+                    itemClickListener.onItemClick(AmountType.VIEWDETAILS)
+                } else {
+//                    itemClickListener.onItemClick(AmountType.EXPECTEDREFERRALAMOUNT)
                 }
             }
 
@@ -80,5 +87,5 @@ class EarningsMergerView @JvmOverloads constructor(
 }
 
 enum class AmountType {
-    COURSEAMOUNT, REFERRALAMOUNT, WEBINARAMOUNT, EXPECTEDCOURSEAMOUNT, EXPECTEDREFERRALAMOUNT, EXPECTEDWEBINARAMOUNT,
+    COURSEAMOUNT, RECORDEDCOURSES, STUDYMATERIAL, VIEWDETAILS
 }

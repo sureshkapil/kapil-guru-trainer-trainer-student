@@ -11,38 +11,27 @@
     </data>
 
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <LinearLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/main_bg">
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_bg"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/custom_action_bar_layout" />
 
-            <include
-                android:id="@+id/actionbar"
-                layout="@layout/custom_action_bar_layout" />
 
-            <include
-                android:id="@+id/course_empty_view"
-                layout="@layout/my_course_empty"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="50dp"
-                android:visibility="gone" />
-
+<!--        <ScrollView-->
+<!--            android:id="@+id/scrollView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
 
             <LinearLayout
                 android:id="@+id/container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimen_15dp"
                 android:layout_marginVertical="@dimen/dimen_5dp"
                 android:background="@drawable/main_bg"
@@ -65,7 +54,7 @@
                         android:hint="@string/student_name"
                         android:inputType="text"
                         android:maxLength="100"
-                        android:text=""
+                        android:text="@={viewModel.addFeeManagementRequest.name}"
                         android:textSize="15sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -88,7 +77,7 @@
                         android:hint="@string/email"
                         android:inputType="text"
                         android:maxLength="100"
-                        android:text=""
+                        android:text="@={viewModel.addFeeManagementRequest.emailId}"
                         android:textSize="15sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -111,7 +100,7 @@
                         android:hint="Phone"
                         android:inputType="phone"
                         android:maxLength="100"
-                        android:text=""
+                        android:text="@={viewModel.addFeeManagementRequest.contactNumber}"
                         android:textSize="15sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -127,7 +116,7 @@
                     android:translationZ="10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/calander"
+                        android:id="@+id/joining_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_calendar"
@@ -157,12 +146,37 @@
                         android:hint="Course Name"
                         android:inputType="text"
                         android:maxLength="100"
+                        android:text="@={viewModel.addFeeManagementRequest.course}"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dued"
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/due_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_calendar"
+                        android:focusable="false"
+                        android:hint="@string/date_of_joining"
+                        android:inputType="text"
                         android:text=""
+                        android:textColorHint="@android:color/black"
                         android:textSize="15sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/totalAmount"
                     style="@style/MyAppEditTextViewStyle_new"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -178,8 +192,7 @@
                         android:hint="Course Amount"
                         android:inputType="numberDecimal"
                         android:maxLength="100"
-                        android:text=""
-                        android:textSize="15sp" />
+                        android:textSize="15sp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -209,7 +222,6 @@
                             android:hint="Paid Amount"
                             android:inputType="numberDecimal"
                             android:maxLength="100"
-                            android:text="@={``+viewModel.totalAmount}"
                             android:textSize="15sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -234,11 +246,14 @@
                             android:id="@+id/aCTVtTrainerDueValue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:backgroundTint="@color/disabled_grey_color"
                             android:drawableEnd="@null"
+                            android:enabled="false"
+                            android:focusable="false"
                             android:hint="Due Amount"
                             android:inputType="numberDecimal"
                             android:maxLength="100"
-                            android:text="@={``+viewModel.dueAmount}"
+                            android:text="@={viewModel.dueAmount}"
                             android:textSize="15sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -267,9 +282,10 @@
                             android:drawableEnd="@null"
                             android:hint="@string/number_of_installments"
                             android:inputType="number"
+                            android:text="@={viewModel.addFeeManagementRequest.noOfInstallments}"
                             android:maxLength="100"
-                            android:text="@={``+viewModel.numberOfInstallments}"
-                            android:textSize="15sp" />
+                            android:textSize="15sp"
+                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -278,30 +294,33 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.1" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/addInstalment"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginVertical="8dp"
-                        android:layout_weight="0.4"
-                        android:background="@color/blue_3"
-                        android:text="@string/add_instalment"
-                        android:textColor="@color/white" />
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/lLayoutParent"
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    tools:context=".ui.courses.addcourse.AddCourseLectureSyllabusFragment" />
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="16dp"
+                    android:background="@color/blue_3"
+                    android:text="@string/submit"
+                    android:layout_marginHorizontal="80dp"
+                    android:textColor="@color/white" />
+
+                <!--  <LinearLayout
+                      android:id="@+id/lLayoutParent"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      tools:context=".ui.courses.addcourse.AddCourseLectureSyllabusFragment" />-->
 
             </LinearLayout>
 
 
-        </LinearLayout>
 
-    </ScrollView>
+<!--        </ScrollView>-->
+    </LinearLayout>
 
 </layout>

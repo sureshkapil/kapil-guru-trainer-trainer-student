@@ -13,10 +13,9 @@ import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.ActivityEarningsBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
-import com.kapilguru.trainer.ui.earnings.webinarAmount.WebinarAmount
 import com.kapilguru.trainer.ui.earnings.amountDetails.AmountViewDetails
+import com.kapilguru.trainer.ui.earnings.earningsDetails.NewTrainerEarningsDetailsActivity
 import com.kapilguru.trainer.ui.earnings.history.view.EarningsHistoryActivity
-import com.kapilguru.trainer.ui.earnings.referralDetails.ReferralAmountDetails
 import com.kapilguru.trainer.ui.earnings.viewModel.EarningsViewModel
 import com.kapilguru.trainer.ui.earnings.viewModel.EarningsViewModelFactory
 import kotlinx.android.synthetic.main.activity_earnings.*
@@ -50,9 +49,9 @@ class EarningsActivity : BaseActivity(), EarningsMergerView.ItemClickListener{
 
     private fun setClickListeners() {
         availableAmountView.setClickListener(this)
-        lockedAmountView.setClickListener(this)
+//        lockedAmountView.setClickListener(this)
         history.setOnClickListener {
-            navigateToHistory()
+//            navigateToHistory()
         }
     }
 
@@ -61,7 +60,33 @@ class EarningsActivity : BaseActivity(), EarningsMergerView.ItemClickListener{
     }
 
     private fun observeViewModelData() {
-        earningsViewModel.earningsListApi.observe(this, Observer {
+//        earningsViewModel.earningsListApi.observe(this, Observer {
+//            when (it.status) {
+//
+//                Status.LOADING -> {
+//                    dialog.showLoadingDialog()
+//                }
+//
+//                Status.SUCCESS -> {
+//                    it.data?.let { earningsListApi ->
+//                        earningsViewModel.earningsApiResponse.value =
+//                            earningsListApi.earningsListApiData[0]
+//                    }
+//                    dialog.dismissLoadingDialog()
+//                }
+//
+//                Status.ERROR -> {
+//                    dialog.dismissLoadingDialog()
+//                    if (it.data?.status != 200) {
+//                        it.message?.let { it1 -> showErrorDialog(it1) }
+//                    } else {
+//                        showErrorDialog(getString(R.string.try_again))
+//                    }
+//                }
+//            }
+//        })
+
+        earningsViewModel.earningsDataResponse.observe(this, Observer {
             when (it.status) {
 
                 Status.LOADING -> {
@@ -69,9 +94,10 @@ class EarningsActivity : BaseActivity(), EarningsMergerView.ItemClickListener{
                 }
 
                 Status.SUCCESS -> {
-                    it.data?.let { earningsListApi ->
-                        earningsViewModel.earningsApiResponse.value =
-                            earningsListApi.earningsListApiData[0]
+                    it.data?.earningsDataResponseApi?.let { info ->
+                            if(info.isNotEmpty()) {
+                                earningsViewModel.earningsDataResponseApi.value = info[0]
+                            }
                     }
                     dialog.dismissLoadingDialog()
                 }
@@ -86,6 +112,8 @@ class EarningsActivity : BaseActivity(), EarningsMergerView.ItemClickListener{
                 }
             }
         })
+
+
     }
 
     private fun showErrorDialog(message: String) {
@@ -133,15 +161,18 @@ class EarningsActivity : BaseActivity(), EarningsMergerView.ItemClickListener{
 
         when(amountType) {
             AmountType.COURSEAMOUNT -> {
-               startActivity(Intent(this,AmountViewDetails::class.java).putExtra(PARAM_IS_AVAILABLE,true))
+//               startActivity(Intent(this,AmountViewDetails::class.java).putExtra(PARAM_IS_AVAILABLE,true))
             }
-            AmountType.EXPECTEDCOURSEAMOUNT -> {
-                startActivity(Intent(this,AmountViewDetails::class.java).putExtra(PARAM_IS_AVAILABLE,false))
+            AmountType.RECORDEDCOURSES -> {
+//                startActivity(Intent(this,AmountViewDetails::class.java).putExtra(PARAM_IS_AVAILABLE,false))
             }
-            AmountType.REFERRALAMOUNT -> {
-                startActivity(Intent(this, ReferralAmountDetails::class.java).putExtra(PARAM_IS_AVAILABLE,true))
+            AmountType.STUDYMATERIAL -> {
+//                startActivity(Intent(this, ReferralAmountDetails::class.java).putExtra(PARAM_IS_AVAILABLE,true))
             }
-            AmountType.EXPECTEDREFERRALAMOUNT -> {
+            AmountType.VIEWDETAILS -> {
+                startActivity(Intent(this, NewTrainerEarningsDetailsActivity::class.java))
+            }
+         /*   AmountType.EXPECTEDREFERRALAMOUNT -> {
                 startActivity(Intent(this,ReferralAmountDetails::class.java).putExtra(PARAM_IS_AVAILABLE,false))
             }
             AmountType.WEBINARAMOUNT -> {
@@ -149,7 +180,7 @@ class EarningsActivity : BaseActivity(), EarningsMergerView.ItemClickListener{
             }
             AmountType.EXPECTEDWEBINARAMOUNT -> {
                 startActivity(Intent(this,WebinarAmount::class.java).putExtra(PARAM_IS_AVAILABLE,false))
-            }
+            }*/
         }
 
     }

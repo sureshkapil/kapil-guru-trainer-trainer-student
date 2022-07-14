@@ -1,9 +1,7 @@
 package com.kapilguru.trainer.ui.earnings
 
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +23,6 @@ import com.kapilguru.trainer.ui.earnings.model.EarningsDetailsReferral
 import com.kapilguru.trainer.ui.earnings.model.EarningsDetailsWebinar
 import com.kapilguru.trainer.ui.earnings.viewModel.EarningsDetailsViewModel
 import com.kapilguru.trainer.ui.earnings.viewModel.EarningsDetailsViewModelFactory
-import okhttp3.internal.notifyAll
 import org.json.JSONArray
 import org.json.JSONObject
 
