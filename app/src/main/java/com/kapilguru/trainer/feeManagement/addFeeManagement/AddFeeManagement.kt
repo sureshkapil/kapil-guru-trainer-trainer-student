@@ -3,18 +3,20 @@ package com.kapilguru.trainer.feeManagement.addFeeManagement
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.kapilguru.trainer.ApiHelper
-import com.kapilguru.trainer.BaseActivity
-import com.kapilguru.trainer.R
+import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.ActivityAddFeeManagementBinding
 import com.kapilguru.trainer.feeManagement.FeeManagementViewModel
 import com.kapilguru.trainer.feeManagement.FeeManagementViewModelFactory
 import com.kapilguru.trainer.network.RetrofitNetwork
+import com.kapilguru.trainer.network.Status
+import java.util.*
 
 class AddFeeManagement : BaseActivity() {
     lateinit var binding: ActivityAddFeeManagementBinding
     lateinit var viewModel: FeeManagementViewModel
+    private lateinit var progressDialog: CustomProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +24,45 @@ class AddFeeManagement : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_fee_management)
         viewModel = ViewModelProvider(this, FeeManagementViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), application)).get(FeeManagementViewModel::class.java)
         binding.viewModel = viewModel
+        progressDialog = CustomProgressDialog(this)
         binding.lifecycleOwner = this
         setCustomActionBarListener()
         setClickListeners()
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.errorMessage.observe(this, androidx.lifecycle.Observer {
+        it?.let { msg->
+            showError(msg)
+        }
+        })
+
+
+        viewModel.addFeeDetailsResponse.observe(this, androidx.lifecycle.Observer {
+            when (it.status) {
+                Status.LOADING -> {
+                    progressDialog.showLoadingDialog()
+                }
+                Status.SUCCESS -> {
+                    progressDialog.dismissLoadingDialog()
+                  /*  viewModel.profileMutLiveData.value = it?.data?.data?.get(0)
+                    studentProfileData = viewModel.profileMutLiveData.value
+                    populateViews()
+                    viewModel.getCountryList()*/
+                }
+                Status.ERROR -> {
+                    progressDialog.dismissLoadingDialog()
+                    when (it.code) {
+                        NETWORK_CONNECTIVITY_EROR -> networkConnectionErrorDialog(this)
+                    }
+                }
+            }
+        })
+    }
+
+    private fun showError(error: String) {
+        showAppToast(this,error)
     }
 
 
@@ -34,7 +72,9 @@ class AddFeeManagement : BaseActivity() {
 
     private fun setClickListeners() {
         binding.submit.setOnClickListener {
-            viewModel.validateUserInfo()
+            if(viewModel.validateUserInfo()){
+                viewModel.addFeeDetails()
+            }
         }
 
         binding.aCTVtTrainerCourseAmount.doOnTextChanged { text, start, before, count ->
@@ -53,6 +93,30 @@ class AddFeeManagement : BaseActivity() {
                     viewModel.calculateDueAmount()
                 }
             }
+        }
+
+        binding.joiningDate.setOnClickListener {
+        val mycalendar =  CustomCalendar(object : CalendarSelectionListener {
+                override fun onDateSet(calendarSelectedDate: Calendar) {
+                    val abc = calendarSelectedDate.convertDateAndTimeToApiDataWithoutT()
+                    val finalDate = abc.toDateFormatWithOutT()
+                    viewModel.addFeeManagementRequest.value?.dateOfJoining = abc
+                    binding.joiningDate.setText(finalDate)
+                }
+            },false)
+            mycalendar.show(supportFragmentManager, "datePicker");
+        }
+
+        binding.dueDate.setOnClickListener {
+        val myCalendar=  CustomCalendar(object : CalendarSelectionListener {
+                override fun onDateSet(calendarSelectedDate: Calendar) {
+                    val abc = calendarSelectedDate.convertDateAndTimeToApiDataWithoutT()
+                    val finalDate = abc.toDateFormatWithOutT()
+                    viewModel.addFeeManagementRequest.value?.dueDate = abc
+                    binding.dueDate.setText(finalDate)
+                }
+            },false)
+            myCalendar.show(supportFragmentManager, "datePicker",);
         }
 
     }

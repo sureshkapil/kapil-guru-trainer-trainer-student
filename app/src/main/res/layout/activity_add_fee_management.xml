@@ -116,7 +116,7 @@
                     android:translationZ="10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/calander"
+                        android:id="@+id/joining_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_calendar"
@@ -146,7 +146,31 @@
                         android:hint="Course Name"
                         android:inputType="text"
                         android:maxLength="100"
-                        android:text="@={viewModel.addFeeManagementRequest.name}"
+                        android:text="@={viewModel.addFeeManagementRequest.course}"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dued"
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/due_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_calendar"
+                        android:focusable="false"
+                        android:hint="@string/date_of_joining"
+                        android:inputType="text"
+                        android:text=""
+                        android:textColorHint="@android:color/black"
                         android:textSize="15sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -258,6 +282,7 @@
                             android:drawableEnd="@null"
                             android:hint="@string/number_of_installments"
                             android:inputType="number"
+                            android:text="@={viewModel.addFeeManagementRequest.noOfInstallments}"
                             android:maxLength="100"
                             android:textSize="15sp"
                              />
