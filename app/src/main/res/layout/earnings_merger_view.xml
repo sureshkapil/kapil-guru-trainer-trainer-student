@@ -68,11 +68,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="26dp"
                             android:background="@drawable/button_bg"
-                            android:drawableEnd="@drawable/ic_right_arrow"
                             android:drawablePadding="5dp"
                             android:paddingHorizontal="5dp"
                             android:visibility="visible"
-                            android:text="@string/request_money"
+                            android:text="@string/view_details"
                             android:textColor="@color/purple" />
 
                     </LinearLayout>
@@ -147,6 +146,7 @@
                             android:background="@drawable/solid_light_blue_stroke_blue"
                             android:gravity="center"
                             android:padding="2dp"
+                            android:visibility="invisible"
                             android:text="@string/view_more"
                             android:textColor="@color/purple"
                             android:textSize="12sp"
@@ -204,6 +204,7 @@
                             android:background="@drawable/solid_light_blue_stroke_blue"
                             android:gravity="center"
                             android:padding="2dp"
+                            android:visibility="invisible"
                             android:text="@string/view_more"
                             android:textColor="@color/purple"
                             android:textSize="12sp"
@@ -263,6 +264,7 @@
                             android:gravity="center"
                             android:padding="2dp"
                             android:text="@string/view_more"
+                            android:visibility="invisible"
                             android:textColor="@color/purple"
                             android:textSize="12sp"
                             app:fontFamily="@font/rubik_medium" />

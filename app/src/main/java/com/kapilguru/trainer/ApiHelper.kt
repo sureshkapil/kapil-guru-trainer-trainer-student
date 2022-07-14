@@ -228,6 +228,11 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun getEarningsList(trainerId: String) = apiKapilTutorService.earningsList(trainerId)
 
+    suspend fun getEarningData(trainerId: String) = apiKapilTutorService.getEarningData(trainerId)
+
+
+    suspend fun getEarningDetails(trainerId: String) = apiKapilTutorService.getEarningDetails(trainerId)
+
     suspend fun getEarningsDetailsList(trainerId: String) = apiKapilTutorService.earningsDetailsList(trainerId)
 
     suspend fun getBestTrainerCourseList(id: String) = apiKapilTutorService.getBestTrainerCourseList(id)

@@ -26,6 +26,7 @@ import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
 import com.kapilguru.trainer.ui.changePassword.model.LogoutRequest
+import com.kapilguru.trainer.ui.earnings.EarningsActivity
 import com.kapilguru.trainer.ui.reports.ReportsActivity
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -69,6 +70,12 @@ class HomeActivity : AppCompatActivity() {
                     val pref = StorePreferences(this)
                     homeScreenViewModel.logoutUser(LogoutRequest(pref.userId, pref.token!!))
 
+                    true
+                }
+                R.id.earnings -> {
+                    //write your implementation here
+
+                    startActivity(Intent(this, EarningsActivity::class.java))
                     true
                 }
                 R.id.reports -> {
