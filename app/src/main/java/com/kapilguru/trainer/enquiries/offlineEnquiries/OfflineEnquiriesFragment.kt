@@ -10,12 +10,13 @@ import androidx.lifecycle.Observer
 import com.kapilguru.trainer.CustomProgressDialog
 import com.kapilguru.trainer.databinding.FragmentOfflineEnquiriesBinding
 import com.kapilguru.trainer.enquiries.addOfflineEnquiry.AddOfflineEnquiryActivity
+import com.kapilguru.trainer.enquiries.enquiryStatusUpdate.EnquiryStatusUpdateActivity
 import com.kapilguru.trainer.enquiries.kapilGuruEnquiries.EnquiriesAdapter
 import com.kapilguru.trainer.enquiries.kapilGuruEnquiries.data.EnquiriesResData
 import com.kapilguru.trainer.enquiries.viewModel.EnquiriesViewModel
 import com.kapilguru.trainer.preferences.StorePreferences
 
-class OfflineEnquiriesFragment : Fragment() {
+class OfflineEnquiriesFragment : Fragment(), EnquiriesAdapter.ClickListeners {
     private val TAG = "OfflineEnquiriesFragment"
     private lateinit var binding: FragmentOfflineEnquiriesBinding
     private lateinit var adapter: EnquiriesAdapter
@@ -32,20 +33,14 @@ class OfflineEnquiriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initLateInitVariables()
-        setAdapter()
         observeViewModelData()
         setClickListeners()
     }
 
     private fun initLateInitVariables() {
-        adapter = EnquiriesAdapter()
+        adapter = EnquiriesAdapter(true,this)
         binding.recyclerview.adapter = adapter
         progressDialog = CustomProgressDialog(requireActivity())
-    }
-
-    private fun setAdapter() {
-        adapter = EnquiriesAdapter()
-        binding.recyclerview.adapter = adapter
     }
 
     private fun observeViewModelData() {
@@ -67,5 +62,13 @@ class OfflineEnquiriesFragment : Fragment() {
 
     private fun onAddEnquiryClicked() {
         AddOfflineEnquiryActivity.startActivity(requireActivity())
+    }
+
+    override fun onViewContactClicked(enquiry: EnquiriesResData, positionInList: Int) {
+        //noting, as view contact  button is not visible.
+    }
+
+    override fun onLaunchEnquiryListClicked(enquiry: EnquiriesResData) {
+        EnquiryStatusUpdateActivity.launchActivity(requireActivity(), enquiry.id.toString())
     }
 }

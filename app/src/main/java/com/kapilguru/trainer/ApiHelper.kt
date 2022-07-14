@@ -1,9 +1,9 @@
 package com.kapilguru.trainer
 
 import com.kapilguru.student.courseDetails.model.BatchRequest
-import com.kapilguru.trainer.addStudent.AddOfflineStudentRequest
+import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentRequest
 import com.kapilguru.trainer.addStudent.CheckStudentRequest
-import com.kapilguru.trainer.addStudent.OnlineStudentRequest
+import com.kapilguru.trainer.addStudent.addOnlineStudent.OnlineStudentRequest
 import com.kapilguru.trainer.allSubscription.bestTrainerSubscription.model.CourseBestTrainerMapRequest
 import com.kapilguru.trainer.allSubscription.models.UpdateKycRequest
 import com.kapilguru.trainer.allSubscription.positionSubscription.model.CoursePositionMapRequest
@@ -16,6 +16,7 @@ import com.kapilguru.trainer.coupons.CouponCourseCategoryRequest
 import com.kapilguru.trainer.enquiries.addOfflineEnquiry.data.AddEnquiryReq
 import com.kapilguru.trainer.coupons.CreateCouponCodeRequestModel
 import com.kapilguru.trainer.coupons.StudentRequestModel
+import com.kapilguru.trainer.enquiries.kapilGuruEnquiries.data.EnquiryStatusUpdateRequest
 import com.kapilguru.trainer.exams.assignExamToBatch.model.AssignExamToBatchRequest
 import com.kapilguru.trainer.exams.conductExams.createQuestionPaper.model.QuestionPaperTitleRequest
 import com.kapilguru.trainer.exams.createQuestion.model.AddQuestionRequest
@@ -25,6 +26,7 @@ import com.kapilguru.trainer.exams.previousQuestionsList.model.AddExistingQuesAp
 import com.kapilguru.trainer.faculty.AddFacultyRequest
 import com.kapilguru.trainer.faculty.FacultySettingsModel
 import com.kapilguru.trainer.faculty.GetFacultyRequest
+import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementRequest
 import com.kapilguru.trainer.forgotPassword.model.ChangePasswordRequest
 import com.kapilguru.trainer.forgotPassword.model.ValidateMobileRequest
 import com.kapilguru.trainer.login.models.LoginUserRequest
@@ -443,7 +445,27 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun addOnlineStudent(onlineStudentRequest: OnlineStudentRequest) = apiKapilTutorService.addOnlineStudent(onlineStudentRequest)
 
+    suspend fun enquiryStatusUpdate(enquiryStatusUpdateRequest: EnquiryStatusUpdateRequest) = apiKapilTutorService.enquiryStatusUpdate(enquiryStatusUpdateRequest)
+
+    suspend fun getTodaysFollowUp(trainerId: String) = apiKapilTutorService.getFollowUps(trainerId)
+
+    suspend fun getEnquiryUpdatedStatusList(enquiryId: String) = apiKapilTutorService.getEnquiryStatusUpdates(enquiryId)
 
     suspend fun addOfflineStudent(addOfflineStudentRequest: AddOfflineStudentRequest) = apiKapilTutorService.addOfflineStudent(addOfflineStudentRequest)
 
+    suspend fun getMyCourseStudents(trainerId: String)= apiKapilTutorService.getMyCourseStudents(trainerId)
+
+    suspend fun getMyRecordedStudents(trainerId: String)= apiKapilTutorService.getMyRecordedStudents(trainerId)
+
+    suspend fun geOfflineStudents(trainerId: String)= apiKapilTutorService.geOfflineStudents(trainerId)
+
+    suspend fun getSignedUpStudentsList(trainerId: String)= apiKapilTutorService.getSignedUpStudentsList(trainerId)
+
+    suspend fun getStudentFeeRecords(trainerId: String) = apiKapilTutorService.getStudentFeeRecords(trainerId)
+
+    suspend fun getStudentPaidRecords(trainerId: String) = apiKapilTutorService.getStudentPaidRecords(trainerId)
+
+    suspend fun getStudentFeeFollowUps(trainerId: String) = apiKapilTutorService.getStudentFeeFollowUps(trainerId)
+
+    suspend fun addFeeDetailsRequest(addFeeDetailsRequest: AddFeeManagementRequest) = apiKapilTutorService.addFeeDetailsRequest(addFeeDetailsRequest)
 }

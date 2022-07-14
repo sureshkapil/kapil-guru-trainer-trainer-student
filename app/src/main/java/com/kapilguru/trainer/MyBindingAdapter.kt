@@ -24,8 +24,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.textfield.TextInputEditText
 import com.kapilguru.trainer.Companion.setFolderDrawable
+import com.kapilguru.trainer.Companion.unWrapUTCTimeTOString
 import com.kapilguru.trainer.student.exam.model.StudentQuestionsAndOptions
 import com.kapilguru.trainer.studentExamBatchResult.QuestionPaperResponse
+import kotlinx.android.synthetic.main.countryname_spinner_item.view.*
 import kotlinx.android.synthetic.main.custom_merger_view.view.*
 import kotlinx.android.synthetic.main.earnings_merger_view.view.*
 import java.text.SimpleDateFormat
@@ -651,6 +653,17 @@ object Companion {
         }
     }
 
+
+    @JvmStatic
+    @BindingAdapter("unWrapUTCTimeTOString")
+    fun KeyValueText.unWrapUTCTimeTOString(date: String?) {
+        date?.toTimeFormat()?.let {
+            this.text_value.text = it
+        } ?: run {
+            this.text_value.text = ""
+        }
+    }
+
     @JvmStatic
     @BindingAdapter("setKeyValueTextString")
     fun KeyValueText.setKeyValueTextString(toBeStringData: String?) {
@@ -943,6 +956,15 @@ object Companion {
         } else {
             this.visibility = View.GONE
         }
+    }
 
+    @JvmStatic
+    @BindingAdapter("enquiryMail")
+    fun AppCompatTextView.enquiryMail(mail : String?){
+        if(mail.isStringEmpty()){
+            this.text = "NA"
+        }else{
+            this.text = mail
+        }
     }
 }

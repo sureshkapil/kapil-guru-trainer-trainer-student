@@ -25,9 +25,14 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".addStudent.AllMyStudents"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/customParentNoActionBarStyle"/>
         <activity
             android:name=".enquiries.addOfflineEnquiry.AddOfflineEnquiryActivity"
+            android:exported="false"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".enquiries.enquiryStatusUpdate.EnquiryStatusUpdateActivity"
             android:exported="false"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity
@@ -39,7 +44,7 @@
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity
-            android:name=".feeManagement.AddFeeManagement"
+            android:name=".feeManagement.addFeeManagement.AddFeeManagement"
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity

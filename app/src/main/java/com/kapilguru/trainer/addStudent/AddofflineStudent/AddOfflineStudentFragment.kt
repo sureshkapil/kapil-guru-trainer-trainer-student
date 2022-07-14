@@ -1,4 +1,4 @@
-package com.kapilguru.trainer.addStudent
+package com.kapilguru.trainer.addStudent.AddofflineStudent
 
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.kapilguru.trainer.*
+import com.kapilguru.trainer.addStudent.AddStudentViewModel
 import com.kapilguru.trainer.databinding.FragmentAddOfflineStudentBinding
 import com.kapilguru.trainer.network.Status
 import java.text.SimpleDateFormat

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.text.TextUtils
+import android.text.format.DateUtils
 import android.util.Base64
 import com.kapilguru.trainer.ui.courses.addcourse.models.LectureSyllabus
 import com.kapilguru.trainer.ui.courses.addcourse.models.LectureSyllabusContent
@@ -362,3 +363,16 @@ fun String?.apiDateFormatWithoutT(): String? {
 
 
 fun doesApiDateContainsT(date: String) = date.contains("t", true)
+
+fun String?.isDateToday(): Boolean {
+    this?.let {dateInfo->
+        val dateFormat: DateFormat = SimpleDateFormat(API_FORMAT_DATE_AND_TIME_WITH_T, Locale.US)
+        dateFormat.timeZone = TimeZone.getTimeZone("UTC")
+        val date: Long = dateFormat.parse(dateInfo).time
+        var calendar = Calendar.getInstance()
+        return DateUtils.isToday(date)
+    }?:run {
+        return false
+    }
+
+}
