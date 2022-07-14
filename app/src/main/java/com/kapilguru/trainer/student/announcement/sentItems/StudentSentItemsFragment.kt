@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.kapilguru.trainer.CustomProgressDialog
 import com.kapilguru.trainer.R
+import com.kapilguru.trainer.announcement.sentItems.data.SentItemsData
 import com.kapilguru.trainer.databinding.FragmentSentItemsStudentBinding
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
@@ -45,7 +46,7 @@ class StudentSentItemsFragment : Fragment() {
                 Status.SUCCESS -> {
                     dialog.dismissLoadingDialog()
                     val response = it.data?.data
-                    adapter.setData(response as ArrayList<StudentSentItemsData>)
+                    checkAndSetAdapterData(response)
                 }
 
                 Status.ERROR -> {
@@ -53,6 +54,30 @@ class StudentSentItemsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun checkAndSetAdapterData(sentItems : List<StudentSentItemsData>?){
+        sentItems?.let { sentItemsNotNull ->
+            if(sentItemsNotNull.isNotEmpty()){
+                adapter.setData(sentItemsNotNull as ArrayList<StudentSentItemsData>)
+                showOrHideEmptyView(false)
+            }else{
+                showOrHideEmptyView(true)
+            }
+        }?: kotlin.run {
+            showOrHideEmptyView(true)
+        }
+    }
+
+    private fun showOrHideEmptyView(shouldShowEmptyView : Boolean){
+        if(shouldShowEmptyView){
+            binding.rvSentItems.visibility = View.GONE
+            binding.noDataAvailable.tvNoData.visibility = View.VISIBLE
+            binding.noDataAvailable.tvNoData.text = getString(R.string.no_sent_messages)
+        }else{
+            binding.rvSentItems.visibility = View.VISIBLE
+            binding.noDataAvailable.tvNoData.visibility = View.GONE
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

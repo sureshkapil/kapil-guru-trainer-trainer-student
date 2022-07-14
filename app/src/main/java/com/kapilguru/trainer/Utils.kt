@@ -488,3 +488,30 @@ fun downloadManager(context: Context, url: String, fileName: String, downloadMan
     // to execute it and connectivity is available.
     return downloadManager.enqueue(request)
 }
+
+//input time format : 18:00
+//Output time format : 6:00 pm
+fun get12HoursTime(timeIn24Hours: String): String {
+    val timeFormatFor24Hours = SimpleDateFormat("HH:mm")
+    val timeFormatFor12Hours = SimpleDateFormat("hh:mm a")
+    val timeIn24HoursFormat = timeFormatFor24Hours.parse(timeIn24Hours)
+    return timeFormatFor12Hours.format(timeIn24HoursFormat)
+}
+
+//selectedDate is in format - 24-06-1997, selectedTime is in format : 6:30 pm
+fun getDateInApiFormat(selectedDateString: String, selectedTimeString: String): String {
+    var calendar = Calendar.getInstance()
+    val apiDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    apiDateFormat.timeZone = TimeZone.getTimeZone("GMT")
+    val selectedDateFormat = SimpleDateFormat("dd/MM/yyyy")
+    selectedDateFormat.timeZone = TimeZone.getTimeZone("IST")
+    val selectedTimeFormat = SimpleDateFormat("hh:mm a")
+    val selectedDate = selectedDateFormat.parse(selectedDateString)
+    calendar.time = selectedDate
+    val selectedTime = selectedTimeFormat.parse(selectedTimeString)
+    val selectedTimeCalendar = Calendar.getInstance()
+    selectedTimeCalendar.time = selectedTime
+    calendar.set(Calendar.HOUR_OF_DAY, selectedTimeCalendar.get(Calendar.HOUR_OF_DAY))
+    calendar.set(Calendar.MINUTE, selectedTimeCalendar.get(Calendar.MINUTE))
+    return apiDateFormat.format(calendar.time)
+}

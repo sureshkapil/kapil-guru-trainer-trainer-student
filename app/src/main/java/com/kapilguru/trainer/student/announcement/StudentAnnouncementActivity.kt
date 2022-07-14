@@ -1,5 +1,7 @@
 package com.kapilguru.trainer.student.announcement
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
@@ -16,10 +18,11 @@ import com.kapilguru.trainer.PARAM_IS_FROM
 import com.kapilguru.trainer.R
 import com.kapilguru.trainer.databinding.ActivityStudentAnnouncementBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
+import com.kapilguru.trainer.student.StudentBaseActivity
 import com.kapilguru.trainer.student.announcement.viewModel.StudentAnnouncementViewModel
 import com.kapilguru.trainer.student.announcement.viewModel.StudentAnnouncementViewModelFactory
 
-class StudentAnnouncementActivity : BaseActivity() {
+class StudentAnnouncementActivity : StudentBaseActivity() {
     val TAG = "AnnouncementActivity"
     lateinit var fragmentAdapter: StudentAnnouncementFragmentAdapter
     lateinit var binding: ActivityStudentAnnouncementBinding
@@ -27,7 +30,7 @@ class StudentAnnouncementActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_announcement)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_student_announcement)
         viewModel = ViewModelProvider(this, StudentAnnouncementViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), application)).get(StudentAnnouncementViewModel::class.java)
         binding.lifecycleOwner = this
         val fragmentManager = supportFragmentManager
@@ -50,7 +53,6 @@ class StudentAnnouncementActivity : BaseActivity() {
                 tabBackGroundColors(tab, true)
                 binding.viewPager.currentItem = tab!!.position
             }
-
         })
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -100,6 +102,13 @@ class StudentAnnouncementActivity : BaseActivity() {
                 tabIcon!!.drawable.setTint(Color.BLUE)
                 headerTitle!!.setTextColor(ContextCompat.getColor(view.context, R.color.blue))
             }
+        }
+    }
+
+    companion object {
+        fun startActivity(activity: Activity) {
+            val intent = Intent(activity, StudentAnnouncementActivity::class.java)
+            activity.startActivity(intent)
         }
     }
 }

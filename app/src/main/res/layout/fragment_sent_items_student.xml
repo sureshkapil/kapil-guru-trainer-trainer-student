@@ -28,6 +28,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/sent_items_item_student" />
 
-
+        <include
+            android:id="@+id/noDataAvailable"
+            layout="@layout/layout_no_data_available"/>
     </FrameLayout>
 </layout>

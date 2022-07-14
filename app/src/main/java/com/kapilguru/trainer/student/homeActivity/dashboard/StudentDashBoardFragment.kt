@@ -1,5 +1,6 @@
 package com.kapilguru.trainer.student.homeActivity.dashboard;
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -26,6 +27,10 @@ import com.kapilguru.trainer.databinding.StudentFragmentDashBoardBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.student.DialogFragmentCustom
+import com.kapilguru.trainer.student.allExamsList.StudentAllExamsListActivity
+import com.kapilguru.trainer.student.announcement.StudentAnnouncementActivity
+import com.kapilguru.trainer.student.certificate.StudentCertificateListActivity
+import com.kapilguru.trainer.student.homeActivity.StudentHomeActivity
 import com.kapilguru.trainer.student.homeActivity.models.CreateLeadRequest
 import com.kapilguru.trainer.student.homeActivity.models.StudentDashBoardCustomTabModel
 import com.kapilguru.trainer.student.homeActivity.models.StudentDashBoardItem
@@ -72,7 +77,6 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         setStudyMaterials()
         setGalleryRecycler()
         setTestimonials()
-
         return viewBinding.root
     }
     
@@ -140,8 +144,6 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
                 homeScreenViewModel.createLeadApi()
             }
         }
-
-
 
         homeScreenViewModel.createLeadError.observe(viewLifecycleOwner) { it ->
             Toast.makeText(activity, it.toString(), Toast.LENGTH_LONG).show()
@@ -382,9 +384,12 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
 
     override fun onItemClick(position: Int) {
         when (position) {
-            0 -> navigateToAllDemos()
-            1 -> navigateToAllWebinars()
+            0 -> (activity as StudentHomeActivity).navigateToClassRooms()
+            1 -> navigateToAllDemos()
             2 -> onPopularTrendingClick()
+            3 -> StudentCertificateListActivity.launchActivity(requireActivity())
+            4 -> startActivity(Intent(activity, StudentAllExamsListActivity::class.java))
+            5 -> StudentAnnouncementActivity.startActivity(requireActivity())
          /*   3 -> (activity as StudentHomeActivity).navigateToClassRooms()
             4 -> (activity as HomeActivity).navigateToUpcoming()
             5 -> startActivity(Intent(activity, DemoLectureActivity::class.java))

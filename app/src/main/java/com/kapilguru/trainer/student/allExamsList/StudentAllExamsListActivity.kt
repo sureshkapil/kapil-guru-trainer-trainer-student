@@ -12,6 +12,7 @@ import com.kapilguru.trainer.databinding.ActivityStudentAllExamsListBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
+import com.kapilguru.trainer.student.StudentBaseActivity
 import com.kapilguru.trainer.student.exam.StudentViewExamResult
 import com.kapilguru.trainer.student.exam.model.StudentQuestionsRequest
 import com.kapilguru.trainer.student.exam.questionPaper.StudentQuestionPaperNewActivity
@@ -19,7 +20,7 @@ import com.kapilguru.trainer.student.myClassRoomDetails.exam.StudentExamListAdap
 import com.kapilguru.trainer.student.myClassRoomDetails.exam.model.StudentQuestionPaperListItemResData
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 
-class StudentAllExamsListActivity : BaseActivity(), StudentExamListAdapter.ExamItemClickListener {
+class StudentAllExamsListActivity : StudentBaseActivity(), StudentExamListAdapter.ExamItemClickListener {
 
     lateinit var binding: ActivityStudentAllExamsListBinding
     lateinit var progressDialog: CustomProgressDialog

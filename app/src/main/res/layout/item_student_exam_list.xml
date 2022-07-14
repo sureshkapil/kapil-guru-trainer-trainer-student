@@ -286,7 +286,7 @@
                 android:id="@+id/actv_total_marks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/total_questions"
+                android:text="@string/total_marks"
                 android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatTextView

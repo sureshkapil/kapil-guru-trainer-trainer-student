@@ -941,10 +941,14 @@
     <string name="contact_no_man">contact No *</string>
     <string name="email_id">Email ID</string>
     <string name="contact">Contact</string>
-    <string name="total_offline_enquiries">Total Offline Enquiries - %d</string>
+    <string name="offline_enquiries">Offline Enquiries - %d</string>
+    <string name="kapil_guru_enquiries">Kapil guru Enquiries - %d</string>
     <string name="view_contact">View Contact</string>
     <string name="todays_followup">Today\'s Followup - %d</string>
     <string name="follow_up_date">Followup Date</string>
+    <string name="follow_up_date_man">Followup Date *</string>
+    <string name="follow_up_time">Followup Time</string>
+    <string name="follow_up_time_man">Followup Time *</string>
     <string name="comment">Comment</string>
     <string name="enter_comment">Enter Comment</string>
     <string name="followup_date">Follow Up Date</string>
@@ -981,5 +985,8 @@
         <item>Status 3</item>
         <item>Status 4</item>
     </string-array>
+    <string name="session_logout_txt">Invalid Session, Please press \"OK\" to Logout</string>
+    <string name="inbox_empty">Inbox empty</string>
+    <string name="no_sent_messages">No Sent Messages</string>
 
 </resources>

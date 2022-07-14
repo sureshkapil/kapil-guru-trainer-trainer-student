@@ -26,7 +26,7 @@
         <activity
             android:name=".addStudent.AllMyStudents"
             android:exported="true"
-            android:theme="@style/customParentNoActionBarStyle"/>
+            android:theme="@style/customParentNoActionBarStyle" />
         <activity
             android:name=".enquiries.addOfflineEnquiry.AddOfflineEnquiryActivity"
             android:exported="false"
@@ -374,6 +374,16 @@
             android:theme="@style/Theme.KapilStudent" />
         <activity
             android:name=".student.profileInfo.StudentProfileDetailsActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+
+        <activity
+            android:name=".student.announcement.StudentAnnouncementActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.allExamsList.StudentAllExamsListActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.certificate.StudentCertificateListActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
     </application>
 

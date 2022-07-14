@@ -17,9 +17,7 @@ import com.kapilguru.trainer.announcement.viewModel.AnnouncementViewModel
 import com.kapilguru.trainer.databinding.FragmentInboxBinding
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.kapilguru.trainer.student.announcement.inbox.data.StudentInboxItem
 
 class InboxList : Fragment(), InboxListTOAdapters {
 
@@ -28,16 +26,8 @@ class InboxList : Fragment(), InboxListTOAdapters {
     lateinit var adapter: InboxRecyclerAdapter
     lateinit var dialog: CustomProgressDialog
 
-    private var param1: String? = null
-    private var param2: String? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
         dialog = CustomProgressDialog(requireContext())
         getInboxResponce()
         observeViewModelData()
@@ -59,14 +49,39 @@ class InboxList : Fragment(), InboxListTOAdapters {
                 Status.SUCCESS -> {
                     dialog.dismissLoadingDialog()
                     val response = it.data?.data
-                    adapter.setData(response as ArrayList<InboxItem>)
-                    if (response.isNotEmpty()) response[0].id?.let { it1 -> viewModel.updateLastMessageId(it1) }
+                    checkAndSetAdapterData(response)
+                    if (response?.isNotEmpty() == true) response[0].id?.let { it1 -> viewModel.updateLastMessageId(it1) }
                 }
                 Status.ERROR -> {
                     dialog.dismissLoadingDialog()
                 }
             }
         })
+    }
+
+    private fun checkAndSetAdapterData(inboxList : List<InboxItem>?){
+        inboxList?.let { inboxListNotNull ->
+            if(inboxListNotNull.isNotEmpty()){
+                adapter.setData(inboxListNotNull as ArrayList<InboxItem>)
+                showOrHideEmptyView(false)
+            }else{
+                showOrHideEmptyView(true)
+            }
+        }?: kotlin.run {
+            showOrHideEmptyView(true)
+        }
+    }
+
+    private fun showOrHideEmptyView(shouldShowEmptyView : Boolean){
+        if(shouldShowEmptyView){
+            binding.rvInbox.visibility = View.GONE
+            binding.noDataAvailable.tvNoData.visibility = View.VISIBLE
+            binding.noDataAvailable.tvNoData.text = getString(R.string.inbox_empty)
+            binding.noDataAvailable.tvNoData.setTextColor(resources.getColor(R.color.black,null))
+        }else{
+            binding.rvInbox.visibility = View.VISIBLE
+            binding.noDataAvailable.tvNoData.visibility = View.GONE
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
