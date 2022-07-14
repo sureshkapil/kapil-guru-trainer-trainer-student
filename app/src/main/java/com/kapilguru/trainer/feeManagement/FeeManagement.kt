@@ -14,6 +14,7 @@ import com.kapilguru.trainer.ApiHelper
 import com.kapilguru.trainer.BaseActivity
 import com.kapilguru.trainer.R
 import com.kapilguru.trainer.databinding.ActivityFeeManagementBinding
+import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagement
 import com.kapilguru.trainer.network.RetrofitNetwork
 
 class FeeManagement : BaseActivity() {

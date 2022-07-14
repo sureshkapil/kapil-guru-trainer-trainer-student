@@ -44,16 +44,16 @@ class FeeRecordsFragment : Fragment() {
         viewModel.studentFeeRecordsResponse.observe(viewLifecycleOwner, androidx.lifecycle.Observer { response ->
             when (response.status) {
                 Status.LOADING -> {
-                    progressDialog.showLoadingDialog()
+
                 }
                 Status.SUCCESS -> {
                     response?.data?.studentFeeRecordsResponseApi?.let { it ->
                         addDataToAdapter(it)
                     }
-                    progressDialog.dismissLoadingDialog()
+
                 }
                 Status.ERROR -> {
-                    progressDialog.dismissLoadingDialog()
+
                 }
             }
         })
