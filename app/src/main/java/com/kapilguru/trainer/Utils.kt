@@ -166,6 +166,12 @@ const val PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL: String = "param_is_from_das
 const val PARAM_VIDEO_COUNT: String = "param_video_count"
 const val PARAM_DOCUMENT_COUNT: String = "param_document_count"
 const val PARAM_TEXT_PAPER_COUNT: String = "param_text_paper_count"
+const val PARAM_FEE_INSERTED_ID: String = "param_fee_inserted_id"
+const val PARAM_FEE_STUDENT_DETAILS: String = "param_fee_student_details"
+const val PARAM_FEE_RECORDS: String = "param_fee_records"
+const val PARAM_PAID_RECORDS: String = "param_paid_records"
+const val PARAM_FEE_FOLLOWUPS: String = "param_fee_followups"
+const val PARAM_ADD_INSTALLMENTS: String = "param_add_installments"
 
 
 fun showAppToast(context: Context, text: String) {

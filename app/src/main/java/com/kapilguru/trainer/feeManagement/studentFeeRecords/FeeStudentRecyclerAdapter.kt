@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kapilguru.trainer.databinding.OfflineStudentListItemBinding
 import com.kapilguru.trainer.databinding.StudentFeeRecordItemBinding
 
-class FeeStudentRecyclerAdapter : RecyclerView.Adapter<FeeStudentRecyclerAdapter.Holder>() {
+class FeeStudentRecyclerAdapter(var onItemClick:OnItemClick) : RecyclerView.Adapter<FeeStudentRecyclerAdapter.Holder>() {
 
     var listItem: ArrayList<StudentFeeRecordsResponseApi> = ArrayList()
         set(value) {
@@ -16,6 +16,11 @@ class FeeStudentRecyclerAdapter : RecyclerView.Adapter<FeeStudentRecyclerAdapter
 
     inner class Holder(courseListItem: StudentFeeRecordItemBinding) : RecyclerView.ViewHolder(courseListItem.root) {
         var binding = courseListItem
+        init {
+            binding.cardView.setOnClickListener {
+                onItemClick.onCardClick(listItem[absoluteAdapterPosition])
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -29,5 +34,8 @@ class FeeStudentRecyclerAdapter : RecyclerView.Adapter<FeeStudentRecyclerAdapter
 
     override fun getItemCount(): Int = listItem.size
 
+    interface OnItemClick {
+        fun onCardClick(studentFeeRecordsResponseApi:StudentFeeRecordsResponseApi)
+    }
 
 }

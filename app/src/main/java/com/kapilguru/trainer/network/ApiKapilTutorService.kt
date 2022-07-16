@@ -49,6 +49,7 @@ import com.kapilguru.trainer.exams.scheduledExams.ScheduledExamsAPI
 import com.kapilguru.trainer.faculty.*
 import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementResponse
 import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementRequest
+import com.kapilguru.trainer.feeManagement.addFeeManagement.InstallmentsListResponse
 import com.kapilguru.trainer.feeManagement.feeFollowUps.FeeFollowUpResponse
 import com.kapilguru.trainer.feeManagement.paidRecords.StudentFeePaidResponse
 import com.kapilguru.trainer.feeManagement.studentFeeRecords.StudentFeeRecordsResponse
@@ -770,7 +771,9 @@ interface ApiKapilTutorService {
     suspend fun getStudentFeeFollowUps(@Path("trainerId") trainerId: String) : FeeFollowUpResponse
 
 
-
     @POST("trainer/addFeeDetails")
     suspend fun addFeeDetailsRequest(@Body addFeeManagementRequest: AddFeeManagementRequest) : AddFeeManagementResponse
+
+    @GET("trainer/fee_installments_map/fee_id/{insertId}")
+    suspend fun getInstallmentList(@Path("insertId") insertId: String) : InstallmentsListResponse
 }

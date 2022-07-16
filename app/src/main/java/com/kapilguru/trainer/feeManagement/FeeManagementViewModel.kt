@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.material.textfield.TextInputEditText
 import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementResponse
 import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementRequest
+import com.kapilguru.trainer.feeManagement.addFeeManagement.InstallmentsListResponse
 import com.kapilguru.trainer.feeManagement.feeFollowUps.FeeFollowUpResponse
 import com.kapilguru.trainer.feeManagement.feeFollowUps.FeeFollowUpResponseApi
 import com.kapilguru.trainer.feeManagement.paidRecords.StudentFeePaidResponse
@@ -48,7 +49,9 @@ class FeeManagementViewModel(private val repository: FeeManagementRepository, ap
     var addFeeManagementRequest: MutableLiveData<AddFeeManagementRequest> = MutableLiveData(AddFeeManagementRequest())
 
     var addFeeDetailsResponse: MutableLiveData<ApiResource<AddFeeManagementResponse>> = MutableLiveData()
-    var errorMessage:MutableLiveData<String> = MutableLiveData()
+
+    var errorMessage: MutableLiveData<String> = MutableLiveData()
+    var installmentListResponse: MutableLiveData<ApiResource<InstallmentsListResponse>> = MutableLiveData()
 
     init {
         val pref = StorePreferences(application)
@@ -116,14 +119,14 @@ class FeeManagementViewModel(private val repository: FeeManagementRepository, ap
     }
 
 
-    fun validateUserInfo():Boolean {
+    fun validateUserInfo(): Boolean {
         var isValid = true
         when {
             addFeeManagementRequest.value?.name.isNullOrEmpty() -> {
                 errorMessage.value = "Please enter Name"
                 isValid = false
             }
-            addFeeManagementRequest.value?.name.toString().trim().length<4 -> {
+            addFeeManagementRequest.value?.name.toString().trim().length < 4 -> {
                 errorMessage.value = "Student Name should contain at least of 4 characters"
                 isValid = false
             }
@@ -151,21 +154,21 @@ class FeeManagementViewModel(private val repository: FeeManagementRepository, ap
                 errorMessage.value = "Please enter total Amount"
                 isValid = false
             }
-            paidAmount!!.toDouble() >totalAmount!!.toDouble() -> {
+            paidAmount!!.toDouble() > totalAmount!!.toDouble() -> {
                 errorMessage.value = "Please Amount can't be grater than total Amount"
                 isValid = false
             }
-            addFeeManagementRequest.value?.dueDate.toString().trim().isEmpty() -> {
-                errorMessage.value = "Please enter Due Date"
-                isValid = false
-            }
+            /* addFeeManagementRequest.value?.dueDate.toString().trim().isEmpty() -> {
+                 errorMessage.value = "Please enter Due Date"
+                 isValid = false
+             }*/
         }
         return isValid
     }
 
     fun addFeeDetails() {
-            addFeeManagementRequest.value?.tenantId = tenantId
-            addFeeManagementRequest.value?.trainerId = trainerId
+        addFeeManagementRequest.value?.tenantId = tenantId
+        addFeeManagementRequest.value?.trainerId = trainerId
         viewModelScope.launch(Dispatchers.IO) {
             addFeeDetailsResponse.postValue(ApiResource.loading(data = null))
             try {
@@ -178,31 +181,51 @@ class FeeManagementViewModel(private val repository: FeeManagementRepository, ap
         }
     }
 
+    fun getInstallments(insertId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            installmentListResponse.postValue(ApiResource.loading(data = null))
+            try {
+                installmentListResponse.postValue(ApiResource.success(data = repository.getInstallmentList(insertId)))
+            } catch (exception: HttpException) {
+                installmentListResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            } catch (exception: IOException) {
+                installmentListResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            }
+        }
+    }
+
 
     companion object {
-       /* @JvmStatic
-        @BindingAdapter("textInputDoubtleToString")
-        fun TextInputEditText.doubleToString(data: Double) {
-            this.setText(data.toString())
-        }
+         @JvmStatic
+         @BindingAdapter("textInputDoubleToString")
+         fun TextInputEditText.doubleToString(data: Double?) {
+             data?.let {
+                 this.setText(it.toString())
+             }
 
-        @JvmStatic
-        @InverseBindingAdapter(attribute = "textInputDoubtleToString", event = "android:textAttrChanged")
-        fun StringToDouble(data: TextInputEditText): Double {
-            return data.text.toString().toDouble()
-        }*/
+         }
 
-       /* @JvmStatic
-        @BindingAdapter("textInputIntToString")
-        fun TextInputEditText.InttoString(data: Int) {
-            this.setText(data.toString())
-        }
+         @JvmStatic
+         @InverseBindingAdapter(attribute = "textInputDoubleToString", event = "android:textAttrChanged")
+         fun StringToDouble(data: TextInputEditText): Double {
+             return if(!data.text.isNullOrBlank()) {
+                 data.text.toString().toDouble()
+             } else {
+                 0.0
+             }
+         }
 
-        @JvmStatic
-        @InverseBindingAdapter(attribute = "textInputIntToString", event = "android:textAttrChanged")
-        fun StringToInt(data: TextInputEditText): Int {
-            return data.text.toString().toInt()
-        }*/
+        /* @JvmStatic
+         @BindingAdapter("textInputIntToString")
+         fun TextInputEditText.InttoString(data: Int) {
+             this.setText(data.toString())
+         }
+
+         @JvmStatic
+         @InverseBindingAdapter(attribute = "textInputIntToString", event = "android:textAttrChanged")
+         fun StringToInt(data: TextInputEditText): Int {
+             return data.text.toString().toInt()
+         }*/
 
     }
 

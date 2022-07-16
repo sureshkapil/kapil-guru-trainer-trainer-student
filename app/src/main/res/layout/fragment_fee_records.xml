@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/student_fee_record_item">
+            tools:listitem="@layout/adapter_installment_list_item">
 
         </androidx.recyclerview.widget.RecyclerView>
 

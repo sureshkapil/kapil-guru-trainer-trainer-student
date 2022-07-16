@@ -7,7 +7,7 @@ data class AddFeeManagementRequest(
     @SerializedName("tenant_id") var tenantId: Int? = 0,
     @SerializedName("total_fee") var totalFee: String? = "",
     @SerializedName("name") var name: String? = "",
-    @SerializedName("due_date") var dueDate: String? = "",
+//    @SerializedName("due_date") var dueDate: String? = "",
     @SerializedName("date_of_joining") var dateOfJoining: String? = "",
     @SerializedName("course") var course: String? = "",
     @SerializedName("paid_fee") var paidFee: String? = "",

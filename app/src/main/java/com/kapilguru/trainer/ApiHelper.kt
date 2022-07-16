@@ -473,4 +473,6 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun getStudentFeeFollowUps(trainerId: String) = apiKapilTutorService.getStudentFeeFollowUps(trainerId)
 
     suspend fun addFeeDetailsRequest(addFeeDetailsRequest: AddFeeManagementRequest) = apiKapilTutorService.addFeeDetailsRequest(addFeeDetailsRequest)
+
+    suspend fun getInstallmentList(insertId: String) = apiKapilTutorService.getInstallmentList(insertId)
 }

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.feeManagement.addFeeManagement.InstallmentsListResponseApi" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            style="@style/AppCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="12dp">
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_vertical_50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".5" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/installement"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/installmentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/installement"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/due"
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_vertical_50"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toBottomOf="@id/installmentId">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/due_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_calendar"
+                        android:focusable="false"
+                        android:backgroundTint="@color/white_smoke"
+                        android:hint="@string/due_date"
+                        android:inputType="text"
+                        app:editDateToString="@{model.dueDate}"
+                        android:textColorHint="@android:color/black"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/paidFee"
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    app:layout_constraintStart_toEndOf="@id/guideline_vertical_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toBottomOf="@id/installmentId">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/paid_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/rupee_icon"
+                        android:backgroundTint="@color/white_smoke"
+                        android:hint="@string/paid_fee"
+                        android:inputType="numberDecimal"
+                        app:textInputDoubleToString="@={model.paidFee}"
+                        android:textColorHint="@android:color/black"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/paid"
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_vertical_50"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toBottomOf="@id/due">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/paid_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_calendar"
+                        android:focusable="false"
+                        android:backgroundTint="@color/white_smoke"
+                        android:hint="@string/paid_date"
+                        android:inputType="text"
+                        app:editDateToString="@{model.paidDate}"
+                        android:textColorHint="@android:color/black"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/patment_mode"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/spinner_bg"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/payment_mode"
+                    app:layout_constraintStart_toEndOf="@id/guideline_vertical_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintVertical_bias="0.5"
+                    app:layout_constraintBottom_toTopOf="@id/update"
+                    app:layout_constraintTop_toBottomOf="@id/paidFee"/>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/trans"
+                    style="@style/MyAppEditTextViewStyle_new"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:translationZ="10dp"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_vertical_50"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintTop_toBottomOf="@id/paid">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/transaction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@null"
+                        android:focusable="false"
+                        android:backgroundTint="@color/white_smoke"
+                        android:hint="@string/transactionId"
+                        android:inputType="text"
+                        app:editDateToString="@{model.paidDate}"
+                        android:textColorHint="@android:color/black"
+                        android:textSize="15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/update"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/blue"
+                    android:text="@string/update"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/guideline_vertical_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintVertical_bias="0.5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/patment_mode" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
