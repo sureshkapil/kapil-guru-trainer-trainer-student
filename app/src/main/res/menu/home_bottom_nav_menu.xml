@@ -4,24 +4,24 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/nav_home_selector"
+        android:icon="@drawable/ic_home"
         android:title="@string/title_home" />
 
-
+<!--    android:icon="@drawable/nav_profile_selector"-->
     <item android:id="@+id/navigation_profile"
-        android:icon="@drawable/nav_profile_selector"
+        android:icon="@drawable/ic_profile_uncheked"
         android:iconTint="@color/black_222222"
         android:title="@string/title_profile"/>
 
     <item android:id="@+id/navigation_myclassroom"
-        android:icon="@drawable/nav_my_class_room_selector"
+        android:icon="@drawable/ic_my_class_rooms_checked"
         android:title="@string/title_myclassroom"/>
 
     <item android:id="@+id/navigation_referandearn"
-        android:icon="@drawable/nav_refer_selector"
-        android:title="@string/title_referandearn"/>
+        android:icon="@drawable/ic_baseline_connect_without_contact_24"
+        android:title="@string/contact_us"/>
 
     <item android:id="@+id/navigation_howtouse"
-        android:icon="@drawable/nav_use_selector"
+        android:icon="@drawable/ic_use_checked"
         android:title="@string/title_howtouse"/>
 </menu>

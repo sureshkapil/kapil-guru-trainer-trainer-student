@@ -9,19 +9,35 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+<!--        app:itemBackground="@drawable/drawable_selector"-->
+<!--     <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--         android:id="@+id/bottom_navigation_view"-->
+<!--         android:layout_width="match_parent"-->
+<!--         android:layout_height="45dp"-->
+<!--         app:labelVisibilityMode="unlabeled"-->
+<!--         app:itemIconSize="28dp"-->
+<!--         app:layout_constraintBottom_toBottomOf="parent"-->
+<!--         app:layout_constraintLeft_toLeftOf="parent"-->
+<!--         app:layout_constraintRight_toRightOf="parent"-->
+<!--         app:layout_constraintTop_toBottomOf="@id/navigation_host_fragment"-->
+<!--         app:menu="@menu/home_bottom_nav_menu"/>-->
 
-     <com.google.android.material.bottomnavigation.BottomNavigationView
-         android:id="@+id/bottom_navigation_view"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         app:labelVisibilityMode="unlabeled"
-         app:itemIconSize="28dp"
-         app:itemBackground="@drawable/drawable_selector"
-         app:layout_constraintBottom_toBottomOf="parent"
-         app:layout_constraintLeft_toLeftOf="parent"
-         app:layout_constraintRight_toRightOf="parent"
-         app:layout_constraintTop_toBottomOf="@id/navigation_host_fragment"
-         app:menu="@menu/home_bottom_nav_menu"/>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            app:itemIconSize="20dp"
+            app:itemBackground="@drawable/drawable_selector"
+            app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
+            app:itemTextAppearanceInactive="@style/BottomNavigationView"
+            app:itemTextColor="@color/yellow"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navigation_host_fragment"
+            app:menu="@menu/home_bottom_nav_menu" />
 
         <fragment
             android:id="@+id/navigation_host_fragment"

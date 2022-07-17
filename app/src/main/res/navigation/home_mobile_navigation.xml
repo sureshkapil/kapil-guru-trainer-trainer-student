@@ -27,9 +27,9 @@
 
     <fragment
         android:id="@+id/navigation_referandearn"
-        android:name="com.kapilguru.trainer.referandearn.ReferAndEarnFragment"
-        android:label="@string/title_referandearn"
-        tools:layout="@layout/fragment_refer_and_earn"/>
+        android:name="com.kapilguru.trainer.FragmentTrainerGetInTouch"
+        android:label="@string/contact_us"
+        tools:layout="@layout/fragment_trainer_get_in_touch"/>
 
     <fragment
         android:id="@+id/navigation_howtouse"

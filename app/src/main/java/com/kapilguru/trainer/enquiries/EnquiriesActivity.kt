@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.kapilguru.trainer.ApiHelper
 import com.kapilguru.trainer.BaseActivity
+import com.kapilguru.trainer.PARAM_IS_FROM_TODAYS_FOLLOWUP
 import com.kapilguru.trainer.R
 import com.kapilguru.trainer.databinding.ActivityEnquiriesBinding
 import com.kapilguru.trainer.enquiries.viewModel.EnquiriesViewModel
@@ -58,9 +59,16 @@ class EnquiriesActivity : BaseActivity() {
     }
 
     private fun setTabLayoutPosition() {
-        binding.tabLayout.selectTab(binding.tabLayout.getTabAt(0))
-        tabBackGroundColors(binding.tabLayout.getTabAt(0), true)
-        binding.viewPager.currentItem = 0
+        val isfromTodaysFollowups = intent?.getBooleanExtra(PARAM_IS_FROM_TODAYS_FOLLOWUP,false)
+        if(isfromTodaysFollowups!!){
+            binding.tabLayout.selectTab(binding.tabLayout.getTabAt(2))
+            tabBackGroundColors(binding.tabLayout.getTabAt(2), true)
+            binding.viewPager.currentItem = 2
+        } else {
+            binding.tabLayout.selectTab(binding.tabLayout.getTabAt(0))
+            tabBackGroundColors(binding.tabLayout.getTabAt(0), true)
+            binding.viewPager.currentItem = 0
+        }
     }
 
     private fun tabListeners() {

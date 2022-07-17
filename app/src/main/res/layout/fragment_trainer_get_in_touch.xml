@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/main_bg"
+    tools:context=".FragmentTrainerGetInTouch">
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/solid_white_box_edit_bg"
+        android:gravity="top|left"
+        android:hint="@string/Message"
+        android:maxLength="2000"
+        android:padding="10dp"
+        android:text="@={viewModel.createLeadRequest.message}" />
+
+
+    <Button
+        android:id="@+id/send"
+        style="@style/ButtonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/send"
+        android:textColor="@color/white" />
+
+
+    <include
+        android:id="@+id/contact_layout"
+        layout="@layout/trainer_contact_details_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp" />
+
+</LinearLayout>

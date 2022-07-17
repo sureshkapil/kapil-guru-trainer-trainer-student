@@ -108,7 +108,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:layout_weight="0.3"
-                            android:src="@drawable/course_amount_icon" />
+                            android:src="@drawable/rupee_icon" />
 
 
                         <LinearLayout
@@ -120,7 +120,7 @@
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/course_amount"
+                                android:text="@string/live_courses"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 app:fontFamily="@font/rubik_regular" />
@@ -167,7 +167,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:layout_weight="0.3"
-                            android:src="@drawable/course_amount_icon" />
+                            android:src="@drawable/rupee_icon" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -178,7 +178,7 @@
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/referral_amount"
+                                android:text="@string/recorded_courses"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 app:fontFamily="@font/rubik_regular" />
@@ -225,7 +225,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:layout_weight="0.3"
-                            android:src="@drawable/course_amount_icon" />
+                            android:src="@drawable/rupee_icon" />
 
 
                         <LinearLayout
@@ -237,7 +237,7 @@
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/webinar_amount"
+                                android:text="@string/study_material"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 app:fontFamily="@font/rubik_regular" />

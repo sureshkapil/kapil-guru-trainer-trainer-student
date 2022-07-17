@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -20,11 +21,14 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.kapilguru.trainer.*
+import com.kapilguru.trainer.allSubscription.AllSubscriptionActivity
 import com.kapilguru.trainer.announcement.AnnouncementActivity
+import com.kapilguru.trainer.certificate.CertificateActivity
 import com.kapilguru.trainer.login.LoginActivity
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
+import com.kapilguru.trainer.student.homeActivity.dashboard.StudentDashBoardFragment
 import com.kapilguru.trainer.ui.changePassword.model.LogoutRequest
 import com.kapilguru.trainer.ui.earnings.EarningsActivity
 import com.kapilguru.trainer.ui.reports.ReportsActivity
@@ -35,12 +39,14 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.home_custom_action_bar.*
 import kotlinx.android.synthetic.main.home_custom_action_bar.view.*
+import java.security.cert.Certificate
 
 class HomeActivity : AppCompatActivity() {
 
     lateinit var home_drawer_layout: DrawerLayout
     lateinit var homeScreenViewModel: HomeScreenViewModel
     lateinit var dialog: CustomProgressDialog
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +91,27 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(Intent(this, ReportsActivity::class.java))
                     true
                 }
+                R.id.profile -> {
+                    if (home_drawer_layout.isDrawerOpen(GravityCompat.END)) {
+                        home_drawer_layout.closeDrawer(GravityCompat.END)
+                    }
+                    navigateToProfile()
+                    true
+                }
+                R.id.certificates -> {
+                    if (home_drawer_layout.isDrawerOpen(GravityCompat.END)) {
+                        home_drawer_layout.closeDrawer(GravityCompat.END)
+                    }
+                    navigateToCertificate()
+                    true
+                }
+                R.id.subscription -> {
+                    if (home_drawer_layout.isDrawerOpen(GravityCompat.END)) {
+                        home_drawer_layout.closeDrawer(GravityCompat.END)
+                    }
+                    navigateToSubscription()
+                    true
+                }
                 else -> {
                     if (home_drawer_layout.isDrawerOpen(GravityCompat.END)) {
                         home_drawer_layout.closeDrawer(GravityCompat.END)
@@ -99,9 +126,12 @@ class HomeActivity : AppCompatActivity() {
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation_view)
         bottomNavigationView.itemIconTintList = null
         home_drawer_layout = findViewById(R.id.home_container)
-        val navController = findNavController(R.id.navigation_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_profile, R.id.navigation_myclassroom,
-            R.id.navigation_referandearn, R.id.navigation_howtouse))
+        navController = findNavController(R.id.navigation_host_fragment)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_profile, R.id.navigation_myclassroom, R.id.navigation_referandearn, R.id.navigation_howtouse
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
         enableOrDisableBottomNavigationMenuItems()
@@ -224,23 +254,35 @@ class HomeActivity : AppCompatActivity() {
 
     fun askUserPermission() {
         Dexter.withContext(this).withPermissions(
-                Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ).withListener(object : MultiplePermissionsListener {
-                override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
-                    var data = p0?.isAnyPermissionPermanentlyDenied
-                }
-
-                override fun onPermissionRationaleShouldBeShown(p0: MutableList<PermissionRequest>?, p1: PermissionToken?) {
-                    //
-                }
+            Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ).withListener(object : MultiplePermissionsListener {
+            override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
+                var data = p0?.isAnyPermissionPermanentlyDenied
             }
 
-            ).check()
+            override fun onPermissionRationaleShouldBeShown(p0: MutableList<PermissionRequest>?, p1: PermissionToken?) {
+                //
+            }
+        }
+
+        ).check()
     }
 
     override fun onResume() {
         super.onResume()
         homeScreenViewModel.notificationCountApiCall()
+    }
+
+
+    private fun navigateToProfile() {
+        navController.navigate(R.id.navigation_profile)
+    }
+
+    private fun navigateToCertificate() {
+        startActivity(Intent(this, CertificateActivity::class.java))
+    }
+    private fun navigateToSubscription() {
+        startActivity(Intent(this, AllSubscriptionActivity::class.java))
     }
 
 }

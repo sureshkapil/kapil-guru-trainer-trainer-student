@@ -172,6 +172,7 @@ const val PARAM_FEE_RECORDS: String = "param_fee_records"
 const val PARAM_PAID_RECORDS: String = "param_paid_records"
 const val PARAM_FEE_FOLLOWUPS: String = "param_fee_followups"
 const val PARAM_ADD_INSTALLMENTS: String = "param_add_installments"
+const val PARAM_IS_FROM_TODAYS_FOLLOWUP: String = "param_is_from_todays_followup"
 
 
 fun showAppToast(context: Context, text: String) {
