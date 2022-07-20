@@ -1007,6 +1007,7 @@
     <string name="reviews_accepting_string">%s reviews</string>
     <string name="already_purchased_course">Can\'t enroll on already purchased Course</string>
     <string name="request_batch">Request Batch</string>
+    <string name="study_materials">Study Materials</string>
 
 
 </resources>

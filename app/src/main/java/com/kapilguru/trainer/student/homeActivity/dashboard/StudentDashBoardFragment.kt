@@ -1,4 +1,4 @@
-package com.kapilguru.trainer.student.homeActivity.dashboard;
+package com.kapilguru.trainer.student.homeActivity.dashboard
 
 import android.content.Intent
 import android.os.Bundle
@@ -20,8 +20,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.kapilguru.trainer.student.homeActivity.studentGallery.StudentGalleryFragment
-import com.kapilguru.trainer.student.homeActivity.studentTestimonials.StudentTestimonialsFragment
 import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.StudentFragmentDashBoardBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
@@ -35,9 +33,8 @@ import com.kapilguru.trainer.student.homeActivity.liveCourses.LiveCoursesFragmen
 import com.kapilguru.trainer.student.homeActivity.models.CreateLeadRequest
 import com.kapilguru.trainer.student.homeActivity.models.StudentDashBoardCustomTabModel
 import com.kapilguru.trainer.student.homeActivity.models.StudentDashBoardItem
-import com.kapilguru.trainer.student.homeActivity.popularAndTrending.PopularAndTrendingFragment
-import com.kapilguru.trainer.student.homeActivity.recordedFragment.StudentRecordedCoursesFragment
-import com.kapilguru.trainer.student.homeActivity.studentStudyMaterialFragment.StudentStudyMaterialFragment
+import com.kapilguru.trainer.student.homeActivity.studentGallery.StudentGalleryFragment
+import com.kapilguru.trainer.student.homeActivity.studentTestimonials.StudentTestimonialsFragment
 import com.kapilguru.trainer.student.homeActivity.trendingWebinars.StudentTrendingWebinars
 import kotlinx.android.synthetic.main.fragment_student_dash_board.*
 import kotlinx.android.synthetic.main.fragment_student_dash_board.view.*
@@ -46,7 +43,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 
-class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClickedForHome,CardClickListener{
+class StudentDashBoardFragment : Fragment(), StudentDashBoardAdapter.OnItemClickedForHome, CardClickListener {
 
     lateinit var viewBinding: StudentFragmentDashBoardBinding
     lateinit var homeAdapter: StudentDashBoardAdapter
@@ -67,8 +64,10 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.student_fragment_dash_board, container, false)
-        homeScreenViewModel = ViewModelProvider(this, StudentDashBoardViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), requireActivity().application))
-            .get(StudentDashBoardViewModel::class.java)
+        homeScreenViewModel = ViewModelProvider(
+            this,
+            StudentDashBoardViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), requireActivity().application)
+        ).get(StudentDashBoardViewModel::class.java)
         viewBinding.viewModel = homeScreenViewModel
         viewBinding.lifecycleOwner = this
         progressDialog = CustomProgressDialog(requireActivity())
@@ -80,11 +79,11 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         setTestimonials()
         return viewBinding.root
     }
-    
+
     private fun setLiveCourses() {
         val fm: FragmentManager = childFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
-        ft.replace(R.id.popularCourses, LiveCoursesFragment.newInstance(LiveCoursesFragment.LIVE_COURSE))
+        ft.replace(R.id.popularCourses, LiveCoursesFragment.newInstance(LiveCoursesFragment.LIVE_COURSE, true))
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
     }
@@ -92,7 +91,7 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
     private fun setRecordedCourses() {
         val fm: FragmentManager = childFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
-        ft.replace(R.id.recordedCourses, LiveCoursesFragment.newInstance(LiveCoursesFragment.RECORDED_COURSE))
+        ft.replace(R.id.recordedCourses, LiveCoursesFragment.newInstance(LiveCoursesFragment.RECORDED_COURSE, true))
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
     }
@@ -100,7 +99,7 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
     private fun setStudyMaterials() {
         val fm: FragmentManager = childFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
-        ft.replace(R.id.study_material_frame_layout, LiveCoursesFragment.newInstance(LiveCoursesFragment.STUDY_MATERIAL))
+        ft.replace(R.id.study_material_frame_layout, LiveCoursesFragment.newInstance(LiveCoursesFragment.STUDY_MATERIAL, true))
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
     }
@@ -120,7 +119,7 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
     }
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setGetInTouch()
@@ -181,7 +180,7 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
 
     private fun viewModelObserver() {
         homeScreenViewModel.setHomeItems()
-        homeScreenViewModel.listOfHomeItems.observe(HomeScreenFragment@ this) {it ->
+        homeScreenViewModel.listOfHomeItems.observe(HomeScreenFragment@ this) { it ->
             homeAdapter.homeItems = it as ArrayList<StudentDashBoardItem>
         }
 
@@ -191,12 +190,12 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
             // set default Indicator
             setCurrentOnboardingIndicators(0)
         }
-        
+
         homeScreenViewModel.setDashBoardTabsItems()
-        homeScreenViewModel.listOfTabItems.observe(requireActivity()) {it->
+        homeScreenViewModel.listOfTabItems.observe(requireActivity()) { it ->
             setTabUI(it)
         }
-        
+
     }
 
     private fun viewPageAdapterSetup(view: View) {
@@ -279,9 +278,9 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         for (i in 0 until dashBoardTabModel.size) {
             val tab = viewBinding.tabLayout.newTab().setCustomView(setCustomTabView(dashBoardTabModel[i]))
             viewBinding.tabLayout.addTab(tab)
-          /*  if (i == 0) {
-                viewBinding.tabLayout.selectTab(tab)
-            }*/
+            /*  if (i == 0) {
+                  viewBinding.tabLayout.selectTab(tab)
+              }*/
         }
         // Default Tab
         changeSelectedFragment(StudentTrendingWebinars.newInstance())
@@ -298,7 +297,7 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
 
     private fun viewPagerObserver() {
         homeScreenViewModel.setHomeTopItems()
-        homeScreenViewModel.listOfHomeTopItems.observe(HomeScreenFragment@this, androidx.lifecycle.Observer {it->
+        homeScreenViewModel.listOfHomeTopItems.observe(HomeScreenFragment@ this, androidx.lifecycle.Observer { it ->
             homeViewPagerAdapter.setViewPagerData(homeViewPagerItems = it)
         })
     }
@@ -388,15 +387,15 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
             3 -> StudentCertificateListActivity.launchActivity(requireActivity())
             4 -> startActivity(Intent(activity, StudentAllExamsListActivity::class.java))
             5 -> StudentAnnouncementActivity.startActivity(requireActivity())
-         /*   3 -> (activity as StudentHomeActivity).navigateToClassRooms()
-            4 -> (activity as HomeActivity).navigateToUpcoming()
-            5 -> startActivity(Intent(activity, DemoLectureActivity::class.java))
-            6 -> startActivity(Intent(activity, WebinarActivity::class.java))
-            7 -> startActivity(Intent(activity, AllExamsListActivity::class.java))
-            8 -> startActivity(Intent(activity, CertificateListActivity::class.java))
-            9 -> navigateToAllJobOpenings()
-            10 -> startActivity(Intent(activity, AnnouncementActivity::class.java))
-            11 -> startActivity(Intent(activity, EarningsActivity::class.java))*/
+            /*   3 -> (activity as StudentHomeActivity).navigateToClassRooms()
+               4 -> (activity as HomeActivity).navigateToUpcoming()
+               5 -> startActivity(Intent(activity, DemoLectureActivity::class.java))
+               6 -> startActivity(Intent(activity, WebinarActivity::class.java))
+               7 -> startActivity(Intent(activity, AllExamsListActivity::class.java))
+               8 -> startActivity(Intent(activity, CertificateListActivity::class.java))
+               9 -> navigateToAllJobOpenings()
+               10 -> startActivity(Intent(activity, AnnouncementActivity::class.java))
+               11 -> startActivity(Intent(activity, EarningsActivity::class.java))*/
         }
     }
 

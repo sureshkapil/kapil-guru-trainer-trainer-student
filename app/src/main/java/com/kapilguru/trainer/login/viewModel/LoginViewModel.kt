@@ -38,8 +38,8 @@ open class LoginViewModel(private val loginRepository: AllRepo) : ViewModel() {
             /*OLD*/
 //            userName.value = "ritwikpradhan@kapilit.com" //--Student production
 //            password.value = "Kapil@123"
-            userName.value = "ritwikpradhan@kcs-tech.com" //--Trainer
-            password.value = "Kapil@123"
+//            userName.value = "ritwikpradhan@kcs-tech.com" //--Trainer
+//            password.value = "Kapil@123"
 //            userName.value = "nihar.goel4@gmail.com"
 //            password.value = "Nihar@123"
 //            userName.value = "suresh.gundaa@gmail.com" //-- Student

@@ -8,24 +8,27 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.kapilguru.trainer.ApiHelper
 import com.kapilguru.trainer.CustomProgressDialog
 import com.kapilguru.trainer.databinding.FragmentLiveCoursesBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
+import com.kapilguru.trainer.student.LiveCourseListActivity
 import com.kapilguru.trainer.student.courseDetails.StudentCourseDetailsActivity
 import com.kapilguru.trainer.student.homeActivity.dashboard.StudentDashBoardViewModel
 import com.kapilguru.trainer.student.homeActivity.dashboard.StudentDashBoardViewModelFactory
 import com.kapilguru.trainer.student.homeActivity.liveCourses.model.LiveCourseResData
-import kotlin.math.log
 
-class LiveCoursesFragment : Fragment(),LiveCourseAdapter.ClickListener {
+class LiveCoursesFragment : Fragment(), LiveCourseAdapter.ClickListener {
     private val TAG = "LiveCoursesFragment"
     lateinit var binding: FragmentLiveCoursesBinding
     lateinit var viewModel: StudentDashBoardViewModel
     lateinit var adapter: LiveCourseAdapter
     lateinit var progressDialog: CustomProgressDialog
-    lateinit var fragmentType: String
+    lateinit var mFragmentType: String
+    private var mIsForDashBoard = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentLiveCoursesBinding.inflate(inflater, container, false)
@@ -35,19 +38,21 @@ class LiveCoursesFragment : Fragment(),LiveCourseAdapter.ClickListener {
     }
 
     private fun getIntentData() {
-        fragmentType = arguments?.getString(TYPE).toString()
+        mFragmentType = arguments?.getString(TYPE).toString()
+        mIsForDashBoard = arguments?.getBoolean(IS_FOR_DASH_BOARD) ?: false
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initLateInitVariables()
+        setVisibility()
         setClickListeners()
         observeViewModelData()
         getLiveCourses()
     }
 
     private fun initLateInitVariables() {
-        viewModel = ViewModelProvider(this.requireParentFragment(), StudentDashBoardViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), requireActivity().application)).get(
+        viewModel = ViewModelProvider(this.requireActivity(), StudentDashBoardViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), requireActivity().application)).get(
             StudentDashBoardViewModel::class.java
         )
         progressDialog = CustomProgressDialog(requireActivity())
@@ -55,21 +60,38 @@ class LiveCoursesFragment : Fragment(),LiveCourseAdapter.ClickListener {
     }
 
     private fun setAdapter() {
-        adapter = LiveCourseAdapter(this)
+        if(mIsForDashBoard){
+            adapter = LiveCourseAdapter(this, false)
+        }else{
+            adapter = LiveCourseAdapter(this, true)
+        }
         binding.recy.adapter = adapter
+    }
+
+    private fun setVisibility(){
+        if(!mIsForDashBoard){
+            binding.viewAll.visibility = View.GONE
+            binding.recy.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        }else{
+            binding.viewAll.visibility = View.VISIBLE
+            binding.recy.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        }
     }
 
     private fun setClickListeners() {
         binding.viewAll.setOnClickListener {
-            when (fragmentType) {
+            when (mFragmentType) {
                 LIVE_COURSE -> {
                     Log.d(TAG, "setClickListeners: live course view all")
+                    LiveCourseListActivity.launchActivity(requireActivity(), LiveCourseListActivity.LIVE_COURSE)
                 }
                 RECORDED_COURSE -> {
                     Log.d(TAG, "setClickListeners: recorded course view all")
+                    LiveCourseListActivity.launchActivity(requireActivity(), LiveCourseListActivity.RECORDED_COURSE)
                 }
                 STUDY_MATERIAL -> {
                     Log.d(TAG, "setClickListeners: study material view all")
+                    LiveCourseListActivity.launchActivity(requireActivity(), LiveCourseListActivity.STUDY_MATERIAL)
                 }
             }
         }
@@ -96,7 +118,7 @@ class LiveCoursesFragment : Fragment(),LiveCourseAdapter.ClickListener {
         liveCourseList?.let { liveCourseListNotNull ->
             if (liveCourseListNotNull.isNotEmpty()) {
                 var listToShow = ArrayList<LiveCourseResData>()
-                when (fragmentType) {
+                when (mFragmentType) {
                     LIVE_COURSE -> {
                         listToShow = liveCourseListNotNull.filter {
                             it.isRecorded == 0
@@ -126,20 +148,32 @@ class LiveCoursesFragment : Fragment(),LiveCourseAdapter.ClickListener {
 
     companion object {
         const val TYPE = "TYPE"
+        const val IS_FOR_DASH_BOARD = "IS_FOR_DASH_BOARD"
         const val LIVE_COURSE = "LIVE_COURSE"
         const val RECORDED_COURSE = "RECORDED_COURSE"
         const val STUDY_MATERIAL = "STUDY_MATERIAL"
 
-        fun newInstance(fragmentType: String): LiveCoursesFragment {
+        fun newInstance(fragmentType: String, isForDashBoardFragment: Boolean): LiveCoursesFragment {
             val fragment = LiveCoursesFragment()
             val bundle = Bundle()
             bundle.putString(TYPE, fragmentType)
+            bundle.putBoolean(IS_FOR_DASH_BOARD, isForDashBoardFragment)
             fragment.arguments = bundle
             return fragment
         }
     }
 
     override fun onViewMoreClicked(liveCourse: LiveCourseResData) {
-        StudentCourseDetailsActivity.launchActivity(requireActivity(),liveCourse.id.toString())
+        when (liveCourse.isRecorded) {
+            0 -> {
+                StudentCourseDetailsActivity.launchActivity(requireActivity(), liveCourse.id.toString())
+            }
+            1 -> {
+
+            }
+            2 -> {
+
+            }
+        }
     }
 }

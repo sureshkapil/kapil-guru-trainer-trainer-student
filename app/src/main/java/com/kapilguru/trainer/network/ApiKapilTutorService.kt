@@ -780,4 +780,5 @@ interface ApiKapilTutorService {
 
     @GET("trainer/fee_installments_map/fee_id/{insertId}")
     suspend fun getInstallmentList(@Path("insertId") insertId: String) : InstallmentsListResponse
+
 }
