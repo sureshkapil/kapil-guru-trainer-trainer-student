@@ -1,5 +1,6 @@
 package com.kapilguru.trainer.feeManagement.studentFeeRecords
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,11 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.kapilguru.trainer.CustomProgressDialog
+import com.kapilguru.trainer.PARAM_FEE_RECORDS
+import com.kapilguru.trainer.PARAM_FEE_STUDENT_DETAILS
+import com.kapilguru.trainer.PARAM_IS_FROM
 import com.kapilguru.trainer.databinding.FragmentFeeRecordsBinding
 import com.kapilguru.trainer.feeManagement.FeeManagementViewModel
+import com.kapilguru.trainer.feeManagement.addFeeManagement.ActivityAddFeeInstallmentsDetails
 import com.kapilguru.trainer.network.Status
 
-class FeeRecordsFragment : Fragment() {
+class FeeRecordsFragment : Fragment(), FeeStudentRecyclerAdapter.OnItemClick {
 
     lateinit var binding: FragmentFeeRecordsBinding
     val viewModel: FeeManagementViewModel by viewModels({ requireActivity() })
@@ -60,7 +65,7 @@ class FeeRecordsFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        adapter = FeeStudentRecyclerAdapter()
+        adapter = FeeStudentRecyclerAdapter(this)
         binding.recy.adapter = adapter
     }
 
@@ -71,5 +76,14 @@ class FeeRecordsFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = FeeRecordsFragment()
+    }
+
+    override fun onCardClick(studentFeeRecordsResponseApi: StudentFeeRecordsResponseApi) {
+        naviagteToFeeInstallmentDetails(studentFeeRecordsResponseApi)
+    }
+
+    private fun naviagteToFeeInstallmentDetails(studentFeeRecordsResponseApi: StudentFeeRecordsResponseApi) {
+        startActivity(Intent(this.requireContext(), ActivityAddFeeInstallmentsDetails::class.java).putExtra(PARAM_FEE_STUDENT_DETAILS, studentFeeRecordsResponseApi)
+            .putExtra(PARAM_IS_FROM, PARAM_FEE_RECORDS))
     }
 }

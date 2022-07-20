@@ -43,7 +43,6 @@ class FeeFollowUpsFragment : Fragment() {
         addTabSelectListener()
         addTabs()
         registerOnPageChangeCallBacks()
-
     }
 
 

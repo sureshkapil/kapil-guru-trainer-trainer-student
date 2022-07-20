@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kapilguru.trainer.databinding.FeePaidRecordItemBinding
-import com.kapilguru.trainer.databinding.OfflineStudentListItemBinding
-import com.kapilguru.trainer.databinding.StudentFeeRecordItemBinding
 
-class PaidRecordRecyclerAdapter : RecyclerView.Adapter<PaidRecordRecyclerAdapter.Holder>() {
+class PaidRecordRecyclerAdapter(var onItemClick: OnItemClick) : RecyclerView.Adapter<PaidRecordRecyclerAdapter.Holder>() {
 
     var listItem: ArrayList<StudentFeePaidResponseApi> = ArrayList()
         set(value) {
@@ -17,6 +15,11 @@ class PaidRecordRecyclerAdapter : RecyclerView.Adapter<PaidRecordRecyclerAdapter
 
     inner class Holder(courseListItem: FeePaidRecordItemBinding) : RecyclerView.ViewHolder(courseListItem.root) {
         var binding = courseListItem
+        init {
+            binding.cardView.setOnClickListener {
+                onItemClick.onCardClick(listItem[absoluteAdapterPosition])
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -30,5 +33,8 @@ class PaidRecordRecyclerAdapter : RecyclerView.Adapter<PaidRecordRecyclerAdapter
 
     override fun getItemCount(): Int = listItem.size
 
+    interface OnItemClick {
+        fun onCardClick(studentFeePaidResponseApi: StudentFeePaidResponseApi)
+    }
 
 }

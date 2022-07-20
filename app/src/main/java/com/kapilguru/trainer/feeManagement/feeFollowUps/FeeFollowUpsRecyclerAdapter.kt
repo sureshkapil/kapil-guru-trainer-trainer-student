@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kapilguru.trainer.databinding.CoursesListItemBinding
 import com.kapilguru.trainer.databinding.FeeFollowListItemBinding
+import com.kapilguru.trainer.feeManagement.paidRecords.PaidRecordRecyclerAdapter
+import com.kapilguru.trainer.feeManagement.paidRecords.StudentFeePaidResponseApi
 
-class FeeFollowUpsRecyclerAdapter : RecyclerView.Adapter<FeeFollowUpsRecyclerAdapter.Holder>() {
+class FeeFollowUpsRecyclerAdapter(var onItemClick: OnItemClick) : RecyclerView.Adapter<FeeFollowUpsRecyclerAdapter.Holder>() {
 
     var listItem: ArrayList<FeeFollowUpResponseApi> = ArrayList()
         set(value) {
@@ -16,6 +18,11 @@ class FeeFollowUpsRecyclerAdapter : RecyclerView.Adapter<FeeFollowUpsRecyclerAda
 
     inner class Holder(courseListItem: FeeFollowListItemBinding) : RecyclerView.ViewHolder(courseListItem.root) {
         var binding = courseListItem
+        init {
+            binding.cardView.setOnClickListener {
+                onItemClick.onCardClick(listItem[absoluteAdapterPosition])
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -29,5 +36,8 @@ class FeeFollowUpsRecyclerAdapter : RecyclerView.Adapter<FeeFollowUpsRecyclerAda
 
     override fun getItemCount(): Int = listItem.size
 
+    interface OnItemClick {
+        fun onCardClick(feeFollowUpResponseApi: FeeFollowUpResponseApi)
+    }
 
 }

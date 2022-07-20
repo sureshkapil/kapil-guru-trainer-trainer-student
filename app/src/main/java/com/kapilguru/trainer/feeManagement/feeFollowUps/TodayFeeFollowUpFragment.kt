@@ -1,5 +1,6 @@
 package com.kapilguru.trainer.feeManagement.feeFollowUps
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.kapilguru.trainer.CustomProgressDialog
+import com.kapilguru.trainer.*
 import com.kapilguru.trainer.addStudent.coursesStudentList.MyCourseStudentsApi
 import com.kapilguru.trainer.addStudent.studyMaterialStudentsList.MyStudentsRecordedStudyMaterialsResponseApi
 import com.kapilguru.trainer.databinding.FragmentTodayFeeFollowUpBinding
 import com.kapilguru.trainer.feeManagement.FeeManagementViewModel
+import com.kapilguru.trainer.feeManagement.addFeeManagement.ActivityAddFeeInstallmentsDetails
+import com.kapilguru.trainer.feeManagement.paidRecords.PaidRecordRecyclerAdapter
 import com.kapilguru.trainer.network.Status
 
 
@@ -20,7 +23,7 @@ import com.kapilguru.trainer.network.Status
  * Use the [TodayFeeFollowUpFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TodayFeeFollowUpFragment : Fragment() {
+class TodayFeeFollowUpFragment : Fragment(), FeeFollowUpsRecyclerAdapter.OnItemClick  {
 
     lateinit var binding: FragmentTodayFeeFollowUpBinding
     val viewModel: FeeManagementViewModel by viewModels({ requireActivity() })
@@ -50,7 +53,7 @@ class TodayFeeFollowUpFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        adapter = FeeFollowUpsRecyclerAdapter()
+        adapter = FeeFollowUpsRecyclerAdapter(this)
         binding.recy.adapter = adapter
     }
 
@@ -88,6 +91,11 @@ class TodayFeeFollowUpFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = TodayFeeFollowUpFragment()
+    }
+
+    override fun onCardClick(feeFollowUpResponseApi: FeeFollowUpResponseApi) {
+        startActivity(Intent(this.requireContext(), ActivityAddFeeInstallmentsDetails::class.java).putExtra(PARAM_FEE_STUDENT_DETAILS, feeFollowUpResponseApi)
+            .putExtra(PARAM_IS_FROM, PARAM_FEE_FOLLOWUPS))
     }
 
 }

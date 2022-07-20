@@ -21,6 +21,7 @@ import com.kapilguru.trainer.announcement.AnnouncementActivity
 import com.kapilguru.trainer.databinding.FragmentHomeScreenBinding
 import com.kapilguru.trainer.enquiries.EnquiriesActivity
 import com.kapilguru.trainer.exams.ExamsActivity
+import com.kapilguru.trainer.feeManagement.FeeManagement
 import com.kapilguru.trainer.myClassRoomDetails.MyClassDetails
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.studyMaterial.StudyMaterialActivity
@@ -44,7 +45,7 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
     lateinit var todayScheduleAdapter: TodayScheduleAdapter
     lateinit var homeScreenViewModel: HomeScreenViewModel
     lateinit var progressDialog: CustomProgressDialog
-    var viewPagerPosition: Int=0
+    var viewPagerPosition: Int = 0
 
     companion object {
         fun newInstance() = HomeScreenFragment()
@@ -80,6 +81,10 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
 
         setAndClickListenersExploreTestimonials()
 
+        todaysFollowUpFeeClickListener()
+
+        todaysFollowUpEnquiriesClickListener()
+
     }
 
     private fun setAndClickListenersExploreGallery() {
@@ -91,6 +96,18 @@ class HomeScreenFragment : Fragment(), HomeAdapter.OnItemClickedForHome, TodaySc
     private fun setAndClickListenersExploreTestimonials() {
         homeViewBinding.exploreTestimonials.setOnClickListener {
             startActivity(Intent(this.context,TestimonialsActivity::class.java))
+        }
+    }
+
+    private fun todaysFollowUpFeeClickListener() {
+        homeViewBinding.feeRemainderLayout.setOnClickListener {
+            startActivity(Intent(this.context,FeeManagement::class.java).putExtra(PARAM_IS_FROM_TODAYS_FOLLOWUP,true))
+        }
+    }
+
+    private fun todaysFollowUpEnquiriesClickListener() {
+        homeViewBinding.enquiryRemainderLayout.setOnClickListener {
+            startActivity(Intent(this.context,EnquiriesActivity::class.java).putExtra(PARAM_IS_FROM_TODAYS_FOLLOWUP,true))
         }
     }
 

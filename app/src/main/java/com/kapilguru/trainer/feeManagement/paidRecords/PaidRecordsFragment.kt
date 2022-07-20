@@ -1,14 +1,16 @@
 package com.kapilguru.trainer.feeManagement.paidRecords
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.kapilguru.trainer.CustomProgressDialog
+import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.FragmentPaidRecordsBinding
 import com.kapilguru.trainer.feeManagement.FeeManagementViewModel
+import com.kapilguru.trainer.feeManagement.addFeeManagement.ActivityAddFeeInstallmentsDetails
 import com.kapilguru.trainer.feeManagement.studentFeeRecords.StudentFeeRecordsResponseApi
 import com.kapilguru.trainer.network.Status
 
@@ -18,7 +20,7 @@ import com.kapilguru.trainer.network.Status
  * Use the [PaidRecordsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class PaidRecordsFragment : Fragment() {
+class PaidRecordsFragment : Fragment(), PaidRecordRecyclerAdapter.OnItemClick {
 
 
     lateinit var binding: FragmentPaidRecordsBinding
@@ -66,7 +68,7 @@ class PaidRecordsFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        adapter = PaidRecordRecyclerAdapter()
+        adapter = PaidRecordRecyclerAdapter(this)
         binding.recy.adapter = adapter
     }
 
@@ -82,5 +84,10 @@ class PaidRecordsFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) = PaidRecordsFragment()
+    }
+
+    override fun onCardClick(studentFeePaidResponseApi: StudentFeePaidResponseApi) {
+        startActivity(Intent(this.requireContext(), ActivityAddFeeInstallmentsDetails::class.java).putExtra(PARAM_FEE_STUDENT_DETAILS, studentFeePaidResponseApi)
+            .putExtra(PARAM_IS_FROM, PARAM_PAID_RECORDS))
     }
 }

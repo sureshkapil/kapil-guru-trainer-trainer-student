@@ -24,10 +24,14 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".StudentGalleryActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.earnings.earningsDetails.NewTrainerEarningsDetailsActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".certificate.CertificateActivity"
+            android:exported="true"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".feeManagement.addFeeManagement.ActivityAddFeeInstallmentsDetails"
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity

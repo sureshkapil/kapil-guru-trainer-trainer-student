@@ -1,9 +1,9 @@
 package com.kapilguru.trainer.feeManagement.addFeeManagement
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.ActivityAddFeeManagementBinding
@@ -46,10 +46,10 @@ class AddFeeManagement : BaseActivity() {
                 }
                 Status.SUCCESS -> {
                     progressDialog.dismissLoadingDialog()
-                  /*  viewModel.profileMutLiveData.value = it?.data?.data?.get(0)
-                    studentProfileData = viewModel.profileMutLiveData.value
-                    populateViews()
-                    viewModel.getCountryList()*/
+                    it.data?.addFeeDetailsResponseApi?.insertId?.let {
+                        naviagateToActivityInstallment(it)
+                    }
+
                 }
                 Status.ERROR -> {
                     progressDialog.dismissLoadingDialog()
@@ -59,6 +59,11 @@ class AddFeeManagement : BaseActivity() {
                 }
             }
         })
+    }
+
+    private fun naviagateToActivityInstallment(intsertedId: Int) {
+        startActivity(Intent(this,ActivityAddFeeInstallmentsDetails::class.java).putExtra(PARAM_FEE_INSERTED_ID,intsertedId.toString())
+            .putExtra(PARAM_IS_FROM,PARAM_ADD_INSTALLMENTS))
     }
 
     private fun showError(error: String) {
@@ -107,7 +112,7 @@ class AddFeeManagement : BaseActivity() {
             mycalendar.show(supportFragmentManager, "datePicker");
         }
 
-        binding.dueDate.setOnClickListener {
+        /*binding.dueDate.setOnClickListener {
         val myCalendar=  CustomCalendar(object : CalendarSelectionListener {
                 override fun onDateSet(calendarSelectedDate: Calendar) {
                     val abc = calendarSelectedDate.convertDateAndTimeToApiDataWithoutT()
@@ -117,7 +122,7 @@ class AddFeeManagement : BaseActivity() {
                 }
             },false)
             myCalendar.show(supportFragmentManager, "datePicker",);
-        }
+        }*/
 
     }
 

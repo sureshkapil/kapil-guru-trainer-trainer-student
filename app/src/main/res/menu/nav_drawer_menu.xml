@@ -6,7 +6,6 @@
     <item android:id="@+id/earnings" android:title="@string/earnings"/>
     <item android:id="@+id/certificates" android:title="@string/certificates"/>
     <item android:id="@+id/subscription" android:title="@string/subscription"/>
-    <item android:id="@+id/social_media_links" android:title="@string/social_media_links"/>
     <item android:id="@+id/promotional_images" android:title="@string/promotional_images"/>
     <item android:id="@+id/share_app" android:title="@string/share_app"/>
     <item android:id="@+id/how_to_use" android:title="@string/how_to_use"/>

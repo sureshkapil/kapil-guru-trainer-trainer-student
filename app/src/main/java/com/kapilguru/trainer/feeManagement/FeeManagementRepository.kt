@@ -23,7 +23,7 @@ open class FeeManagementRepository(private val apiHelper: ApiHelper) {
     suspend fun addFeeDetailsRequest(addFeeDetailsRequest: AddFeeManagementRequest) = apiHelper.addFeeDetailsRequest(addFeeDetailsRequest)
 
 
-
+    suspend fun getInstallmentList(insertId: String) = apiHelper.getInstallmentList(insertId)
 
 
 }

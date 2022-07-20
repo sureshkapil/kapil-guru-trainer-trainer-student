@@ -170,6 +170,13 @@ const val PARAM_TEXT_PAPER_COUNT: String = "param_text_paper_count"
 const val PARAM_BATCHES_LIST = "paramBatchesList"
 const val PARAM_IS_ENROLLED = "paramIsEnrolled"
 const val PAYMENT_PRODUCT_TYPE_COURSE = "batch"
+const val PARAM_FEE_INSERTED_ID: String = "param_fee_inserted_id"
+const val PARAM_FEE_STUDENT_DETAILS: String = "param_fee_student_details"
+const val PARAM_FEE_RECORDS: String = "param_fee_records"
+const val PARAM_PAID_RECORDS: String = "param_paid_records"
+const val PARAM_FEE_FOLLOWUPS: String = "param_fee_followups"
+const val PARAM_ADD_INSTALLMENTS: String = "param_add_installments"
+const val PARAM_IS_FROM_TODAYS_FOLLOWUP: String = "param_is_from_todays_followup"
 
 
 fun showAppToast(context: Context, text: String) {

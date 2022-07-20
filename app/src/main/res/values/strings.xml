@@ -645,6 +645,15 @@
         <item>Trainer</item>
     </string-array>
 
+    <string-array name="payment_mode">
+        <item>Pay Type</item>
+        <item>UPI</item>
+        <item>CASH</item>
+        <item>BANK TRANSFER</item>
+        <item>OFFLINE</item>
+        <item>CHECK</item>
+    </string-array>
+
     <!-- scheduled   Exams  -->
     <string name="duration_days">%d days</string>
     <string name="appeared_students">Appeared Students</string>
@@ -980,6 +989,11 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="due_amount">Due Amount</string>
     <string name="total_earnings">Total Earnings</string>
+    <string name="installement">Installment</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="contact_us">Contact us</string>
+    <string name="live_courses_amount">Live Course Amount</string>
+    <string name="upcoming_feature">upcoming feature</string>
 
     <string-array name="offLineStudentsStatusSpinner">
         <item>Status 1</item>

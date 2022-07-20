@@ -20,6 +20,7 @@ import androidx.databinding.InverseBindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.textfield.TextInputEditText
+import com.kapilguru.trainer.Companion.dateToString
 import com.kapilguru.trainer.Companion.setFolderDrawable
 import com.kapilguru.trainer.Companion.unWrapUTCTimeTOString
 import com.kapilguru.trainer.student.exam.model.StudentQuestionsAndOptions
@@ -706,6 +707,27 @@ object Companion {
                     this.text_value.text = it
                 } ?: run {
                     this.text_value.text = ""
+                }
+            }
+        }
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("editDateToString")
+    fun TextInputEditText.dateToString(endd: String?) {
+        endd?.let { current ->
+            if (current.contains("T", true)) {
+                current.toDateFormat()?.let {
+                    this.setText(it)
+                } ?: run {
+                    this.setText("")
+                }
+            } else {
+                current.toDateFormatWithOutT()?.let {
+                    this.setText(it)
+                } ?: run {
+                    this.setText("")
                 }
             }
         }

@@ -482,4 +482,6 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun updateStudentReview(studentWriteReviewRequest: WriteReviewRequest) = apiKapilTutorService.writeUpdateReview(studentWriteReviewRequest)
 
     suspend fun getImages(packageId : String) = apiKapilTutorService.getImages(packageId)
+
+    suspend fun getInstallmentList(insertId: String) = apiKapilTutorService.getInstallmentList(insertId)
 }

@@ -1,5 +1,6 @@
 package com.kapilguru.trainer.feeManagement.feeFollowUps
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.kapilguru.trainer.CustomProgressDialog
-import com.kapilguru.trainer.R
+import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.FragmentTodayFeeFollowUpBinding
 import com.kapilguru.trainer.feeManagement.FeeManagementViewModel
+import com.kapilguru.trainer.feeManagement.addFeeManagement.ActivityAddFeeInstallmentsDetails
 import com.kapilguru.trainer.network.Status
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,7 +24,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UpComingFeeFollowUpFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UpComingFeeFollowUpFragment : Fragment() {
+class UpComingFeeFollowUpFragment : Fragment(),FeeFollowUpsRecyclerAdapter.OnItemClick {
 
     lateinit var binding: FragmentTodayFeeFollowUpBinding
     val viewModel: FeeManagementViewModel by viewModels({ requireActivity() })
@@ -52,7 +53,7 @@ class UpComingFeeFollowUpFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        adapter = FeeFollowUpsRecyclerAdapter()
+        adapter = FeeFollowUpsRecyclerAdapter(this)
         binding.recy.adapter = adapter
     }
 
@@ -65,6 +66,12 @@ class UpComingFeeFollowUpFragment : Fragment() {
 
     private fun addDataToAdapter(data: List<FeeFollowUpResponseApi>) {
         adapter.listItem = data as ArrayList<FeeFollowUpResponseApi>
+    }
+
+    override fun onCardClick(feeFollowUpResponseApi: FeeFollowUpResponseApi) {
+        startActivity(
+            Intent(this.requireContext(), ActivityAddFeeInstallmentsDetails::class.java).putExtra(PARAM_FEE_STUDENT_DETAILS, feeFollowUpResponseApi)
+            .putExtra(PARAM_IS_FROM, PARAM_FEE_FOLLOWUPS))
     }
 
     companion object {
