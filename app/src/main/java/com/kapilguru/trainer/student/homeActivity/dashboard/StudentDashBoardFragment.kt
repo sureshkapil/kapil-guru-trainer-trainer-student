@@ -31,6 +31,7 @@ import com.kapilguru.trainer.student.allExamsList.StudentAllExamsListActivity
 import com.kapilguru.trainer.student.announcement.StudentAnnouncementActivity
 import com.kapilguru.trainer.student.certificate.StudentCertificateListActivity
 import com.kapilguru.trainer.student.homeActivity.StudentHomeActivity
+import com.kapilguru.trainer.student.homeActivity.liveCourses.LiveCoursesFragment
 import com.kapilguru.trainer.student.homeActivity.models.CreateLeadRequest
 import com.kapilguru.trainer.student.homeActivity.models.StudentDashBoardCustomTabModel
 import com.kapilguru.trainer.student.homeActivity.models.StudentDashBoardItem
@@ -72,7 +73,7 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         viewBinding.lifecycleOwner = this
         progressDialog = CustomProgressDialog(requireActivity())
         dialogFragmentCustom = DialogFragmentCustom()
-        setPopularCourses()
+        setLiveCourses()
         setRecordedCourses()
         setStudyMaterials()
         setGalleryRecycler()
@@ -80,10 +81,10 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         return viewBinding.root
     }
     
-    private fun setPopularCourses() {
+    private fun setLiveCourses() {
         val fm: FragmentManager = childFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
-        ft.replace(R.id.popularCourses, PopularAndTrendingFragment.newInstance())
+        ft.replace(R.id.popularCourses, LiveCoursesFragment.newInstance(LiveCoursesFragment.LIVE_COURSE))
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
     }
@@ -91,7 +92,7 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
     private fun setRecordedCourses() {
         val fm: FragmentManager = childFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
-        ft.replace(R.id.recordedCourses, StudentRecordedCoursesFragment.newInstance())
+        ft.replace(R.id.recordedCourses, LiveCoursesFragment.newInstance(LiveCoursesFragment.RECORDED_COURSE))
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
     }
@@ -99,7 +100,7 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
     private fun setStudyMaterials() {
         val fm: FragmentManager = childFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
-        ft.replace(R.id.study_material_frame_layout, StudentStudyMaterialFragment.newInstance())
+        ft.replace(R.id.study_material_frame_layout, LiveCoursesFragment.newInstance(LiveCoursesFragment.STUDY_MATERIAL))
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
     }
@@ -119,7 +120,6 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
     }
-
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -313,7 +313,6 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         })
     }
 
-
     private fun addTabSelectListener() {
         viewBinding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -381,7 +380,6 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
         ft.commit()
     }
 
-
     override fun onItemClick(position: Int) {
         when (position) {
             0 -> (activity as StudentHomeActivity).navigateToClassRooms()
@@ -434,5 +432,4 @@ class StudentDashBoardFragment  : Fragment(), StudentDashBoardAdapter.OnItemClic
             viewBinding.scDashBoard.fullScroll(View.FOCUS_DOWN)
         })
     }
-    
 }

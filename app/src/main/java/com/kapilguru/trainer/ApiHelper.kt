@@ -1,6 +1,6 @@
 package com.kapilguru.trainer
 
-import com.kapilguru.student.courseDetails.model.BatchRequest
+import com.kapilguru.trainer.ui.courses.view_course.BatchRequest
 import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentRequest
 import com.kapilguru.trainer.addStudent.CheckStudentRequest
 import com.kapilguru.trainer.addStudent.addOnlineStudent.OnlineStudentRequest
@@ -68,6 +68,7 @@ import com.kapilguru.trainer.ui.courses.addcourse.models.AddCourseRequest
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourse
 import com.kapilguru.trainer.ui.courses.batchesList.models.BatchListApiRequest
 import com.kapilguru.trainer.ui.courses.view_course.ContactTrainerRequest
+import com.kapilguru.trainer.ui.courses.view_course.WriteReviewRequest
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.AddGuestLectureRequest
 import com.kapilguru.trainer.ui.otpLogin.model.OTPLoginRequest
 import com.kapilguru.trainer.ui.otpLogin.model.OTPLoginValidateRequest
@@ -351,6 +352,8 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
 
     suspend fun getDashBoardPopularAndTrendingCourses() = apiKapilTutorService.getDashBoardPopularAndTrendingCourses()
 
+    suspend fun getLiveCourses(parentTrainerId : String) = apiKapilTutorService.getLiveCourses(parentTrainerId)
+
     suspend fun getAllPopularAndTrendingCourses() = apiKapilTutorService.getAllPopularAndTrendingCourses()
 
     suspend  fun createLeadApi(createLeadRequest: CreateLeadRequest) = apiKapilTutorService.createLeadApi(createLeadRequest)
@@ -473,4 +476,10 @@ open suspend fun getUsers(loginUserRequest: LoginUserRequest) = apiKapilTutorSer
     suspend fun getStudentFeeFollowUps(trainerId: String) = apiKapilTutorService.getStudentFeeFollowUps(trainerId)
 
     suspend fun addFeeDetailsRequest(addFeeDetailsRequest: AddFeeManagementRequest) = apiKapilTutorService.addFeeDetailsRequest(addFeeDetailsRequest)
+
+    suspend fun isCourseEnrolled(courseId: String) = apiKapilTutorService.isCourseEnrolled(courseId)
+
+    suspend fun updateStudentReview(studentWriteReviewRequest: WriteReviewRequest) = apiKapilTutorService.writeUpdateReview(studentWriteReviewRequest)
+
+    suspend fun getImages(packageId : String) = apiKapilTutorService.getImages(packageId)
 }

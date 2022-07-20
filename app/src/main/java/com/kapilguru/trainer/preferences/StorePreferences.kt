@@ -108,6 +108,10 @@ class StorePreferences(context: Context) {
         get() = prefs.getString(CURRENCY,"").toString()
         set(value) = prefs.edit().putString(CURRENCY,value).apply()
 
+    var parentTrainerId: Int
+        get() = prefs.getInt(PARENT_TRAINER_ID,0)
+        set(value) = prefs.edit().putInt(PARENT_TRAINER_ID,value).apply()
+
     fun clearStorePreferences(){
         prefs.edit().clear().apply()
     }

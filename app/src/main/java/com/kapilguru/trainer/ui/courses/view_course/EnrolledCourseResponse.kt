@@ -1,6 +1,7 @@
-package com.kapilguru.student.courseDetails.model
+package com.kapilguru.trainer.ui.courses.view_course
 
 import com.google.gson.annotations.SerializedName
+import com.kapilguru.trainer.ui.courses.view_course.EnrolledCourseResponseApi
 
 data class EnrolledCourseResponse(
     @SerializedName("data")

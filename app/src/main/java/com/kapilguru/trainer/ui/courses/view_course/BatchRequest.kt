@@ -1,4 +1,4 @@
-package com.kapilguru.student.courseDetails.model
+package com.kapilguru.trainer.ui.courses.view_course
 
 import com.google.gson.annotations.SerializedName
 

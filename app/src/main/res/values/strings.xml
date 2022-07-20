@@ -990,5 +990,9 @@
     <string name="session_logout_txt">Invalid Session, Please press \"OK\" to Logout</string>
     <string name="inbox_empty">Inbox empty</string>
     <string name="no_sent_messages">No Sent Messages</string>
+    <string name="reviews_accepting_string">%s reviews</string>
+    <string name="already_purchased_course">Can\'t enroll on already purchased Course</string>
+    <string name="request_batch">Request Batch</string>
+
 
 </resources>

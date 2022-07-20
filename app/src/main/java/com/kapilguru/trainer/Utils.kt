@@ -76,6 +76,7 @@ const val IS_SUBMITTED_PARAM = "is_submitted_param"
 const val IS_VERIFIED = 1
 const val IS_SUBSCRIBED = "isSubscribed"
 const val TENANT_ID = "tenantId"
+const val PARENT_TRAINER_ID = "parent_trainer_id"
 const val IS_MARKETING = "isMarketing"
 const val IS_KYC_UPDATED = "isKYCUpdated"
 const val IS_ORGANIZATION = "isOrganization"
@@ -166,6 +167,9 @@ const val PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL: String = "param_is_from_das
 const val PARAM_VIDEO_COUNT: String = "param_video_count"
 const val PARAM_DOCUMENT_COUNT: String = "param_document_count"
 const val PARAM_TEXT_PAPER_COUNT: String = "param_text_paper_count"
+const val PARAM_BATCHES_LIST = "paramBatchesList"
+const val PARAM_IS_ENROLLED = "paramIsEnrolled"
+const val PAYMENT_PRODUCT_TYPE_COURSE = "batch"
 
 
 fun showAppToast(context: Context, text: String) {

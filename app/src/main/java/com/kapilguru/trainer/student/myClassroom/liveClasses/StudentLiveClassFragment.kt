@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.kapilguru.student.*
 import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.FragmentStudentLiveClassBinding
 import com.kapilguru.trainer.network.Status

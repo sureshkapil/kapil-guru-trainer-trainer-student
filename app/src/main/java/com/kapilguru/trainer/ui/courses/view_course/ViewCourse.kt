@@ -9,8 +9,6 @@ import android.provider.Settings
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.kapilguru.student.courseDetails.model.EnrolledCourseResponse
-import com.kapilguru.student.courseDetails.review.model.StudentReviewedData
 import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.ActivityViewCourseBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
@@ -34,13 +32,10 @@ class ViewCourse : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_view_course)
-        viewModel = ViewModelProvider(this, CourseDetailsModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE)))
-            .get(CourseDetailsViewModel::class.java)
+        viewModel = ViewModelProvider(this, CourseDetailsModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE))).get(CourseDetailsViewModel::class.java)
         dataBinding.model = viewModel
         viewModel.courseId.value = intent.getStringExtra(PARAM_COURSE_ID)
-
         customActionBarSetUp()
         dataBinding.lifecycleOwner = this
         progressDialog = CustomProgressDialog(this)
@@ -48,7 +43,6 @@ class ViewCourse : BaseActivity() {
         viewModelObservers()
         setRating()
         setCustomActionBarListener()
-
     }
 
     private fun setCustomActionBarListener() {
@@ -66,7 +60,6 @@ class ViewCourse : BaseActivity() {
             })
         }
 
-
         dataBinding.courseDescription.setOnClickListener {
             startActivity(Intent(this, CourseDescriptionActivity::class.java).apply {
                 putExtra(PARAM_COURSE_DESCRIPTION, viewModel.course.value)
@@ -82,9 +75,9 @@ class ViewCourse : BaseActivity() {
         }
 
         dataBinding.review.setOnClickListener {
-          /*  startActivity(Intent(this, ReviewActivity::class.java).apply {
-                putExtra("PARAM_COURSE_ID", courseId)
-            })*/
+            /*  startActivity(Intent(this, ReviewActivity::class.java).apply {
+                  putExtra("PARAM_COURSE_ID", courseId)
+              })*/
         }
 
         dataBinding.btnEnrollOrAddBatch.setOnClickListener {
@@ -100,11 +93,9 @@ class ViewCourse : BaseActivity() {
         }
     }
 
-
     private fun onContactTrainerClick() {
 
     }
-
 
     private fun askForphonePermission() {
         Dexter.withContext(this).withPermissions(Manifest.permission.CALL_PHONE).withListener(object : MultiplePermissionsListener {
@@ -129,19 +120,19 @@ class ViewCourse : BaseActivity() {
     }
 
     private fun contactTrainerDialog() {
-       /* val fm: FragmentManager = supportFragmentManager
-        val contactTrainerDialogFragment = ContactTrainerDialogFragment()
-        val bundle = Bundle()
-        bundle.putString(PARAM_CONTACT_TRAINER_NUMBER, viewModel.course.value?.contact)
-        bundle.putString(PARAM_CONTACT_TRAINER_NAME, viewModel.course.value?.trainerName)
-        contactTrainerDialogFragment.arguments = bundle
-        contactTrainerDialogFragment.show(fm, "contact_trainer_dialog")*/
+        /* val fm: FragmentManager = supportFragmentManager
+         val contactTrainerDialogFragment = ContactTrainerDialogFragment()
+         val bundle = Bundle()
+         bundle.putString(PARAM_CONTACT_TRAINER_NUMBER, viewModel.course.value?.contact)
+         bundle.putString(PARAM_CONTACT_TRAINER_NAME, viewModel.course.value?.trainerName)
+         contactTrainerDialogFragment.arguments = bundle
+         contactTrainerDialogFragment.show(fm, "contact_trainer_dialog")*/
     }
 
     private fun naviagteToAboutTrainer() {
-     /*   startActivity(Intent(this, AboutTrainer::class.java).apply {
-            putExtra("PARAM_ABOUT_TRAINER", viewModel.course.value)
-        })*/
+        /*   startActivity(Intent(this, AboutTrainer::class.java).apply {
+               putExtra("PARAM_ABOUT_TRAINER", viewModel.course.value)
+           })*/
     }
 
     private fun navigateToBatches() {
@@ -177,7 +168,6 @@ class ViewCourse : BaseActivity() {
             }
         })
 
-
         viewModel.enrolledCourseResponse.observe(this, Observer { it ->
             when (it.status) {
                 Status.LOADING -> {
@@ -205,9 +195,7 @@ class ViewCourse : BaseActivity() {
                     }
                 }
             }
-
         })
-
 
         viewModel.contactTrainerResponseAPi.observe(this, Observer { it ->
             when (it.status) {
@@ -222,9 +210,7 @@ class ViewCourse : BaseActivity() {
                 Status.ERROR -> {
                     progressDialog.dismissLoadingDialog()
                 }
-
             }
-
         })
 
         viewModel.courseId.value?.let {
@@ -244,14 +230,12 @@ class ViewCourse : BaseActivity() {
                         viewModel.calculateRating(it)
                         setNumberOfRatedStudents(it)
                     }
-
                 }
                 Status.ERROR -> {
 
                 }
             }
         })
-
     }
 
     private fun setNumberOfRatedStudents(it: List<StudentReviewedData>) {
@@ -265,20 +249,19 @@ class ViewCourse : BaseActivity() {
             } ?: run {
                 dataBinding.studentNUmber.text = "${count} Student"
             }
-
         })
     }
 
     private fun sessionLogoutFragment() {
-      /*  val fm: FragmentManager = supportFragmentManager
-        val sessionLogOutDialogFragment = SessionLogOutDialogFragment()
-        sessionLogOutDialogFragment.show(fm, "session_logout_dialog")*/
+        /*  val fm: FragmentManager = supportFragmentManager
+          val sessionLogOutDialogFragment = SessionLogOutDialogFragment()
+          sessionLogOutDialogFragment.show(fm, "session_logout_dialog")*/
     }
 
     private fun fetchCourseDetails() {
-    /*    courseId = intent.getStringExtra(PARAM_COURSE_ID)
-        userId = StorePreferences(this).studentId
-        viewModel.getCourseDetails(courseId.toString(), userId.toString())*/
+        /*    courseId = intent.getStringExtra(PARAM_COURSE_ID)
+            userId = StorePreferences(this).studentId
+            viewModel.getCourseDetails(courseId.toString(), userId.toString())*/
     }
 
     private fun setBatchsInfo(batches: List<BatchesItem>?) {
@@ -289,10 +272,10 @@ class ViewCourse : BaseActivity() {
     }
 
     private fun setCourseInfo(course: Course?) {
-       /* course?.let {
-            dataBinding.language.text_value.text = getSelectedLanguagesString(application, course.language?.fromBase64()!!)
-            viewModel.course.value = course
-        }*/
+        /* course?.let {
+             dataBinding.language.text_value.text = getSelectedLanguagesString(application, course.language?.fromBase64()!!)
+             viewModel.course.value = course
+         }*/
     }
 
     private fun setRating() {
@@ -320,5 +303,4 @@ class ViewCourse : BaseActivity() {
         super.onNewIntent(intent)
         fetchCourseDetails()
     }
-
 }

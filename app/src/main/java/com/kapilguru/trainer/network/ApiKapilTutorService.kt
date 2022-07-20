@@ -1,11 +1,13 @@
 package com.kapilguru.trainer.network
 
-import com.kapilguru.student.courseDetails.model.BatchRequest
-import com.kapilguru.student.courseDetails.model.ContactTrainerResponseAPi
-import com.kapilguru.student.courseDetails.review.model.StudentReviewResponse
-import com.kapilguru.trainer.addStudent.*
+import com.kapilguru.trainer.ui.courses.view_course.BatchRequest
+import com.kapilguru.trainer.ui.courses.view_course.ContactTrainerResponseAPi
+import com.kapilguru.trainer.ui.courses.view_course.EnrolledCourseResponse
+import com.kapilguru.trainer.addStudent.AddOnlineStudentResponse
 import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentRequest
 import com.kapilguru.trainer.addStudent.AddofflineStudent.AddOfflineStudentResponse
+import com.kapilguru.trainer.addStudent.CheckStudentRequest
+import com.kapilguru.trainer.addStudent.CheckStudentResponse
 import com.kapilguru.trainer.addStudent.addOnlineStudent.OnlineStudentRequest
 import com.kapilguru.trainer.addStudent.coursesStudentList.MyCourseStudents
 import com.kapilguru.trainer.addStudent.offlineStudentList.OfflineStudentsListResponse
@@ -47,8 +49,8 @@ import com.kapilguru.trainer.exams.previousQuestionsList.model.AddExistingQuesAp
 import com.kapilguru.trainer.exams.previousQuestionsList.model.PreviousQuestionsListResponse
 import com.kapilguru.trainer.exams.scheduledExams.ScheduledExamsAPI
 import com.kapilguru.trainer.faculty.*
-import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementResponse
 import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementRequest
+import com.kapilguru.trainer.feeManagement.addFeeManagement.AddFeeManagementResponse
 import com.kapilguru.trainer.feeManagement.feeFollowUps.FeeFollowUpResponse
 import com.kapilguru.trainer.feeManagement.paidRecords.StudentFeePaidResponse
 import com.kapilguru.trainer.feeManagement.studentFeeRecords.StudentFeeRecordsResponse
@@ -82,7 +84,9 @@ import com.kapilguru.trainer.student.announcement.inbox.data.StudentLastMessageR
 import com.kapilguru.trainer.student.announcement.newMessage.data.*
 import com.kapilguru.trainer.student.announcement.sentItems.data.StudentSentItemsResponse
 import com.kapilguru.trainer.student.exam.model.*
+import com.kapilguru.trainer.student.homeActivity.liveCourses.model.LiveCourseResponse
 import com.kapilguru.trainer.student.homeActivity.models.*
+import com.kapilguru.trainer.student.homeActivity.studentGallery.model.ImageResponse
 import com.kapilguru.trainer.student.myClassRoomDetails.exam.model.StudentQuestionPaperListRequest
 import com.kapilguru.trainer.student.myClassRoomDetails.exam.model.StudentQuestionPaperListResponse
 import com.kapilguru.trainer.student.myClassRoomDetails.model.*
@@ -96,14 +100,12 @@ import com.kapilguru.trainer.studentExamBatchResult.StudentExamPaperRequest
 import com.kapilguru.trainer.studentExamBatchResult.StudentReportRequest
 import com.kapilguru.trainer.studentsList.model.AllStudentsListPerTrainerApi
 import com.kapilguru.trainer.studentsList.model.RequestRaiseComplaint
-
 import com.kapilguru.trainer.studyMaterial.StudyMaterialListResponse
 import com.kapilguru.trainer.studyMaterial.StudyMatrialListRequest
 import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentRequest
 import com.kapilguru.trainer.studyMaterial.fileStructure.FolderContentResponse
 import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMaterialOverViewResponse
 import com.kapilguru.trainer.studyMaterial.studyMaterialOverview.StudyMatrialOverViewRequest
-
 import com.kapilguru.trainer.testimonials.FetchTestimonialsResponse
 import com.kapilguru.trainer.testimonials.PostTestimonialsModel
 import com.kapilguru.trainer.testimonials.PostTestimonialsResponse
@@ -125,9 +127,7 @@ import com.kapilguru.trainer.ui.courses.batchesList.models.BatchListApiRequest
 import com.kapilguru.trainer.ui.courses.courses_list.models.CourseApi
 import com.kapilguru.trainer.ui.courses.onGoingBatches.models.OnGoingBatchApi
 import com.kapilguru.trainer.ui.courses.tax.TaxCalculationResponse
-import com.kapilguru.trainer.ui.courses.view_course.ContactTrainerRequest
-import com.kapilguru.trainer.ui.courses.view_course.CourseDetailsResponse
-import com.kapilguru.trainer.ui.courses.view_course.CourseSyllabusResponse
+import com.kapilguru.trainer.ui.courses.view_course.*
 import com.kapilguru.trainer.ui.earnings.earningsDetails.EarningsDetailsResponse
 import com.kapilguru.trainer.ui.earnings.history.model.EarningsHistoryResponseApi
 import com.kapilguru.trainer.ui.earnings.history.model.HistoryPaymentAmountDetailsApi
@@ -253,7 +253,6 @@ interface ApiKapilTutorService {
 
     @PUT("trainer/courses/{id}")
     suspend fun updateCourse(@Path("id") courseId: String, @Body addCourseRequest: AddCourseRequest): UpdateCourseApi
-
 
     @GET("trainer/courses/{id}")
     suspend fun getCourse(@Path("id") courseId: String): GetCourseResponse
@@ -489,7 +488,6 @@ interface ApiKapilTutorService {
         @Part("batch_id") batch_id: RequestBody
     ): CommonResponseApi
 
-
     @GET("batchDocuments/files/{fileName}")
     suspend fun downloadPdfFile(@Path("fileName") fileName: String)
 
@@ -568,7 +566,6 @@ interface ApiKapilTutorService {
     @POST("public/student_enquiry_to_trainer")
     suspend fun contactTrainer(@Body contactTrainerRequest: ContactTrainerRequest): ContactTrainerResponseAPi
 
-
     @GET("public/allWebinars")
     suspend fun fetchAllWebinars(): AllWebinarsResponse
 
@@ -580,6 +577,9 @@ interface ApiKapilTutorService {
 
     @GET("public/popularTrendingCourses?q=home")
     suspend fun getDashBoardPopularAndTrendingCourses(): PopularAndTrendingResponse
+
+    @GET("student/getHomeAllCourses/{parent_trainer_id}")
+    suspend fun getLiveCourses(@Path("parent_trainer_id") parentTrainerId: String): LiveCourseResponse
 
     @GET("public/popularTrendingCourses")
     suspend fun getAllPopularAndTrendingCourses(): PopularAndTrendingResponse
@@ -607,7 +607,6 @@ interface ApiKapilTutorService {
 
     @GET("trainer/tax_charges")
     suspend fun getTaxes(): TaxCalculationResponse
-
 
     @POST("trainer/getStudyMaterials")
     suspend fun getListOfStudyMaterials(@Body studyMaterialListRequest: StudyMatrialListRequest): StudyMaterialListResponse
@@ -682,10 +681,8 @@ interface ApiKapilTutorService {
     @POST("trainer/getFolderContent")
     suspend fun getFolderContent(@Body folderContentRequest: FolderContentRequest): FolderContentResponse
 
-
     @DELETE("image/deleteFile/{code}/{imageName}")
     suspend fun deleteTrainerGalleryImages(@Path("code") code: String, @Path("imageName") imageName: String): DeleteImageResponse
-
 
     @POST("trainer/trainerAppStudents")
     suspend fun getStudentList(@Body studentRequestModel: StudentRequestModel): ResponseStudentModel
@@ -697,13 +694,13 @@ interface ApiKapilTutorService {
     suspend fun addFaculty(@Body addFacultyRequest: AddFacultyRequest): AddFacultyResponse
 
     @POST("trainer/getFacultyList")
-    suspend fun getFaculty(@Body getFacultyRequest: GetFacultyRequest) : FacultyListResponse
+    suspend fun getFaculty(@Body getFacultyRequest: GetFacultyRequest): FacultyListResponse
 
     @PUT("trainer/trainer_faculty_map/{id}")
-    suspend fun updateFaculty(@Path("id") id: String, @Body facultySettingsModel: FacultySettingsModel) : FacultySettingsResponse
+    suspend fun updateFaculty(@Path("id") id: String, @Body facultySettingsModel: FacultySettingsModel): FacultySettingsResponse
 
     @POST("trainer/checkStudentBeforeAdd")
-    suspend fun checkStudent(@Body checkStudentRequest: CheckStudentRequest) : CheckStudentResponse
+    suspend fun checkStudent(@Body checkStudentRequest: CheckStudentRequest): CheckStudentResponse
 
     @GET("student/getBatchTrainer/{id}")
     suspend fun getBatchListForStudent(@Path("id") userId: String): StudentNewMessageResponse
@@ -745,32 +742,39 @@ interface ApiKapilTutorService {
     suspend fun getEnquiryStatusUpdates(@Path("enquiryId") enquiryId: String): EnquiryUpdatedStatusListResponse
 
     @POST("trainer/offline_students")
-    suspend fun addOfflineStudent(@Body addOfflineStudentRequest: AddOfflineStudentRequest) : AddOfflineStudentResponse
+    suspend fun addOfflineStudent(@Body addOfflineStudentRequest: AddOfflineStudentRequest): AddOfflineStudentResponse
 
     @GET("trainer/getTrainerStudentDetails/{trainerId}")
-    suspend fun getMyCourseStudents(@Path("trainerId") userId: String) : MyCourseStudents
+    suspend fun getMyCourseStudents(@Path("trainerId") userId: String): MyCourseStudents
 
     @GET("trainer/getStudyMaterialsPurchase/{trainerId}")
-    suspend fun getMyRecordedStudents(@Path("trainerId") userId: String) : MyStudentsRecordedStudyMaterialsResponse
+    suspend fun getMyRecordedStudents(@Path("trainerId") userId: String): MyStudentsRecordedStudyMaterialsResponse
 
     @GET("trainer/offline_students/trainer_id/{trainerId}")
-    suspend fun geOfflineStudents(@Path("trainerId") userId: String) : OfflineStudentsListResponse
-
+    suspend fun geOfflineStudents(@Path("trainerId") userId: String): OfflineStudentsListResponse
 
     @GET("trainer/getSignUpStudents/{trainerId}")
     suspend fun getSignedUpStudentsList(@Path("trainerId") trainerId: String): SignedUpStudentsListResponse
 
     @GET("trainer/fee_installments/trainer_id/{trainerId}")
-    suspend fun getStudentFeeRecords(@Path("trainerId") trainerId: String) : StudentFeeRecordsResponse
+    suspend fun getStudentFeeRecords(@Path("trainerId") trainerId: String): StudentFeeRecordsResponse
 
     @GET("trainer/getFeeRecords/{trainerId}")
-    suspend fun getStudentPaidRecords(@Path("trainerId") trainerId: String) : StudentFeePaidResponse
+    suspend fun getStudentPaidRecords(@Path("trainerId") trainerId: String): StudentFeePaidResponse
 
     @GET("trainer/getFeeFollowups/{trainerId}")
-    suspend fun getStudentFeeFollowUps(@Path("trainerId") trainerId: String) : FeeFollowUpResponse
-
-
+    suspend fun getStudentFeeFollowUps(@Path("trainerId") trainerId: String): FeeFollowUpResponse
 
     @POST("trainer/addFeeDetails")
-    suspend fun addFeeDetailsRequest(@Body addFeeManagementRequest: AddFeeManagementRequest) : AddFeeManagementResponse
+    suspend fun addFeeDetailsRequest(@Body addFeeManagementRequest: AddFeeManagementRequest): AddFeeManagementResponse
+
+    @GET("student/enrolledCourses/{courseId}")
+    suspend fun isCourseEnrolled(@Path("courseId") courseId: String): EnrolledCourseResponse
+
+    @PUT("student/updateReview")
+    suspend fun writeUpdateReview(@Body studentWriteReviewRequest: WriteReviewRequest): CommonResponse
+
+    @GET("image/getImagesList/{packageId}")
+    suspend fun getImages(@Path("packageId") packageId: String): ImageResponse
+
 }

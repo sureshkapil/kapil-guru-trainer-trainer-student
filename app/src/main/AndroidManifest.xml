@@ -24,6 +24,9 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".StudentGalleryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.earnings.earningsDetails.NewTrainerEarningsDetailsActivity"
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle" />
@@ -379,7 +382,6 @@
         <activity
             android:name=".student.profileInfo.StudentProfileDetailsActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
-
         <activity
             android:name=".student.announcement.StudentAnnouncementActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
@@ -388,6 +390,18 @@
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".student.certificate.StudentCertificateListActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.courseDetails.StudentCourseDetailsActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.courseDetails.courseSyllabus.StudentCourseSyllabusActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.courseDetails.batchList.StudentBatchListActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.homeActivity.studentGallery.StudentGalleryActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
     </application>
 

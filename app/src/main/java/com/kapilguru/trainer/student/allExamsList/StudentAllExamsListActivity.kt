@@ -6,7 +6,6 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.kapilguru.student.*
 import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.ActivityStudentAllExamsListBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
