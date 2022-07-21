@@ -6,18 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.library.BuildConfig
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.kapilguru.student.*
 import com.kapilguru.trainer.*
 import com.kapilguru.trainer.databinding.FragmentStudentStudyMaterial2Binding
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.student.myClassRoomDetails.model.StudentStudyMaterialResponseApi
 import com.kapilguru.trainer.student.myClassRoomDetails.viewModel.StudentMyClassDetailsViewModel
-import paytm.assist.easypay.easypay.appinvoke.BuildConfig.BASE_URL
 
 
 class StudentStudyMaterialFragment : Fragment(), StudentStudyMaterialAdapter.StudyMaterialListener {
@@ -99,17 +95,17 @@ class StudentStudyMaterialFragment : Fragment(), StudentStudyMaterialAdapter.Stu
     }
 
     override fun onTap(studentStudyMaterialResponseApi: StudentStudyMaterialResponseApi) {  // ---need_to_do
-       /* downloadManager = requireActivity().getSystemService(AppCompatActivity.DOWNLOAD_SERVICE) as DownloadManager?
-        downloadManager?.let {
-            getDownloadStatus(
-                downloadManager(
-                    context = requireContext(),
-                    url = BuildConfig.BASE_URL + "batchDocuments/files/" + studentStudyMaterialResponseApi.filename,
-                    fileName = studentStudyMaterialResponseApi.filename.toString(),
-                    downloadManager = it
-                )
-            )
-        }*/
+        /* downloadManager = requireActivity().getSystemService(AppCompatActivity.DOWNLOAD_SERVICE) as DownloadManager?
+         downloadManager?.let {
+             getDownloadStatus(
+                 downloadManager(
+                     context = requireContext(),
+                     url = BuildConfig.BASE_URL + "batchDocuments/files/" + studentStudyMaterialResponseApi.filename,
+                     fileName = studentStudyMaterialResponseApi.filename.toString(),
+                     downloadManager = it
+                 )
+             )
+         }*/
     }
 
     private fun getDownloadStatus(downLoadId: Long) {

@@ -27,4 +27,5 @@ open class Data(
     val isOrganization: Int,
     val isKycUpdated: Int,
     val tenantId: Int,
+    val parent_trainer_id: Int,
 )

@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.student.homeActivity.studentGallery.model.ImageResData" />
 
     </data>
 
@@ -16,10 +19,10 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/gallery_image"
             android:layout_width="@dimen/dimen_260_dp"
-            android:layout_height="@dimen/dimen_110_dp"
-            android:background="@drawable/pink__rounded_rectangle_bg"
-            android:paddingStart="@dimen/dimen_8dp"
-            android:paddingTop="@dimen/dimen_4dp"
+            android:layout_height="@dimen/dimen_220_dp"
+            android:background="@drawable/rectangle_stroke_grey"
+            android:padding="4dp"
+            app:loadGlideImage="@{model.url}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

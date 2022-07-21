@@ -33,19 +33,21 @@
             android:background="@drawable/spinner_bg"
             android:drawSelectorOnTop="true"
             android:spinnerMode="dropdown"
-            android:entries="@array/enquiry_status"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/actionbar"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/MyAppEditTextViewStyle_new"
             android:id="@+id/til_followup_date"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="8dp"
             app:helperTextTextColor="@color/black"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/til_followup_time"
             app:layout_constraintTop_toBottomOf="@+id/spinner_status">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -54,12 +56,39 @@
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_calendar"
             android:focusable="false"
-            android:hint="@string/follow_up_date"
+            android:hint="@string/follow_up_date_man"
             android:textSize="15sp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"/>
+            android:textColorHint="@color/black"
+            android:text="@{viewModel.updateEnquiryStatusRequest.selectedDate}"
+            />
         </com.google.android.material.textfield.TextInputLayout>
-<!--        android:text="@={viewModel.addGuestLectureRequest.lectureDate}"-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/MyAppEditTextViewStyle_new"
+            android:id="@+id/til_followup_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="8dp"
+            app:helperTextTextColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/til_followup_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_status">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_followup_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_alarm"
+                android:focusable="false"
+                android:hint="@string/follow_up_time_man"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:text="@{viewModel.updateEnquiryStatusRequest.selectedTime}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/MyAppEditTextViewStyle_new"
@@ -83,10 +112,9 @@
                 android:maxLength="500"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:text="@={viewModel.updateEnquiryStatusRequest.comments}"/>
         </com.google.android.material.textfield.TextInputLayout>
-        <!--check max length che___ck-->
-<!--        android:text="@={viewModel.addGuestLectureRequest.trainerName}"-->
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_update_enquiry"

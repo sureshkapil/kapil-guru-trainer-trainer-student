@@ -18,49 +18,35 @@ import com.kapilguru.trainer.student.announcement.inbox.StudentInboxRecyclerAdap
 import com.kapilguru.trainer.student.announcement.inbox.data.StudentInboxItem
 import com.kapilguru.trainer.student.announcement.viewModel.StudentAnnouncementViewModel
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class InboxList : Fragment(), InboxListTOAdapters {
-
     val viewModel: StudentAnnouncementViewModel by activityViewModels()
     lateinit var binding: FragmentStudentInboxBinding
     lateinit var adapter: StudentInboxRecyclerAdapter
     lateinit var dialog: CustomProgressDialog
 
-    private var param1: String? = null
-    private var param2: String? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
         dialog = CustomProgressDialog(requireContext())
         getInBoxResponse()
         observeViewModelData()
     }
 
-    fun getInBoxResponse() {
+    private fun getInBoxResponse() {
         val userId: String = StorePreferences(requireContext()).userId.toString()
         viewModel.getInboxResponce(userId)
     }
 
     private fun observeViewModelData() {
         viewModel.resultDat.observe(this, Observer {
-
             when (it.status) {
                 Status.LOADING -> {
                     dialog.showLoadingDialog()
                 }
-
                 Status.SUCCESS -> {
                     dialog.dismissLoadingDialog()
                     val response = it.data?.data
-                    adapter.setData(response as ArrayList<StudentInboxItem>)
-                    if (response.isNotEmpty()) response[0].id?.let { it1 -> viewModel.updateLastMessageId(it1) }
+                    checkAndSetAdapterData(response)
+                    if (response?.isNotEmpty() == true) response[0].id?.let { it1 -> viewModel.updateLastMessageId(it1) }
                 }
                 Status.ERROR -> {
                     dialog.dismissLoadingDialog()
@@ -69,9 +55,32 @@ class InboxList : Fragment(), InboxListTOAdapters {
         })
     }
 
+    private fun checkAndSetAdapterData(inboxList : List<StudentInboxItem>?){
+        inboxList?.let { inboxListNotNull ->
+            if(inboxListNotNull.isNotEmpty()){
+                adapter.setData(inboxListNotNull as ArrayList<StudentInboxItem>)
+                showOrHideEmptyView(false)
+            }else{
+                showOrHideEmptyView(true)
+            }
+        }?: kotlin.run {
+            showOrHideEmptyView(true)
+        }
+    }
+
+    private fun showOrHideEmptyView(shouldShowEmptyView : Boolean){
+        if(shouldShowEmptyView){
+            binding.rvInbox.visibility = View.GONE
+            binding.noDataAvailable.tvNoData.visibility = View.VISIBLE
+            binding.noDataAvailable.tvNoData.text = getString(R.string.inbox_empty)
+        }else{
+            binding.rvInbox.visibility = View.VISIBLE
+            binding.noDataAvailable.tvNoData.visibility = View.GONE
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_inbox, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_student_inbox, container, false)
         binding.viewModel = viewModel
         return binding.root
     }
@@ -83,6 +92,6 @@ class InboxList : Fragment(), InboxListTOAdapters {
     }
 
     override fun getInboxList(studentInboxItem: StudentInboxItem) {
-        TODO("Not yet implemented")
+
     }
 }

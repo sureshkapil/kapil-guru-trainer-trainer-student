@@ -11,6 +11,7 @@ import com.kapilguru.trainer.ui.courses.addcourse.models.LectureSyllabusContent
 import okhttp3.internal.UTC
 import org.json.JSONArray
 import org.json.JSONObject
+import java.lang.Exception
 import java.nio.charset.StandardCharsets
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -92,6 +93,9 @@ fun String.toDateFormat(): String? {
 }
 
 fun String.toDateFormatWithOutT(): String? {
+    if(this.isEmpty()){
+        return ""
+    }
     val dateFormat: DateFormat = SimpleDateFormat(API_FORMAT_DATE_AND_TIME_WITHOUT_T, Locale.US)
     dateFormat.timeZone = TimeZone.getTimeZone("IST")
     val date: Date = dateFormat.parse(this)
@@ -374,5 +378,30 @@ fun String?.isDateToday(): Boolean {
     }?:run {
         return false
     }
-
 }
+
+fun String.addTwoDays(): Calendar? {
+    val simpleDateFormat: SimpleDateFormat = if (this.contains("T", true)) {
+        SimpleDateFormat(API_FORMAT_DATE_AND_TIME_WITH_T, Locale.ENGLISH)
+    } else {
+        SimpleDateFormat(API_FORMAT_DATE_AND_TIME_WITHOUT_T, Locale.ENGLISH)
+    }
+    simpleDateFormat.timeZone = TimeZone.getTimeZone("IST")
+    val startDate = Calendar.getInstance()
+    try {
+        startDate.time = simpleDateFormat.parse(this)!!
+    } catch (ex: Exception) {
+        print(ex)
+        return null
+    }
+    startDate.add(Calendar.DATE, 2)
+    return startDate
+}
+
+fun Calendar.calculateDateDiff(endCalander: Calendar) : Long {
+    val noOFDays : Long  = (this.timeInMillis - endCalander.timeInMillis)
+    return (noOFDays/(1000*60*60*24))+1
+}
+
+fun Calendar.isGreaterThanCurrentDate(endCalander: Calendar): Boolean =   this.after(endCalander)
+

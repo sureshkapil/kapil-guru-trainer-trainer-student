@@ -1,7 +1,6 @@
 package com.kapilguru.trainer.ui.courses.view_course
 
 
-import com.kapilguru.student.courseDetails.model.BatchRequest
 import com.kapilguru.trainer.ApiHelper
 
 class CourseDetailsRepository(private val apiHelper: ApiHelper) {

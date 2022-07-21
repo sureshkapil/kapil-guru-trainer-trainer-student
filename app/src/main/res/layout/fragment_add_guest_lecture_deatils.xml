@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -13,9 +15,7 @@
 
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.guestLectures.addGuestLecture.AddGuestLectureDeatilsFragment">
@@ -298,9 +298,9 @@
                                 android:hint="@string/start_time_man"
                                 android:inputType="text"
                                 android:text="@={viewModel.addGuestLectureRequest.startTime}"
-                                android:textSize="15sp"
                                 android:textColor="@color/black"
-                                android:textColorHint="@color/black"/>
+                                android:textColorHint="@color/black"
+                                android:textSize="15sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 

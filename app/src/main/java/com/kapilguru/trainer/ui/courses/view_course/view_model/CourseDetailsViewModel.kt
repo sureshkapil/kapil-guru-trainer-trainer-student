@@ -3,17 +3,15 @@ package com.kapilguru.trainer.ui.courses.view_course.view_model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kapilguru.student.courseDetails.model.BatchRequest
-import com.kapilguru.student.courseDetails.model.ContactTrainerResponseAPi
-import com.kapilguru.student.courseDetails.model.EnrolledCourseResponse
-import com.kapilguru.student.courseDetails.model.EnrolledCourseResponseApi
-import com.kapilguru.student.courseDetails.review.model.StudentReviewResponse
-import com.kapilguru.student.courseDetails.review.model.StudentReviewedData
+import com.kapilguru.trainer.ui.courses.view_course.BatchRequest
+import com.kapilguru.trainer.ui.courses.view_course.ContactTrainerResponseAPi
+import com.kapilguru.trainer.ui.courses.view_course.EnrolledCourseResponse
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.network.CommonResponse
 import com.kapilguru.trainer.ui.courses.view_course.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -23,7 +21,7 @@ class CourseDetailsViewModel(private val courseDetailsRepository: CourseDetailsR
     var courseId: MutableLiveData<String> = MutableLiveData()
     var course: MutableLiveData<Course> = MutableLiveData<Course>(Course())
     var batchesList: ArrayList<BatchesItem> = arrayListOf()
-    private val TAG = "CourseDetailsViewModel";
+    private val TAG = "CourseDetailsViewModel"
 
     var writeReviewRequest: MutableLiveData<WriteReviewRequest> = MutableLiveData(WriteReviewRequest(0f, "", "", 0))
     var writeReviewResponse: MutableLiveData<ApiResource<CommonResponse>> = MutableLiveData()
@@ -35,24 +33,26 @@ class CourseDetailsViewModel(private val courseDetailsRepository: CourseDetailsR
     var alreadyPurchasedData: List<EnrolledCourseResponseApi>? = null
     var requestBatchResponse: MutableLiveData<ApiResource<CommonResponse>> = MutableLiveData()
     var studentListReviewResponse: MutableLiveData<ApiResource<StudentReviewResponse>> = MutableLiveData()
-    var studentListReviewResponseData:List<StudentReviewedData> = listOf()
+    var studentListReviewResponseData: List<StudentReviewedData> = listOf()
     var rating: MutableLiveData<Float?> = MutableLiveData()
     var studentRatingCount: MutableLiveData<Int> = MutableLiveData(0)
 
-    private val coroutineExceptionHandler = CoroutineExceptionHandler{ _, t -> {
-        t.printStackTrace()
-    }}
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, t ->
+        {
+            t.printStackTrace()
+        }
+    }
 
     fun getCourseDetails(CourseId: String, userId: String) {
         resultDat.value = ApiResource.loading(data = null)
 
-        viewModelScope.launch(Dispatchers.IO+coroutineExceptionHandler) {
+        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             val courseDetails = async { courseDetailsRepository.fetchCourseDetails(CourseId) }
             val courseDetailsInfo: CourseDetailsResponse = courseDetails.await()
             try {
                 resultDat.postValue(ApiResource.success(courseDetailsInfo))
             } catch (exception: IOException) {
-                resultDat.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!",code = 401))
+                resultDat.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!", code = 401))
             } catch (exception: HttpException) {
                 resultDat.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!", code = exception.code()))
             } catch (exception: Exception) {
@@ -181,7 +181,7 @@ class CourseDetailsViewModel(private val courseDetailsRepository: CourseDetailsR
     fun calculateRating(response: List<StudentReviewedData>?) {
         var calculateRating = 0.0
         var count = 0
-        response?.let {data ->
+        response?.let { data ->
             if (data.isNotEmpty()) {
                 data.forEachIndexed { index, studentReviewedData ->
                     if (studentReviewedData.studentRating != -1.0) {
@@ -219,6 +219,5 @@ class CourseDetailsViewModel(private val courseDetailsRepository: CourseDetailsR
 //    }
 
 enum class InValidErrors {
-    PASSWORDINCORRECT,
-    EMAILINCORRECT
+    PASSWORDINCORRECT, EMAILINCORRECT
 }

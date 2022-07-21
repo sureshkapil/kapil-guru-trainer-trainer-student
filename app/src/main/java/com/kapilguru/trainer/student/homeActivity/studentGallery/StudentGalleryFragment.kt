@@ -10,63 +10,66 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kapilguru.trainer.ApiHelper
 import com.kapilguru.trainer.CustomProgressDialog
-import com.kapilguru.trainer.R
+import com.kapilguru.trainer.databinding.StudentFragmentGalleryBinding
 import com.kapilguru.trainer.network.RetrofitNetwork
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.student.homeActivity.dashboard.StudentDashBoardViewModel
 import com.kapilguru.trainer.student.homeActivity.dashboard.StudentDashBoardViewModelFactory
 import com.kapilguru.trainer.student.homeActivity.models.PopularAndTrendingApi
+import com.kapilguru.trainer.student.homeActivity.studentGallery.model.ImageResData
 import kotlinx.android.synthetic.main.student_fragment_gallery.view.*
 
-
-class StudentGalleryFragment : Fragment(), StudentGalleryAdapter.CardItem {
-    lateinit var  viewModel: StudentDashBoardViewModel
+class StudentGalleryFragment : Fragment(), StudentGalleryAdapter.CardItemClickListener {
+    private val TAG = "StudentGalleryFragment"
+    private lateinit var binding: StudentFragmentGalleryBinding
+    lateinit var viewModel: StudentDashBoardViewModel
     lateinit var adapter: StudentGalleryAdapter
     lateinit var dialog: CustomProgressDialog
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.student_fragment_gallery, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = StudentFragmentGalleryBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialog = CustomProgressDialog(this.requireContext())
-        viewModel = ViewModelProvider(this.requireParentFragment(), StudentDashBoardViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), requireActivity().application))
-            .get(StudentDashBoardViewModel::class.java)
-        setUpRecycler(view)
+        viewModel = ViewModelProvider(this.requireParentFragment(), StudentDashBoardViewModelFactory(ApiHelper(RetrofitNetwork.API_KAPIL_TUTOR_SERVICE_SERVICE), requireActivity().application)).get(
+            StudentDashBoardViewModel::class.java
+        )
+        setClickListeners()
         viewModelObserver()
-        clickListerens()
+        fetchImages()
     }
 
-    private fun clickListerens() {
-      /*  view_all.setOnClickListener {
-            startActivity(Intent(this.requireContext(), AllPopularTrendingCourses::class.java).apply {
-                putParcelableArrayListExtra(PARAM_ALL_POPULAR_TRENDING_LIST,viewModel.popularTrendingList)
-            })
-        }*/
+    private fun setClickListeners() {
+        binding.viewAll.setOnClickListener {
+            StudentGalleryActivity.launchActivity(requireActivity())
+        }
+    }
+
+    private fun setUpRecycler(imageList : ArrayList<ImageResData>) {
+        if(this::adapter.isInitialized){
+            //do nothing
+        }else{
+            adapter = StudentGalleryAdapter(this,false)
+            binding.galleryRecy.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            binding.galleryRecy.adapter = adapter
+        }
+        adapter.imageList = imageList
     }
 
     private fun viewModelObserver() {
-        viewModel.fetchAllPopularAndTrending()
-
-        viewModel.popularAndTrendingResponse.observe(requireActivity(), Observer { response->
+        viewModel.imagesListApiRes.observe(requireActivity(), Observer { response ->
             when (response.status) {
                 Status.LOADING -> {
                     dialog.showLoadingDialog()
                 }
 
                 Status.SUCCESS -> {
-                    response.data?.popularAndTrendingApi?.let { it ->
-                        adapter.listItem = it
+                    response.data?.imageList?.let { it ->
+                        setUpRecycler(it)
                         viewModel.popularTrendingList = it as ArrayList<PopularAndTrendingApi>
                     }
                     dialog.dismissLoadingDialog()
@@ -79,16 +82,12 @@ class StudentGalleryFragment : Fragment(), StudentGalleryAdapter.CardItem {
         })
     }
 
-    private fun setUpRecycler(view: View) {
-        adapter = StudentGalleryAdapter(this,false)
-        view.galleryRecy.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        view.galleryRecy.adapter  = adapter
+    private fun fetchImages() {
+        viewModel.getImages()
     }
 
-    override fun onCardClick(popularAndTrendingApi: PopularAndTrendingApi) {
-       /* startActivity(Intent(requireContext(), CourseDetailsActivity::class.java).apply {
-            putExtra(PARAM_COURSE_ID,popularAndTrendingApi.id.toString())
-        })*/
+    override fun onCardClicked(popularAndTrendingApi: PopularAndTrendingApi) {
+
     }
 
     companion object {

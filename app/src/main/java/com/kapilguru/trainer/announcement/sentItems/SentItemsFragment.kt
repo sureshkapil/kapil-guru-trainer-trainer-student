@@ -15,6 +15,7 @@ import com.kapilguru.trainer.announcement.viewModel.AnnouncementViewModel
 import com.kapilguru.trainer.databinding.FragmentSentItemsBinding
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
+import com.kapilguru.trainer.student.announcement.inbox.data.StudentInboxItem
 
 class SentItemsFragment : Fragment(), SentItemsToAdapter {
     private val TAG = "SentItemsFragment"
@@ -45,7 +46,7 @@ class SentItemsFragment : Fragment(), SentItemsToAdapter {
                 Status.SUCCESS -> {
                     dialog.dismissLoadingDialog()
                     val response = it.data?.data
-                    adapter.setData(response as ArrayList<SentItemsData>)
+                    checkAndSetAdapterData(response)
                 }
 
                 Status.ERROR -> {
@@ -53,6 +54,31 @@ class SentItemsFragment : Fragment(), SentItemsToAdapter {
                 }
             }
         })
+    }
+
+    private fun checkAndSetAdapterData(sentItems : List<SentItemsData>?){
+        sentItems?.let { sentItemsNotNull ->
+            if(sentItemsNotNull.isNotEmpty()){
+                adapter.setData(sentItemsNotNull as ArrayList<SentItemsData>)
+                showOrHideEmptyView(false)
+            }else{
+                showOrHideEmptyView(true)
+            }
+        }?: kotlin.run {
+            showOrHideEmptyView(true)
+        }
+    }
+
+    private fun showOrHideEmptyView(shouldShowEmptyView : Boolean){
+        if(shouldShowEmptyView){
+            binding.rvSentItems.visibility = View.GONE
+            binding.noDataAvailable.tvNoData.visibility = View.VISIBLE
+            binding.noDataAvailable.tvNoData.text = getString(R.string.no_sent_messages)
+            binding.noDataAvailable.tvNoData.setTextColor(resources.getColor(R.color.black,null))
+        }else{
+            binding.rvSentItems.visibility = View.VISIBLE
+            binding.noDataAvailable.tvNoData.visibility = View.GONE
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

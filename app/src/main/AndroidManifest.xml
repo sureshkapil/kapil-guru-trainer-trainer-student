@@ -24,15 +24,17 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".certificate.CertificateActivity"
-            android:exported="true"
-            android:theme="@style/customParentNoActionBarStyle"/>
+            android:name=".LiveCourseListActivity"
+            android:exported="false" />
         <activity
-            android:name=".feeManagement.addFeeManagement.ActivityAddFeeInstallmentsDetails"
+            android:name=".ui.earnings.earningsDetails.NewTrainerEarningsDetailsActivity"
+            android:theme="@style/customParentNoActionBarStyle" />
+        <activity
+            android:name=".certificate.CertificateActivity"
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity
-            android:name=".ui.earnings.earningsDetails.NewTrainerEarningsDetailsActivity"
+            android:name=".feeManagement.addFeeManagement.ActivityAddFeeInstallmentsDetails"
             android:exported="true"
             android:theme="@style/customParentNoActionBarStyle" />
         <activity
@@ -386,6 +388,30 @@
             android:theme="@style/Theme.KapilStudent" />
         <activity
             android:name=".student.profileInfo.StudentProfileDetailsActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.announcement.StudentAnnouncementActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.allExamsList.StudentAllExamsListActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.certificate.StudentCertificateListActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.courseDetails.StudentCourseDetailsActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.courseDetails.courseSyllabus.StudentCourseSyllabusActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.courseDetails.batchList.StudentBatchListActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.homeActivity.studentGallery.StudentGalleryActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.LiveCourseListActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
     </application>
 

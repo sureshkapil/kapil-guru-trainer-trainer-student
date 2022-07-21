@@ -30,7 +30,7 @@ class EnquiriesAdapter(val shouldShowContactBeforeStatusUpdate : Boolean ,val mL
             binding.btnShowContact.setOnClickListener {
                 mListener.onViewContactClicked(enquiriesList[bindingAdapterPosition],bindingAdapterPosition)
             }
-            binding.root.setOnClickListener {
+            binding.btnUpdate.setOnClickListener {
                 mListener.onLaunchEnquiryListClicked(enquiriesList[bindingAdapterPosition])
             }
         }

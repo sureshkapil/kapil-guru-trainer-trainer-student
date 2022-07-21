@@ -34,7 +34,7 @@
             android:layout_marginLeft="20dp"
             android:padding="5dp"
             android:paddingTop="10dp"
-            android:text="@{@string/total_offline_enquiries(viewModel.kapilGuruEnquiries.size)}"
+            android:text="@{@string/kapil_guru_enquiries(viewModel.kapilGuruEnquiries.size)}"
             android:textColor="@color/purple"
             android:textSize="15sp"
             tools:text="Total courses - 16" />

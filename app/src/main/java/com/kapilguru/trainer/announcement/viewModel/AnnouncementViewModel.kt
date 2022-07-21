@@ -92,21 +92,13 @@ class AnnouncementViewModel(private val announcementRepository: AnnouncementRepo
         sendNewMessageResponce.value = ApiResource.loading(null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                sendNewMessageResponce.postValue(
-                    ApiResource.success(
-                        announcementRepository.sendAdminMessageRequest(request)
-                    )
-                )
+                sendNewMessageResponce.postValue(ApiResource.success(announcementRepository.sendAdminMessageRequest(request)))
             } catch (exception: HttpException) {
                 exception.printStackTrace()
-                sendNewMessageResponce.postValue(
-                    ApiResource.error(data = null, message = exception.message ?: "Error Occurred!")
-                )
+                sendNewMessageResponce.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
             }catch (exception: IOException) {
                 exception.printStackTrace()
-                sendNewMessageResponce.postValue(
-                    ApiResource.error(data = null, message = exception.message ?: "Error Occurred!")
-                )
+                sendNewMessageResponce.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
             }
         }
     }
@@ -116,17 +108,10 @@ class AnnouncementViewModel(private val announcementRepository: AnnouncementRepo
         sentItemsResponse.value = ApiResource.loading(null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                sentItemsResponse.postValue(
-                    ApiResource.success(
-                        announcementRepository.getSentItemsResponce(
-                            userId
-                        )
-                    )
-                )
+                sentItemsResponse.postValue(ApiResource.success(announcementRepository.getSentItemsResponce(userId)))
             } catch (exception: HttpException) {
                 exception.printStackTrace()
-                sentItemsResponse.postValue(
-                    ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+                sentItemsResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
             }
         }
     }
@@ -136,16 +121,11 @@ class AnnouncementViewModel(private val announcementRepository: AnnouncementRepo
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 commonResponse.postValue(
-                    ApiResource.success(
-                        announcementRepository.updateLastMessageId(
-                           StorePreferences(contxt).userId.toString(), LastMessageRequest().apply { lastAnnouncementId = messageId }
-                        )
-                    )
-                )
+                    ApiResource.success(announcementRepository.updateLastMessageId(StorePreferences(contxt).userId.toString(),
+                        LastMessageRequest().apply { lastAnnouncementId = messageId })))
             } catch (exception: HttpException) {
                 exception.printStackTrace()
-                commonResponse.postValue(
-                    ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+                commonResponse.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
             }
         }
     }

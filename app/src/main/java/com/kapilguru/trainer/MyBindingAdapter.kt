@@ -11,10 +11,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatTextView
-import androidx.appcompat.widget.SwitchCompat
+import androidx.appcompat.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
@@ -166,11 +163,11 @@ object Companion {
 
     @JvmStatic
     @BindingAdapter("timeToString")
-    fun TextView.timeToString(endd: String?) {
-        endd?.toTimeFormat()?.let {
-            this.text = it
-        } ?: kotlin.run {
-            this.text = ""
+    fun TextView.timeToString(time: String?) {
+        when {
+            time.isNullOrEmpty() -> this.text = ""
+            time.contains("T") -> time.toTimeFormat()?.let { this.text = it } ?: run { this.text = "" }
+            else -> time.toTimeFormatWithOutT()?.let { this.text = it } ?: run { this.text = "" }
         }
     }
 
@@ -989,4 +986,28 @@ object Companion {
             this.text = mail
         }
     }
+
+    @JvmStatic
+    @BindingAdapter("ratingbar")
+    fun AppCompatRatingBar.ratingbar(rating: Double?) {
+        rating?.let {
+            Log.d("ratingbar", "ratingbar: ${it}")
+            this.rating = it.toFloat()
+        }?:run{
+            this.rating = 0.0f
+            Log.d("ratingbar", "ratingbar: ")
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("classAvailable")
+    fun TextView.setCustomBackGround(setCustomBackGround: Int) {
+        if (setCustomBackGround == 1) {
+            this.setTextColor(ContextCompat.getColor(context, R.color.blue_2))
+        } else {
+            this.setTextColor(ContextCompat.getColor(context, R.color.grey_2))
+            this.background = ContextCompat.getDrawable(this.context, R.drawable.unselected_day_bg_new)
+        }
+    }
+
 }

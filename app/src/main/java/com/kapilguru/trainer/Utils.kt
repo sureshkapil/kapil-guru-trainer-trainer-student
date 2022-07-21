@@ -76,6 +76,7 @@ const val IS_SUBMITTED_PARAM = "is_submitted_param"
 const val IS_VERIFIED = 1
 const val IS_SUBSCRIBED = "isSubscribed"
 const val TENANT_ID = "tenantId"
+const val PARENT_TRAINER_ID = "parent_trainer_id"
 const val IS_MARKETING = "isMarketing"
 const val IS_KYC_UPDATED = "isKYCUpdated"
 const val IS_ORGANIZATION = "isOrganization"
@@ -166,6 +167,9 @@ const val PARAM_IS_FROM_DASHBOARD_AS_STUDY_MATERIAL: String = "param_is_from_das
 const val PARAM_VIDEO_COUNT: String = "param_video_count"
 const val PARAM_DOCUMENT_COUNT: String = "param_document_count"
 const val PARAM_TEXT_PAPER_COUNT: String = "param_text_paper_count"
+const val PARAM_BATCHES_LIST = "paramBatchesList"
+const val PARAM_IS_ENROLLED = "paramIsEnrolled"
+const val PAYMENT_PRODUCT_TYPE_COURSE = "batch"
 const val PARAM_FEE_INSERTED_ID: String = "param_fee_inserted_id"
 const val PARAM_FEE_STUDENT_DETAILS: String = "param_fee_student_details"
 const val PARAM_FEE_RECORDS: String = "param_fee_records"
@@ -494,4 +498,31 @@ fun downloadManager(context: Context, url: String, fileName: String, downloadMan
     //Enqueue the download.The download will start automatically once the download manager is ready
     // to execute it and connectivity is available.
     return downloadManager.enqueue(request)
+}
+
+//input time format : 18:00
+//Output time format : 6:00 pm
+fun get12HoursTime(timeIn24Hours: String): String {
+    val timeFormatFor24Hours = SimpleDateFormat("HH:mm")
+    val timeFormatFor12Hours = SimpleDateFormat("hh:mm a")
+    val timeIn24HoursFormat = timeFormatFor24Hours.parse(timeIn24Hours)
+    return timeFormatFor12Hours.format(timeIn24HoursFormat)
+}
+
+//selectedDate is in format - 24-06-1997, selectedTime is in format : 6:30 pm
+fun getDateInApiFormat(selectedDateString: String, selectedTimeString: String): String {
+    var calendar = Calendar.getInstance()
+    val apiDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    apiDateFormat.timeZone = TimeZone.getTimeZone("GMT")
+    val selectedDateFormat = SimpleDateFormat("dd/MM/yyyy")
+    selectedDateFormat.timeZone = TimeZone.getTimeZone("IST")
+    val selectedTimeFormat = SimpleDateFormat("hh:mm a")
+    val selectedDate = selectedDateFormat.parse(selectedDateString)
+    calendar.time = selectedDate
+    val selectedTime = selectedTimeFormat.parse(selectedTimeString)
+    val selectedTimeCalendar = Calendar.getInstance()
+    selectedTimeCalendar.time = selectedTime
+    calendar.set(Calendar.HOUR_OF_DAY, selectedTimeCalendar.get(Calendar.HOUR_OF_DAY))
+    calendar.set(Calendar.MINUTE, selectedTimeCalendar.get(Calendar.MINUTE))
+    return apiDateFormat.format(calendar.time)
 }

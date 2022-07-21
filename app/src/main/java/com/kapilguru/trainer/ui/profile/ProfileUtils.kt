@@ -31,6 +31,7 @@ class ProfileUtils {
             pref.isEnrolled = loginResponseData.isEnrolled
             pref.currency = loginResponseData.currency ?: ""
             pref.tenantId = loginResponseData.tenantId
+            pref.parentTrainerId = loginResponseData.parent_trainer_id
         }
 
         fun isSubscribed(context: Context): Boolean {

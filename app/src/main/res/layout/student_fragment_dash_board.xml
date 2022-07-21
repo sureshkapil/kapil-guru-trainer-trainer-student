@@ -104,7 +104,6 @@
                 app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_025"
                 app:layout_constraintBottom_toTopOf="@id/recyclerViewHome"/>
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewHome"
                 android:layout_width="match_parent"
