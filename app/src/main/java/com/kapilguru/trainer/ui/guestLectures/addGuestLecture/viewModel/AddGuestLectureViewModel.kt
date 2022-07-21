@@ -6,12 +6,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.kapilguru.trainer.MP4
-import com.kapilguru.trainer.PNG
+import com.kapilguru.trainer.*
 import com.kapilguru.trainer.network.ApiResource
 import com.kapilguru.trainer.network.CommonResponseApi
 import com.kapilguru.trainer.preferences.StorePreferences
-import com.kapilguru.trainer.toBase64
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourse
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadImageCourseResponse
 import com.kapilguru.trainer.ui.courses.addcourse.models.UploadVideoResponse
@@ -48,6 +46,12 @@ class AddGuestLectureViewModel(private val repository: AddGuestLectureRepository
     var addGuestLectureDetailsResData = AddGuestLectureResData()
     var addGuestLectureImageRequest = UploadImageCourse()
     var addGuestLectureImageApiResponse: MutableLiveData<ApiResource<UploadImageCourseResponse>> = MutableLiveData()
+    var datesJson: MutableLiveData<String> = MutableLiveData()
+    var endCalendar: MutableLiveData<Calendar> = MutableLiveData()
+    var endDate: MutableLiveData<String> = MutableLiveData()
+    var endTime: MutableLiveData<String> = MutableLiveData()
+    var endTimeCalendar: MutableLiveData<Calendar> = MutableLiveData()
+
 
     //    var addGuestLectureVideoRequest
     var addGuestLectureVideoApiResponse: MutableLiveData<ApiResource<AddGuestLectureResponse>> = MutableLiveData()
@@ -101,13 +105,15 @@ class AddGuestLectureViewModel(private val repository: AddGuestLectureRepository
     fun addValuesToGuestLecReqData() {
         addGuestLectureRequest.trainerId = trainerId
         if (!noOfAttendeesMutLiveData.value.isNullOrBlank()) {
-            addGuestLectureRequest.noOfAttendees = Integer.valueOf(noOfAttendeesMutLiveData.value!!)
+            addGuestLectureRequest.noOfDays = Integer.valueOf(noOfAttendeesMutLiveData.value!!)
         } else {
-            addGuestLectureRequest.noOfAttendees = null
+            addGuestLectureRequest.noOfDays = null
         }
         addGuestLectureRequest.languages = selectedLanguagesIds.value?.toBase64()
+        addGuestLectureRequest.datesJson = datesJson.value
         checkAndSetLectureDateInApiFormat1()
         checkAndSetLectureTimeInApiFormat()
+        checkAndSetLectureEndDateInApiFormat()
     }
 
     /*Date and time are set differently*/
@@ -179,8 +185,36 @@ class AddGuestLectureViewModel(private val repository: AddGuestLectureRepository
         }
     }
 
+
+    fun checkAndSetLectureEndDateInApiFormat(){
+        val calendar = Calendar.getInstance()
+        var dateString: String = ""
+        endCalendar.value?.let { endCalendar ->
+            endTimeCalendar.value?.let { endTimeCalendar ->
+                calendar.set(
+                    endCalendar.get(Calendar.YEAR),
+                    endCalendar.get(Calendar.MONTH),
+                    endCalendar.get(Calendar.DATE),
+                    endTimeCalendar.get(Calendar.HOUR_OF_DAY),
+                    endTimeCalendar.get(Calendar.MINUTE),
+                    0
+                )
+                val outputFmt = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+                outputFmt.timeZone = TimeZone.getTimeZone("GMT")
+                val time = calendar.time
+                dateString = outputFmt.format(time)
+            }
+        }
+
+        addGuestLectureRequest.endDate = dateString
+
+    }
+
+
+
     /*for the first time we are adding a guest lecture i.e, only details are sent to server*/
     fun addGuestLectureDetails() {
+        Log.d(TAG, "addGuestLectureDetails: $addGuestLectureRequest")
         addGuestLectureDetailsApiResponse.value = ApiResource.loading(data = null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
