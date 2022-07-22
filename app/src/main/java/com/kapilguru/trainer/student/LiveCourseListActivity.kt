@@ -48,7 +48,6 @@ class LiveCourseListActivity : StudentBaseActivity() {
     private fun setFragment() {
         when (mListType) {
             LIVE_COURSE -> {
-                Log.d(TAG, "setFragment: showing fragmnet")
                 showFragment(LiveCoursesFragment.newInstance(LiveCoursesFragment.LIVE_COURSE,false))
             }
             RECORDED_COURSE -> {

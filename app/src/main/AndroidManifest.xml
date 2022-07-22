@@ -24,6 +24,9 @@
         android:theme="@style/Theme.KapilGuruTrainer"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".StudentTestimonialsActivity"
+            android:exported="false" />
+        <activity
             android:name=".LiveCourseListActivity"
             android:exported="false" />
         <activity
@@ -412,6 +415,9 @@
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".student.LiveCourseListActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name=".student.homeActivity.studentTestimonials.StudentTestimonialsActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
     </application>
 

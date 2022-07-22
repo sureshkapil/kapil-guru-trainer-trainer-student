@@ -115,7 +115,7 @@ class StudentDashBoardFragment : Fragment(), StudentDashBoardAdapter.OnItemClick
     private fun setTestimonials() {
         val fm: FragmentManager = childFragmentManager
         val ft: FragmentTransaction = fm.beginTransaction()
-        ft.replace(R.id.testimonials_frame_layout, StudentTestimonialsFragment.newInstance())
+        ft.replace(R.id.testimonials_frame_layout, StudentTestimonialsFragment.newInstance(true))
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         ft.commit()
     }

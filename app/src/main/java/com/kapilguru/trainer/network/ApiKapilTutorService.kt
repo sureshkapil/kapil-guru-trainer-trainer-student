@@ -88,6 +88,7 @@ import com.kapilguru.trainer.student.exam.model.*
 import com.kapilguru.trainer.student.homeActivity.liveCourses.model.LiveCourseResponse
 import com.kapilguru.trainer.student.homeActivity.models.*
 import com.kapilguru.trainer.student.homeActivity.studentGallery.model.ImageResponse
+import com.kapilguru.trainer.student.homeActivity.studentTestimonials.model.StudentTestimonialResponse
 import com.kapilguru.trainer.student.myClassRoomDetails.exam.model.StudentQuestionPaperListRequest
 import com.kapilguru.trainer.student.myClassRoomDetails.exam.model.StudentQuestionPaperListResponse
 import com.kapilguru.trainer.student.myClassRoomDetails.model.*
@@ -781,4 +782,6 @@ interface ApiKapilTutorService {
     @GET("trainer/fee_installments_map/fee_id/{insertId}")
     suspend fun getInstallmentList(@Path("insertId") insertId: String) : InstallmentsListResponse
 
+    @GET("student/getTestimonials/{tenantId}")
+    suspend fun getStudentTestimonials(@Path("tenantId") tenantId: String) : StudentTestimonialResponse
 }

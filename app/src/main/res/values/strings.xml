@@ -1008,6 +1008,7 @@
     <string name="already_purchased_course">Can\'t enroll on already purchased Course</string>
     <string name="request_batch">Request Batch</string>
     <string name="study_materials">Study Materials</string>
+    <string name="testimonials_empty">No Testimonials</string>
 
 
 </resources>

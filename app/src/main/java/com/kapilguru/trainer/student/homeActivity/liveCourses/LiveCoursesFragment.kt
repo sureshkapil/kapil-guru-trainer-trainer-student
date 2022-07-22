@@ -82,15 +82,12 @@ class LiveCoursesFragment : Fragment(), LiveCourseAdapter.ClickListener {
         binding.viewAll.setOnClickListener {
             when (mFragmentType) {
                 LIVE_COURSE -> {
-                    Log.d(TAG, "setClickListeners: live course view all")
                     LiveCourseListActivity.launchActivity(requireActivity(), LiveCourseListActivity.LIVE_COURSE)
                 }
                 RECORDED_COURSE -> {
-                    Log.d(TAG, "setClickListeners: recorded course view all")
                     LiveCourseListActivity.launchActivity(requireActivity(), LiveCourseListActivity.RECORDED_COURSE)
                 }
                 STUDY_MATERIAL -> {
-                    Log.d(TAG, "setClickListeners: study material view all")
                     LiveCourseListActivity.launchActivity(requireActivity(), LiveCourseListActivity.STUDY_MATERIAL)
                 }
             }

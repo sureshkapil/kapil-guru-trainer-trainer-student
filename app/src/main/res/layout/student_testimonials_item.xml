@@ -5,29 +5,36 @@
 
     <data>
 
+        <variable
+            name="model"
+            type="com.kapilguru.trainer.student.homeActivity.studentTestimonials.model.StudentTestimonialResData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/dimen_8dp"
+        android:layout_height="@dimen/dimen_140_dp"
         tools:context=".courseDetails.aboutTrainer.AboutTrainer">
 
-        <TextView
-            android:id="@+id/live_courses"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_140_dp"
-            android:background="@drawable/blue_rounded_rectangle_only_border"
-            android:paddingTop="@dimen/dimen_4dp"
-            android:text="abc"
-            android:padding="8dp"
-            android:textColor="@color/white"
-            android:layout_marginHorizontal="8dp"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        </TextView>
+            <TextView
+                android:id="@+id/actv_review"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_140_dp"
+                android:background="@drawable/blue_rounded_rectangle_only_border"
+                android:padding="8dp"
+                android:paddingTop="@dimen/dimen_4dp"
+                android:text="@{model.comments}"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

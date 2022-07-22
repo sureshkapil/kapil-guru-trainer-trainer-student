@@ -25,5 +25,6 @@ class StudentHomeScreenRepository(private val apiHelper: ApiHelper) {
 
     suspend fun getImages(packageId : String) = apiHelper.getImages(packageId)
 
+    suspend fun getStudentTestimonials(tenantId : String) = apiHelper.getStudentTestimonials(tenantId)
 
 }

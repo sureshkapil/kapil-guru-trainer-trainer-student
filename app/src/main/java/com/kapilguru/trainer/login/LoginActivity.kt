@@ -60,6 +60,10 @@ class LoginActivity : AppCompatActivity() {
         binding.buttonOtpLogin.setOnClickListener {
             launchOTPLoginActivity()
         }
+        binding.login.setOnLongClickListener {
+            loginViewModel.loginAsStudent()
+            true
+        }
     }
 
     private fun launchSignUpActivity() {

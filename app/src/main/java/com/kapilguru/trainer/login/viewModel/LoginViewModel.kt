@@ -30,10 +30,10 @@ open class LoginViewModel(private val loginRepository: AllRepo) : ViewModel() {
         if (BuildConfig.DEVELOPER_BUILD) {
 //            userName.value = "kapilgurutest@gmail.com" // raghu test credentials
 //            password.value = "Kapil@123"
-//            userName.value = "newapp@gmail.com" //--Trainer production
-//            password.value = "Kapil@123"
-            userName.value = "student@g.com" //--Student staging
+            userName.value = "newapp@gmail.com" //--Trainer production
             password.value = "Kapil@123"
+//            userName.value = "student@g.com" //--Student staging
+//            password.value = "Kapil@123"
 
             /*OLD*/
 //            userName.value = "ritwikpradhan@kapilit.com" //--Student production
@@ -52,6 +52,12 @@ open class LoginViewModel(private val loginRepository: AllRepo) : ViewModel() {
             val loginRequest = LoginUserRequest(userName.value.toString(), password.value.toString())
             loginUserApi(loginRequest)
         }
+    }
+
+    //---check - remove this debug function
+    fun loginAsStudent(){
+        val loginRequest = LoginUserRequest("student@g.com", "Kapil@123")
+        loginUserApi(loginRequest)
     }
 
     open fun isInputValid(mailOrMobile: String?, password: String?): Boolean {

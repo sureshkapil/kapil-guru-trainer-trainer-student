@@ -13,6 +13,7 @@ import com.kapilguru.trainer.preferences.StorePreferences
 import com.kapilguru.trainer.student.homeActivity.liveCourses.model.LiveCourseResponse
 import com.kapilguru.trainer.student.homeActivity.models.*
 import com.kapilguru.trainer.student.homeActivity.studentGallery.model.ImageResponse
+import com.kapilguru.trainer.student.homeActivity.studentTestimonials.model.StudentTestimonialResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -37,6 +38,7 @@ class StudentDashBoardViewModel(val homeScreenRepository:StudentHomeScreenReposi
     val commonResponse: MutableLiveData<ApiResource<CommonResponse>> = MutableLiveData()
     val createLeadError: MutableLiveData<String> = MutableLiveData()
     val imagesListApiRes : MutableLiveData<ApiResource<ImageResponse>> = MutableLiveData()
+    val studentTestimonialListApiRes : MutableLiveData<ApiResource<StudentTestimonialResponse>> = MutableLiveData()
 
     fun setHomeTopItems() {
         val dashBoardViewPagerItem = mutableListOf<DashBoardViewPagerItem>()
@@ -253,6 +255,21 @@ class StudentDashBoardViewModel(val homeScreenRepository:StudentHomeScreenReposi
                 imagesListApiRes.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
             } catch (exception: HttpException) {
                 imagesListApiRes.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            }
+        }
+    }
+
+    fun getStudentTestimonials() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val parentTenantId = StorePreferences(context).tenantId.toString()
+            try {
+                studentTestimonialListApiRes.postValue(ApiResource.success(homeScreenRepository.getStudentTestimonials(parentTenantId)))
+            } catch (exception: RetrofitNetwork.NetworkConnectionError) {
+                studentTestimonialListApiRes.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!",code = exception.code))
+            }catch (exception: IOException) {
+                studentTestimonialListApiRes.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            } catch (exception: HttpException) {
+                studentTestimonialListApiRes.postValue(ApiResource.error(data = null, message = exception.message ?: "Error Occurred!"))
             }
         }
     }
