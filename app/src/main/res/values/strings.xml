@@ -994,6 +994,8 @@
     <string name="contact_us">Contact us</string>
     <string name="live_courses_amount">Live Course Amount</string>
     <string name="upcoming_feature">upcoming feature</string>
+    <string name="free_classes_type">Free Class Type</string>
+    <string name="no_of_sessions">No of Sessions</string>
 
     <string-array name="offLineStudentsStatusSpinner">
         <item>Status 1</item>

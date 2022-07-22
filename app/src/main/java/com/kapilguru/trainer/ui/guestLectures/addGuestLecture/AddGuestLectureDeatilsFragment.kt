@@ -12,6 +12,7 @@ import android.widget.AdapterView
 import android.widget.ImageButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -21,11 +22,14 @@ import com.kapilguru.trainer.R
 import com.kapilguru.trainer.databinding.FragmentAddGuestLectureDeatilsBinding
 import com.kapilguru.trainer.network.Status
 import com.kapilguru.trainer.preferences.StorePreferences
+import com.kapilguru.trainer.toBase64
 import com.kapilguru.trainer.ui.courses.courses_list.models.CourseResponse
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.data.LanguageData
 import com.kapilguru.trainer.ui.guestLectures.addGuestLecture.viewModel.AddGuestLectureViewModel
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.android.synthetic.main.fragment_add_course_titile_and_description.*
+import org.json.JSONArray
+import org.json.JSONObject
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -38,6 +42,7 @@ class AddGuestLectureDeatilsFragment : Fragment() {
     lateinit var addGuestLectureCourseAdapter: AddGuestLectureCourseAdapter
     val myCalendar: Calendar = Calendar.getInstance()
     var startTimeCalendar: Calendar = Calendar.getInstance()
+    var endTimeCalendar: Calendar = Calendar.getInstance()
     var valuehour: Int = 0
     lateinit var dialog: CustomProgressDialog
 
@@ -182,6 +187,12 @@ class AddGuestLectureDeatilsFragment : Fragment() {
         binding.tvSelectedLanguages.setOnClickListener {
             showDialogToSelectLanguages()
         }
+
+        binding.etNoOfAttendees.doOnTextChanged { text, start, before, count ->
+            if(text.toString().trim().isNotEmpty()){
+                validateAndCalculateEndDate()
+            }
+        }
         setSpinnerCourseItemSelectListener()
         setSpinnerDurationItemSelectListener()
     }
@@ -215,14 +226,22 @@ class AddGuestLectureDeatilsFragment : Fragment() {
                     id: Long
                 ) {
                     when (position) {
-                        0 -> viewModel.addGuestLectureRequest.duration = 0
-                        1 -> viewModel.addGuestLectureRequest.duration = 30
-                        2 -> viewModel.addGuestLectureRequest.duration = 60
-                        3 -> viewModel.addGuestLectureRequest.duration = 90
-                        4 -> viewModel.addGuestLectureRequest.duration = 120
-                        5 -> viewModel.addGuestLectureRequest.duration = 150
-                        6 -> viewModel.addGuestLectureRequest.duration = 180
+                        0 -> {viewModel.addGuestLectureRequest.duration = 0
+                            setEndTime(0)}
+                        1 -> {viewModel.addGuestLectureRequest.duration = 30
+                            setEndTime(30)}
+                        2 -> {viewModel.addGuestLectureRequest.duration = 60
+                            setEndTime(60)}
+                        3 -> {viewModel.addGuestLectureRequest.duration = 90
+                            setEndTime(90)}
+                        4 -> {viewModel.addGuestLectureRequest.duration = 120
+                            setEndTime(120)}
+                        5 -> {viewModel.addGuestLectureRequest.duration = 150
+                            setEndTime(150)}
+                        6 -> {viewModel.addGuestLectureRequest.duration = 180
+                            setEndTime(180)}
                     }
+
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -233,6 +252,7 @@ class AddGuestLectureDeatilsFragment : Fragment() {
             Log.d(TAG, "duration : " + duration)
             val index = getIndexForDuration(duration!!)
             binding.spinnerDuration.setSelection(index)
+            setEndTime(180)
         }
     }
 
@@ -254,10 +274,11 @@ class AddGuestLectureDeatilsFragment : Fragment() {
         val myFormat = "MM/dd/yy"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         binding.etLectureDate.setText(sdf.format(myCalendar.time))
+        validateAndCalculateEndDate()
     }
 
     private fun showDatePicker(date: DatePickerDialog.OnDateSetListener) {
-        val todayCalendar = Calendar.getInstance()
+/*        val todayCalendar = Calendar.getInstance()
         val datePickerDialog = DatePickerDialog.newInstance(date, todayCalendar.get(Calendar.YEAR), todayCalendar.get(Calendar.MONTH), todayCalendar.get(Calendar.DAY_OF_MONTH))
         val minDateCalender = Calendar.getInstance()
         if(viewModel.getIsLaunchedForEdit()){
@@ -276,6 +297,43 @@ class AddGuestLectureDeatilsFragment : Fragment() {
         val maxDateCalendar: Calendar = Calendar.getInstance()
         maxDateCalendar.set(todayCalendar.get(Calendar.YEAR) + 1, todayCalendar.get(Calendar.MONTH), todayCalendar.get(Calendar.DATE))
         datePickerDialog.maxDate = maxDateCalendar
+        datePickerDialog.show(childFragmentManager, "Datepickerdialog")*/
+
+        val myCalendar: Calendar = Calendar.getInstance()
+
+        val datePickerDialog = com.wdullaer.materialdatetimepicker.date.DatePickerDialog.newInstance(
+            date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH))
+
+        datePickerDialog.minDate = myCalendar
+
+        val todaysCalendar: Calendar = Calendar.getInstance()
+        todaysCalendar.set(
+            myCalendar.get(Calendar.YEAR) + 1,
+            myCalendar.get(Calendar.MONTH),
+            myCalendar.get(Calendar.DATE)
+        )
+        datePickerDialog.maxDate = todaysCalendar
+        var loopdate: Calendar = myCalendar
+        val maxYear = myCalendar.get(Calendar.YEAR) + 2
+        // this loop adds disable dates to the current calendar
+        while (myCalendar.get(Calendar.YEAR) < maxYear) {
+            val dayOfWeek = loopdate[Calendar.DAY_OF_WEEK]
+            if ((dayOfWeek == Calendar.MONDAY && viewModel.addGuestLectureRequest.dayMon!= 1) ||
+                (dayOfWeek == Calendar.TUESDAY && viewModel.addGuestLectureRequest.dayTue!=1) ||
+                (dayOfWeek == Calendar.WEDNESDAY && viewModel.addGuestLectureRequest.dayWed!=1) ||
+                (dayOfWeek == Calendar.THURSDAY && viewModel.addGuestLectureRequest.dayThu!=1) ||
+                (dayOfWeek == Calendar.FRIDAY && viewModel.addGuestLectureRequest.dayFri!=1) ||
+                (dayOfWeek == Calendar.SATURDAY && viewModel.addGuestLectureRequest.daySat!=1) ||
+                (dayOfWeek == Calendar.SUNDAY && viewModel.addGuestLectureRequest.daySun!=1)
+            ) {
+                val disabledDays = arrayOfNulls<Calendar>(1)
+                disabledDays[0] = loopdate
+                datePickerDialog.disabledDays = disabledDays
+            }
+            myCalendar.add(Calendar.DATE, 1)
+            loopdate = myCalendar
+
+        }
         datePickerDialog.show(childFragmentManager, "Datepickerdialog")
     }
 
@@ -316,6 +374,7 @@ class AddGuestLectureDeatilsFragment : Fragment() {
                 val selectedTime =
                     "${startTimeCalendar.get(java.util.Calendar.HOUR)}:${startTimeCalendar.get(java.util.Calendar.MINUTE)} $amPm"
                 binding.etStartTime.setText(selectedTime)
+                validateAndCalculateEndDate()
             }, hour, minute, false
         )
         mTimePicker.show()
@@ -466,5 +525,125 @@ class AddGuestLectureDeatilsFragment : Fragment() {
             dialog.dismiss()
         }
         dialog.show()
+    }
+
+
+
+
+    private fun setTotalCourseDuration() {
+        viewModel.noOfAttendeesMutLiveData.value?.let {it->
+            val loopCalander = Calendar.getInstance()
+            loopCalander.set(
+                myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DATE)
+            )
+            if (it.isNotEmpty()) {
+                val rotateCount = it.toInt() * it.toInt()
+                val checkObject = JSONArray()
+                var counter = 0
+                for (i in 0..rotateCount) {
+                    counter += 1
+                    if (checkObject.length() == it.toInt()) {
+                        break
+                    }
+                    var checkJSONObject = JSONObject()
+                    if (loopCalander.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY && viewModel.addGuestLectureRequest.dayMon == 1) {
+                        checkJSONObject = createJsonObjectOfAllSelectedDates(loopCalander)
+                        checkObject.put(checkJSONObject)
+                    } else if (loopCalander.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY && viewModel.addGuestLectureRequest.dayTue == 1) {
+                        checkJSONObject = createJsonObjectOfAllSelectedDates(loopCalander)
+                        checkObject.put(checkJSONObject)
+                    } else if (loopCalander.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY && viewModel.addGuestLectureRequest.dayWed == 1) {
+                        checkJSONObject = createJsonObjectOfAllSelectedDates(loopCalander)
+                        checkObject.put(checkJSONObject)
+                    } else if (loopCalander.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY && viewModel.addGuestLectureRequest.dayThu == 1) {
+                        checkJSONObject = createJsonObjectOfAllSelectedDates(loopCalander)
+                        checkObject.put(checkJSONObject)
+                    } else if (loopCalander.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY && viewModel.addGuestLectureRequest.dayFri == 1) {
+                        checkJSONObject = createJsonObjectOfAllSelectedDates(loopCalander)
+                        checkObject.put(checkJSONObject)
+                    } else if (loopCalander.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY && viewModel.addGuestLectureRequest.daySat == 1) {
+                        checkJSONObject = createJsonObjectOfAllSelectedDates(loopCalander)
+                        checkObject.put(checkJSONObject)
+                    } else if (loopCalander.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY && viewModel.addGuestLectureRequest.daySun == 1) {
+                        checkJSONObject = createJsonObjectOfAllSelectedDates(loopCalander)
+                        checkObject.put(checkJSONObject)
+                    }
+
+                    loopCalander.add(Calendar.DATE, 1)
+
+                }
+                val info = checkObject.get(checkObject.length() - 1) as JSONObject
+                viewModel.datesJson.value = checkObject.toBase64()
+                val endate = info.getLong("end_time")
+                val formatter: DateFormat = SimpleDateFormat("MMM d, y, h:mm:ss a")
+                val calendar = Calendar.getInstance()
+                calendar.timeInMillis = endate
+                val d = formatter.format(calendar.time)
+                viewModel.endCalendar.value = calendar
+                viewModel.endDate.value = d.toString()
+            }
+        }
+
+    }
+
+    private fun createJsonObjectOfAllSelectedDates(loopCalendar: Calendar): JSONObject {
+        val jsonObject = JSONObject()
+        loopCalendar.set(Calendar.HOUR_OF_DAY, startTimeCalendar.get(Calendar.HOUR_OF_DAY))
+        loopCalendar.set(Calendar.MINUTE, startTimeCalendar.get(Calendar.MINUTE))
+        loopCalendar.set(Calendar.AM_PM, isItAMPM(loopCalendar.get(Calendar.HOUR_OF_DAY)))
+        jsonObject.put("start_time", loopCalendar.timeInMillis)
+        loopCalendar.set(Calendar.HOUR_OF_DAY, endTimeCalendar.get(Calendar.HOUR_OF_DAY))
+        loopCalendar.set(Calendar.MINUTE, endTimeCalendar.get(Calendar.MINUTE))
+        loopCalendar.set(Calendar.AM_PM, isItAMPM(loopCalendar.get(Calendar.HOUR_OF_DAY)))
+        jsonObject.put("end_time", loopCalendar.timeInMillis)
+        return jsonObject
+    }
+
+    private fun isItAMPM(hourOfDay: Int): Int {
+        when {
+            hourOfDay > 12 -> {
+                valuehour = hourOfDay
+                valuehour -= 12
+                return 1
+            }
+            hourOfDay == 0 -> {
+                valuehour = hourOfDay
+                valuehour += 12
+                return 0
+            }
+            hourOfDay == 12 -> {
+                valuehour = hourOfDay
+                return 1
+            }
+            else -> {
+                valuehour = hourOfDay
+                return 0
+
+            }
+        }
+    }
+
+    private fun setEndTime(addMinutes: Int) {
+        val endTimeCalendar = Calendar.getInstance()
+        endTimeCalendar.set(Calendar.HOUR_OF_DAY, startTimeCalendar.get(Calendar.HOUR_OF_DAY))
+        endTimeCalendar.set(Calendar.MINUTE, startTimeCalendar.get(Calendar.MINUTE))
+        endTimeCalendar.add(Calendar.MINUTE, addMinutes)
+
+        val dateFromat = SimpleDateFormat("hh:mm  aa")
+        val todayStr = dateFromat.format(endTimeCalendar.time)
+        viewModel.endTime.value = todayStr
+
+        this.endTimeCalendar = endTimeCalendar
+        viewModel.endTimeCalendar.value = endTimeCalendar
+
+
+        // check for other fields and set End Date
+        validateAndCalculateEndDate()
+    }
+
+    private fun validateAndCalculateEndDate() {
+        if(!viewModel.noOfAttendeesMutLiveData.value.isNullOrEmpty()) setTotalCourseDuration()
     }
 }

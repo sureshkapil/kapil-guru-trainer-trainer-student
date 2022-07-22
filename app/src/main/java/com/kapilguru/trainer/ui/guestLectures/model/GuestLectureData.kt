@@ -5,7 +5,7 @@ import java.io.Serializable
 
 open class GuestLectureData(
     @SerializedName("code") val code: String? = "",
-    @SerializedName("lecture_date") val lectureDate: String? = "",
+    @SerializedName("lecture_date") val lectureDate: String? = null,
     @SerializedName("about") val about: String? = "",
     @SerializedName("video") val video: String? = "",
     @SerializedName("title") val title: String? = "",
@@ -22,7 +22,7 @@ open class GuestLectureData(
     @SerializedName("image") val image: String? = "",
     @SerializedName("is_active") val isActive: Int? = 0,
     @SerializedName("languages") val languages: String? = "",
-    @SerializedName("room_pass") val roomPass: String? = "",
+    @SerializedName("room_pass") val roomPass: String? = "",    
     @SerializedName("modified_date") val modifiedDate: String? = "",
     @SerializedName("is_verified") val isVerified: Int = 0,
     @SerializedName("created_by") val createdBy: Int? = 0,

@@ -51,7 +51,7 @@ class AddGuestLectureActivity : BaseActivity() {
     }
 
     private fun setData() {
-        viewModel.noOfAttendeesMutLiveData.value = viewModel.addGuestLectureRequest.noOfAttendees.toString()
+        viewModel.noOfAttendeesMutLiveData.value = viewModel.addGuestLectureRequest.noOfDays.toString()
     }
 
     private fun setCustomActionBarListener() {
@@ -269,11 +269,11 @@ class AddGuestLectureActivity : BaseActivity() {
                 showToast("Please enter Guest Lecture Title")
                 return false
             }
-            addGuestLectureData.noOfAttendees == null -> {
+            addGuestLectureData.noOfDays == null -> {
                 showToast("Please enter No of Attendees")
                 return false
             }
-            addGuestLectureData.noOfAttendees!! > 150 -> {
+            addGuestLectureData.noOfDays!! > 150 -> {
                 showToast("No of Attendees should not to exceed 150")
                 return false
             }
@@ -293,10 +293,10 @@ class AddGuestLectureActivity : BaseActivity() {
                 showToast("Please select Languages")
                 return false
             }
-            addGuestLectureData.trainerName.isNullOrBlank() -> {
+           /* addGuestLectureData.trainerName.isNullOrBlank() -> {
                 showToast("Please enter Trainer Name")
                 return false
-            }
+            }*/
             addGuestLectureData.about.isNullOrBlank() -> {
                 showToast("Please enter Description")
                 return false
